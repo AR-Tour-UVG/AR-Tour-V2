@@ -1,0 +1,1031 @@
+fileFormatVersion: 2
+guid: 5ffaf8fbf62ddc94cb05274d2c609750
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7237116060901038879
+    second: iconUVGWhite_0
+  - first:
+      213: -3718418429895775557
+    second: iconUVGWhite_1
+  - first:
+      213: -6534427383765480630
+    second: iconUVGWhite_2
+  - first:
+      213: -8364467408386272935
+    second: iconUVGWhite_3
+  - first:
+      213: 5236478803817820053
+    second: iconUVGWhite_4
+  - first:
+      213: -5351068303347541565
+    second: iconUVGWhite_5
+  - first:
+      213: -7921104383136442962
+    second: iconUVGWhite_6
+  - first:
+      213: 5711293547994869301
+    second: iconUVGWhite_7
+  - first:
+      213: -6200253829321774444
+    second: iconUVGWhite_8
+  - first:
+      213: -3100614624666631048
+    second: iconUVGWhite_9
+  - first:
+      213: -2791016369438297172
+    second: iconUVGWhite_10
+  - first:
+      213: 1065739477116537505
+    second: iconUVGWhite_11
+  - first:
+      213: -5291751708628293492
+    second: iconUVGWhite_12
+  - first:
+      213: 9188082000074161375
+    second: iconUVGWhite_13
+  - first:
+      213: 8724836633348352192
+    second: iconUVGWhite_14
+  - first:
+      213: 8663709640397134121
+    second: iconUVGWhite_15
+  - first:
+      213: 1972621621530048546
+    second: iconUVGWhite_16
+  - first:
+      213: 1492615443826480723
+    second: iconUVGWhite_17
+  - first:
+      213: -3327686112308794605
+    second: iconUVGWhite_18
+  - first:
+      213: 2752120429627992190
+    second: iconUVGWhite_19
+  - first:
+      213: -1285612334890319465
+    second: iconUVGWhite_20
+  - first:
+      213: -5379886821182121898
+    second: iconUVGWhite_21
+  - first:
+      213: 3326221208964136428
+    second: iconUVGWhite_22
+  - first:
+      213: 6764298008734054988
+    second: iconUVGWhite_23
+  - first:
+      213: -1261007959342340039
+    second: iconUVGWhite_24
+  - first:
+      213: -2944593194140961637
+    second: iconUVGWhite_25
+  - first:
+      213: -4641588857072488520
+    second: iconUVGWhite_26
+  - first:
+      213: 1443196208685302650
+    second: iconUVGWhite_27
+  - first:
+      213: 2252710678946961519
+    second: iconUVGWhite_28
+  - first:
+      213: -2696643600920816723
+    second: iconUVGWhite_29
+  - first:
+      213: 8806675255051667448
+    second: iconUVGWhite_30
+  - first:
+      213: -3827748136813343017
+    second: iconUVGWhite_31
+  - first:
+      213: -864582369994668175
+    second: iconUVGWhite_32
+  - first:
+      213: 2406138232309461263
+    second: iconUVGWhite_33
+  - first:
+      213: -8603083181381090519
+    second: iconUVGWhite_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: iconUVGWhite_0
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 754
+        width: 168
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1bd748a6b66f6460800000000000000
+      internalID: 7237116060901038879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_1
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 757
+        width: 199
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbaebc79326856cc0800000000000000
+      internalID: -3718418429895775557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_2
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 754
+        width: 178
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4bc2145aec0155a0800000000000000
+      internalID: -6534427383765480630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_3
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 720
+        width: 550
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 951ddcb75317beb80800000000000000
+      internalID: -8364467408386272935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_4
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 634
+        width: 52
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59f6c6f5ab5bba840800000000000000
+      internalID: 5236478803817820053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_5
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 635
+        width: 55
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c91e12babf2db5b0800000000000000
+      internalID: -5351068303347541565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_6
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 635
+        width: 16
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea5dc560885921290800000000000000
+      internalID: -7921104383136442962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_7
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 635
+        width: 61
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53ee630e837924f40800000000000000
+      internalID: 5711293547994869301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_8
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 635
+        width: 46
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49a250a1ef544f9a0800000000000000
+      internalID: -6200253829321774444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_9
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 635
+        width: 53
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8744d573d6768f4d0800000000000000
+      internalID: -3100614624666631048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_10
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 634
+        width: 52
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca3745146615449d0800000000000000
+      internalID: -2791016369438297172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_11
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 635
+        width: 16
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aa44ac68644ace00800000000000000
+      internalID: 1065739477116537505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_12
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 635
+        width: 52
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c88e4af9bdbef86b0800000000000000
+      internalID: -5291751708628293492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_13
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 635
+        width: 63
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdcb49506ef928f70800000000000000
+      internalID: 9188082000074161375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_14
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 635
+        width: 52
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c82b0e11b8d41970800000000000000
+      internalID: 8724836633348352192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_15
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 528
+        width: 68
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9299ff0040eab3870800000000000000
+      internalID: 8663709640397134121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_16
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 528
+        width: 60
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 228bd83d9e8206b10800000000000000
+      internalID: 1972621621530048546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_17
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 528
+        width: 59
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3561a8386d5d6b410800000000000000
+      internalID: 1492615443826480723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_18
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 528
+        width: 81
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31b65d79c1fa1d1d0800000000000000
+      internalID: -3327686112308794605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_19
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 528
+        width: 83
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e78621b03fe713620800000000000000
+      internalID: 2752120429627992190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_20
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 528
+        width: 58
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79180049466982ee0800000000000000
+      internalID: -1285612334890319465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_21
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 528
+        width: 58
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65852a3a07dc655b0800000000000000
+      internalID: -5379886821182121898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_22
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 528
+        width: 61
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ced7da4019c192e20800000000000000
+      internalID: 3326221208964136428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_23
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 449
+        width: 44
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4ab97d333d9fdd50800000000000000
+      internalID: 6764298008734054988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_24
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 449
+        width: 40
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 938a57c21ffff7ee0800000000000000
+      internalID: -1261007959342340039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_25
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 448
+        width: 47
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b94f13f4714b227d0800000000000000
+      internalID: -2944593194140961637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_26
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 448
+        width: 44
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bf68c4d683c59fb0800000000000000
+      internalID: -4641588857072488520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_27
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 449
+        width: 53
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a73c0ef2e43470410800000000000000
+      internalID: 1443196208685302650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_28
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 449
+        width: 47
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f68dc585d6c334f10800000000000000
+      internalID: 2252710678946961519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_29
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 449
+        width: 39
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da3d841bee8939ad0800000000000000
+      internalID: -2696643600920816723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_30
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 449
+        width: 59
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f7c3951c78973a70800000000000000
+      internalID: 8806675255051667448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_31
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 449
+        width: 53
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dec39f895b11eac0800000000000000
+      internalID: -3827748136813343017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_32
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 449
+        width: 37
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 177076d4ae26004f0800000000000000
+      internalID: -864582369994668175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_33
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 449
+        width: 53
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f01ba4959f1546120800000000000000
+      internalID: 2406138232309461263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGWhite_34
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 419
+        width: 550
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92384a87d65bb9880800000000000000
+      internalID: -8603083181381090519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

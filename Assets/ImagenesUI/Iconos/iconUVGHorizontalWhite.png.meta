@@ -1,0 +1,981 @@
+fileFormatVersion: 2
+guid: b0a6230623464cb4ea86ffdc759681f4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7381002591309785289
+    second: iconUVGHorizontalWhite_0
+  - first:
+      213: -2093823548450495123
+    second: iconUVGHorizontalWhite_1
+  - first:
+      213: -7085286280641755003
+    second: iconUVGHorizontalWhite_2
+  - first:
+      213: -3615653256896212259
+    second: iconUVGHorizontalWhite_3
+  - first:
+      213: 5227750040802792009
+    second: iconUVGHorizontalWhite_4
+  - first:
+      213: 3021794807386722551
+    second: iconUVGHorizontalWhite_5
+  - first:
+      213: 8725241225695661663
+    second: iconUVGHorizontalWhite_6
+  - first:
+      213: 6258041142493455534
+    second: iconUVGHorizontalWhite_7
+  - first:
+      213: -1440262439455333577
+    second: iconUVGHorizontalWhite_8
+  - first:
+      213: -3226490943890477175
+    second: iconUVGHorizontalWhite_9
+  - first:
+      213: 6863742762853702895
+    second: iconUVGHorizontalWhite_10
+  - first:
+      213: 5196628051535403099
+    second: iconUVGHorizontalWhite_11
+  - first:
+      213: 371981202260316656
+    second: iconUVGHorizontalWhite_12
+  - first:
+      213: 2310189731149998105
+    second: iconUVGHorizontalWhite_13
+  - first:
+      213: 6155939421642101747
+    second: iconUVGHorizontalWhite_14
+  - first:
+      213: 4699758418218503473
+    second: iconUVGHorizontalWhite_15
+  - first:
+      213: -1680942859398790772
+    second: iconUVGHorizontalWhite_16
+  - first:
+      213: 6388971272504025660
+    second: iconUVGHorizontalWhite_17
+  - first:
+      213: 8599469638069003949
+    second: iconUVGHorizontalWhite_18
+  - first:
+      213: -8439436183712474993
+    second: iconUVGHorizontalWhite_19
+  - first:
+      213: 8473847217233032130
+    second: iconUVGHorizontalWhite_20
+  - first:
+      213: -892746217032163790
+    second: iconUVGHorizontalWhite_21
+  - first:
+      213: -1321094925061310996
+    second: iconUVGHorizontalWhite_22
+  - first:
+      213: -6345490774005637660
+    second: iconUVGHorizontalWhite_23
+  - first:
+      213: 6746717733933605306
+    second: iconUVGHorizontalWhite_24
+  - first:
+      213: -3216683668990119234
+    second: iconUVGHorizontalWhite_25
+  - first:
+      213: -4744775781505939749
+    second: iconUVGHorizontalWhite_26
+  - first:
+      213: -4778286256852728506
+    second: iconUVGHorizontalWhite_27
+  - first:
+      213: -2408562421429857871
+    second: iconUVGHorizontalWhite_28
+  - first:
+      213: 6133712793368617013
+    second: iconUVGHorizontalWhite_29
+  - first:
+      213: 7589734648491479554
+    second: iconUVGHorizontalWhite_30
+  - first:
+      213: -6224004618974761234
+    second: iconUVGHorizontalWhite_31
+  - first:
+      213: 2720026186003447957
+    second: iconUVGHorizontalWhite_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 28
+        width: 148
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7371ebadf39619990800000000000000
+      internalID: -7381002591309785289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 31
+        width: 175
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d65a244839e31f2e0800000000000000
+      internalID: -2093823548450495123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_2
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 28
+        width: 158
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 588466ecaa10cad90800000000000000
+      internalID: -7085286280641755003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_3
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 15
+        width: 14
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd297b7f48e92ddc0800000000000000
+      internalID: -3615653256896212259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_4
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 176
+        width: 45
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 942959cd6f2bc8840800000000000000
+      internalID: 5227750040802792009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_5
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 177
+        width: 48
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f0d76efd529fe920800000000000000
+      internalID: 3021794807386722551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_6
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 177
+        width: 16
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5e0f2d9aa8461970800000000000000
+      internalID: 8725241225695661663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_7
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 177
+        width: 53
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea42a18334709d650800000000000000
+      internalID: 6258041142493455534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_8
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 177
+        width: 40
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7336de031f8230ce0800000000000000
+      internalID: -1440262439455333577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_9
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 177
+        width: 47
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98fa46ac4933933d0800000000000000
+      internalID: -3226490943890477175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_10
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 176
+        width: 45
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fec9d895da9e04f50800000000000000
+      internalID: 6863742762853702895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_11
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 177
+        width: 16
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5819911ea12e1840800000000000000
+      internalID: 5196628051535403099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_12
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 177
+        width: 45
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f159dfbeea892500800000000000000
+      internalID: 371981202260316656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_13
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 177
+        width: 54
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91863f012517f0020800000000000000
+      internalID: 2310189731149998105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_14
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 177
+        width: 45
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f31dc5d94a4e6550800000000000000
+      internalID: 6155939421642101747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_15
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 85
+        width: 61
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13dc0188165e83140800000000000000
+      internalID: 4699758418218503473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_16
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 85
+        width: 54
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c814ec910671ca8e0800000000000000
+      internalID: -1680942859398790772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_17
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 85
+        width: 52
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3227c9a58f2aa850800000000000000
+      internalID: 6388971272504025660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_18
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 85
+        width: 72
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da62cd9e214775770800000000000000
+      internalID: 8599469638069003949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_19
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 85
+        width: 74
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f885d35418911ea80800000000000000
+      internalID: -8439436183712474993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_20
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 85
+        width: 52
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c37b10d527299570800000000000000
+      internalID: 8473847217233032130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_21
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 85
+        width: 51
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23e593bab045c93f0800000000000000
+      internalID: -892746217032163790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_22
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 85
+        width: 54
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce536254a278aade0800000000000000
+      internalID: -1321094925061310996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_23
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 15
+        width: 39
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ed10e9c2c940f7a0800000000000000
+      internalID: -6345490774005637660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_24
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 15
+        width: 35
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab1e0fa880821ad50800000000000000
+      internalID: 6746717733933605306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_25
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 15
+        width: 41
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb23b0bee3b0c53d0800000000000000
+      internalID: -3216683668990119234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_26
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 15
+        width: 39
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd6467cc09b272eb0800000000000000
+      internalID: -4744775781505939749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_27
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 15
+        width: 47
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 645892147fd10bdb0800000000000000
+      internalID: -4778286256852728506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_28
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 15
+        width: 42
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b191532d31139ed0800000000000000
+      internalID: -2408562421429857871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_29
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 15
+        width: 35
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 530610ba9435f1550800000000000000
+      internalID: 6133712793368617013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_30
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 15
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2021fce5377245960800000000000000
+      internalID: 7589734648491479554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_31
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 15
+        width: 47
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eee6e9576c4ef99a0800000000000000
+      internalID: -6224004618974761234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iconUVGHorizontalWhite_32
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 15
+        width: 78
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5900f74a7697fb520800000000000000
+      internalID: 2720026186003447957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
