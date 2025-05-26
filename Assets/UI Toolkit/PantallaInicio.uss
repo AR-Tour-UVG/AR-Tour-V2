@@ -1,0 +1,5 @@
+.custom-label {
+    font-size: 20px;
+    -unity-font-definition: url('project://database/Assets/UI Toolkit/Fonts/AsapCondensed-Bold.ttf');
+    color: rgb(68, 138, 255);
+}
