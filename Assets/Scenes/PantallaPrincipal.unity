@@ -533,6 +533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1944571976}
   - component: {fileID: 1944571975}
+  - component: {fileID: 1944571977}
   m_Layer: 5
   m_Name: UIDocumentEscaneo
   m_TagString: Untagged
@@ -574,6 +575,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 717029223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1944571977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944571974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ccc7f7138ca51d4c8912fbed5de8ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cambiador: {fileID: 717029222}
 --- !u!1 &2051829453
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2115376132}
   - component: {fileID: 2115376131}
+  - component: {fileID: 2115376133}
   m_Layer: 5
   m_Name: UIDocumentTour
   m_TagString: Untagged
@@ -687,7 +702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 125736c4c8f00424686e7fee5d5ea293, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: c9e66cb93a091d746ae50a6709e2a2c1, type: 3}
   m_SortingOrder: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
@@ -707,6 +722,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 717029223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2115376133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115376130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f51e522f8eede47ba4d547e6e6114b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cambiador: {fileID: 717029222}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
