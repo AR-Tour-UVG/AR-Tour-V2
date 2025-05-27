@@ -1,0 +1,168 @@
+.pantalla-tour {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: transparent;
+    position: absolute;
+}
+.header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+    width: 100%;
+}
+.ubicacion {
+    flex-direction: row;
+    align-items: center;
+}
+.icono-marcador {
+    width: 24px;
+    height: 24px;
+    background-image: url("project://database/Assets/ImagenesUI/Iconos/iconMarcador.png");
+    -unity-background-scale-mode: scale-to-fit;
+    margin-right: 8px;
+}
+.texto-ubicacion {
+    font-size: 18px;
+    color: white;
+    -unity-font-style: bold;
+}
+.boton-salir {
+    width: 32px;
+    height: 32px;
+    background-image: url("project://database/Assets/ImagenesUI/Iconos/iconExit.png");
+    -unity-background-scale-mode: scale-to-fit;
+    background-color: transparent;
+}
+.nivel-ruta {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 2%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.item-nivel-ruta {
+    font-size: 14px;
+    color: white;
+    -unity-text-align: middle-center;
+}
+.instruccion {
+    position: absolute;
+    bottom: 110px; 
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px;
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.texto-instruccion {
+    font-size: 16px;
+    color: white;
+}
+.texto-subtitulo-jack {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 4px;
+}
+.footer {
+    flex-direction: row;
+    align-items: center;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    margin: 2%;
+    height: 80px;
+    justify-content: flex-start;
+}
+
+.contenedor-imagen {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    margin-right: 12px;
+}
+
+.imagen-lugar {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.info-lugar {
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 4px 0;
+}
+
+.titulo-info {
+    font-size: 13px;
+    color: white;
+    -unity-font-style: bold;
+    -unity-text-align: upper-center;
+    margin-bottom: 4px;
+    white-space: normal;
+}
+
+.divider-horizontal {
+    height: 1px;
+    background-color: white;
+    margin: 4px 10px 8px 10px;
+    width: auto;
+}
+
+.fila-info {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    flex-grow: 1;
+}
+
+.columna-izquierda {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+}
+
+.columna-derecha {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+}
+
+.divider-vertical {
+    width: 1px;
+    height: 35px;
+    background-color: white;
+    margin: 0 8px;
+    flex-shrink: 0;
+}
+
+.label-descripcion {
+    font-size: 10px;
+    color: white;
+    -unity-text-align: upper-center;
+    white-space: normal;
+    margin-bottom: 2px;
+}
+
+.label-valor {
+    font-size: 12px;
+    color: white;
+    -unity-font-style: bold;
+    -unity-text-align: upper-center;
+    white-space: nowrap;
+}

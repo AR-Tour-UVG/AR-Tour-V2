@@ -1,0 +1,43 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/PantallaARTour.uss?fileID=7433441132597879392&amp;guid=dc6c927568f8ec349afd79dc790c32a7&amp;type=3#PantallaARTour" />
+    <engine:VisualElement name="ContenedorPantallaARTour" class="pantalla-tour" style="flex-direction: column;">
+        <engine:VisualElement name="ContenedorHeader" class="header">
+            <engine:VisualElement name="ContenedorUbicacion" class="ubicacion" style="background-color: rgba(0, 0, 0, 0.4); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; padding-top: 4px; padding-right: 4px; padding-bottom: 4px; padding-left: 4px;">
+                <engine:VisualElement name="IconoUbicacion" class="icono-marcador" />
+                <engine:Label name="TextoUbicacion" text="Admisiones y Recepción" class="texto-ubicacion" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/AsapCondensed-Medium.ttf?fileID=12800000&amp;guid=b8b143d6cd976f14db0e4e56d83b6d69&amp;type=3#AsapCondensed-Medium&quot;); white-space: normal;" />
+            </engine:VisualElement>
+            <engine:Button name="boton_salir" class="boton-salir" style="width: 35px; height: 35px; background-color: rgba(0, 0, 0, 0.4); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-size: 22px 22px; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="ContenedorNivelRuta" class="nivel-ruta" style="align-items: stretch; justify-content: flex-start; background-color: rgba(0, 0, 0, 0); top: 50px; position: absolute;">
+            <engine:VisualElement name="ContenedorNivel" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0.4); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; width: 40%; height: auto; flex-shrink: 0; margin-right: 13px;">
+                <engine:Label name="TextoNivel" text="Nivel 1" class="item-nivel-ruta" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/AsapCondensed-Medium.ttf?fileID=12800000&amp;guid=b8b143d6cd976f14db0e4e56d83b6d69&amp;type=3#AsapCondensed-Medium&quot;); font-size: 14px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="ContenedorTipoRuta" style="flex-grow: 0; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; background-color: rgba(0, 0, 0, 0.4); width: 40%; flex-shrink: 0;">
+                <engine:Label name="TextoRuta" text="Ruta Express" class="item-nivel-ruta" style="white-space: normal; -unity-font-definition: url(&quot;project://database/Assets/Fonts/AsapCondensed-Medium.ttf?fileID=12800000&amp;guid=b8b143d6cd976f14db0e4e56d83b6d69&amp;type=3#AsapCondensed-Medium&quot;); font-size: 15px;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="ContenedorInstruccion" class="instruccion" style="background-color: rgba(0, 0, 0, 0.4); position: absolute; bottom: 125px; top: auto; left: auto; right: auto; align-items: center; justify-content: center; align-self: auto; width: 236px; flex-shrink: 1; margin-top: 2%; margin-right: 2%; margin-bottom: 2%; margin-left: 2%; height: 34px; flex-direction: column; flex-wrap: nowrap; -unity-text-align: middle-center;">
+            <engine:Label name="TextoInstruccion" text="Dirígete al Nivel 2: Admisiones y Recepción." class="texto-instruccion" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/AsapCondensed-Medium.ttf?fileID=12800000&amp;guid=b8b143d6cd976f14db0e4e56d83b6d69&amp;type=3#AsapCondensed-Medium&quot;); font-size: 12px; -unity-text-align: middle-left;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="ContenedorFooter" class="footer" style="height: 120px; background-color: rgba(0, 0, 0, 0.4);">
+            <engine:VisualElement name="ContenedorImagen" class="contenedor-imagen">
+                <engine:VisualElement name="ImagenLugar" class="imagen-lugar" style="background-image: url(&quot;project://database/Assets/ImagenesUI/ImagenesDeTour/AdmisionesYRecepcion.png?fileID=21300000&amp;guid=faeee91b54bdf43daa53afd3443cee1b&amp;type=3#AdmisionesYRecepcion&quot;); -unity-background-scale-mode: scale-and-crop; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="ContenedorInfo" class="info-lugar">
+                <engine:Label text="Información de Ubicación" name="TextoTituloFooter" class="titulo-info" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/AsapCondensed-Medium.ttf?fileID=12800000&amp;guid=b8b143d6cd976f14db0e4e56d83b6d69&amp;type=3#AsapCondensed-Medium&quot;);" />
+                <engine:VisualElement name="LineaHorizontal" class="divider-horizontal" />
+                <engine:VisualElement name="ContenedorInfoTour" class="fila-info">
+                    <engine:VisualElement name="ColumnaIzquierda" class="columna-izquierda">
+                        <engine:Label text="Distancia al otro punto de conexión" name="LabelDistancia" class="label-descripcion" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/AsapCondensed-Regular.ttf?fileID=12800000&amp;guid=dfd1828468f253041bb7d9fb55d37c5d&amp;type=3#AsapCondensed-Regular&quot;);" />
+                        <engine:Label text="1.05 m" name="ValorDistancia" class="label-valor" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/AsapCondensed-Regular.ttf?fileID=12800000&amp;guid=dfd1828468f253041bb7d9fb55d37c5d&amp;type=3#AsapCondensed-Regular&quot;);" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="LineaVertical" class="divider-vertical" />
+                    <engine:VisualElement name="ColumnaDerecha" class="columna-derecha">
+                        <engine:Label text="Avance del Tour" name="LabelAvance" class="label-descripcion" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/AsapCondensed-Regular.ttf?fileID=12800000&amp;guid=dfd1828468f253041bb7d9fb55d37c5d&amp;type=3#AsapCondensed-Regular&quot;);" />
+                        <engine:Label text="0%" name="ValorAvance" class="label-valor" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/AsapCondensed-Regular.ttf?fileID=12800000&amp;guid=dfd1828468f253041bb7d9fb55d37c5d&amp;type=3#AsapCondensed-Regular&quot;);" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
