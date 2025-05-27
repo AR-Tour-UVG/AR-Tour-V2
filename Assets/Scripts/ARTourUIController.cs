@@ -8,8 +8,9 @@ public class ARTourUIController : MonoBehaviour
     private void OnEnable()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
-        var botonSalir = root.Q<Button>("boton_salir");
 
+        // Botón salir
+        var botonSalir = root.Q<Button>("boton_salir");
         if (botonSalir != null)
         {
             botonSalir.clicked += () =>
@@ -17,6 +18,13 @@ public class ARTourUIController : MonoBehaviour
                 Debug.Log("Clic en cerrar - Regresando a inicio");
                 cambiador.MostrarInicio();
             };
+        }
+
+        // Texto dinámico de tipo de ruta (Ruta Express o Ruta Completa)
+        var textoRuta = root.Q<Label>("TextoRuta");
+        if (textoRuta != null)
+        {
+            textoRuta.text = EstadoRuta.TipoRuta;
         }
     }
 }

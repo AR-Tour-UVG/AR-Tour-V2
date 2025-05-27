@@ -10,12 +10,22 @@ public class InicioUIController : MonoBehaviour
         var root = GetComponent<UIDocument>().rootVisualElement;
 
         var botonExpress = root.Q<Button>("boton_ruta_express");
+        var botonCompleta = root.Q<Button>("boton_ruta_completa");
 
         if (botonExpress != null)
         {
             botonExpress.clicked += () =>
             {
-                Debug.Log("Botón Ruta Express presionado");
+                EstadoRuta.TipoRuta = "Ruta Express";
+                cambiador.MostrarEscaneo();
+            };
+        }
+
+        if (botonCompleta != null)
+        {
+            botonCompleta.clicked += () =>
+            {
+                EstadoRuta.TipoRuta = "Ruta Completa";
                 cambiador.MostrarEscaneo();
             };
         }
