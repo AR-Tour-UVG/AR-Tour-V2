@@ -1,0 +1,78 @@
+.pantalla-inicio {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: black;
+}
+
+.fondo-imagen {
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay-imagen {
+    background-image: url("ImagenesUI/Overlays/overlay_pantalla_inicio.png");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor-central {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    top: 20%;
+}
+
+.logo-app {
+    width: 180px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.titulo-bienvenida {
+    font-family: "Outfit-Bold";
+    font-size: 28px;
+    color: white;
+    margin-bottom: 30px;
+    -unity-text-align: middle-center;
+}
+
+.boton {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    margin: 10px 0;
+    background-color: #00A677;
+    border-radius: 12px;
+    width: 240px;
+}
+
+.icono {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.texto-boton {
+    font-family: "Outfit-SemiBold";
+    font-size: 18px;
+    color: white;
+}
+
+.logo-uvg {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}

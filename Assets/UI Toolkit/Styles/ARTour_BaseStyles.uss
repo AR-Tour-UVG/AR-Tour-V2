@@ -1,0 +1,343 @@
+/* ========================================
+   AR TOUR - ESTILOS BASE PRINCIPALES
+   Nueva Imagen 2025 - SUSTITUYE TODOS LOS ESTILOS ANTERIORES
+   ======================================== */
+
+/* IMPORTAR VARIABLES */
+@import url("ARTour_Variables.uss");
+
+/* ESTILOS GENERALES */
+.container {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.full-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.centered {
+    align-items: center;
+    justify-content: center;
+}
+
+.centered-horizontal {
+    align-items: center;
+}
+
+.centered-vertical {
+    justify-content: center;
+}
+
+/* TIPOGRAFÍA */
+.text-outfit-bold {
+    -unity-font-definition: resource('Fonts/Outfit-Bold');
+    -unity-font-style: bold;
+}
+
+.text-outfit-semibold {
+    -unity-font-definition: resource('Fonts/Outfit-SemiBold');
+    -unity-font-style: normal;
+}
+
+.text-outfit-medium {
+    -unity-font-definition: resource('Fonts/Outfit-Medium');
+    -unity-font-style: normal;
+}
+
+.text-outfit-regular {
+    -unity-font-definition: resource('Fonts/Outfit-Regular');
+    -unity-font-style: normal;
+}
+
+/* TAMAÑOS DE TEXTO */
+.text-title-large {
+    font-size: var(--text-3xl);
+    color: var(--white);
+}
+
+.text-title {
+    font-size: var(--text-2xl);
+    color: var(--white);
+}
+
+.text-subtitle {
+    font-size: var(--text-xl);
+    color: var(--white);
+}
+
+.text-body-large {
+    font-size: var(--text-lg);
+    color: var(--white);
+}
+
+.text-body {
+    font-size: var(--text-base);
+    color: var(--white);
+}
+
+.text-small {
+    font-size: var(--text-sm);
+    color: var(--smoke);
+}
+
+.text-xs {
+    font-size: var(--text-xs);
+    color: var(--smoke);
+}
+
+/* BOTONES BASE */
+.button-base {
+    border-radius: var(--border-radius);
+    padding: var(--padding-base) var(--padding-lg);
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    transition-duration: 0.2s;
+    cursor: link;
+}
+
+.button-primary {
+    background-color: var(--primary-green);
+    color: var(--white);
+    border-width: 0;
+}
+
+.button-primary:hover {
+    background-color: var(--electric-green);
+    scale: 1.02;
+}
+
+.button-secondary {
+    background-color: transparent;
+    color: var(--white);
+    border-width: 2px;
+    border-color: var(--white);
+}
+
+.button-secondary:hover {
+    background-color: var(--white);
+    color: var(--deep-blue);
+}
+
+/* BOTONES CON ICONOS */
+.button-with-icon {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 24px;
+}
+
+.button-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    -unity-background-image-tint-color: var(--white);
+}
+
+.button-arrow {
+    width: 16px;
+    height: 16px;
+    margin-left: 12px;
+    -unity-background-image-tint-color: var(--white);
+}
+
+/* MODAL BASE */
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(4, 8, 19, 0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-container {
+    background-color: var(--white);
+    border-radius: var(--border-radius-lg);
+    padding: var(--padding-lg);
+    margin: var(--margin-base);
+    max-width: 90%;
+    align-items: center;
+}
+
+.modal-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    background-color: var(--black);
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-title {
+    font-size: var(--text-xl);
+    color: var(--black);
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.modal-description {
+    font-size: var(--text-base);
+    color: var(--smoke);
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* COMPONENTES DE INFORMACIÓN */
+.info-component {
+    background-color: var(--grey);
+    border-radius: var(--border-radius);
+    padding: var(--padding-sm) var(--padding-base);
+    flex-direction: row;
+    align-items: center;
+    margin: 8px var(--margin-base);
+}
+
+.info-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    -unity-background-image-tint-color: var(--black);
+}
+
+.info-text {
+    font-size: var(--text-sm);
+    color: var(--black);
+}
+
+/* MENU HAMBURGUESA */
+.hamburger-button {
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-width: 0;
+    cursor: link;
+}
+
+.hamburger-icon {
+    width: 24px;
+    height: 24px;
+    -unity-background-image-tint-color: var(--white);
+}
+
+/* OVERLAY DE FONDO */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(4, 8, 19, 0.4);
+}
+
+/* LOGOS */
+.logo-main {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+}
+
+.logo-uvg {
+    width: 80px;
+    height: 40px;
+    margin-top: auto;
+    margin-bottom: var(--margin-base);
+}
+
+/* COMPONENTE DE UBICACIÓN */
+.location-info-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    border-top-left-radius: var(--border-radius-lg);
+    border-top-right-radius: var(--border-radius-lg);
+    padding: var(--padding-lg);
+}
+
+.location-content {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.location-image {
+    width: 120px;
+    height: 80px;
+    border-radius: var(--border-radius);
+    margin-left: 16px;
+}
+
+.location-details {
+    flex: 1;
+    flex-direction: column;
+}
+
+.location-title {
+    font-size: var(--text-lg);
+    color: var(--black);
+    margin-bottom: 12px;
+}
+
+.progress-item {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.progress-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    -unity-background-image-tint-color: var(--primary-green);
+}
+
+.progress-text {
+    font-size: var(--text-sm);
+    color: var(--smoke);
+}
+
+/* ESTADOS RESPONSIVOS iOS */
+@media (max-width: 414px) {
+    .modal-container {
+        margin: 20px;
+        padding: 24px;
+    }
+    
+    .button-with-icon {
+        padding: 14px 20px;
+    }
+    
+    .text-title-large {
+        font-size: 36px;
+    }
+}
+
+/* ANIMACIONES Y TRANSICIONES */
+.fade-in {
+    transition-property: opacity;
+    transition-duration: 0.3s;
+    opacity: 1;
+}
+
+.fade-out {
+    transition-property: opacity;
+    transition-duration: 0.3s;
+    opacity: 0;
+}
+
+.scale-hover:hover {
+    scale: 1.05;
+    transition-duration: 0.2s;
+}

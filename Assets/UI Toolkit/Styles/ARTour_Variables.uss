@@ -1,0 +1,84 @@
+/* ========================================
+   AR TOUR - CSS VARIABLES
+   Version: July 2025
+   Description: Solo variables para reutilizar en todo el proyecto
+   ======================================== */
+
+:root {
+    /* === COLORES PRIMARIOS === */
+    --deep-blue: #040813;
+    --primary-green: #00A677;
+    --soft-green: #81D1B4;
+    --light-blue: #6EDFE7;
+    --electric-green: #46DCAD;
+    
+    /* === COLORES SECUNDARIOS === */
+    --black: #151515;
+    --smoke: #757575;
+    --grey: #F2F2F2;
+    --white: #FFFFFF;
+    
+    /* === COLORES CON TRANSPARENCIA === */
+    --overlay-dark: rgba(4, 8, 19, 0.8);
+    --overlay-medium: rgba(4, 8, 19, 0.4);
+    --overlay-light: rgba(0, 0, 0, 0.4);
+    --white-overlay: rgba(255, 255, 255, 0.1);
+    
+    /* === TIPOGRAFÍA === */
+    --font-outfit-bold: resource('Fonts/Outfit-Bold');
+    --font-outfit-semibold: resource('Fonts/Outfit-SemiBold');
+    --font-outfit-medium: resource('Fonts/Outfit-Medium');
+    --font-outfit-regular: resource('Fonts/Outfit-Regular');
+    
+    /* === TAMAÑOS DE TEXTO (14pt - 40pt para móvil) === */
+    --text-xs: 14px;        /* Texto muy pequeño */
+    --text-sm: 16px;        /* Texto pequeño */
+    --text-base: 18px;      /* Texto base */
+    --text-lg: 22px;        /* Texto grande */
+    --text-xl: 26px;        /* Texto extra grande */
+    --text-2xl: 32px;       /* Títulos */
+    --text-3xl: 40px;       /* Títulos principales */
+    
+    /* === ESPACIADO === */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-base: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    
+    /* === MÁRGENES BASE (Layout Guides - 6 columnas móvil) === */
+    --margin-screen: 25px;  /* Margen de pantalla según diseñadora */
+    --margin-component: 16px;
+    --margin-small: 8px;
+    
+    /* === PADDING === */
+    --padding-xs: 6px;
+    --padding-sm: 12px;
+    --padding-base: 16px;
+    --padding-lg: 24px;
+    --padding-xl: 32px;
+    
+    /* === BORDER RADIUS === */
+    --radius-sm: 8px;
+    --radius-base: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 25px;
+    --radius-round: 50px;
+    
+    /* === DIMENSIONES COMPONENTES === */
+    --button-height: 68px;
+    --button-icon-size: 24px;
+    --modal-avatar-size: 80px;
+    --header-height: 44px;
+    
+    /* === SOMBRAS === */
+    --shadow-light: 0 2px 8px rgba(4, 8, 19, 0.1);
+    --shadow-medium: 0 4px 12px rgba(4, 8, 19, 0.15);
+    --shadow-strong: 0 8px 24px rgba(4, 8, 19, 0.25);
+    
+    /* === TRANSICIONES === */
+    --transition-fast: 0.15s;
+    --transition-normal: 0.3s;
+    --transition-slow: 0.5s;
+}

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 229f69509de2c1d46a00b66c5de16b20
+guid: 8d8abdf832a82da4088de83f08d892f9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8094258376641887983
-    second: iconUVGGreen_0
+      213: -5800047418597522962
+    second: Vector (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: iconUVGGreen_0
+      name: Vector (1)_0
       rect:
         serializedVersion: 2
-        x: 349
-        y: 349
-        width: 691
-        height: 691
+        x: 0
+        y: 0
+        width: 84
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 111c70444ea6baf80800000000000000
-      internalID: -8094258376641887983
+      spriteID: ee1c21e4a97128fa0800000000000000
+      internalID: -5800047418597522962
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      iconUVGGreen_0: -8094258376641887983
+      Vector (1)_0: -5800047418597522962
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

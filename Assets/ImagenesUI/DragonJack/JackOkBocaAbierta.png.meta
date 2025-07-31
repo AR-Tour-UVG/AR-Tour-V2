@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      JackOkBocaAbierta_0: -9058246659111817627
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

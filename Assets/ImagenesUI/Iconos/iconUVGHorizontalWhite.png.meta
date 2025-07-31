@@ -973,7 +973,40 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      iconUVGHorizontalWhite_0: -7381002591309785289
+      iconUVGHorizontalWhite_1: -2093823548450495123
+      iconUVGHorizontalWhite_10: 6863742762853702895
+      iconUVGHorizontalWhite_11: 5196628051535403099
+      iconUVGHorizontalWhite_12: 371981202260316656
+      iconUVGHorizontalWhite_13: 2310189731149998105
+      iconUVGHorizontalWhite_14: 6155939421642101747
+      iconUVGHorizontalWhite_15: 4699758418218503473
+      iconUVGHorizontalWhite_16: -1680942859398790772
+      iconUVGHorizontalWhite_17: 6388971272504025660
+      iconUVGHorizontalWhite_18: 8599469638069003949
+      iconUVGHorizontalWhite_19: -8439436183712474993
+      iconUVGHorizontalWhite_2: -7085286280641755003
+      iconUVGHorizontalWhite_20: 8473847217233032130
+      iconUVGHorizontalWhite_21: -892746217032163790
+      iconUVGHorizontalWhite_22: -1321094925061310996
+      iconUVGHorizontalWhite_23: -6345490774005637660
+      iconUVGHorizontalWhite_24: 6746717733933605306
+      iconUVGHorizontalWhite_25: -3216683668990119234
+      iconUVGHorizontalWhite_26: -4744775781505939749
+      iconUVGHorizontalWhite_27: -4778286256852728506
+      iconUVGHorizontalWhite_28: -2408562421429857871
+      iconUVGHorizontalWhite_29: 6133712793368617013
+      iconUVGHorizontalWhite_3: -3615653256896212259
+      iconUVGHorizontalWhite_30: 7589734648491479554
+      iconUVGHorizontalWhite_31: -6224004618974761234
+      iconUVGHorizontalWhite_32: 2720026186003447957
+      iconUVGHorizontalWhite_4: 5227750040802792009
+      iconUVGHorizontalWhite_5: 3021794807386722551
+      iconUVGHorizontalWhite_6: 8725241225695661663
+      iconUVGHorizontalWhite_7: 6258041142493455534
+      iconUVGHorizontalWhite_8: -1440262439455333577
+      iconUVGHorizontalWhite_9: -3226490943890477175
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Logo Dragon Animation_0: 2793551319236602980
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
