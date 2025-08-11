@@ -2,53 +2,87 @@ using UnityEngine;
 
 public class CambiadorDePantallas : MonoBehaviour
 {
-    [Header("Pantallas")]
-    public GameObject pantallaOnBoarding;
+    [Header("Onboarding Screens")]
+    public GameObject onboarding1;
+    public GameObject onboarding2;
+    public GameObject onboarding3;
+    public GameObject onboarding4;
+
+    [Header("Pantallas principales")]
     public GameObject pantallaInicio;
     public GameObject pantallaEscaneo;
     public GameObject pantallaTour;
 
+    private int onboardingIndex = 1;
+
     private void Start()
     {
-        if (PlayerPrefs.GetInt("OnboardingCompletado", 0) == 0)
-        {
-            MostrarPantalla("Onboarding");
-        }
-        else
-        {
-            MostrarPantalla("Inicio");
-        }
+        // Descomentar en PROD
+        //if (PlayerPrefs.GetInt("OnboardingCompletado", 0) == 0)
+        //{
+        //    MostrarOnboarding(1);
+        //}
+        //else
+        //{
+        //    MostrarInicio();
+        //}
+        PlayerPrefs.DeleteKey("OnboardingCompletado"); // Borrar para probar onboarding siempre
+        MostrarOnboarding(1);
     }
 
-    public void MostrarPantalla(string nombrePantalla)
+    private void ApagarTodas()
     {
-        pantallaOnBoarding.SetActive(false);
+        onboarding1.SetActive(false);
+        onboarding2.SetActive(false);
+        onboarding3.SetActive(false);
+        onboarding4.SetActive(false);
+
         pantallaInicio.SetActive(false);
         pantallaEscaneo.SetActive(false);
         pantallaTour.SetActive(false);
+    }
 
-        switch (nombrePantalla)
+    public void MostrarOnboarding(int index)
+    {
+        ApagarTodas();
+
+        onboarding1.SetActive(index == 1);
+        onboarding2.SetActive(index == 2);
+        onboarding3.SetActive(index == 3);
+        onboarding4.SetActive(index == 4);
+
+        onboardingIndex = index;
+    }
+
+    public void SiguienteOnboarding()
+    {
+        if (onboardingIndex < 4)
         {
-            case "Onboarding":
-                pantallaOnBoarding.SetActive(true);
-                break;
-            case "Inicio":
-                pantallaInicio.SetActive(true);
-                break;
-            case "Escaneo":
-                pantallaEscaneo.SetActive(true);
-                break;
-            case "Tour":
-                pantallaTour.SetActive(true);
-                break;
-            default:
-                Debug.LogWarning("Pantalla no encontrada: " + nombrePantalla);
-                break;
+            MostrarOnboarding(onboardingIndex + 1);
+        }
+        else
+        {
+            // Termina onboarding
+            // PlayerPrefs.SetInt("OnboardingCompletado", 1); DESCOMENTAR LINEA CUANDO SALGA A PROD
+            MostrarInicio();
         }
     }
 
-    // Métodos antiguos para compatibilidad
-    public void MostrarInicio() => MostrarPantalla("Inicio");
-    public void MostrarEscaneo() => MostrarPantalla("Escaneo");
-    public void MostrarTour() => MostrarPantalla("Tour");
+    public void MostrarInicio()
+    {
+        ApagarTodas();
+        pantallaInicio.SetActive(true);
+    }
+
+    public void MostrarEscaneo()
+    {
+        ApagarTodas();
+        pantallaEscaneo.SetActive(true);
+    }
+
+    public void MostrarTour()
+    {
+        ApagarTodas();
+        pantallaTour.SetActive(true);
+    }
 }
