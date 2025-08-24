@@ -5,7 +5,8 @@
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    position: absolute;
+    position: relative;
+    flex-shrink: 0;
 }
 
 .contenedor-ui {
@@ -17,6 +18,7 @@
     border-radius: 12px;
     max-width: 90%;
     width: 300px;
+    flex-shrink: 0;
 }
 
 .icono-carga {
@@ -67,7 +69,7 @@
     height: 100px;
     background-image: url("project://database/Assets/ImagenesUI/DragonJack/JackSaludo.png?fileID=4071111107519387463&guid=f87497828d2becc4395c113717e503be&type=3#JackSaludo_0");
     -unity-background-scale-mode: scale-to-fit;
-    position: absolute;
+    position: relative;
     bottom: 16px;
     right: 16px;
 }
