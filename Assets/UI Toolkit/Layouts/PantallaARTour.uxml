@@ -6,7 +6,7 @@
                 <engine:VisualElement name="IconoUbicacion" class="icono-marcador" style="background-image: url(&quot;project://database/Assets/ImagenesUI/Iconos/icon_location.png?fileID=2800000&amp;guid=688929ae023837744b5e6789e5ed0873&amp;type=3#icon_location&quot;);" />
                 <engine:Label name="TextoUbicacion" text="Admisiones y Recepción" class="texto-ubicacion" style="-unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-SemiBold.ttf?fileID=12800000&amp;guid=2491617f8cd2b284e9a54664c19c581a&amp;type=3#Outfit-SemiBold&quot;); white-space: normal; font-size: 12px; color: rgb(129, 209, 180); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
             </engine:VisualElement>
-            <engine:Button name="boton_salir" class="boton-salir" style="width: 30px; height: 30px; background-color: rgba(0, 0, 0, 0.4); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-size: 12px 12px; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; background-image: url(&quot;project://database/Assets/ImagenesUI/Iconos/icon_menu.png?fileID=2800000&amp;guid=d5377cd9bd203a8459ebdc46461adf59&amp;type=3#icon_menu&quot;); -unity-background-scale-mode: scale-to-fit; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
+            <engine:Button name="icono_menu_hamburguesa" class="icono_menu_hamburguesa" style="width: 30px; height: 30px; background-color: rgba(0, 0, 0, 0.4); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-size: 12px 12px; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; background-image: url(&quot;project://database/Assets/ImagenesUI/Iconos/icon_menu.png?fileID=2800000&amp;guid=d5377cd9bd203a8459ebdc46461adf59&amp;type=3#icon_menu&quot;); -unity-background-scale-mode: scale-to-fit; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
         </engine:VisualElement>
         <engine:VisualElement name="ContenedorInstruccion" style="flex-grow: 0; background-color: rgba(4, 8, 19, 0.75); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; width: 100%; height: 20px; flex-shrink: 0; margin-right: 0; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-SemiBold.ttf?fileID=12800000&amp;guid=2491617f8cd2b284e9a54664c19c581a&amp;type=3#Outfit-SemiBold&quot;); color: rgb(255, 255, 255); flex-direction: row; align-items: stretch; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; margin-top: 5px; margin-bottom: 0; margin-left: 0; justify-content: flex-start;">
             <engine:Label name="TextoInstruccion" text="Dirigete al Nivel 2: Admisiones y  Recepción" class="item-nivel-ruta" style="-unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-SemiBold.ttf?fileID=12800000&amp;guid=2491617f8cd2b284e9a54664c19c581a&amp;type=3#Outfit-SemiBold&quot;); font-size: 10px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; white-space: normal;" />
@@ -42,4 +42,14 @@
             </engine:VisualElement>
         </engine:VisualElement>
     </engine:VisualElement>
+    <engine:VisualElement name="menu_overlay" style="display: none; position: absolute; top:0; left:0; right:0; bottom:0; background-color: rgba(0,0,0,0.5);">
+    <engine:VisualElement name="menu_hamburguesa" style="width: 200px; height: 100%; background-color: #111; position: absolute; left:0; top:0;">
+        <engine:Button name="boton_cerrar_menu" text="X" />
+        <engine:Button name="btn_reconectar" text="Reconectar" />
+        <engine:Button name="btn_reiniciar" text="Reiniciar" />
+        <engine:Button name="btn_diagnostico" text="Diagnóstico" />
+        <engine:Button name="btn_reportar" text="Reportar" />
+        <engine:Button name="btn_salir_inicio" text="Salir" />
+    </engine:VisualElement>
+</engine:VisualElement>
 </engine:UXML>
