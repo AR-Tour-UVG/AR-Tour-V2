@@ -5,65 +5,86 @@ public class EscaneoUIController : MonoBehaviour
 {
     private VisualElement root;
     private VisualElement botonMenuHamburguesa;
-    private VisualElement menuHamburguesaVisual; // La instancia del menú
+    private VisualElement menuHamburguesaVisual;
     private Button botonSimular;
+
     [SerializeField] private MenuHamburguesaUIController menuHamburguesaController;
-    public VisualTreeAsset menuHamburguesaUXML; // Asigna aquí el MenuHamburguesa.uxml desde inspector
+    public VisualTreeAsset menuHamburguesaUXML;
     public CambiadorDePantallas cambiador;
 
     private bool menuInicializado = false;
+
+    // Guarda el handler para desuscribir bien
+    private EventCallback<ClickEvent> _onHambClickHandler;
 
     private void OnEnable()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
 
-        // Validar que los componentes del menú hamburguesa estén asignados
         if (menuHamburguesaUXML == null)
         {
             Debug.LogError("MenuHamburguesaUXML no está asignado en el inspector.");
             return;
         }
-
         if (menuHamburguesaController == null)
         {
             Debug.LogError("MenuHamburguesaUIController no está asignado en el inspector.");
             return;
         }
-
-        // Solo advertir sobre CambiadorDePantallas, pero no impedir que continúe
         if (cambiador == null)
         {
             Debug.LogWarning("CambiadorDePantallas no está asignado en el inspector. El botón de simular conexión no funcionará.");
         }
 
-        // Instancia el menú hamburguesa y lo añade al root
-        menuHamburguesaVisual = menuHamburguesaUXML.CloneTree();
-        root.Add(menuHamburguesaVisual);
+        // Asegura un contenedor overlay
+        var overlay = root.Q<VisualElement>("OverlayContainer");
+        if (overlay == null)
+        {
+            overlay = new VisualElement { name = "OverlayContainer" };
+            overlay.style.position = Position.Absolute;
+            overlay.style.top = 0; overlay.style.left = 0; overlay.style.right = 0; overlay.style.bottom = 0;
+            overlay.style.width = Length.Percent(100);
+            overlay.style.height = Length.Percent(100);
+            root.Add(overlay);
+        }
 
-        // Inicializa el controlador con el VisualElement del menú instanciado
-        menuHamburguesaController.Inicializar(menuHamburguesaVisual);
-        menuInicializado = true;
+        // Instanciar el árbol del menú
+        // (En versiones recientes Instantiate() es preferible; CloneTree() también sirve.)
+        menuHamburguesaVisual = menuHamburguesaUXML.Instantiate();
+        if (menuHamburguesaVisual == null)
+        {
+            Debug.LogError("Fallo al instanciar el UXML del menú (resultado null). Revisa el asset.");
+            return;
+        }
 
-        // Configurar el botón del menú hamburguesa
+        overlay.Add(menuHamburguesaVisual);
+
+        // Vincula el cambiador por si lo necesitas en el menú
+        menuHamburguesaController.cambiador = cambiador;
+
+        // Inicializa y marca estado SOLO si fue exitoso
+        menuInicializado = menuHamburguesaController.Inicializar(menuHamburguesaVisual);
+
+        // Botón hamburguesa
         botonMenuHamburguesa = root.Q<VisualElement>("icono_menu_hamburguesa");
         if (botonMenuHamburguesa != null)
         {
-            botonMenuHamburguesa.RegisterCallback<ClickEvent>(evt => OnBotonMenuHamburguesaClicked());
+            _onHambClickHandler = (ClickEvent evt) => OnBotonMenuHamburguesaClicked();
+            botonMenuHamburguesa.RegisterCallback(_onHambClickHandler);
         }
         else
         {
             Debug.LogError("No se encontró el VisualElement 'icono_menu_hamburguesa' en el UXML.");
         }
 
-        // Configurar el botón de simular conexión
         ConfigurarBotonSimularConexion();
     }
 
     private void OnDisable()
     {
-        if (botonMenuHamburguesa != null)
+        if (botonMenuHamburguesa != null && _onHambClickHandler != null)
         {
-            botonMenuHamburguesa.UnregisterCallback<ClickEvent>(evt => OnBotonMenuHamburguesaClicked());
+            botonMenuHamburguesa.UnregisterCallback(_onHambClickHandler);
         }
     }
 
@@ -72,11 +93,6 @@ public class EscaneoUIController : MonoBehaviour
         botonSimular = root.Q<Button>("BotonSimularSensores");
         if (botonSimular != null)
         {
-            // BYPASS TEMPORAL PARA SIMULAR CONEXIÓN DE 3 SENSORES
-            // TODO: Reemplazar este bypass por la lógica real de conexión a sensores.
-            // Cuando se detecten al menos 3 sensores, llamar a MostrarTour();
-            // Ejemplo:
-            // cambiador.MostrarTour():
             botonSimular.clicked += () =>
             {
                 if (cambiador != null)
@@ -100,15 +116,14 @@ public class EscaneoUIController : MonoBehaviour
     {
         Debug.Log("EscaneoUIController: ¡Click en icono de menú hamburguesa detectado!");
 
-        // Validar que todo esté correctamente inicializado antes de mostrar el menú
-        if (menuInicializado && menuHamburguesaController != null)
+        if (menuInicializado && menuHamburguesaController != null && menuHamburguesaController.EstaInicializado)
         {
-            Debug.Log("EscaneoUIController: Menu inicializado, llamando a MostrarMenu...");
+            Debug.Log("EscaneoUIController: Menú inicializado, llamando a MostrarMenu...");
             menuHamburguesaController.MostrarMenu();
         }
         else
         {
-            Debug.LogError("El menú hamburguesa no está correctamente inicializado. Verifica las asignaciones en el inspector.");
+            Debug.LogError("El menú hamburguesa no está correctamente inicializado. Verifica el UXML y la inicialización.");
         }
     }
 }
