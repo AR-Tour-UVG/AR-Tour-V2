@@ -312,7 +312,7 @@ public class EscaneoUIController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No se encontró el Button 'BotonSimularSensores' en el UXML.");
+            Debug.LogError("No se encontró el Button 'BotonSimularSensores' en el UXML."); 
         }
     }
 }
