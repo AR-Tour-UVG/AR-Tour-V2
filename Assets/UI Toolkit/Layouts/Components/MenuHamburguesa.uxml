@@ -1,141 +1,17 @@
 <engine:UXML xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MenuHamburguesa.uss?fileID=7433441132597879392&amp;guid=5a416fc6f745f31428aa0431e0dfc225&amp;type=3#MenuHamburguesa" />
-    
-    <!-- Panel de fondo completo para capturar clics y cerrar el menú -->
     <engine:VisualElement name="menu_overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); display: none; z-index: 9999;">
-        
-        <!-- Menú lateral -->
-        <engine:VisualElement name="menu_hamburguesa" enabled="true" focusable="true" class="menu-hamburguesa" 
-            style="height: 100%; 
-                   width: 60%; 
-                   position: absolute; 
-                   top: 0; 
-                   right: 0; 
-                   background-image: url(&quot;project://database/Assets/ImagenesUI/Backgrounds/overlay_pantalla_inicio.png?fileID=2800000&amp;guid=71d3b21cd5d8066439437f361bede3ee&amp;type=3#overlay_pantalla_inicio&quot;); 
-                   -unity-background-image-tint-color: rgb(125, 125, 125); 
-                   -unity-background-scale-mode: stretch-to-fill; 
-                   background-color: rgba(4, 8, 19, 0.95);
-                   display: flex;
-                   flex-direction: column;
-                   z-index: 10000;">
-            
-            <engine:VisualElement name="menu_header" class="menu-header" 
-                style="flex-direction: row; 
-                       width: 100%; 
-                       justify-content: space-between; 
-                       align-items: center; 
-                       padding-top: 20px; 
-                       padding-bottom: 15px; 
-                       padding-left: 20px; 
-                       padding-right: 20px;
-                       flex-shrink: 0;">
-                
-                <engine:Label text="Menú" name="Titulo" class="titulo-menu" 
-                    style="-unity-text-align: middle-left; 
-                           -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-SemiBold.ttf?fileID=12800000&amp;guid=2491617f8cd2b284e9a54664c19c581a&amp;type=3#Outfit-SemiBold&quot;); 
-                           color: rgb(255, 255, 255); 
-                           font-size: 25px;
-                           flex-shrink: 0;" />
-                
-                <engine:Button name="boton_cerrar_menu" class="boton-cerrar" text="✕"
-                    style="background-image: url(&quot;project://database/Assets/ImagenesUI/Iconos/icon_exit.png?fileID=2800000&amp;guid=bb7df085b43d92248ac7a7031b7123a8&amp;type=3#icon_exit&quot;); 
-                           -unity-background-scale-mode: scale-to-fit; 
-                           width: 35px; 
-                           height: 35px; 
-                           background-color: rgba(255, 255, 255, 0.1); 
-                           border-top-width: 1px; 
-                           border-right-width: 1px; 
-                           border-bottom-width: 1px; 
-                           border-left-width: 1px;
-                           border-color: rgba(255, 255, 255, 0.3);
-                           border-radius: 5px;
-                           margin: 0; 
-                           padding: 0;
-                           color: rgb(255, 255, 255);
-                           font-size: 18px;
-                           -unity-text-align: middle-center;
-                           flex-shrink: 0;" />
+        <engine:VisualElement name="menu_hamburguesa" enabled="true" focusable="true" class="menu-hamburguesa" style="height: 100%; width: 60%; position: absolute; top: 0; right: 0; background-image: url(&quot;project://database/Assets/ImagenesUI/Backgrounds/overlay_pantalla_inicio.png?fileID=2800000&amp;guid=71d3b21cd5d8066439437f361bede3ee&amp;type=3#overlay_pantalla_inicio&quot;); -unity-background-image-tint-color: rgb(125, 125, 125); -unity-background-scale-mode: stretch-to-fill; background-color: rgba(255, 255, 255, 0.95); display: flex; flex-direction: column; z-index: 10000;">
+            <engine:VisualElement name="menu_header" class="menu-header" style="flex-direction: row; width: 100%; justify-content: space-between; align-items: center; padding-top: 20px; padding-bottom: 15px; padding-left: 20px; padding-right: 20px; flex-shrink: 0;">
+                <engine:Label text="Menú" name="Titulo" class="titulo-menu" style="-unity-text-align: middle-left; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-SemiBold.ttf?fileID=12800000&amp;guid=2491617f8cd2b284e9a54664c19c581a&amp;type=3#Outfit-SemiBold&quot;); color: rgb(255, 255, 255); font-size: 25px; flex-shrink: 0;" />
+                <engine:Button name="boton_cerrar_menu" text="✕" class="boton-cerrar" style="background-image: url(&quot;project://database/Assets/ImagenesUI/Iconos/icon_exit.png?fileID=2800000&amp;guid=bb7df085b43d92248ac7a7031b7123a8&amp;type=3#icon_exit&quot;); -unity-background-scale-mode: scale-to-fit; width: 35px; height: 35px; background-color: rgba(255, 255, 255, 0.1); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: rgba(255, 255, 255, 0.3); border-radius: 5px; margin: 0; padding: 0; color: rgb(255, 255, 255); font-size: 18px; -unity-text-align: middle-center; flex-shrink: 0;" />
             </engine:VisualElement>
-            
-            <engine:VisualElement name="ContenedorBotones" 
-                style="flex-grow: 1; 
-                       justify-content: flex-start; 
-                       width: 100%; 
-                       padding-left: 20px; 
-                       padding-right: 20px;
-                       padding-top: 10px;
-                       flex-shrink: 0;">
-                
-                <engine:Button name="btn_reconectar" text="Reconectar Sensores" class="menu-opcion" 
-                    style="color: rgb(255, 255, 255); 
-                           background-color: rgba(7, 7, 7, 0); 
-                           border-top-width: 1px; 
-                           border-right-width: 0; 
-                           border-bottom-width: 1px; 
-                           border-left-width: 0; 
-                           border-top-color: rgba(255, 255, 255, 0.3);
-                           border-bottom-color: rgba(255, 255, 255, 0.3);
-                           -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-Regular.ttf?fileID=12800000&amp;guid=7813f872f0186db408873ee0406629c8&amp;type=3#Outfit-Regular&quot;); 
-                           font-size: 16px; 
-                           padding: 15px; 
-                           margin-bottom: 5px;
-                           -unity-text-align: middle-left;" />
-                
-                <engine:Button name="btn_reiniciar" text="Reiniciar Tour" class="menu-opcion" 
-                    style="color: rgb(255, 255, 255); 
-                           font-size: 16px; 
-                           background-color: rgba(255, 255, 255, 0); 
-                           border-top-width: 0; 
-                           border-right-width: 0; 
-                           border-bottom-width: 1px; 
-                           border-left-width: 0; 
-                           border-bottom-color: rgba(255, 255, 255, 0.3);
-                           -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-Regular.ttf?fileID=12800000&amp;guid=7813f872f0186db408873ee0406629c8&amp;type=3#Outfit-Regular&quot;); 
-                           -unity-text-align: middle-left; 
-                           padding: 15px; 
-                           margin-bottom: 5px;" />
-                
-                <engine:Button name="btn_diagnostico" text="Diagnóstico de Conexión" class="menu-opcion" 
-                    style="-unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-Regular.ttf?fileID=12800000&amp;guid=7813f872f0186db408873ee0406629c8&amp;type=3#Outfit-Regular&quot;); 
-                           font-size: 16px; 
-                           color: rgb(255, 255, 255); 
-                           background-color: rgba(188, 188, 188, 0); 
-                           border-top-width: 0; 
-                           border-right-width: 0; 
-                           border-bottom-width: 1px; 
-                           border-left-width: 0; 
-                           border-bottom-color: rgba(255, 255, 255, 0.3);
-                           -unity-text-align: middle-left; 
-                           padding: 15px; 
-                           margin-bottom: 5px;" />
-                
-                <engine:Button name="btn_reportar" text="Reportar un Problema" class="menu-opcion" 
-                    style="border-top-width: 0; 
-                           border-right-width: 0; 
-                           border-bottom-width: 1px; 
-                           border-left-width: 0; 
-                           border-bottom-color: rgba(255, 255, 255, 0.3);
-                           font-size: 16px; 
-                           -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-Regular.ttf?fileID=12800000&amp;guid=7813f872f0186db408873ee0406629c8&amp;type=3#Outfit-Regular&quot;); 
-                           color: rgb(255, 255, 255); 
-                           background-color: rgba(188, 188, 188, 0); 
-                           -unity-text-align: middle-left; 
-                           padding: 15px; 
-                           margin-bottom: 5px;" />
-                
-                <engine:Button name="btn_salir_inicio" text="Salir a Inicio" class="menu-opcion" 
-                    style="border-top-width: 0; 
-                           border-right-width: 0; 
-                           border-bottom-width: 1px; 
-                           border-left-width: 0; 
-                           border-bottom-color: rgba(255, 255, 255, 0.3);
-                           background-color: rgba(188, 188, 188, 0); 
-                           font-size: 16px; 
-                           -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-Regular.ttf?fileID=12800000&amp;guid=7813f872f0186db408873ee0406629c8&amp;type=3#Outfit-Regular&quot;); 
-                           color: rgb(255, 255, 255); 
-                           -unity-text-align: middle-left; 
-                           padding: 15px; 
-                           margin-bottom: 5px;" />
+            <engine:VisualElement name="ContenedorBotones" style="flex-grow: 1; justify-content: flex-start; width: 100%; padding-left: 20px; padding-right: 20px; padding-top: 10px; flex-shrink: 0;">
+                <engine:Button name="btn_reconectar" text="Reconectar Sensores" class="menu-opcion" style="color: rgb(255, 255, 255); background-color: rgba(7, 7, 7, 0); border-top-width: 1px; border-right-width: 0; border-bottom-width: 1px; border-left-width: 0; border-top-color: rgba(255, 255, 255, 0.3); border-bottom-color: rgba(255, 255, 255, 0.3); -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-Regular.ttf?fileID=12800000&amp;guid=7813f872f0186db408873ee0406629c8&amp;type=3#Outfit-Regular&quot;); font-size: 16px; padding: 15px; margin-bottom: 5px; -unity-text-align: middle-left;" />
+                <engine:Button name="btn_reiniciar" text="Reiniciar Tour" class="menu-opcion" style="color: rgb(255, 255, 255); font-size: 16px; background-color: rgba(255, 255, 255, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 1px; border-left-width: 0; border-bottom-color: rgba(255, 255, 255, 0.3); -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-Regular.ttf?fileID=12800000&amp;guid=7813f872f0186db408873ee0406629c8&amp;type=3#Outfit-Regular&quot;); -unity-text-align: middle-left; padding: 15px; margin-bottom: 5px;" />
+                <engine:Button name="btn_diagnostico" text="Diagnóstico de Conexión" class="menu-opcion" style="-unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-Regular.ttf?fileID=12800000&amp;guid=7813f872f0186db408873ee0406629c8&amp;type=3#Outfit-Regular&quot;); font-size: 16px; color: rgb(255, 255, 255); background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 1px; border-left-width: 0; border-bottom-color: rgba(255, 255, 255, 0.3); -unity-text-align: middle-left; padding: 15px; margin-bottom: 5px;" />
+                <engine:Button name="btn_reportar" text="Reportar un Problema" class="menu-opcion" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 1px; border-left-width: 0; border-bottom-color: rgba(255, 255, 255, 0.3); font-size: 16px; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-Regular.ttf?fileID=12800000&amp;guid=7813f872f0186db408873ee0406629c8&amp;type=3#Outfit-Regular&quot;); color: rgb(255, 255, 255); background-color: rgba(188, 188, 188, 0); -unity-text-align: middle-left; padding: 15px; margin-bottom: 5px;" />
+                <engine:Button name="btn_salir_inicio" text="Salir a Inicio" class="menu-opcion" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 1px; border-left-width: 0; border-bottom-color: rgba(255, 255, 255, 0.3); background-color: rgba(188, 188, 188, 0); font-size: 16px; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/Outfit-Regular.ttf?fileID=12800000&amp;guid=7813f872f0186db408873ee0406629c8&amp;type=3#Outfit-Regular&quot;); color: rgb(255, 255, 255); -unity-text-align: middle-left; padding: 15px; margin-bottom: 5px;" />
             </engine:VisualElement>
         </engine:VisualElement>
     </engine:VisualElement>
