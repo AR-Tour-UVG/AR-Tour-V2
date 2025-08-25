@@ -14,6 +14,8 @@ public class EscaneoUIController : MonoBehaviour
 
     private bool menuInicializado = false;
 
+    private bool _connected = false; // Estado de conexiÃ³n a los sensores
+
     // Guarda el handler para desuscribir bien
     private EventCallback<ClickEvent> _onHambClickHandler;
 
@@ -23,17 +25,17 @@ public class EscaneoUIController : MonoBehaviour
 
         if (menuHamburguesaUXML == null)
         {
-            Debug.LogError("MenuHamburguesaUXML no está asignado en el inspector.");
+            Debug.LogError("MenuHamburguesaUXML no estï¿½ asignado en el inspector.");
             return;
         }
         if (menuHamburguesaController == null)
         {
-            Debug.LogError("MenuHamburguesaUIController no está asignado en el inspector.");
+            Debug.LogError("MenuHamburguesaUIController no estï¿½ asignado en el inspector.");
             return;
         }
         if (cambiador == null)
         {
-            Debug.LogWarning("CambiadorDePantallas no está asignado en el inspector. El botón de simular conexión no funcionará.");
+            Debug.LogWarning("CambiadorDePantallas no estï¿½ asignado en el inspector. El botï¿½n de simular conexiï¿½n no funcionarï¿½.");
         }
 
         // Asegura un contenedor overlay
@@ -48,24 +50,24 @@ public class EscaneoUIController : MonoBehaviour
             root.Add(overlay);
         }
 
-        // Instanciar el árbol del menú
-        // (En versiones recientes Instantiate() es preferible; CloneTree() también sirve.)
+        // Instanciar el ï¿½rbol del menï¿½
+        // (En versiones recientes Instantiate() es preferible; CloneTree() tambiï¿½n sirve.)
         menuHamburguesaVisual = menuHamburguesaUXML.Instantiate();
         if (menuHamburguesaVisual == null)
         {
-            Debug.LogError("Fallo al instanciar el UXML del menú (resultado null). Revisa el asset.");
+            Debug.LogError("Fallo al instanciar el UXML del menï¿½ (resultado null). Revisa el asset.");
             return;
         }
 
         overlay.Add(menuHamburguesaVisual);
 
-        // Vincula el cambiador por si lo necesitas en el menú
+        // Vincula el cambiador por si lo necesitas en el menï¿½
         menuHamburguesaController.cambiador = cambiador;
 
         // Inicializa y marca estado SOLO si fue exitoso
         menuInicializado = menuHamburguesaController.Inicializar(menuHamburguesaVisual);
 
-        // Botón hamburguesa
+        // Botï¿½n hamburguesa
         botonMenuHamburguesa = root.Q<VisualElement>("icono_menu_hamburguesa");
         if (botonMenuHamburguesa != null)
         {
@@ -74,10 +76,25 @@ public class EscaneoUIController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No se encontró el VisualElement 'icono_menu_hamburguesa' en el UXML.");
+            Debug.LogError("No se encontrï¿½ el VisualElement 'icono_menu_hamburguesa' en el UXML.");
         }
 
         ConfigurarBotonSimularConexion();
+#if UNITY_IOS && !UNITY_EDITOR
+        // iOS: hide simulate button (not needed)
+        botonSimular = root.Q<Button>("BotonSimularSensores");
+        if (botonSimular != null)
+        {
+            botonSimular.style.display = DisplayStyle.None;
+        }
+
+        // Start waiting for the first valid UWB coordinate
+        if (!_connected)
+        {
+            _connected = true;
+            StartCoroutine(WaitForFirstValidCoordinate());
+        }
+#endif
     }
 
     private void OnDisable()
@@ -93,37 +110,60 @@ public class EscaneoUIController : MonoBehaviour
         botonSimular = root.Q<Button>("BotonSimularSensores");
         if (botonSimular != null)
         {
+#if UNITY_IOS && !UNITY_EDITOR
+            // No-op on iOS (we hide/disable it above)
+            botonSimular.clicked += () => {};
+#else
             botonSimular.clicked += () =>
             {
                 if (cambiador != null)
                 {
-                    Debug.Log("[BYPASS] Simulando conexión de 3 sensores...");
+                    Debug.Log("[BYPASS] Simulando conexiï¿½n de 3 sensores...");
                     cambiador.MostrarTour();
                 }
                 else
                 {
-                    Debug.LogError("CambiadorDePantallas no está asignado en el inspector.");
+                    Debug.LogError("CambiadorDePantallas no estï¿½ asignado en el inspector.");
                 }
             };
+#endif
         }
         else
         {
-            Debug.LogError("No se encontró el Button 'BotonSimularSensores' en el UXML.");
+            Debug.LogError("No se encontrï¿½ el Button 'BotonSimularSensores' en el UXML.");
         }
     }
 
     private void OnBotonMenuHamburguesaClicked()
     {
-        Debug.Log("EscaneoUIController: ¡Click en icono de menú hamburguesa detectado!");
+        Debug.Log("EscaneoUIController: ï¿½Click en icono de menï¿½ hamburguesa detectado!");
 
         if (menuInicializado && menuHamburguesaController != null && menuHamburguesaController.EstaInicializado)
         {
-            Debug.Log("EscaneoUIController: Menú inicializado, llamando a MostrarMenu...");
+            Debug.Log("EscaneoUIController: Menï¿½ inicializado, llamando a MostrarMenu...");
             menuHamburguesaController.MostrarMenu();
         }
         else
         {
-            Debug.LogError("El menú hamburguesa no está correctamente inicializado. Verifica el UXML y la inicialización.");
+            Debug.LogError("El menï¿½ hamburguesa no estï¿½ correctamente inicializado. Verifica el UXML y la inicializaciï¿½n.");
         }
     }
+
+#if UNITY_IOS && !UNITY_EDITOR
+    private IEnumerator WaitForFirstUwbFix()
+    {
+        // Minimal: first true = connected.
+        while (true)
+        {
+            if (UWBLocator.TryGetPosition(out var pos))
+            {
+                Debug.Log($"UWB first fix received: {pos}");
+                // Move to Tour overlay
+                if (cambiador != null) cambiador.MostrarTour();
+                yield break;
+            }
+            yield return null; // check every frame
+        }
+    }
+#endif
 }

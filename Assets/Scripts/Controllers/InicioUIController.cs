@@ -56,8 +56,8 @@ public class InicioUIController : MonoBehaviour
         {
             botonExpress.clicked += () =>
             {
-                StartCoroutine(AnimacionSalidaYCambio("Ruta Express"));
-                //StartCoroutine(LoadLogicThenShowEscaneo("Ruta Express"));
+                //StartCoroutine(AnimacionSalidaYCambio("Ruta Express"));
+                StartCoroutine(LoadLogicThenShowEscaneo("Ruta Express"));
             };
         }
 
