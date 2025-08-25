@@ -310,9 +310,5 @@ public class EscaneoUIController : MonoBehaviour
             };
             Debug.Log("Botón simular configurado correctamente");
         }
-        else
-        {
-            Debug.LogError("No se encontró el Button 'BotonSimularSensores' en el UXML."); 
-        }
     }
 }

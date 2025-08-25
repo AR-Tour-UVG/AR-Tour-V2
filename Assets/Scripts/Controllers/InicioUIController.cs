@@ -61,6 +61,9 @@ public class InicioUIController : MonoBehaviour
 
         if (botonCompleta != null)
         {
+            // Deshabilitar temporalmente
+            botonCompleta.SetEnabled(false);
+
             botonCompleta.clicked += () =>
             {
                 StartCoroutine(AnimacionSalidaYCambio("Ruta Completa"));
@@ -69,6 +72,9 @@ public class InicioUIController : MonoBehaviour
 
         if (botonMinijuegos != null)
         {
+            // Deshabilitar temporalmente
+            botonCompleta.SetEnabled(false);
+
             botonMinijuegos.clicked += () =>
             {
                 // Aquí puedes agregar navegación a minijuegos

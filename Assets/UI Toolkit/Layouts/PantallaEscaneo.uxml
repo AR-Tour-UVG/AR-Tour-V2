@@ -18,12 +18,12 @@
                 <engine:VisualElement name="IconoJack" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/ImagenesUI/Iconos/icon_jack_confusing.png?fileID=2800000&amp;guid=a44e9270c881f0e41b7e42d14b97496c&amp;type=3#icon_jack_confusing&quot;); -unity-background-scale-mode: scale-to-fit; flex-shrink: 0; width: 60px; height: 60px; top: -35px; position: absolute; margin-bottom: 0; justify-content: flex-start; align-items: auto; align-self: center; align-content: auto; overflow: visible;" />
             </engine:VisualElement>
         </engine:VisualElement>
-        <engine:Button name="BotonSimularSensores" text="Simular Conexión"
+        <!-- <engine:Button name="BotonSimularSensores" text="Simular Conexión"
     style="width: 180px; height: 40px; 
            margin-top: 10px; 
            background-color: rgb(50, 150, 50); 
            color: white; 
-           border-radius: 8px;" />
+           border-radius: 8px;" /> -->
 
     </engine:VisualElement>
 </engine:UXML>
