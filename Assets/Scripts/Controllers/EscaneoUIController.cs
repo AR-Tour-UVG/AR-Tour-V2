@@ -14,8 +14,6 @@ public class EscaneoUIController : MonoBehaviour
 
     private bool menuInicializado = false;
 
-    private bool _connected = false; // Estado de conexión a los sensores
-
     // Guarda el handler para desuscribir bien
     private EventCallback<ClickEvent> _onHambClickHandler;
 
@@ -87,7 +85,7 @@ public class EscaneoUIController : MonoBehaviour
         {
             botonSimular.style.display = DisplayStyle.None;
         }
-
+        _connected = false;
         // Start waiting for the first valid UWB coordinate
         if (!_connected)
         {
@@ -159,7 +157,7 @@ public class EscaneoUIController : MonoBehaviour
             {
                 Debug.Log($"UWB first fix received: {pos}");
                 // Move to Tour overlay
-                if (cambiador != null) cambiador.MostrarTour();
+                if (cambiador != false) cambiador.MostrarTour();
                 yield break;
             }
             yield return null; // check every frame

@@ -215,22 +215,22 @@ public class InicioUIController : MonoBehaviour
         {
             s_LogicLoadedOrLoading = true;
 
-            // IMPORTANT: "CIT-6" must be added in File → Build Settings → Scenes In Build
-            var op = SceneManager.LoadSceneAsync("CIT-6", LoadSceneMode.Additive);
+            // IMPORTANT: "TestRoom" must be added in File → Build Settings → Scenes In Build
+            var op = SceneManager.LoadSceneAsync("TestRoom", LoadSceneMode.Additive);
             if (op == null)
             {
-                Debug.LogError("Failed to start loading scene 'CIT-6'. Check the scene name and Build Settings.");
+                Debug.LogError("Failed to start loading scene 'TestRoom'. Check the scene name and Build Settings.");
                 s_LogicLoadedOrLoading = false;
                 yield break;
             }
             while (!op.isDone) yield return null;
 
-            // Make CIT-6 the active scene so lighting/NavMesh work as expected
-            var logic = SceneManager.GetSceneByName("CIT-6");
+            // Make TestRoom the active scene so lighting/NavMesh work as expected
+            var logic = SceneManager.GetSceneByName("TestRoom");
             if (logic.IsValid())
                 SceneManager.SetActiveScene(logic);
             else
-                Debug.LogWarning("Loaded 'CIT-6' but Scene is not valid? Check the scene asset.");
+                Debug.LogWarning("Loaded 'TestRoom' but Scene is not valid? Check the scene asset.");
         }
 
         // Switch the overlay to Escaneo
