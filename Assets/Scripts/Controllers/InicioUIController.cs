@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class InicioUIController : MonoBehaviour
@@ -55,7 +56,8 @@ public class InicioUIController : MonoBehaviour
         {
             botonExpress.clicked += () =>
             {
-                StartCoroutine(AnimacionSalidaYCambio("Ruta Express"));
+                //StartCoroutine(AnimacionSalidaYCambio("Ruta Express"));
+                StartCoroutine(LoadLogicThenShowEscaneo("Ruta Express"));
             };
         }
 
@@ -71,7 +73,7 @@ public class InicioUIController : MonoBehaviour
         {
             botonMinijuegos.clicked += () =>
             {
-                // Aquí puedes agregar navegación a minijuegos
+                // Aquï¿½ puedes agregar navegaciï¿½n a minijuegos
                 Debug.Log("Navegando a minijuegos...");
             };
         }
@@ -79,7 +81,7 @@ public class InicioUIController : MonoBehaviour
 
     IEnumerator SecuenciaAnimacionEntrada()
     {
-        // Preparar elementos para animación (estados iniciales)
+        // Preparar elementos para animaciï¿½n (estados iniciales)
         PrepararElementosParaAnimacion();
 
         yield return new WaitForSeconds(0.1f);
@@ -102,7 +104,7 @@ public class InicioUIController : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
 
-        // 3. Activar flotación del logo
+        // 3. Activar flotaciï¿½n del logo
         if (logoARTour != null)
         {
             logoARTour.AddToClassList("floating-logo");
@@ -181,17 +183,57 @@ public class InicioUIController : MonoBehaviour
 
     IEnumerator AnimacionSalidaYCambio(string tipoRuta)
     {
-        // Animación de salida rápida
+        // Animaciï¿½n de salida rï¿½pida
         if (contenedorPrincipal != null)
         {
             contenedorPrincipal.RemoveFromClassList("fade-in-active");
             contenedorPrincipal.AddToClassList("fade-in");
         }
 
-        // Esperar un poquito para que se vea la transición
+        // Esperar un poquito para que se vea la transiciï¿½n
         yield return new WaitForSeconds(0.3f);
 
         // Cambiar de pantalla
+        EstadoRuta.TipoRuta = tipoRuta;
+        cambiador.MostrarEscaneo();
+    }
+
+    private static bool s_LogicLoadedOrLoading = false;
+
+    private IEnumerator LoadLogicThenShowEscaneo(string tipoRuta)
+    {
+        // quick fade-out like before (optional)
+        if (contenedorPrincipal != null)
+        {
+            contenedorPrincipal.RemoveFromClassList("fade-in-active");
+            contenedorPrincipal.AddToClassList("fade-in");
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        if (!s_LogicLoadedOrLoading)
+        {
+            s_LogicLoadedOrLoading = true;
+
+            // IMPORTANT: "TestRoom" must be added in File â†’ Build Settings â†’ Scenes In Build
+            var op = SceneManager.LoadSceneAsync("TestRoom", LoadSceneMode.Additive);
+            if (op == null)
+            {
+                Debug.LogError("Failed to start loading scene 'TestRoom'. Check the scene name and Build Settings.");
+                s_LogicLoadedOrLoading = false;
+                yield break;
+            }
+            while (!op.isDone) yield return null;
+
+            // Make TestRoom the active scene so lighting/NavMesh work as expected
+            var logic = SceneManager.GetSceneByName("TestRoom");
+            if (logic.IsValid())
+                SceneManager.SetActiveScene(logic);
+            else
+                Debug.LogWarning("Loaded 'TestRoom' but Scene is not valid? Check the scene asset.");
+        }
+
+        // Switch the overlay to Escaneo
         EstadoRuta.TipoRuta = tipoRuta;
         cambiador.MostrarEscaneo();
     }

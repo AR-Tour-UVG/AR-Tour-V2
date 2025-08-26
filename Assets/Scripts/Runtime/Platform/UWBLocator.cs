@@ -143,7 +143,7 @@ public static class UWBLocator
             setAnchorMap(anchorMap); // Set the anchor map
             uwb_start(); // Start the UWB plugin
             isInitialized = true;
-            Debug.Log($"UWBLocator: Plugin initialized with {anchors?.Count ?? 0} anchors.");
+            Debug.Log($"UWBLocator: Plugin initialized with {anchorMap} anchors.");
         }
         catch (Exception ex)
         {
