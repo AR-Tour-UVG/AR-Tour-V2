@@ -9,12 +9,13 @@ public class BundleIdPreprocessor : IPreprocessBuildWithReport
 
     public void OnPreprocessBuild(BuildReport report)
     {
-        // Use all-lowercase if possible; otherwise match EXACTLY what you registered.
-        const string bundleId = "gt.edu.uvg.uwb"; // or "Uwb.uvg.edu.gt" if you must match existing
+#if UNITY_IOS
+        const string bundleId = "Uwb.uvg.edu.gt";
 
         PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.iOS, bundleId);
 
         UnityEngine.Debug.Log($"[BundleIdPreprocessor] iOS bundle id set to: {bundleId}");
+#endif
     }
 }
 #endif
