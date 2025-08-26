@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-
+using System.Collections;
 public class EscaneoUIController : MonoBehaviour
 {
     private VisualElement root;
@@ -13,6 +13,10 @@ public class EscaneoUIController : MonoBehaviour
     public CambiadorDePantallas cambiador;
 
     private bool menuInicializado = false;
+
+#if UNITY_IOS && !UNITY_EDITOR
+    private bool _connected = false;
+#endif
 
     // Guarda el handler para desuscribir bien
     private EventCallback<ClickEvent> _onHambClickHandler;
