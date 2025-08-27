@@ -1,7 +1,7 @@
 /* Estilos base */
 .custom-label {
     font-size: 20px;
-    -unity-font-definition: url('project://database/Assets/UI Toolkit/Fonts/AsapCondensed-Bold.ttf');
+    -unity-font-definition: resource("AsapCondensed-Bold");
     color: rgb(68, 138, 255);
 }
 
@@ -47,19 +47,6 @@
     transition-timing-function: ease-in-out;
 }
 
-/* Keyframes para flotación (simulado con transiciones) */
-.floating-logo {
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { 
-        translate: 0 0;
-    }
-    50% { 
-        translate: 0 -5px;
-    }
-}
 
 /* Textos de bienvenida con delay */
 #TextoBienvenida {
@@ -129,7 +116,6 @@
     transition-property: scale, background-color;
     transition-duration: 0.3s;
     transition-timing-function: ease-out;
-    cursor: pointer;
 }
 
 #boton_ruta_express:hover, #boton_ruta_completa:hover, #boton_minijuegos:hover {
@@ -209,36 +195,9 @@
     transition-timing-function: ease-in-out;
 }
 
-.breathing-bg {
-    animation: breathe 8s ease-in-out infinite;
-}
-
-@keyframes breathe {
-    0%, 100% { 
-        scale: 1;
-    }
-    50% { 
-        scale: 1.02;
-    }
-}
-
 /* Overlay con fade suave */
 #Overlay {
     transition-property: opacity;
     transition-duration: 2s;
     transition-timing-function: ease-in-out;
-}
-
-/* Efecto de pulso sutil para textos principales */
-#TextoARTour {
-    animation: subtle-pulse 4s ease-in-out infinite;
-}
-
-@keyframes subtle-pulse {
-    0%, 100% { 
-        opacity: 1;
-    }
-    50% { 
-        opacity: 0.9;
-    }
 }

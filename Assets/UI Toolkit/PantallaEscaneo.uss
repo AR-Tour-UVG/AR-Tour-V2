@@ -24,13 +24,9 @@
 .icono-carga {
     width: 48px;
     height: 48px;
-    background-image: url("project://database/Assets/ImagenesUI/Iconos/iconLoading.png?fileID=5787958964479301541&guid=ddb41d9ef80883e47987cbf878025d39&type=3#iconLoading_0");
+    background-image: resource("iconLoading");
     -unity-background-scale-mode: scale-to-fit;
     margin-bottom: 16px;
-    animation-name: spin;
-    animation-duration: 1.2s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
 }
 
 .texto-principal {
@@ -45,7 +41,6 @@
     font-size: 14px;
     color: rgba(255, 255, 255, 0.85);
     -unity-text-align: middle-center;
-    text-align: center;
     margin-bottom: 16px;
 }
 
@@ -57,7 +52,6 @@
     border-width: 1px;
     border-color: rgba(255, 255, 255, 0.4);
     padding: 6px 12px;
-    cursor: pointer;
 }
 
 .boton-reintentar:hover {
@@ -67,7 +61,7 @@
 .jack {
     width: 100px;
     height: 100px;
-    background-image: url("project://database/Assets/ImagenesUI/DragonJack/JackSaludo.png?fileID=4071111107519387463&guid=f87497828d2becc4395c113717e503be&type=3#JackSaludo_0");
+    background-image: resource("JackSaludo");
     -unity-background-scale-mode: scale-to-fit;
     position: relative;
     bottom: 16px;
