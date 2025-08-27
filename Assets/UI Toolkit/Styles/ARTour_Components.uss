@@ -16,14 +16,14 @@
     height: 100%;
 }
 
-.overlay-imagen {
+/* .overlay-imagen {
     background-image: url("ImagenesUI/Overlays/overlay_pantalla_inicio.png");
     background-size: cover;
     background-position: center;
     position: absolute;
     width: 100%;
     height: 100%;
-}
+} */
 
 .contenedor-central {
     flex-direction: column;
@@ -34,6 +34,7 @@
     top: 20%;
 }
 
+
 .logo-app {
     width: 180px;
     height: auto;
@@ -41,7 +42,7 @@
 }
 
 .titulo-bienvenida {
-    font-family: "Outfit-Bold";
+    -unity-font-definition: resource("Outfit-Bold");
     font-size: 28px;
     color: white;
     margin-bottom: 30px;
@@ -66,7 +67,7 @@
 }
 
 .texto-boton {
-    font-family: "Outfit-SemiBold";
+    -unity-font-definition: resource("Outfit-SemiBold");
     font-size: 18px;
     color: white;
 }

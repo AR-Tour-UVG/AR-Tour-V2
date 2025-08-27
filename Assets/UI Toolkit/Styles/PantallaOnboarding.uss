@@ -1,0 +1,65 @@
+/* Transición de slide para toda la pantalla */
+#ContenedorPantalla {
+    transition-property: translate;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* Estado inicial para slide (fuera de pantalla a la derecha) */
+.slide-enter {
+    translate: 100% 0;
+}
+
+/* Estado final para slide (en posición normal) */
+.slide-enter-active {
+    translate: 0 0;
+}
+
+/* Estado para slide saliendo (hacia la izquierda) */
+.slide-exit {
+    translate: -100% 0;
+}
+
+/* Fondo para evitar pantalla negra durante transiciones */
+.VisualElement {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* Transiciones para el botón siguiente */
+#BotonSiguiente {
+    transition-property: opacity, scale;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+#BotonSiguiente:hover {
+    scale: 1.05;
+}
+
+#BotonSiguiente:active {
+    scale: 0.95;
+}
+
+/* Transiciones para el botón iniciar con fadeout */
+#BotonIniciar {
+    transition-property: opacity, scale;
+    transition-duration: 0.8s;
+    transition-timing-function: ease-in-out;
+}
+
+#BotonIniciar:hover {
+    scale: 1.05;
+}
+
+#BotonIniciar:active {
+    scale: 0.95;
+}
+
+/* Clase para fadeout del botón iniciar */
+.fadeout {
+    opacity: 0;
+    scale: 0.9;
+}
