@@ -1,7 +1,7 @@
 /* Estilos base */
 .custom-label {
     font-size: 20px;
-    -unity-font-definition: resource("AsapCondensed-Bold");
+    -unity-font-definition: resource("UI Toolkit/Fonts/TTF/AsapCondensed-Bold");
     color: rgb(68, 138, 255);
 }
 

@@ -43,19 +43,19 @@ public class EscaneoUIController : MonoBehaviour
         }
 
         // Cargar fonts con la ruta correcta
-        var outfitSemiBold = Resources.Load<Font>("Assets/UI Toolkit/Fonts/Outfit-SemiBold");
-        var outfitRegular = Resources.Load<Font>("Assets/UI Toolkit/Fonts/Outfit-Regular");
+        var outfitSemiBold = Resources.Load<Font>("UI Toolkit/Fonts/TTF/Outfit-SemiBold");
+        var outfitRegular = Resources.Load<Font>("UI Toolkit/Fonts/TTF/Outfit-Regular");
 
         // Si no funcionan con esa ruta, intenta sin "Assets/"
         if (outfitSemiBold == null)
         {
-            outfitSemiBold = Resources.Load<Font>("UI Toolkit/Fonts/Outfit-SemiBold");
+            outfitSemiBold = Resources.Load<Font>("UI Toolkit/Fonts/TTF/Outfit-SemiBold");
             Debug.Log("Intentando cargar font con ruta alternativa");
         }
 
         if (outfitRegular == null)
         {
-            outfitRegular = Resources.Load<Font>("UI Toolkit/Fonts/Outfit-Regular");
+            outfitRegular = Resources.Load<Font>("UI Toolkit/Fonts/TTF/Outfit-Regular");
             Debug.Log("Intentando cargar font con ruta alternativa");
         }
 

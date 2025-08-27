@@ -40,7 +40,7 @@ public class ARTourUIController : MonoBehaviour
         }
 
         // Configurar botón salir
-        botonSalir = root.Q<Button>("boton_salir");
+        botonSalir = root.Q<Button>("btn_salir_inicio");
         if (botonSalir != null)
         {
             botonSalir.clicked += () =>
@@ -59,8 +59,8 @@ public class ARTourUIController : MonoBehaviour
     private void CrearMenuProgramatico()
     {
         // Cargar fonts
-        var outfitSemiBold = Resources.Load<Font>("UI Toolkit/Fonts/Outfit-SemiBold");
-        var outfitRegular = Resources.Load<Font>("UI Toolkit/Fonts/Outfit-Regular");
+        var outfitSemiBold = Resources.Load<Font>("UI Toolkit/Fonts/TTF/Outfit-SemiBold");
+        var outfitRegular = Resources.Load<Font>("UI Toolkit/Fonts/TTF/Outfit-Regular");
 
         if (outfitSemiBold == null) Debug.LogWarning("No se pudo cargar Outfit-SemiBold");
         if (outfitRegular == null) Debug.LogWarning("No se pudo cargar Outfit-Regular");

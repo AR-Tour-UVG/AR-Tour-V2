@@ -24,7 +24,7 @@
 .icono-carga {
     width: 48px;
     height: 48px;
-    background-image: resource("iconLoading");
+    background-image: resource("ImagenesUI/Iconos/iconLoading");
     -unity-background-scale-mode: scale-to-fit;
     margin-bottom: 16px;
 }
@@ -61,7 +61,7 @@
 .jack {
     width: 100px;
     height: 100px;
-    background-image: resource("JackSaludo");
+    background-image: resource("ImagenesUI/DragonJack/JackSaludo");
     -unity-background-scale-mode: scale-to-fit;
     position: relative;
     bottom: 16px;

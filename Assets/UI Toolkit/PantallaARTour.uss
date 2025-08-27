@@ -20,7 +20,7 @@
 .icono-marcador {
     width: 24px;
     height: 24px;
-    background-image: resource("iconMarcador");
+    background-image: resource("ImagenesUI/Iconos/iconMarcador");
     -unity-background-scale-mode: scale-to-fit;
     margin-right: 8px;
 }
@@ -32,7 +32,7 @@
 .boton-salir {
     width: 32px;
     height: 32px;
-    background-image: resource("icon_exit");
+    background-image: resource("ImagenesUI/Iconos/icon_exit");
     -unity-background-scale-mode: scale-to-fit;
     background-color: transparent;
 }
