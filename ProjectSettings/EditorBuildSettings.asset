@@ -8,10 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PantallaPrincipal.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/CIT-6.unity
+    guid: 62864c9ea0473ee40a903d76d97a07ab
+  - enabled: 1
+    path: Assets/Scenes/TestRoom.unity
+    guid: 1541038be87fd8a4fb8e9d4de041a419
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 7bf74cbf374d8524082094c16bf61f23, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 1c501e307a66f3a48b62f77237755d7a, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
-    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 9cd24febdc433c546a3641a3a12cc01e, type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 9f97e3f59390ace42b2afc889692613a, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 673d7e9ab4d59234da1174f0350f01f4, type: 2}
   m_UseUCBPForAssetBundles: 0
