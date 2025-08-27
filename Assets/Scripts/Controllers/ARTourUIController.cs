@@ -9,7 +9,7 @@ public class ARTourUIController : MonoBehaviour
 
     [SerializeField] private CambiadorDePantallas cambiador;
 
-    // Variables para menú programático
+    // Variables para menÃº programÃ¡tico
     private VisualElement menuHamburguesaVisual;
     private bool menuInicializado = false;
 
@@ -19,27 +19,27 @@ public class ARTourUIController : MonoBehaviour
     {
         root = GetComponent<UIDocument>().rootVisualElement;
 
-        // Crear menú programático con estilos idénticos
+        // Crear menÃº programÃ¡tico con estilos idÃ©nticos
         CrearMenuProgramatico();
 
-        // Configurar botón hamburguesa
+        // Configurar botÃ³n hamburguesa
         botonMenuHamburguesa = root.Q<VisualElement>("icono_menu_hamburguesa");
         if (botonMenuHamburguesa != null)
         {
             onHambClickHandler = (ClickEvent evt) =>
             {
-                Debug.Log("Click detectado en menú hamburguesa (ARTour)");
+                Debug.Log("Click detectado en menÃº hamburguesa (ARTour)");
                 MostrarMenuProgramatico();
             };
             botonMenuHamburguesa.RegisterCallback(onHambClickHandler);
-            Debug.Log("Botón hamburguesa configurado correctamente en ARTour");
+            Debug.Log("BotÃ³n hamburguesa configurado correctamente en ARTour");
         }
         else
         {
-            Debug.LogError("No se encontró 'icono_menu_hamburguesa' en ARTour. Revisa el UXML");
+            Debug.LogError("No se encontrÃ³ 'icono_menu_hamburguesa' en ARTour. Revisa el UXML");
         }
 
-        // Configurar botón salir
+        // Configurar botÃ³n salir
         botonSalir = root.Q<Button>("boton_salir");
         if (botonSalir != null)
         {
@@ -52,7 +52,7 @@ public class ARTourUIController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No se encontró 'boton_salir' en ARTour.");
+            Debug.LogWarning("No se encontrÃ³ 'boton_salir' en ARTour.");
         }
     }
 
@@ -65,7 +65,7 @@ public class ARTourUIController : MonoBehaviour
         if (outfitSemiBold == null) Debug.LogWarning("No se pudo cargar Outfit-SemiBold");
         if (outfitRegular == null) Debug.LogWarning("No se pudo cargar Outfit-Regular");
 
-        // Overlay del menú
+        // Overlay del menÃº
         var menuOverlay = new VisualElement { name = "menu_overlay_programmatico" };
         menuOverlay.style.position = Position.Absolute;
         menuOverlay.style.top = 0;
@@ -93,13 +93,13 @@ public class ARTourUIController : MonoBehaviour
         header.style.paddingLeft = 20;
         header.style.paddingRight = 20;
 
-        var titulo = new Label("Menú") { name = "titulo_programmatico" };
+        var titulo = new Label("MenÃº") { name = "titulo_programmatico" };
         titulo.style.color = Color.white;
         titulo.style.fontSize = 22;
         titulo.style.unityTextAlign = TextAnchor.MiddleLeft;
         if (outfitSemiBold != null) titulo.style.unityFont = outfitSemiBold;
 
-        var btnCerrar = new Button(() => { menuOverlay.style.display = DisplayStyle.None; }) { text = "×" };
+        var btnCerrar = new Button(() => { menuOverlay.style.display = DisplayStyle.None; }) { text = "âœ–" };
         btnCerrar.style.width = 35;
         btnCerrar.style.height = 35;
         btnCerrar.style.backgroundColor = Color.clear;
@@ -124,12 +124,12 @@ public class ARTourUIController : MonoBehaviour
         contenedorOpciones.style.paddingRight = 20;
         contenedorOpciones.style.paddingTop = 10;
 
-        string[] opcionesMenu = { "Reconectar Sensores", "Reiniciar Tour", "Diagnóstico de Conexión", "Reportar un Problema", "Salir a Inicio" };
+        string[] opcionesMenu = { "Reconectar Sensores", "Reiniciar Tour", "DiagnÃ³stico de ConexiÃ³n", "Reportar un Problema", "Salir a Inicio" };
         foreach (string opcion in opcionesMenu)
         {
             var btnOpcion = new Button(() =>
             {
-                Debug.Log($"Opción clickeada: {opcion}");
+                Debug.Log($"OpciÃ³n clickeada: {opcion}");
                 menuOverlay.style.display = DisplayStyle.None;
 
                 switch (opcion)
@@ -143,8 +143,8 @@ public class ARTourUIController : MonoBehaviour
                     case "Reiniciar Tour":
                         Debug.Log("Reiniciando tour...");
                         break;
-                    case "Diagnóstico de Conexión":
-                        Debug.Log("Mostrando diagnóstico...");
+                    case "DiagnÃ³stico de ConexiÃ³n":
+                        Debug.Log("Mostrando diagnÃ³stico...");
                         break;
                     case "Reportar un Problema":
                         Debug.Log("Abriendo reporte...");
@@ -153,7 +153,7 @@ public class ARTourUIController : MonoBehaviour
             })
             { text = opcion };
 
-            // Estilo idéntico a Escaneo
+            // Estilo idÃ©ntico a Escaneo
             btnOpcion.style.color = Color.white;
             btnOpcion.style.backgroundColor = Color.clear;
             btnOpcion.style.borderTopWidth = 0;
@@ -188,14 +188,14 @@ public class ARTourUIController : MonoBehaviour
         menuHamburguesaVisual = menuOverlay;
         menuInicializado = true;
 
-        Debug.Log("Menú programático creado exitosamente en ARTour");
+        Debug.Log("MenÃº programÃ¡tico creado exitosamente en ARTour");
     }
 
     private void MostrarMenuProgramatico()
     {
         if (!menuInicializado)
         {
-            Debug.LogError("El menú no está inicializado");
+            Debug.LogError("El menÃº no estÃ¡ inicializado");
             return;
         }
 

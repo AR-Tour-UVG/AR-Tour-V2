@@ -12,10 +12,10 @@ public class OnBoardingUIController : MonoBehaviour
         var root = GetComponent<UIDocument>().rootVisualElement;
         contenedorPantalla = root.Q<VisualElement>("ContenedorPantalla");
 
-        // Aplicar animaci髇 de entrada
+        // Aplicar animaci贸n de entrada
         IniciarAnimacionEntrada();
 
-        // Bot髇 siguiente
+        // Bot贸n siguiente
         Button botonSiguiente = root.Q<Button>("BotonSiguiente");
         if (botonSiguiente != null)
         {
@@ -25,7 +25,7 @@ public class OnBoardingUIController : MonoBehaviour
             };
         }
 
-        // Bot髇 iniciar (solo en 鷏timo onboarding)
+        // Bot贸n iniciar (solo en 煤ltimo onboarding)
         Button botonIniciar = root.Q<Button>("BotonIniciar");
         if (botonIniciar != null)
         {
@@ -43,7 +43,7 @@ public class OnBoardingUIController : MonoBehaviour
             // Empezar fuera de pantalla
             contenedorPantalla.AddToClassList("slide-enter");
 
-            // Despu閟 de un frame, animar hacia la posici髇 normal
+            // Despu茅s de un frame, animar hacia la posici贸n normal
             StartCoroutine(AnimarEntrada());
         }
     }
@@ -61,8 +61,8 @@ public class OnBoardingUIController : MonoBehaviour
         // Inmediatamente cambiar a la siguiente pantalla ANTES de animar
         cambiador.SiguienteOnboarding();
 
-        // La animaci髇 de salida ya no es necesaria porque la nueva pantalla
-        // se encarga de su propia animaci髇 de entrada
+        // La animaci贸n de salida ya no es necesaria porque la nueva pantalla
+        // se encarga de su propia animaci贸n de entrada
         yield return null;
     }
 
@@ -72,10 +72,10 @@ public class OnBoardingUIController : MonoBehaviour
 
         if (botonIniciar != null)
         {
-            // Aplicar fadeout al bot髇
+            // Aplicar fadeout al bot贸n
             botonIniciar.AddToClassList("fadeout");
 
-            // Esperar que termine la animaci髇
+            // Esperar que termine la animaci贸n
             yield return new WaitForSeconds(0.8f);
         }
 

@@ -40,14 +40,14 @@
     opacity: 1;
 }
 
-/* Logo ARTour - animaci髇 flotante continua */
+/* Logo ARTour - animaci贸n flotante continua */
 #LogoARTour {
     transition-property: scale;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
 }
 
-/* Keyframes para flotaci髇 (simulado con transiciones) */
+/* Keyframes para flotaci贸n (simulado con transiciones) */
 .floating-logo {
     animation: float 3s ease-in-out infinite;
 }
@@ -154,7 +154,7 @@
     scale: 1.02;
 }
 
-/* Animaci髇 de flechas en hover */
+/* Animaci贸n de flechas en hover */
 #boton_ruta_express .Flecha, #boton_ruta_completa .Flecha, #boton_minijuegos .Flecha {
     transition-property: translate;
     transition-duration: 0.2s;
@@ -176,7 +176,7 @@
     scale: 1.1;
 }
 
-/* === LOGO UVG ANIMACI覰 === */
+/* === LOGO UVG ANIMACI脫N === */
 #LogoUvg {
     transition-property: opacity, scale;
     transition-duration: 0.6s;
@@ -202,7 +202,7 @@
 
 /* === EFECTOS ADICIONALES === */
 
-/* Efecto de respiraci髇 para el fondo */
+/* Efecto de respiraci贸n para el fondo */
 #BackgroundCIT {
     transition-property: scale;
     transition-duration: 8s;

@@ -16,25 +16,25 @@ public class MenuHamburguesaUIController : MonoBehaviour
 
         if (root == null)
         {
-            Debug.LogError("El VisualElement root es null. No se puede inicializar el menú hamburguesa.");
+            Debug.LogError("El VisualElement root es null. No se puede inicializar el menÃº hamburguesa.");
             EstaInicializado = false;
             return false;
         }
 
-        // Buscar el overlay que contiene todo el menú
+        // Buscar el overlay que contiene todo el menÃº
         menuOverlay = root.Q<VisualElement>("menu_overlay");
         if (menuOverlay == null)
         {
-            Debug.LogError("No se encontró el elemento 'menu_overlay' en el UXML.");
+            Debug.LogError("No se encontrÃ³ el elemento 'menu_overlay' en el UXML.");
             EstaInicializado = false;
             return false;
         }
 
-        // Buscar el menú dentro del overlay
+        // Buscar el menÃº dentro del overlay
         menu = root.Q<VisualElement>("menu_hamburguesa");
         if (menu == null)
         {
-            Debug.LogError("No se encontró el elemento 'menu_hamburguesa' en el UXML.");
+            Debug.LogError("No se encontrÃ³ el elemento 'menu_hamburguesa' en el UXML.");
             EstaInicializado = false;
             return false;
         }
@@ -50,21 +50,21 @@ public class MenuHamburguesaUIController : MonoBehaviour
         // Configurar eventos
         if (btnCerrar != null)
         {
-            Debug.Log("Botón cerrar encontrado y configurando evento...");
+            Debug.Log("BotÃ³n cerrar encontrado y configurando evento...");
             btnCerrar.clicked += () => {
-                Debug.Log("¡¡¡Botón cerrar clickeado!!!");
+                Debug.Log("Â¡Â¡Â¡BotÃ³n cerrar clickeado!!!");
                 OcultarMenu();
             };
 
-            // También agregar callback directo como respaldo
+            // TambiÃ©n agregar callback directo como respaldo
             btnCerrar.RegisterCallback<ClickEvent>((evt) => {
-                Debug.Log("¡¡¡Botón cerrar ClickEvent capturado!!!");
+                Debug.Log("Â¡Â¡Â¡BotÃ³n cerrar ClickEvent capturado!!!");
                 OcultarMenu();
                 evt.StopPropagation();
             });
         }
         else
-            Debug.LogError("No se encontró el botón cerrar menú");
+            Debug.LogError("No se encontrÃ³ el botÃ³n cerrar menÃº");
 
         if (btnSalir != null)
         {
@@ -74,7 +74,7 @@ public class MenuHamburguesaUIController : MonoBehaviour
                     cambiador.MostrarInicio();
                 };
             else
-                Debug.LogWarning("CambiadorDePantallas no está asignado en MenuHamburguesaUIController.");
+                Debug.LogWarning("CambiadorDePantallas no estÃ¡ asignado en MenuHamburguesaUIController.");
         }
 
         if (btnReconectar != null)
@@ -91,7 +91,7 @@ public class MenuHamburguesaUIController : MonoBehaviour
 
         if (btnDiagnostico != null)
             btnDiagnostico.clicked += () => {
-                Debug.Log("Mostrando diagnóstico...");
+                Debug.Log("Mostrando diagnÃ³stico...");
                 OcultarMenu();
             };
 
@@ -101,30 +101,30 @@ public class MenuHamburguesaUIController : MonoBehaviour
                 OcultarMenu();
             };
 
-        // Configurar el overlay para cerrar el menú al hacer click fuera
+        // Configurar el overlay para cerrar el menÃº al hacer click fuera
         menuOverlay.RegisterCallback<ClickEvent>(OnOverlayClicked);
 
-        // Evitar que los clics en el menú se propaguen al overlay
+        // Evitar que los clics en el menÃº se propaguen al overlay
         menu.RegisterCallback<ClickEvent>(evt => evt.StopPropagation());
 
         // Estado inicial oculto
         menuOverlay.style.display = DisplayStyle.None;
 
-        // Asegurar que el menú capture clics
+        // Asegurar que el menÃº capture clics
         menu.pickingMode = PickingMode.Position;
         menuOverlay.pickingMode = PickingMode.Position;
 
         EstaInicializado = true;
-        Debug.Log("MenuHamburguesaUIController: Menú hamburguesa inicializado correctamente.");
+        Debug.Log("MenuHamburguesaUIController: MenÃº hamburguesa inicializado correctamente.");
         return true;
     }
 
     private void OnOverlayClicked(ClickEvent evt)
     {
-        // Si el click fue exactamente en el overlay (fondo) pero no en el menú, cerrar
+        // Si el click fue exactamente en el overlay (fondo) pero no en el menÃº, cerrar
         if (evt.target == menuOverlay)
         {
-            Debug.Log("Click en overlay detectado - cerrando menú");
+            Debug.Log("Click en overlay detectado - cerrando menÃº");
             OcultarMenu();
             evt.StopPropagation();
         }
@@ -136,27 +136,27 @@ public class MenuHamburguesaUIController : MonoBehaviour
 
         if (!EstaInicializado)
         {
-            Debug.LogError("El menú hamburguesa no está inicializado. Llama a Inicializar() primero.");
+            Debug.LogError("El menÃº hamburguesa no estÃ¡ inicializado. Llama a Inicializar() primero.");
             return;
         }
 
         if (menuOverlay == null)
         {
-            Debug.LogError("El elemento menuOverlay es null. No se puede mostrar el menú.");
+            Debug.LogError("El elemento menuOverlay es null. No se puede mostrar el menÃº.");
             return;
         }
 
         // Mostrar primero
         menuOverlay.style.display = DisplayStyle.Flex;
 
-        // FORZAR que aparezca en el frente - método más agresivo
+        // FORZAR que aparezca en el frente - mÃ©todo mÃ¡s agresivo
         var parent = menuOverlay.parent;
         if (parent != null)
         {
-            // Remover y volver a agregar al final (esto lo pone en la posición más alta)
+            // Remover y volver a agregar al final (esto lo pone en la posiciÃ³n mÃ¡s alta)
             parent.Remove(menuOverlay);
             parent.Add(menuOverlay);
-            Debug.Log("Menú reposicionado al final de la jerarquía");
+            Debug.Log("MenÃº reposicionado al final de la jerarquÃ­a");
         }
 
         // Asegurar estilo de posicionamiento absoluto
@@ -172,14 +172,14 @@ public class MenuHamburguesaUIController : MonoBehaviour
         menuOverlay.pickingMode = PickingMode.Position;
         menu.pickingMode = PickingMode.Position;
 
-        // Traer al frente después de reposicionar
+        // Traer al frente despuÃ©s de reposicionar
         menuOverlay.BringToFront();
 
-        Debug.Log("MenuHamburguesaUIController: Menú mostrado correctamente");
+        Debug.Log("MenuHamburguesaUIController: MenÃº mostrado correctamente");
 
         // Debug adicional
         Debug.Log($"Menu overlay display: {menuOverlay.style.display.value}");
-        Debug.Log($"Menu hierarchy index DESPUÉS: {menuOverlay.parent?.IndexOf(menuOverlay)}");
+        Debug.Log($"Menu hierarchy index DESPUÃ‰S: {menuOverlay.parent?.IndexOf(menuOverlay)}");
         Debug.Log($"Total children en parent: {menuOverlay.parent?.childCount}");
     }
 
@@ -192,6 +192,6 @@ public class MenuHamburguesaUIController : MonoBehaviour
 
         menuOverlay.style.display = DisplayStyle.None;
 
-        Debug.Log("MenuHamburguesaUIController: Menú ocultado correctamente");
+        Debug.Log("MenuHamburguesaUIController: MenÃº ocultado correctamente");
     }
 }

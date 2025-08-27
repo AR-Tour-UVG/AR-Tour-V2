@@ -79,7 +79,7 @@ public class InicioUIController : MonoBehaviour
 
             botonMinijuegos.clicked += () =>
             {
-                // Aqu� puedes agregar navegaci�n a minijuegos
+                // Aquí puedes agregar navegación a minijuegos
                 Debug.Log("Navegando a minijuegos...");
             };
         }
@@ -87,7 +87,7 @@ public class InicioUIController : MonoBehaviour
 
     IEnumerator SecuenciaAnimacionEntrada()
     {
-        // Preparar elementos para animaci�n (estados iniciales)
+        // Preparar elementos para animación (estados iniciales)
         PrepararElementosParaAnimacion();
 
         yield return new WaitForSeconds(0.1f);
@@ -110,7 +110,7 @@ public class InicioUIController : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
 
-        // 3. Activar flotaci�n del logo
+        // 3. Activar flotación del logo
         if (logoARTour != null)
         {
             logoARTour.AddToClassList("floating-logo");
@@ -189,14 +189,14 @@ public class InicioUIController : MonoBehaviour
 
     IEnumerator AnimacionSalidaYCambio(string tipoRuta)
     {
-        // Animaci�n de salida r�pida
+        // Animación de salida rápida
         if (contenedorPrincipal != null)
         {
             contenedorPrincipal.RemoveFromClassList("fade-in-active");
             contenedorPrincipal.AddToClassList("fade-in");
         }
 
-        // Esperar un poquito para que se vea la transici�n
+        // Esperar un poquito para que se vea la transición
         yield return new WaitForSeconds(0.3f);
 
         // Cambiar de pantalla

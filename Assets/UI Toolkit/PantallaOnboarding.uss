@@ -1,4 +1,4 @@
-/* Transici髇 de slide para toda la pantalla */
+/* Transici贸n de slide para toda la pantalla */
 #ContenedorPantalla {
     transition-property: translate;
     transition-duration: 0.3s;
@@ -13,7 +13,7 @@
     translate: 100% 0;
 }
 
-/* Estado final para slide (en posici髇 normal) */
+/* Estado final para slide (en posici贸n normal) */
 .slide-enter-active {
     translate: 0 0;
 }
@@ -28,7 +28,7 @@
     background-color: rgba(0, 0, 0, 0);
 }
 
-/* Transiciones para el bot髇 siguiente */
+/* Transiciones para el bot贸n siguiente */
 #BotonSiguiente {
     transition-property: opacity, scale;
     transition-duration: 0.3s;
@@ -43,7 +43,7 @@
     scale: 0.95;
 }
 
-/* Transiciones para el bot髇 iniciar con fadeout */
+/* Transiciones para el bot贸n iniciar con fadeout */
 #BotonIniciar {
     transition-property: opacity, scale;
     transition-duration: 0.8s;
@@ -58,7 +58,7 @@
     scale: 0.95;
 }
 
-/* Clase para fadeout del bot髇 iniciar */
+/* Clase para fadeout del bot贸n iniciar */
 .fadeout {
     opacity: 0;
     scale: 0.9;

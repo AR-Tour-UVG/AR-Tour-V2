@@ -27,19 +27,19 @@ public class EscaneoUIController : MonoBehaviour
 
         if (menuHamburguesaUXML == null)
         {
-            Debug.LogError("MenuHamburguesaUXML no est� asignado en el inspector.");
+            Debug.LogError("MenuHamburguesaUXML no está asignado en el inspector.");
             return;
         }
 
         if (menuHamburguesaController == null)
         {
-            Debug.LogError("MenuHamburguesaUIController no est� asignado en el inspector.");
+            Debug.LogError("MenuHamburguesaUIController no está asignado en el inspector.");
             return;
         }
 
         if (cambiador == null)
         {
-            Debug.LogWarning("CambiadorDePantallas no est� asignado en el inspector. El bot�n de simular conexi�n no funcionar�.");
+            Debug.LogWarning("CambiadorDePantallas no está asignado en el inspector. El botón de simular conexión no funcionará.");
         }
 
         // Cargar fonts con la ruta correcta
@@ -60,14 +60,14 @@ public class EscaneoUIController : MonoBehaviour
         }
 
         if (outfitSemiBold == null)
-            Debug.LogWarning("No se pudo cargar la font Outfit-SemiBold. Verifica que est� en Resources/UI Toolkit/Fonts/");
+            Debug.LogWarning("No se pudo cargar la font Outfit-SemiBold. Verifica que esté en Resources/UI Toolkit/Fonts/");
         if (outfitRegular == null)
-            Debug.LogWarning("No se pudo cargar la font Outfit-Regular. Verifica que est� en Resources/UI Toolkit/Fonts/");
+            Debug.LogWarning("No se pudo cargar la font Outfit-Regular. Verifica que esté en Resources/UI Toolkit/Fonts/");
 
-        // Crear men� program�ticamente mejorado
+        // Crear menú programáticamente mejorado
         CrearMenuProgramatico(outfitSemiBold, outfitRegular);
 
-        // Configurar bot�n hamburguesa
+        // Configurar botón hamburguesa
         ConfigurarBotonHamburguesa();
         ConfigurarBotonSimularConexion();
 #if UNITY_IOS && !UNITY_EDITOR
@@ -89,7 +89,7 @@ public class EscaneoUIController : MonoBehaviour
 
     private void CrearMenuProgramatico(Font outfitSemiBold, Font outfitRegular)
     {
-        // Crear overlay que NO cubre toda la pantalla, solo la parte del men�
+        // Crear overlay que NO cubre toda la pantalla, solo la parte del menú
         var menuOverlayProgrammatico = new VisualElement { name = "menu_overlay_programmatico" };
         menuOverlayProgrammatico.style.position = Position.Absolute;
         menuOverlayProgrammatico.style.top = 0;
@@ -97,19 +97,19 @@ public class EscaneoUIController : MonoBehaviour
         menuOverlayProgrammatico.style.width = Length.Percent(60); // Solo 60% del ancho
         menuOverlayProgrammatico.style.height = Length.Percent(100);
 
-        // Fondo con color espec�fico #112d2f
+        // Fondo con color específico #112d2f
         menuOverlayProgrammatico.style.backgroundColor = new Color(0f, 0f, 4f / 255f, 0.95f); // rgba(0,0,4) con 95% opacidad
         menuOverlayProgrammatico.style.display = DisplayStyle.None;
         menuOverlayProgrammatico.pickingMode = PickingMode.Position;
 
-        // Crear el men� principal
+        // Crear el menú principal
         var menuProgrammatico = new VisualElement { name = "menu_hamburguesa_programmatico" };
         menuProgrammatico.style.width = Length.Percent(100);
         menuProgrammatico.style.height = Length.Percent(100);
         menuProgrammatico.style.flexDirection = FlexDirection.Column;
         menuProgrammatico.pickingMode = PickingMode.Position;
 
-        // Header del men�
+        // Header del menú
         var headerProgrammatico = new VisualElement { name = "menu_header_programmatico" };
         headerProgrammatico.style.flexDirection = FlexDirection.Row;
         headerProgrammatico.style.justifyContent = Justify.SpaceBetween;
@@ -120,8 +120,8 @@ public class EscaneoUIController : MonoBehaviour
         headerProgrammatico.style.paddingRight = 20;
         headerProgrammatico.style.flexShrink = 0;
 
-        // T�tulo con tama�o de fuente ajustado
-        var tituloProgrammatico = new Label("Men�") { name = "titulo_programmatico" };
+        // Título con tamaño de fuente ajustado
+        var tituloProgrammatico = new Label("Menú") { name = "titulo_programmatico" };
         tituloProgrammatico.style.color = Color.white;
         tituloProgrammatico.style.fontSize = 22; // no aumentar!
         tituloProgrammatico.style.unityTextAlign = TextAnchor.MiddleLeft;
@@ -129,15 +129,15 @@ public class EscaneoUIController : MonoBehaviour
         if (outfitSemiBold != null)
         {
             tituloProgrammatico.style.unityFont = outfitSemiBold;
-            Debug.Log("Font Outfit-SemiBold aplicada al t�tulo");
+            Debug.Log("Font Outfit-SemiBold aplicada al título");
         }
 
-        // Bot�n cerrar sin fondo ni bordes
+        // Botón cerrar sin fondo ni bordes
         var btnCerrarProgrammatico = new Button(() => {
-            Debug.Log("Cerrando men� program�tico");
+            Debug.Log("Cerrando menú programático");
             menuOverlayProgrammatico.style.display = DisplayStyle.None;
         })
-        { name = "boton_cerrar_programmatico", text = "�" };
+        { name = "boton_cerrar_programmatico", text = "✖" };
 
         btnCerrarProgrammatico.style.width = 35;
         btnCerrarProgrammatico.style.height = 35;
@@ -147,12 +147,12 @@ public class EscaneoUIController : MonoBehaviour
         btnCerrarProgrammatico.style.borderBottomWidth = 0;
         btnCerrarProgrammatico.style.borderLeftWidth = 0;
         btnCerrarProgrammatico.style.color = Color.white;
-        btnCerrarProgrammatico.style.fontSize = 24; // Un poco m�s grande para compensar la falta de fondo
+        btnCerrarProgrammatico.style.fontSize = 24; // Un poco más grande para compensar la falta de fondo
         btnCerrarProgrammatico.style.unityTextAlign = TextAnchor.MiddleCenter;
 
-        // Efecto hover m�s sutil para el bot�n cerrar (solo cambio de opacidad del texto)
+        // Efecto hover más sutil para el botón cerrar (solo cambio de opacidad del texto)
         btnCerrarProgrammatico.RegisterCallback<MouseEnterEvent>(_ => {
-            btnCerrarProgrammatico.style.color = new Color(1f, 1f, 1f, 0.7f); // Texto m�s tenue
+            btnCerrarProgrammatico.style.color = new Color(1f, 1f, 1f, 0.7f); // Texto más tenue
         });
         btnCerrarProgrammatico.RegisterCallback<MouseLeaveEvent>(_ => {
             btnCerrarProgrammatico.style.color = Color.white; // Texto normal
@@ -169,11 +169,11 @@ public class EscaneoUIController : MonoBehaviour
         contenedorBotonesProgrammatico.style.paddingRight = 20;
         contenedorBotonesProgrammatico.style.paddingTop = 10;
 
-        // Opciones del men� con texto m�s peque�o
+        // Opciones del menú con texto más pequeño
         string[] opcionesMenu = {
             "Reconectar Sensores",
             "Reiniciar Tour",
-            "Diagn�stico de Conexi�n",
+            "Diagnóstico de Conexión",
             "Reportar un Problema",
             "Salir a Inicio"
         };
@@ -181,12 +181,12 @@ public class EscaneoUIController : MonoBehaviour
         foreach (string opcion in opcionesMenu)
         {
             var btnOpcion = new Button(() => {
-                Debug.Log($"Opci�n clickeada: {opcion}");
+                Debug.Log($"Opción clickeada: {opcion}");
 
-                // Cerrar men� primero
+                // Cerrar menú primero
                 menuOverlayProgrammatico.style.display = DisplayStyle.None;
 
-                // Manejar acci�n espec�fica
+                // Manejar acción específica
                 switch (opcion)
                 {
                     case "Salir a Inicio":
@@ -199,8 +199,8 @@ public class EscaneoUIController : MonoBehaviour
                     case "Reiniciar Tour":
                         Debug.Log("Reiniciando tour...");
                         break;
-                    case "Diagn�stico de Conexi�n":
-                        Debug.Log("Mostrando diagn�stico...");
+                    case "Diagnóstico de Conexión":
+                        Debug.Log("Mostrando diagnóstico...");
                         break;
                     case "Reportar un Problema":
                         Debug.Log("Abriendo reporte...");
@@ -232,7 +232,7 @@ public class EscaneoUIController : MonoBehaviour
             if (outfitRegular != null)
             {
                 btnOpcion.style.unityFont = outfitRegular;
-                Debug.Log($"Font Outfit-Regular aplicada a bot�n: {opcion}");
+                Debug.Log($"Font Outfit-Regular aplicada a botón: {opcion}");
             }
 
             // Efectos hover
@@ -246,7 +246,7 @@ public class EscaneoUIController : MonoBehaviour
             contenedorBotonesProgrammatico.Add(btnOpcion);
         }
 
-        // Ensamblar el men�
+        // Ensamblar el menú
         menuProgrammatico.Add(headerProgrammatico);
         menuProgrammatico.Add(contenedorBotonesProgrammatico);
         menuOverlayProgrammatico.Add(menuProgrammatico);
@@ -254,15 +254,15 @@ public class EscaneoUIController : MonoBehaviour
         // Agregar al root
         root.Add(menuOverlayProgrammatico);
 
-        // Evitar que clics en el men� cierren el overlay
+        // Evitar que clics en el menú cierren el overlay
         menuProgrammatico.RegisterCallback<ClickEvent>(evt => evt.StopPropagation());
 
         // Asignar referencia
         menuHamburguesaVisual = menuOverlayProgrammatico;
         menuInicializado = true;
 
-        Debug.Log("Men� program�tico creado exitosamente");
-        Debug.Log($"Men� agregado al root. �ndice: {root.IndexOf(menuOverlayProgrammatico)}");
+        Debug.Log("Menú programático creado exitosamente");
+        Debug.Log($"Menú agregado al root. Índice: {root.IndexOf(menuOverlayProgrammatico)}");
     }
 
     private void ConfigurarBotonHamburguesa()
@@ -271,15 +271,15 @@ public class EscaneoUIController : MonoBehaviour
         if (botonMenuHamburguesa != null)
         {
             onHambClickHandler = (ClickEvent evt) => {
-                Debug.Log("Click en men� hamburguesa detectado");
+                Debug.Log("Click en menú hamburguesa detectado");
                 MostrarMenuProgramatico();
             };
             botonMenuHamburguesa.RegisterCallback(onHambClickHandler);
-            Debug.Log("Bot�n hamburguesa configurado correctamente");
+            Debug.Log("Botón hamburguesa configurado correctamente");
         }
         else
         {
-            Debug.LogError("No se encontr� el VisualElement 'icono_menu_hamburguesa' en el UXML.");
+            Debug.LogError("No se encontró el VisualElement 'icono_menu_hamburguesa' en el UXML.");
         }
     }
 
@@ -287,7 +287,7 @@ public class EscaneoUIController : MonoBehaviour
     {
         if (!menuInicializado)
         {
-            Debug.LogError("El men� no est� inicializado");
+            Debug.LogError("El menú no está inicializado");
             return;
         }
 
@@ -296,11 +296,11 @@ public class EscaneoUIController : MonoBehaviour
         {
             menuOverlay.style.display = DisplayStyle.Flex;
             menuOverlay.BringToFront();
-            Debug.Log("Men� program�tico mostrado y tra�do al frente");
+            Debug.Log("Menú programático mostrado y traído al frente");
         }
         else
         {
-            Debug.LogError("No se encontr� el menu_overlay_programmatico");
+            Debug.LogError("No se encontró el menu_overlay_programmatico");
         }
     }
 
@@ -325,12 +325,12 @@ public class EscaneoUIController : MonoBehaviour
             {
                 if (cambiador != null)
                 {
-                    Debug.Log("[BYPASS] Simulando conexi�n de 3 sensores...");
+                    Debug.Log("[BYPASS] Simulando conexión de 3 sensores...");
                     cambiador.MostrarTour();
                 }
                 else
                 {
-                    Debug.LogError("CambiadorDePantallas no est� asignado en el inspector.");
+                    Debug.LogError("CambiadorDePantallas no está asignado en el inspector.");
                 }
             };
 #endif
