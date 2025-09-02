@@ -64,18 +64,16 @@ public class NavigationAgent : MonoBehaviour
     /// </returns>
     private IEnumerator Start()
     {
-
         // Gate 1: wait until NavMesh is ready before enabling the agent
         agent.enabled = false; // Disable the NavMeshAgent to prevent movement before NavMesh is ready
         bool logged = false; // Flag to log NavMesh readiness only once
 
         while (NavMesh.CalculateTriangulation().vertices.Length == 0)
         {
-#if UNITY_EDITOR
             if (!logged) { Debug.LogWarning("Waiting for NavMesh to be ready..."); logged = true; }
-#endif
             yield return null;
         }
+        
         // Gate 2: Wait until the UWB Locator is initialized
 #if UNITY_IOS && !UNITY_EDITOR
         while (!UWBLocator.IsInitialized)

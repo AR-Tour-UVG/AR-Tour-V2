@@ -9,6 +9,7 @@ public class JsonLoader : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log($"[JsonLoader] Loading anchor map '{jsonFile}'...");
         var fileNoExt = Path.GetFileNameWithoutExtension(jsonFile);
         var resourcePath = $"AnchorMaps/{fileNoExt}";
 
@@ -16,13 +17,13 @@ public class JsonLoader : MonoBehaviour
         TextAsset jsonAsset = Resources.Load<TextAsset>(resourcePath);
         if (jsonAsset == null)
         {
-            Debug.LogError($"JsonLoader: Failed to load JSON file: {jsonFile}");
+            Debug.LogError($"[JsonLoader] Failed to load JSON file: {jsonFile}");
             return;
         }
 
         // Initialize the plugin with the JSON content
-        Debug.Log($"JsonLoader: Successfully Loaded anchor map '{jsonFile}'. Initializing UWBplugin...");
+        Debug.Log($"[JsonLoader] Successfully Loaded anchor map '{jsonFile}'.");
+        Debug.Log($"[JsonLoader] Initializing UWB plugin...");
         UWBLocator.InitializeAnchorMap(jsonAsset.text);
-
     }
 }

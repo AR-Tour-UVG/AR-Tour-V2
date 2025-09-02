@@ -338,18 +338,19 @@ public class EscaneoUIController : MonoBehaviour
     }
 
 #if UNITY_IOS && !UNITY_EDITOR
-    private IEnumerator WaitForFirstUwbFix()
+    private IEnumerator WaitForFirstValidCoordinate()
     {
         // Minimal: first true = connected.
         while (true)
         {
             if (UWBLocator.TryGetPosition(out var pos))
             {
-                Debug.Log($"UWB first fix received: {pos}");
+                Debug.Log($"[UWB] First valid coordinate received: {pos}");
                 // Move to Tour overlay
                 if (cambiador != false) cambiador.MostrarTour();
                 yield break;
             }
+            Debug.Log("[UWB] Waiting for first valid UWB coordinate...");
             yield return null; // check every frame
         }
     }
