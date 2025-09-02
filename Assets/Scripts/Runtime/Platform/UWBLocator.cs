@@ -22,6 +22,7 @@ public struct Coordinate
 /// </summary>
 public static class UWBLocator
 {
+    public static bool IsInitialized => isInitialized;
     // Log-once guard for non-iOS/editor runs
     private static bool hasWarned = false;
     private static bool isInitialized = false;
@@ -111,10 +112,10 @@ public static class UWBLocator
     }
 
 
-/// <summary>
-/// Initializes the anchor map for the UWB plugin.
-/// </summary>
-/// <param name="anchorMap">The anchor map JSON string.</param>
+    /// <summary>
+    /// Initializes the anchor map for the UWB plugin.
+    /// </summary>
+    /// <param name="anchorMap">The anchor map JSON string.</param>
     public static void InitializeAnchorMap(string anchorMap)
     {
         if (isInitialized)
@@ -141,7 +142,9 @@ public static class UWBLocator
         try
         {
             setAnchorMap(anchorMap); // Set the anchor map
+            Debug.Log("UWBLocator: Anchor map set.");
             uwb_start(); // Start the UWB plugin
+            Debug.Log("UWBLocator: Plugin started.");
             isInitialized = true;
             Debug.Log($"UWBLocator: Plugin initialized with {anchorMap} anchors.");
         }
