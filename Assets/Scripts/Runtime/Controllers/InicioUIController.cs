@@ -253,8 +253,7 @@ public class InicioUIController : MonoBehaviour
 
             // List roots to check for expected objects
             var roots = scene.GetRootGameObjects();
-            Debug.Log($"[InicioUIController] 'TestRoom' has {roots.Length} root GameObjects:");
-            Debug.Log("\t" + string.Join(", ", roots.Select(r => r.name)));
+            Debug.Log($"[InicioUIController] 'TestRoom' has {roots.Length} root GameObjects: " + string.Join(", ", roots.Select(r => r.name)));
 
             // Ensure NavMesh is available with a baked NavMesh or need a runtime build
             var surface = Object.FindAnyObjectByType<NavMeshSurface>();
@@ -278,11 +277,7 @@ public class InicioUIController : MonoBehaviour
                 else
                 {
                     Debug.Log("[InicioUIController] NavMeshSurface has valid baked data.");
-                    yield break; // NavMesh is ready, exit coroutine
                 }
-
-                surface.BuildNavMesh(); // Build the NavMesh
-                Debug.Log("[InicioUIController] NavMesh built successfully.");
             }
             else
             {
