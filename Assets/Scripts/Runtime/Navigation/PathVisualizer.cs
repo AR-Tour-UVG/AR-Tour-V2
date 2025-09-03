@@ -42,6 +42,7 @@ public class PathVisualizer : MonoBehaviour
         line.useWorldSpace = true;              // Corner positions are in world space
         line.alignment = LineAlignment.View;    // Align the line with the camera view
         line.widthMultiplier = width;           // Set the line width
+        Debug.Log("[PathVisualizer] Successfully initialized LineRenderer.");
     }
 
     /// <summary>
