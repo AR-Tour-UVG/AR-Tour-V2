@@ -1,7 +1,11 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Linq;
+using UnityEngine.Animations;
+using Unity.AI.Navigation;
 
 public class InicioUIController : MonoBehaviour
 {
@@ -208,7 +212,7 @@ public class InicioUIController : MonoBehaviour
 
     private IEnumerator LoadLogicThenShowEscaneo(string tipoRuta)
     {
-        // quick fade-out like before (optional)
+        // quick fade-out like before
         if (contenedorPrincipal != null)
         {
             contenedorPrincipal.RemoveFromClassList("fade-in-active");
@@ -217,30 +221,73 @@ public class InicioUIController : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
+        // Load the logic scene if not already loaded
         if (!s_LogicLoadedOrLoading)
         {
-            s_LogicLoadedOrLoading = true;
+            s_LogicLoadedOrLoading = true; // Set loading flag
 
-            // IMPORTANT: "TestRoom" must be added in File → Build Settings → Scenes In Build
+            // Load the scene asynchronously and additively (aka "multi-scene")
             var op = SceneManager.LoadSceneAsync("TestRoom", LoadSceneMode.Additive);
+
+            // Check if the operation is valid
             if (op == null)
             {
-                Debug.LogError("Failed to start loading scene 'TestRoom'. Check the scene name and Build Settings.");
-                s_LogicLoadedOrLoading = false;
+                Debug.LogError("[InicioUIController] Failed to start loading scene 'TestRoom'. Check the scene name and Build Settings.");
+                s_LogicLoadedOrLoading = false; // Reset loading flag
                 yield break;
             }
-            while (!op.isDone) yield return null;
 
-            // Make TestRoom the active scene so lighting/NavMesh work as expected
-            var logic = SceneManager.GetSceneByName("TestRoom");
-            if (logic.IsValid())
-                SceneManager.SetActiveScene(logic);
+            yield return op; // Wait for the operation to complete
+
+            // Make the scene active
+            var scene = SceneManager.GetSceneByName("TestRoom");
+            if (!scene.IsValid() || !scene.isLoaded)
+            {
+                Debug.LogError("[InicioUIController] 'TestRoom' is not valid or not loaded after asynchronous operation. Check the scene asset.");
+                s_LogicLoadedOrLoading = false; // Reset loading flag
+                yield break;
+            }
+
+            SceneManager.SetActiveScene(scene); // Activate the loaded scene
+            Debug.Log($"[InicioUIController] Successfully loaded and activated scene '{scene.name}'.");
+
+            // List roots to check for expected objects
+            var roots = scene.GetRootGameObjects();
+            Debug.Log($"[InicioUIController] 'TestRoom' has {roots.Length} root GameObjects: " + string.Join(", ", roots.Select(r => r.name)));
+
+            // Ensure NavMesh is available with a baked NavMesh or need a runtime build
+            var surface = Object.FindAnyObjectByType<NavMeshSurface>();
+            if (surface != null)
+            {
+                Debug.Log($"[InicioUIController] Found NavMeshSurface in {scene.name}. Checking for NavMesh data...");
+
+                // Let the component register its baked NavMeshData on this frame
+                yield return null;
+
+                // Calculate triangulation to ensure data is available
+                var triangulation = NavMesh.CalculateTriangulation();
+                if (triangulation.vertices.Length == 0 || triangulation.indices.Length == 0)
+                {
+                    Debug.LogWarning("[InicioUIController] No baked NavMesh detected. Building at runtime as a fallback...");
+                    var sw = System.Diagnostics.Stopwatch.StartNew(); // Start timing the build process
+                    surface.BuildNavMesh(); // Build the NavMesh
+                    sw.Stop(); // Stop timing
+                    Debug.Log($"[InicioUIController] NavMesh built in {sw.ElapsedMilliseconds}ms.");
+                }
+                else
+                {
+                    Debug.Log("[InicioUIController] NavMeshSurface has valid baked data.");
+                }
+            }
             else
-                Debug.LogWarning("Loaded 'TestRoom' but Scene is not valid? Check the scene asset.");
+            {
+                Debug.LogError("[InicioUIController] No NavMeshSurface found. Ensure a NavMesh is baked or add a surface.");
+            }
         }
-
         // Switch the overlay to Escaneo
         EstadoRuta.TipoRuta = tipoRuta;
+        Debug.Log($"[InicioUIController] The current route type is: {EstadoRuta.TipoRuta}");
         cambiador.MostrarEscaneo();
+        Debug.Log($"[InicioUIController] Switching overlay to Escaneo.");
     }
 }

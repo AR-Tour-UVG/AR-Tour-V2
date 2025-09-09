@@ -22,8 +22,11 @@ public struct Coordinate
 /// </summary>
 public static class UWBLocator
 {
+    public static bool IsInitialized => isInitialized;
+#if !UNITY_IOS || UNITY_EDITOR
     // Log-once guard for non-iOS/editor runs
     private static bool hasWarned = false;
+#endif
     private static bool isInitialized = false;
 
     // Check if the platform is iOS and import the required native functions
@@ -64,7 +67,7 @@ public static class UWBLocator
         // Warn only the firts time it runs on non iOS device
         if (!hasWarned)
         {
-            Debug.LogWarning("UWBLocator: Real time positioning is supported only on iOS device builds.");
+            Debug.LogWarning("[UWBLocator] Real time positioning is supported only on iOS device builds.");
             hasWarned = true; // Set the flag to true after the first warning
         }
         return false; // Not running on iOS, return false
@@ -73,7 +76,7 @@ public static class UWBLocator
         // Validate the pointer 
         if (coordsPtr == IntPtr.Zero)
         {
-            Debug.LogWarning("UWBLocator: getCoords() returned null pointer.");
+            Debug.LogWarning("[UWBLocator] getCoords() returned null pointer.");
             return false; // Failed to get coordinates
         }
 
@@ -82,12 +85,12 @@ public static class UWBLocator
         {
             // Read the JSON string from the pointer
             string json = Marshal.PtrToStringAnsi(coordsPtr);
-            Debug.Log($"UWBLocator: JSON from plugin: {json}");
+            Debug.Log($"[UWBLocator] JSON from plugin: {json}");
 
             // Filter invalid JSON or null coordinate cases
             if (string.IsNullOrEmpty(json) || json == "{}" || json.Contains("null"))
             {
-                Debug.LogWarning("UWBLocator: Received invalid JSON or null coordinates from UWB plugin.");
+                Debug.LogWarning("[UWBLocator] Received invalid JSON or null coordinates from UWB plugin.");
                 return false; // Invalid JSON or null coordinates
             }
 
@@ -99,34 +102,36 @@ public static class UWBLocator
         }
         catch (Exception ex)
         {
-            Debug.LogError($"UWBLocator: Failed to parse UWB position JSON. - {ex.Message}");
+            Debug.LogError($"[UWBLocator] Failed to parse UWB position JSON: {ex.Message}");
             return false; // Failed to parse JSON
         }
         finally
         {
             // Always free the allocated string
-            freeCString(coordsPtr); 
+            Debug.Log($"[UWBLocator] Freeing allocated string for coordinates.");
+            freeCString(coordsPtr);
         }
 #endif
     }
 
 
-/// <summary>
-/// Initializes the anchor map for the UWB plugin.
-/// </summary>
-/// <param name="anchorMap">The anchor map JSON string.</param>
+    /// <summary>
+    /// Initializes the anchor map for the UWB plugin.
+    /// </summary>
+    /// <param name="anchorMap">The anchor map JSON string.</param>
     public static void InitializeAnchorMap(string anchorMap)
     {
         if (isInitialized)
         {
             // Return early if already initialized
+            Debug.LogWarning("[UWBLocator] Anchor map is already initialized.");
             return;
         }
 
         // Check if the platform is iOS before attempting to initialize plugin
 #if !UNITY_IOS || UNITY_EDITOR
 
-        Debug.LogWarning("UWBLocator: Anchor map initialization is supported only on iOS device builds.");
+        Debug.LogWarning("[UWBLocator] Anchor map initialization is supported only on iOS device builds.");
         hasWarned = true; // Set the flag to true after the first warning
         // Set initialized flag
         return;
@@ -134,20 +139,22 @@ public static class UWBLocator
         // Check if the anchor map is null or empty
         if (string.IsNullOrWhiteSpace(anchorMap))
         {
-            Debug.LogWarning("UWBLocator: Anchor map is null or empty.");
+            Debug.LogWarning("[UWBLocator] Anchor map is null or empty.");
             return;
         }
 
         try
         {
             setAnchorMap(anchorMap); // Set the anchor map
+            Debug.Log("[UWBLocator] Anchor map set.");
             uwb_start(); // Start the UWB plugin
+            Debug.Log("[UWBLocator] Plugin started.");
             isInitialized = true;
-            Debug.Log($"UWBLocator: Plugin initialized with {anchorMap} anchors.");
+            Debug.Log($"[UWBLocator] Plugin initialized with {anchorMap} anchors.");
         }
         catch (Exception ex)
         {
-            Debug.LogError($"UWBLocator: Error initializing plugin: {ex.Message}");
+            Debug.LogError($"[UWBLocator] Error initializing plugin: {ex.Message}");
             isInitialized = false;
         }
 #endif
