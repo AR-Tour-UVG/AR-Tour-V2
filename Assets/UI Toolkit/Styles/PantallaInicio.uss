@@ -27,7 +27,6 @@
     transition-property: translate, opacity;
     transition-duration: 0.6s;
     transition-timing-function: ease-out;
-    transition-delay: 0.2s;
 }
 
 .slide-from-top {
@@ -53,14 +52,12 @@
     transition-property: translate, opacity;
     transition-duration: 0.6s;
     transition-timing-function: ease-out;
-    transition-delay: 0.4s;
 }
 
 #TextoARTour {
     transition-property: translate, opacity;
     transition-duration: 0.6s;
     transition-timing-function: ease-out;
-    transition-delay: 0.5s;
 }
 
 .text-slide-up {
@@ -80,21 +77,18 @@
     transition-property: translate, opacity, scale;
     transition-duration: 0.5s;
     transition-timing-function: ease-out;
-    transition-delay: 0.6s;
 }
 
 #ContenedorRutaCompleta {
     transition-property: translate, opacity, scale;
     transition-duration: 0.5s;
     transition-timing-function: ease-out;
-    transition-delay: 0.8s;
 }
 
 #ContenedorMinijuegos {
     transition-property: translate, opacity, scale;
     transition-duration: 0.5s;
     transition-timing-function: ease-out;
-    transition-delay: 1.0s;
 }
 
 .button-slide-in {
@@ -114,7 +108,7 @@
 /* Hover para botones - efecto lift y glow */
 #boton_ruta_express, #boton_ruta_completa, #boton_minijuegos {
     transition-property: scale, background-color;
-    transition-duration: 0.3s;
+    transition-duration: 0.5s;
     transition-timing-function: ease-out;
 }
 
@@ -167,7 +161,6 @@
     transition-property: opacity, scale;
     transition-duration: 0.6s;
     transition-timing-function: ease-out;
-    transition-delay: 1.2s;
 }
 
 .logo-fade-in {
