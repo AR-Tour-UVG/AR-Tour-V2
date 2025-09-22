@@ -142,7 +142,7 @@ PlayerSettings:
   tvOSBundleVersion: 1.0
   bundleVersion: 1.0
   preloadedAssets:
-  - {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -165,6 +165,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Standalone: com.DefaultCompany.2D-Project
+    iPhone: Uwb.uvg.edu.gt
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -551,6 +552,7 @@ PlayerSettings:
     iPhone: 1
     tvOS: 1
   m_BuildTargetGroupLightmapEncodingQuality: []
+  m_BuildTargetGroupHDRCubemapEncodingQuality: []
   m_BuildTargetGroupLightmapSettings: []
   m_BuildTargetGroupLoadStoreDebugModeSettings: []
   m_BuildTargetNormalMapEncoding: []
