@@ -24,10 +24,10 @@ public class CambiadorDePantallas : MonoBehaviour
         //}
         //else
         //{
-        //    MostrarInicio();
+        MostrarInicio();
         //}
-        PlayerPrefs.DeleteKey("OnboardingCompletado"); // Borrar para probar onboarding siempre
-        MostrarOnboarding(1);
+        // PlayerPrefs.DeleteKey("OnboardingCompletado"); // Borrar para probar onboarding siempre
+        // MostrarOnboarding(1);
     }
 
     private void ApagarTodas()
