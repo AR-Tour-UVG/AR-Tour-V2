@@ -27,19 +27,19 @@ public class EscaneoUIController : MonoBehaviour
 
         if (menuHamburguesaUXML == null)
         {
-            Debug.LogError("MenuHamburguesaUXML no está asignado en el inspector.");
+            Debug.LogError("[MenuHamburguesa] MenuHamburguesaUXML no está asignado en el inspector.");
             return;
         }
 
         if (menuHamburguesaController == null)
         {
-            Debug.LogError("MenuHamburguesaUIController no está asignado en el inspector.");
+            Debug.LogError("[MenuHamburguesa] MenuHamburguesaUIController no está asignado en el inspector.");
             return;
         }
 
         if (cambiador == null)
         {
-            Debug.LogWarning("CambiadorDePantallas no está asignado en el inspector. El botón de simular conexión no funcionará.");
+            Debug.LogWarning("[CambiadorDePantallas] CambiadorDePantallas no está asignado en el inspector. El botón de simular conexión no funcionará.");
         }
 
         // Cargar fonts con la ruta correcta
@@ -50,19 +50,19 @@ public class EscaneoUIController : MonoBehaviour
         if (outfitSemiBold == null)
         {
             outfitSemiBold = Resources.Load<Font>("UI Toolkit/Fonts/TTF/Outfit-SemiBold");
-            Debug.Log("Intentando cargar font con ruta alternativa");
+            Debug.Log("[EscaneoUI] Intentando cargar font con ruta alternativa");
         }
 
         if (outfitRegular == null)
         {
             outfitRegular = Resources.Load<Font>("UI Toolkit/Fonts/TTF/Outfit-Regular");
-            Debug.Log("Intentando cargar font con ruta alternativa");
+            Debug.Log("[EscaneoUI] Intentando cargar font con ruta alternativa");
         }
 
         if (outfitSemiBold == null)
-            Debug.LogWarning("No se pudo cargar la font Outfit-SemiBold. Verifica que esté en Resources/UI Toolkit/Fonts/");
+            Debug.LogWarning("[EscaneoUI] No se pudo cargar la font Outfit-SemiBold. Verifica que esté en Resources/UI Toolkit/Fonts/");
         if (outfitRegular == null)
-            Debug.LogWarning("No se pudo cargar la font Outfit-Regular. Verifica que esté en Resources/UI Toolkit/Fonts/");
+            Debug.LogWarning("[EscaneoUI] No se pudo cargar la font Outfit-Regular. Verifica que esté en Resources/UI Toolkit/Fonts/");
 
         // Crear menú programáticamente mejorado
         CrearMenuProgramatico(outfitSemiBold, outfitRegular);
@@ -75,6 +75,7 @@ public class EscaneoUIController : MonoBehaviour
         botonSimular = root.Q<Button>("BotonSimularSensores");
         if (botonSimular != null)
         {
+            Debug.Log("[EscaneoUI] Hiding simulate button on iOS");
             botonSimular.style.display = DisplayStyle.None;
         }
         _connected = false;
@@ -129,12 +130,12 @@ public class EscaneoUIController : MonoBehaviour
         if (outfitSemiBold != null)
         {
             tituloProgrammatico.style.unityFont = outfitSemiBold;
-            Debug.Log("Font Outfit-SemiBold aplicada al título");
+            Debug.Log("[EscaneoUI] Font Outfit-SemiBold aplicada al título");
         }
 
         // Botón cerrar sin fondo ni bordes
         var btnCerrarProgrammatico = new Button(() => {
-            Debug.Log("Cerrando menú programático");
+            Debug.Log("[EscaneoUI] Cerrando menú programático");
             menuOverlayProgrammatico.style.display = DisplayStyle.None;
         })
         { name = "boton_cerrar_programmatico", text = "✖" };
@@ -181,7 +182,7 @@ public class EscaneoUIController : MonoBehaviour
         foreach (string opcion in opcionesMenu)
         {
             var btnOpcion = new Button(() => {
-                Debug.Log($"Opción clickeada: {opcion}");
+                Debug.Log($"[EscaneoUI] Opción clickeada: {opcion}");
 
                 // Cerrar menú primero
                 menuOverlayProgrammatico.style.display = DisplayStyle.None;
@@ -194,16 +195,16 @@ public class EscaneoUIController : MonoBehaviour
                             cambiador.MostrarInicio();
                         break;
                     case "Reconectar Sensores":
-                        Debug.Log("Reconectando sensores...");
+                        Debug.Log("[EscaneoUI] Reconectando sensores...");
                         break;
                     case "Reiniciar Tour":
-                        Debug.Log("Reiniciando tour...");
+                        Debug.Log("[EscaneoUI] Reiniciando tour...");
                         break;
                     case "Diagnóstico de Conexión":
-                        Debug.Log("Mostrando diagnóstico...");
+                        Debug.Log("[EscaneoUI] Mostrando diagnóstico...");
                         break;
                     case "Reportar un Problema":
-                        Debug.Log("Abriendo reporte...");
+                        Debug.Log("[EscaneoUI] Abriendo reporte...");
                         break;
                 }
             })
@@ -232,7 +233,7 @@ public class EscaneoUIController : MonoBehaviour
             if (outfitRegular != null)
             {
                 btnOpcion.style.unityFont = outfitRegular;
-                Debug.Log($"Font Outfit-Regular aplicada a botón: {opcion}");
+                Debug.Log($"[EscaneoUI] Font Outfit-Regular aplicada a botón: {opcion}");
             }
 
             // Efectos hover
@@ -261,8 +262,8 @@ public class EscaneoUIController : MonoBehaviour
         menuHamburguesaVisual = menuOverlayProgrammatico;
         menuInicializado = true;
 
-        Debug.Log("Menú programático creado exitosamente");
-        Debug.Log($"Menú agregado al root. Índice: {root.IndexOf(menuOverlayProgrammatico)}");
+        Debug.Log("[EscaneoUI] Menú programático creado exitosamente");
+        Debug.Log($"[EscaneoUI] Menú agregado al root. Índice: {root.IndexOf(menuOverlayProgrammatico)}");
     }
 
     private void ConfigurarBotonHamburguesa()
@@ -271,15 +272,15 @@ public class EscaneoUIController : MonoBehaviour
         if (botonMenuHamburguesa != null)
         {
             onHambClickHandler = (ClickEvent evt) => {
-                Debug.Log("Click en menú hamburguesa detectado");
+                Debug.Log("[EscaneoUI] Click en menú hamburguesa detectado");
                 MostrarMenuProgramatico();
             };
             botonMenuHamburguesa.RegisterCallback(onHambClickHandler);
-            Debug.Log("Botón hamburguesa configurado correctamente");
+            Debug.Log("[EscaneoUI] Botón hamburguesa configurado correctamente");
         }
         else
         {
-            Debug.LogError("No se encontró el VisualElement 'icono_menu_hamburguesa' en el UXML.");
+            Debug.LogError("[EscaneoUI] No se encontró el VisualElement 'icono_menu_hamburguesa' en el UXML.");
         }
     }
 
@@ -287,7 +288,7 @@ public class EscaneoUIController : MonoBehaviour
     {
         if (!menuInicializado)
         {
-            Debug.LogError("El menú no está inicializado");
+            Debug.LogError("[EscaneoUI] El menú no está inicializado");
             return;
         }
 
@@ -296,11 +297,11 @@ public class EscaneoUIController : MonoBehaviour
         {
             menuOverlay.style.display = DisplayStyle.Flex;
             menuOverlay.BringToFront();
-            Debug.Log("Menú programático mostrado y traído al frente");
+            Debug.Log("[EscaneoUI] Menú programático mostrado y traído al frente");
         }
         else
         {
-            Debug.LogError("No se encontró el menu_overlay_programmatico");
+            Debug.LogError("[EscaneoUI] No se encontró el menu_overlay_programmatico");
         }
     }
 
@@ -325,12 +326,14 @@ public class EscaneoUIController : MonoBehaviour
             {
                 if (cambiador != null)
                 {
-                    Debug.Log("[BYPASS] Simulando conexión de 3 sensores...");
+                    Debug.Log("[BYPASS] Simulating UWB connection. Using Keyboard Agent to move.");
+                    // Switched to Simulate mode in ControlModeBootstrap
+                    // Move to Tour overlay
                     cambiador.MostrarTour();
                 }
                 else
                 {
-                    Debug.LogError("CambiadorDePantallas no está asignado en el inspector.");
+                    Debug.LogError("[CambiadorDePantallas] CambiadorDePantallas no está asignado en el inspector.");
                 }
             };
 #endif

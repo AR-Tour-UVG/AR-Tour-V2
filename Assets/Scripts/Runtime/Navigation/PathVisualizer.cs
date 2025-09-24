@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 /// <summary>
 /// Visualizes the NavMesh path using a LineRenderer component.
@@ -9,6 +10,7 @@ public class PathVisualizer : MonoBehaviour
     [Header("References")]
     [Tooltip("Reference to the AgentController that manages the NavMesh path.")]
     public NavigationAgent controller;
+    public Transform target; // fallback when UWB controller is off
 
     [Header("Path Drawing Settings")]
     [Tooltip("Vertical offset above the floor to avoid z-fighting.")]
@@ -31,7 +33,7 @@ public class PathVisualizer : MonoBehaviour
     private LineRenderer line;                      // LineRenderer used to visualize the path
     private float nextUpdate;                       // Next allowed update time
     private Vector3[] lastCorners = System.Array.Empty<Vector3>();  // Previously drawn path corners
-
+    private NavMeshPath tempPath;// Temporary path for calculations
 
     /// <summary>
     /// Initializes the LineRenderer component.
@@ -42,6 +44,7 @@ public class PathVisualizer : MonoBehaviour
         line.useWorldSpace = true;              // Corner positions are in world space
         line.alignment = LineAlignment.View;    // Align the line with the camera view
         line.widthMultiplier = width;           // Set the line width
+        tempPath = new NavMeshPath();           // Initialize the temporary path
         Debug.Log("[PathVisualizer] Successfully initialized LineRenderer.");
     }
 
@@ -50,15 +53,30 @@ public class PathVisualizer : MonoBehaviour
     /// </summary>
     void LateUpdate()
     {
-        // Check if the controller is assigned
-        if (!controller) return;
-
         // throttle updates
         if (Time.time < nextUpdate) return; // If the current time is less than the next update time, return
         nextUpdate = Time.time + 1f / Mathf.Max(1f, updateHz); // Update the next allowed time
 
-        // Get the current path from the controller
-        var path = controller.GetCurrentPath();
+        // Try UWB controller-provided path first
+        NavMeshPath path = null;
+        if (controller && controller.enabled)
+        {
+            // Get the current path from the UWB controller
+            path = controller.GetCurrentPath();
+        }
+
+        // Fallback: compute path to target when keyboard controller is used
+        if ((path == null || path.corners == null || path.corners.Length < 2) && target != null)
+        {
+            Vector3 from = controller ? controller.transform.position : transform.position;
+            if (NavMesh.CalculatePath(from, target.position, NavMesh.AllAreas, tempPath) &&
+                tempPath.corners != null && tempPath.corners.Length >= 2)
+            {
+                // Use the computed path if valid
+                path = tempPath;
+            }
+        }
+        
         // Check if the path is valid
         if (path == null || path.corners == null || path.corners.Length < 2)
         {
