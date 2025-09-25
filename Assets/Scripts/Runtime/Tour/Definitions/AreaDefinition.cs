@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewAreaDefinition", menuName = "Tour/Area Definition")]
+[CreateAssetMenu(fileName = "NewAreaDefinition", menuName = "AR-Tour/Area Definition")]
 public class AreaDefinition : ScriptableObject
 {
     [Header("Area Info")]
@@ -9,7 +9,7 @@ public class AreaDefinition : ScriptableObject
     [SerializeField] private string areaName;
     [Tooltip("Directions to the next area (if applicable)")]
     [SerializeField] private string nextAreaDirections; 
-    [Header("Content References (Resources folder)")]
+    [Header("Content References")]
     [Tooltip("Text file containing area description")]
     [SerializeField] private TextAsset areaText;          // put your .txt file here
     [Tooltip("List of audio clips for the area")]
