@@ -79,7 +79,7 @@ public class InicioUIController : MonoBehaviour
         if (botonMinijuegos != null)
         {
             // Deshabilitar temporalmente
-            botonCompleta.SetEnabled(false);
+            botonMinijuegos.SetEnabled(false);
 
             botonMinijuegos.clicked += () =>
             {
@@ -103,7 +103,7 @@ public class InicioUIController : MonoBehaviour
             contenedorPrincipal.AddToClassList("fade-in-active");
         }
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
 
         // 2. Slide del contenedor bienvenida desde arriba
         if (contenedorBienvenida != null)
@@ -112,7 +112,7 @@ public class InicioUIController : MonoBehaviour
             contenedorBienvenida.AddToClassList("slide-from-top-active");
         }
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
 
         // 3. Activar flotación del logo
         if (logoARTour != null)
@@ -120,7 +120,7 @@ public class InicioUIController : MonoBehaviour
             logoARTour.AddToClassList("floating-logo");
         }
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
 
         // 4. Textos de bienvenida
         if (textoBienvenida != null)
@@ -129,7 +129,7 @@ public class InicioUIController : MonoBehaviour
             textoBienvenida.AddToClassList("text-slide-up-active");
         }
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
 
         if (textoARTour != null)
         {
@@ -137,7 +137,7 @@ public class InicioUIController : MonoBehaviour
             textoARTour.AddToClassList("text-slide-up-active");
         }
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
 
         // 5. Botones de ruta (escalonados)
         if (contenedorRutaExpress != null)
@@ -146,7 +146,7 @@ public class InicioUIController : MonoBehaviour
             contenedorRutaExpress.AddToClassList("button-slide-in-active");
         }
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
 
         if (contenedorRutaCompleta != null)
         {
@@ -154,7 +154,7 @@ public class InicioUIController : MonoBehaviour
             contenedorRutaCompleta.AddToClassList("button-slide-in-active");
         }
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
 
         if (contenedorMinijuegos != null)
         {
@@ -162,7 +162,7 @@ public class InicioUIController : MonoBehaviour
             contenedorMinijuegos.AddToClassList("button-slide-in-active");
         }
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
 
         // 6. Logo UVG al final
         if (logoUvg != null)
