@@ -7,6 +7,8 @@ using UnityEngine.InputSystem; // new input system
 /// Uses the new Input System package.
 /// Moves the target transform directly.
 /// </summary>
+/// <remarks>Attach to the player object or an empty GameObject.</remarks>
+[RequireComponent(typeof(Rigidbody))]
 public class KeyboardPositioning : MonoBehaviour
 {
     [Header("Movement")]
@@ -22,6 +24,12 @@ public class KeyboardPositioning : MonoBehaviour
     private void Awake()
     {
         if (target == null) target = transform;
+        var rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+        rb.useGravity = false;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        gameObject.tag = "Player";
     }
 
     /// <summary>

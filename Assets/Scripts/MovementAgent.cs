@@ -6,6 +6,8 @@ using UnityEngine;
 /// On iOS device: UWB positioning.
 /// On other platforms: none.
 /// </summary>
+/// <remarks>Attach to the player object or an empty GameObject.</remarks>
+
 [DisallowMultipleComponent]
 [RequireComponent(typeof(KeyboardPositioning))]
 [RequireComponent(typeof(UWBPositioning))]

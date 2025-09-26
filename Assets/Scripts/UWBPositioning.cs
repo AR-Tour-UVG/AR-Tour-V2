@@ -6,6 +6,8 @@ using System.Collections;
 /// <summary>
 /// Moves a target object based on UWBLocator positions, with filtering and NavMesh clamping.
 /// </summary>
+/// <remarks>Attach to the player object or an empty GameObject.</remarks>
+[RequireComponent(typeof(Rigidbody))]
 public class UWBPositioning : MonoBehaviour
 {
     [Header("Polling")]
@@ -60,6 +62,12 @@ public class UWBPositioning : MonoBehaviour
     private void Awake()
     {
         if (target == null) target = transform;
+        var rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+        rb.useGravity = false;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        gameObject.tag = "Player";
     }
 
     /// <summary> 
