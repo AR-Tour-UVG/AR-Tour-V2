@@ -15,5 +15,6 @@ MonoBehaviour:
   floorName: TestRoom
   orderedAreas:
   - {fileID: 11400000, guid: 135dc62c2f59f2e408777f7e95a24a0b, type: 2}
+  anchorMapJson: {fileID: 4900000, guid: 64746f1696bc09147ae79270929e1038, type: 3}
   scenePath: Assets/Scenes/TestRoom.unity
   sceneAsset: {fileID: 102900000, guid: 1541038be87fd8a4fb8e9d4de041a419, type: 3}
