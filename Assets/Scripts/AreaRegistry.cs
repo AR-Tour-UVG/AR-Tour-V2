@@ -10,18 +10,10 @@ public class AreaRegistry : MonoBehaviour
     /// <summary>All discovered area GameObjects in this scene.</summary>
     public IReadOnlyCollection<GameObject> AllObjects => _byDef.Values;
 
-    private void Awake() => Refresh();
-
     /// <summary>Re-scan the scene for AreaInstance components.</summary>
     public void Refresh()
     {
-    #if UNITY_2023_1_OR_NEWER
-        var found = FindObjectsByType<AreaInstance>(
-            FindObjectsInactive.Include, FindObjectsSortMode.None);
-    #else
-        var found = FindObjectsOfType<AreaInstance>(includeInactive: true);
-    #endif
-
+        var found = FindObjectsByType<AreaInstance>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         _byDef.Clear();
         foreach (var ai in found)
         {

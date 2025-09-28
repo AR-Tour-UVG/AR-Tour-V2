@@ -623,6 +623,7 @@ GameObject:
   - component: {fileID: 706870615}
   - component: {fileID: 706870616}
   - component: {fileID: 706870617}
+  - component: {fileID: 706870618}
   m_Layer: 0
   m_Name: FloorRoot
   m_TagString: Untagged
@@ -674,6 +675,19 @@ MonoBehaviour:
   floor: {fileID: 11400000, guid: 8b831e1696b720a4fb1b39fb3d07ad85, type: 2}
   disableNonFloorAreas: 1
   enterConfirmTime: 0.75
+--- !u!114 &706870618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706870614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9cb56e76eeed94eb7fcaac7baeb8f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: {fileID: 11400000, guid: 8b831e1696b720a4fb1b39fb3d07ad85, type: 2}
 --- !u!1001 &769140342
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ using UnityEngine.InputSystem;
 /// - Disables visited areas to avoid retriggers
 /// </summary>
 [DisallowMultipleComponent]
+[DefaultExecutionOrder(400)]
 public class FloorManager : MonoBehaviour
 {
     [Header("Inputs")]
@@ -38,12 +39,17 @@ public class FloorManager : MonoBehaviour
 
     public System.Action<FloorManager> FloorCompleted;
 
-    private void Awake()
+    private void Start()
     {
-        if (!floor) { Debug.LogError("[FloorManager] Missing FloorDefinition.", this); enabled = false; return; }
-
-        registry      = registry      ? registry      : FindFirstObjectByType<AreaRegistry>(FindObjectsInactive.Include);
-        pathProvider  = pathProvider  ? pathProvider  : FindFirstObjectByType<PathProvider>(FindObjectsInactive.Include);
+        if (!floor)
+        {
+            Debug.LogError("[FloorManager] Missing FloorDefinition.", this);
+            enabled = false;
+            return;
+        }
+        // Here the Area registry call?
+        registry = registry ? registry : FindFirstObjectByType<AreaRegistry>(FindObjectsInactive.Include);
+        pathProvider = pathProvider ? pathProvider : FindFirstObjectByType<PathProvider>(FindObjectsInactive.Include);
         movementAgent = movementAgent ? movementAgent : FindFirstObjectByType<MovementAgent>(FindObjectsInactive.Include);
 
         if (!registry || !pathProvider || !movementAgent)
@@ -52,6 +58,8 @@ public class FloorManager : MonoBehaviour
             enabled = false;
             return;
         }
+        // Ensure all AreaInstances are indexed (after scene load)
+        registry.Refresh();
 
         BuildSequence();
         WireAreaEvents(true);
@@ -60,6 +68,7 @@ public class FloorManager : MonoBehaviour
         movementAgent.Enable(false);
         pathProvider.Paused = true;
         pathProvider.ClearTarget();
+        Debug.Log($"[FloorManager] Floor Initialization Complete. Waiting for UserReady().");
     }
 
     private void OnDestroy()
@@ -183,7 +192,7 @@ public class FloorManager : MonoBehaviour
             Debug.Log($"[FloorManager] Setting area '{go.name}' active={allowed.Contains(go)}");
             go.SetActive(allowed.Contains(go));
         }
-        Debug.Log($"[FloorManager] Ready. Areas in sequence: {_sequence.Count}. Waiting for UserReady().");
+        Debug.Log($"[FloorManager] Completed area visibility pass. Enabled {_sequence.Count} areas, disabled {registry.AllObjects.Count - _sequence.Count} non-floor areas.", this);
     }
 
     private void WireAreaEvents(bool on)
