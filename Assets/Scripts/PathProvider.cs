@@ -1,4 +1,4 @@
-// PathProvider.cs (minimal, no agent, no snap)
+// PathProvider.cs (minimal + optional Inspector target)
 using System;
 using UnityEngine;
 using UnityEngine.AI;
@@ -6,39 +6,39 @@ using UnityEngine.AI;
 [DisallowMultipleComponent]
 public class PathProvider : MonoBehaviour
 {
-    [Header("Refs")]
-    [SerializeField] private Transform player;   // defaults to this.transform
-    [SerializeField] private Transform target;   // optional; you can ignore if using BoxCollider API
-
     [Header("Settings")]
     [SerializeField] private float sampleRadius = 2f;
     [SerializeField] private float recomputeThreshold = 0.01f;
 
-    public bool Paused;
+    [Header("Optional")]
+    [Tooltip("Assign an Area GameObject in the scene to start with (uses its BoxCollider center).")]
+    [SerializeField] private GameObject initialTarget;
 
+    public bool Paused;
     public NavMeshPath CurrentPath { get; private set; }
     public event Action<NavMeshPath> OnPathUpdated;
 
     private Vector3 _lastPlayerPos = Vector3.positiveInfinity;
     private Vector3 _lastTargetPos = Vector3.positiveInfinity;
-    private bool _usePointTarget = false;
-    private Vector3 _pointTarget;
-
-    private void Reset() { player = transform; }
+    private bool _hasTargetPoint = false;
+    private Vector3 _targetPoint;
 
     private void Awake()
     {
-        if (player == null) player = transform;
         CurrentPath = new NavMeshPath();
+    }
+
+    private void Start()
+    {
+        if (initialTarget) SetTarget(initialTarget);
     }
 
     private void Update()
     {
-        if (Paused || player == null) return;
+        if (Paused || !_hasTargetPoint) return;
 
-        Vector3 p = player.position;
-        Vector3 t = _usePointTarget ? _pointTarget : (target == null ? p : target.position);
-        if (target == null && !_usePointTarget) return;
+        Vector3 p = transform.position;     // player = this transform
+        Vector3 t = _targetPoint;
 
         float threshSq = recomputeThreshold * recomputeThreshold;
         if ((p - _lastPlayerPos).sqrMagnitude < threshSq &&
@@ -54,21 +54,28 @@ public class PathProvider : MonoBehaviour
         }
     }
 
-    // Public API
-    public void SetTarget(BoxCollider areaBox)
+    public void SetTarget(GameObject areaGO)
     {
-        if (areaBox == null) return;
-        _usePointTarget = true;
-        _pointTarget = areaBox.transform.TransformPoint(areaBox.center);
-        target = null;
+        if (!areaGO) return;
+
+        var ai = areaGO.GetComponent<AreaInstance>();
+        var box = ai ? ai.NavTarget : areaGO.GetComponent<BoxCollider>();
+        if (!box)
+        {
+            Debug.LogWarning("[PathProvider] Target GameObject has no AreaInstance/BoxCollider.");
+            return;
+        }
+
+        _targetPoint = box.transform.TransformPoint(box.center);
+        _hasTargetPoint = true;
         ForceRecompute();
     }
 
-    public void SetTarget(Transform newTarget)
+    public void ClearTarget()
     {
-        _usePointTarget = false;
-        target = newTarget;
-        ForceRecompute();
+        _hasTargetPoint = false;
+        CurrentPath = null;
+        OnPathUpdated?.Invoke(CurrentPath);
     }
 
     public void ForceRecompute()
@@ -77,14 +84,6 @@ public class PathProvider : MonoBehaviour
         _lastTargetPos = Vector3.positiveInfinity;
     }
 
-    public bool TryGetCorners(out Vector3[] corners)
-    {
-        if (CurrentPath == null || CurrentPath.corners == null || CurrentPath.corners.Length == 0)
-        { corners = Array.Empty<Vector3>(); return false; }
-        corners = CurrentPath.corners; return true;
-    }
-
-    // Core: static calc; never moves the player
     private bool TryComputePath(Vector3 from, Vector3 to, out NavMeshPath path)
     {
         path = new NavMeshPath();
@@ -97,14 +96,4 @@ public class PathProvider : MonoBehaviour
 
         return true;
     }
-
-#if UNITY_EDITOR
-    private void OnDrawGizmosSelected()
-    {
-        if (CurrentPath == null || CurrentPath.corners == null || CurrentPath.corners.Length < 2) return;
-        Gizmos.color = Color.yellow;
-        var c = CurrentPath.corners;
-        for (int i = 0; i < c.Length - 1; i++) Gizmos.DrawLine(c[i], c[i + 1]);
-    }
-#endif
 }

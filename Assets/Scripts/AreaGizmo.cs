@@ -3,7 +3,7 @@ using UnityEngine;
 
 [ExecuteAlways]
 [RequireComponent(typeof(BoxCollider))]
-public class AreaTriggerGizmo : MonoBehaviour
+public class AreaGizmo : MonoBehaviour
 {
     public bool showInPlayMode = true;
     public bool drawSolid = true;

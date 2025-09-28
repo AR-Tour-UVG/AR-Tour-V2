@@ -14,7 +14,7 @@ public class FloorDefinition : ScriptableObject
 
     [Header("Content References")]
     [Tooltip("List of areas in the order they should be visited on this floor.")]
-    [SerializeField] private List<AreaDefinition> orderedAreas = new List<AreaDefinition>();
+    [SerializeField] private List<AreaDefinition> orderedAreas = new();
     [Tooltip("JSON file with anchors for this floor (TextAsset).")]
     [SerializeField] private TextAsset anchorMapJson;
 

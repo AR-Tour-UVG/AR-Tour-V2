@@ -3,18 +3,22 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(LineRenderer))]
-public class SimplePathRenderer : MonoBehaviour
+[RequireComponent(typeof(PathProvider))]
+public class PathRenderer : MonoBehaviour
 {
-    [SerializeField] private PathProvider provider;
     [SerializeField, Range(0f, 0.05f)] private float yOffset = 0.015f;
     [SerializeField, Range(0.01f, 1f)]  private float width = 0.05f;
-
+    private PathProvider provider;
     private LineRenderer line;
 
-    private void Reset() { provider = GetComponent<PathProvider>(); }
+    private void Reset()
+    {
+        provider = GetComponent<PathProvider>();
+    }
 
     private void Awake()
     {
+        provider = GetComponent<PathProvider>();
         line = GetComponent<LineRenderer>();
         line.useWorldSpace = true;
         line.alignment = LineAlignment.View;
