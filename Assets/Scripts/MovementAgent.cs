@@ -18,14 +18,24 @@ public class MovementAgent : MonoBehaviour
     [SerializeField] private KeyboardPositioning editorMover;
     [Tooltip("UWB positioning (iOS device only)")]
     [SerializeField] private UWBPositioning uwbMover;
-#if !UNITY_EDITOR
-    [Tooltip("Automatically start UWB tracking on enable")]
-    [SerializeField] private bool autoStartUWB = true; // calls StartTracking on enable
+
+
+    public bool IsEnabled
+    {
+        get
+        {
+#if UNITY_EDITOR
+            return editorMover && editorMover.enabled;
+#else
+            return uwbMover && uwbMover.enabled;
 #endif
+        }
+    }
+
     private void Reset()
     {
         editorMover = GetComponent<KeyboardPositioning>();
-        uwbMover    = GetComponent<UWBPositioning>();
+        uwbMover = GetComponent<UWBPositioning>();
     }
 
     private void Awake()
@@ -33,20 +43,40 @@ public class MovementAgent : MonoBehaviour
         // Default: disable both until a target is chosen
         SafeEnable(editorMover, false);
         SafeEnable(uwbMover, false);
+    }
 
+    private void OnDisable()
+    {
+#if UNITY_IOS && !UNITY_EDITOR
+        // Stop UWB if active
+        if (uwbMover != null && uwbMover.IsTracking) uwbMover.StopTracking();
+#else
+        // Stop keyboard if active
+        if (editorMover != null ) editorMover.enabled = false;
+#endif
+    }
+
+
+    public void Enable(bool on)
+    {
 #if UNITY_EDITOR
         // In Editor: keyboard movement
-        SafeEnable(editorMover, true);
-        Debug.Log("[MovementAgent] Using keyboard movement (Editor Mode)");
-#else
+        SafeEnable(editorMover, on);
+        Debug.Log(on ? "[MovementAgent] Keyboard Control ON" : "[MovementAgent] Keyboard Control OFF");
+#elif UNITY_IOS && !UNITY_EDITOR
         // On device: prefer iOS+UWB, else none
-        if (Application.platform == RuntimePlatform.IPhonePlayer && uwbMover != null)
+        SafeEnable(uwbMover, on);
+        Debug.Log(on ? "[MovementAgent] UWB Positioning ON (iOS device)" : "[MovementAgent] UWB Positioning OFF (iOS device)");
+        if (uwbMover)
         {
-            SafeEnable(uwbMover, true);
-            Debug.Log("[MovementAgent] Using UWB positioning (iOS device)");
-            if (autoStartUWB) uwbMover.StartTracking();
+            if (on) uwbMover.StartTracking();
+            else    uwbMover.StopTracking();
         }
+#else
         // else: leave both disabled (e.g., Android/Standalone build)
+        SafeEnable(uwbMover, false);
+        SafeEnable(editorMover, false);
+        Debug.Log("[MovementAgent] No movement enabled (unsupported platform)");
 #endif
     }
 
