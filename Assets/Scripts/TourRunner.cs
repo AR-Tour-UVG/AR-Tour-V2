@@ -12,6 +12,7 @@ public class TourRunner : MonoBehaviour
     private FloorManager activeFM;
     private string loadedScenePath;
     private Scene baseScene; // Reference to the initial scene (main menu)
+    private Camera _fallbackCamera;
 
     void Awake()
     {
@@ -42,6 +43,7 @@ public class TourRunner : MonoBehaviour
 
     private IEnumerator LoadFloorAt(int idx)
     {
+        DisableFallbackCamera(); // Floor will provide its own cameras
         var floor = currentTour.OrderedFloors[idx];
         if (!floor) { Debug.LogError("[TourRunner] Null floor asset."); yield break; }
         if (string.IsNullOrEmpty(floor.ScenePath))
@@ -100,11 +102,40 @@ public class TourRunner : MonoBehaviour
         {
             SceneManager.SetActiveScene(baseScene);
         }
+        yield return null; // wait a frame
+        EnsureFallbackCamera(); // in case the base scene has no active cameras
 
         floorIndex++;
         if (currentTour == null || floorIndex >= currentTour.OrderedFloors.Count)
-        { Debug.Log("[TourRunner] Tour complete."); yield break; }
+        {
+            Debug.Log("[TourRunner] Tour complete.");
+            yield break;
+        }
 
         yield return LoadFloorAt(floorIndex);
+    }
+
+    private void EnsureFallbackCamera()
+    {
+        // If any enabled camera exists, do nothing
+        foreach (var cam in Camera.allCameras)
+            if (cam && cam.enabled) return;
+
+        if (_fallbackCamera == null)
+        {
+            var go = new GameObject("FallbackClearCamera");
+            DontDestroyOnLoad(go);
+            _fallbackCamera = go.AddComponent<Camera>();
+            _fallbackCamera.clearFlags = CameraClearFlags.SolidColor;
+            _fallbackCamera.backgroundColor = Color.black;  // or whatever
+            _fallbackCamera.cullingMask = 0;                // Nothing
+            _fallbackCamera.depth = -100;
+        }
+        _fallbackCamera.enabled = true;
+    }
+
+    private void DisableFallbackCamera()
+    {
+        if (_fallbackCamera) _fallbackCamera.enabled = false;
     }
 }
