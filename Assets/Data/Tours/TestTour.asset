@@ -15,3 +15,4 @@ MonoBehaviour:
   tourName: TestTour
   orderedFloors:
   - {fileID: 11400000, guid: 8b831e1696b720a4fb1b39fb3d07ad85, type: 2}
+  - {fileID: 11400000, guid: 0d2bfbb1a5c35294fab80ca5a63c052b, type: 2}
