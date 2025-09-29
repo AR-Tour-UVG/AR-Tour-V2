@@ -79,11 +79,11 @@ public class FloorManager : MonoBehaviour
     private void Update()
     {
 #if UNITY_EDITOR
-        if (Keyboard.current.nKey.IsPressed())
+        if (Keyboard.current.nKey.wasPressedThisFrame)
         {
             Next();
         }
-        if (Keyboard.current.rKey.IsPressed())
+        if (Keyboard.current.rKey.wasPressedThisFrame)
         {
             UserReady();
         }

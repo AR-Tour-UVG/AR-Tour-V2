@@ -488,6 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d3f3ef5cc9e46498c2a4104bdffc53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tourExpress: {fileID: 11400000, guid: 65ff702a00890d3419f65b3d05b11a47, type: 2}
   cambiador: {fileID: 717029222}
 --- !u!1 &717029221
 GameObject:
@@ -546,6 +547,51 @@ Transform:
   - {fileID: 510312501}
   - {fileID: 5299382}
   - {fileID: 307712973}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &795396181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 795396183}
+  - component: {fileID: 795396182}
+  m_Layer: 0
+  m_Name: TourRunner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &795396182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795396181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f40e496ff7c3449b87e554681889f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTour: {fileID: 0}
+--- !u!4 &795396183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795396181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.6650007, y: 0.65000015, z: 1.2850002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691136843
@@ -765,3 +811,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 717029223}
   - {fileID: 1691136846}
+  - {fileID: 795396183}
