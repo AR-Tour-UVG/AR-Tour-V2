@@ -442,6 +442,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 299230540185786602, guid: 9457f49f4575afa489bab41feb533025, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: ae000ab6994a447c5a776dcefa9a03bc, type: 2}
     - target: {fileID: 1884429505515755407, guid: 9457f49f4575afa489bab41feb533025, type: 3}
       propertyPath: m_Name
       value: FloorRoot
