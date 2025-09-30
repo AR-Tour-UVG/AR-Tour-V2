@@ -49,7 +49,7 @@ public class MovementAgent : MonoBehaviour
     {
 #if UNITY_IOS && !UNITY_EDITOR
         // Stop UWB if active
-        if (uwbMover != null && uwbMover.IsTracking) uwbMover.StopTracking();
+        if (uwbMover != null) uwbMover.StopTracking();
 #else
         // Stop keyboard if active
         if (editorMover != null ) editorMover.enabled = false;
@@ -62,11 +62,11 @@ public class MovementAgent : MonoBehaviour
 #if UNITY_EDITOR
         // In Editor: keyboard movement
         SafeEnable(editorMover, on);
-        Debug.Log(on ? "[MovementAgent] Keyboard Control ON" : "[MovementAgent] Keyboard Control OFF");
+        Debug.Log("[MovementAgent] Keyboard Control ON (Editor)");
 #elif UNITY_IOS && !UNITY_EDITOR
         // On device: prefer iOS+UWB, else none
         SafeEnable(uwbMover, on);
-        Debug.Log(on ? "[MovementAgent] UWB Positioning ON (iOS device)" : "[MovementAgent] UWB Positioning OFF (iOS device)");
+        Debug.Log("[MovementAgent] UWB Positioning ON (iOS device)");
         if (uwbMover)
         {
             if (on) uwbMover.StartTracking();

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 
-#if UNITY_IOS && !UNITY_EDITOR
 /// <summary>
 /// Moves a target object based on UWBLocator positions, with filtering and NavMesh clamping.
 /// </summary>
@@ -61,6 +60,7 @@ public class UWBPositioning : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+#if UNITY_IOS && !UNITY_EDITOR
         if (target == null) target = transform;
         var rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
@@ -68,6 +68,10 @@ public class UWBPositioning : MonoBehaviour
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         gameObject.tag = "Player";
+#else
+        Debug.Log("[UWBPositioning] Disabled in non-iOS build.");
+        enabled = false;
+#endif
     }
 
     /// <summary> 
@@ -205,14 +209,4 @@ public class UWBPositioning : MonoBehaviour
         return desired;
     }
 }
-#else
-// Components for non-iOS platforms. Disables itself and logs a message on Awake().
-public class UWBPositioning : MonoBehaviour
-{
-    private void Awake()
-    {
-        Debug.Log("[UWBPositioning] Disabled in non-iOS build.");
-        enabled = false;
-    }
-}
-#endif
+
