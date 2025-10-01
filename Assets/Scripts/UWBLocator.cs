@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Runtime.InteropServices;
 using System.Globalization;
 using System.Text;
+using Unity.VisualScripting;
 
 
 // ----- Data Structures -----
@@ -23,25 +24,25 @@ public struct Coordinate
 public static class UWBLocator
 {
     public static bool IsInitialized => isInitialized;
+    private static bool isInitialized = false;
+    private static string currentAnchorMap; // cache to avoid redundant sets
+
+    // Check if the platform is iOS and import the required native functions
 #if !UNITY_IOS || UNITY_EDITOR
     // Log-once guard for non-iOS/editor runs
     private static bool hasWarned = false;
-#endif
-    private static bool isInitialized = false;
 
-    // Check if the platform is iOS and import the required native functions
-#if UNITY_IOS && !UNITY_EDITOR
-        // Returns pointer to a null-terminated JSON string allocated with strdup (must be freed).
-        [DllImport("__Internal")] private static extern IntPtr getCoords();
+    // Returns pointer to a null-terminated JSON string allocated with strdup (must be freed).
+    [DllImport("__Internal")] private static extern IntPtr getCoords();
 
-        // Frees the JSON string allocated by getCoords().
-        [DllImport("__Internal")] private static extern void freeCString(IntPtr ptr);
+    // Frees the JSON string allocated by getCoords().
+    [DllImport("__Internal")] private static extern void freeCString(IntPtr ptr);
 
-        // Sets the anchor map in the native plugin.
-        [DllImport("__Internal")] private static extern void setAnchorMap(string jsonUtf8);
+    // Sets the anchor map in the native plugin.
+    [DllImport("__Internal")] private static extern void setAnchorMap(string jsonUtf8);
 
-        // Configure plugin to use uwb anchor map
-        [DllImport("__Internal", EntryPoint = "start")] private static extern void uwb_start();
+    // Configure plugin to use uwb anchor map
+    [DllImport("__Internal", EntryPoint = "start")] private static extern void uwb_start();
 
 #else
     // Stubs implementation for non-iOS platforms
@@ -114,49 +115,45 @@ public static class UWBLocator
 #endif
     }
 
-
-    /// <summary>
-    /// Initializes the anchor map for the UWB plugin.
-    /// </summary>
-    /// <param name="anchorMap">The anchor map JSON string.</param>
-    public static void InitializeAnchorMap(string anchorMap)
+    public static void SetAnchorMap(string anchorMap)
     {
-        if (isInitialized)
-        {
-            // Return early if already initialized
-            Debug.LogWarning("[UWBLocator] Anchor map is already initialized.");
-            return;
-        }
-
-        // Check if the platform is iOS before attempting to initialize plugin
-#if !UNITY_IOS || UNITY_EDITOR
-
-        Debug.LogWarning("[UWBLocator] Anchor map initialization is supported only on iOS device builds.");
-        hasWarned = true; // Set the flag to true after the first warning
-        // Set initialized flag
-        return;
-#else   
         // Check if the anchor map is null or empty
         if (string.IsNullOrWhiteSpace(anchorMap))
         {
-            Debug.LogWarning("[UWBLocator] Anchor map is null or empty.");
+            Debug.LogWarning("[UWBLocator] SetAnchorMap: Anchor map is null or empty.");
+            return;
+        }
+        if (currentAnchorMap == anchorMap && isInitialized)
+        {
+            Debug.Log("[UWBLocator] SetAnchorMap: same Anchor map, no change.");
             return;
         }
 
+#if UNITY_IOS && !UNITY_EDITOR
         try
         {
             setAnchorMap(anchorMap); // Set the anchor map
-            Debug.Log("[UWBLocator] Anchor map set.");
-            uwb_start(); // Start the UWB plugin
-            Debug.Log("[UWBLocator] Plugin started.");
-            isInitialized = true;
-            Debug.Log($"[UWBLocator] Plugin initialized with {anchorMap} anchors.");
+            currentAnchorMap = anchorMap; // Update the cached anchor map
+            Debug.Log($"[UWBLocator] SetAnchorMap: Anchor map set to {anchorMap}.");
+
+            if (!isInitialized)
+            {
+                uwb_start(); // Start the UWB plugin
+                isInitialized = true;
+                Debug.Log("[UWBLocator] Native Plugin started.");
+            }
+            else
+            {
+                Debug.Log("[UWBLocator] Native Plugin already started.");
+            }
         }
         catch (Exception ex)
         {
-            Debug.LogError($"[UWBLocator] Error initializing plugin: {ex.Message}");
-            isInitialized = false;
+            Debug.LogError($"[UWBLocator] SetAnchorMap: Failed setting anchor map: {ex.Message}");
         }
+#else
+        currentAnchorMap = anchorMap; // Update the cached anchor map
+        Debug.LogWarning("[UWBLocator] Not supported on this platform.");
 #endif
     }
 }

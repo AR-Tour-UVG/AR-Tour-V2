@@ -52,6 +52,17 @@ public class TourRunner : MonoBehaviour
             yield break;
         }
 
+        // Set anchor map for the current floor
+        if (floor.TryGetAnchorMapText(out var json))
+        {
+            UWBLocator.SetAnchorMap(json);
+            Debug.Log($"[TourRunner] Anchor map applied for floor '{floor.FloorName}'.");
+        }
+        else
+        {
+            Debug.LogError($"[TourRunner] Floor '{floor.FloorName}' has no valid AnchorMap assigned.");
+        }
+
         // Load scene additively
         var op = SceneManager.LoadSceneAsync(floor.ScenePath, LoadSceneMode.Additive);
         yield return op;
