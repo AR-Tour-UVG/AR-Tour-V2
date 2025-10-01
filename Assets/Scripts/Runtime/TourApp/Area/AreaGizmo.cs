@@ -1,4 +1,3 @@
-// Scripts/Runtime/Tour/Triggers/AreaTriggerGizmo.cs
 using UnityEngine;
 
 [ExecuteAlways]
