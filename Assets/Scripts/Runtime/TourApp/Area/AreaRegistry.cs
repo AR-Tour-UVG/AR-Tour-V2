@@ -1,16 +1,16 @@
-// AreaRegistry.cs
 using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
 public class AreaRegistry : MonoBehaviour
 {
+    // Internal dictionary mapping AreaDefinition to their GameObject instances
     private readonly Dictionary<AreaDefinition, GameObject> _byDef = new();
 
-    /// <summary>All discovered area GameObjects in this scene.</summary>
+    // Gets all discovered area GameObjects in this scene.
     public IReadOnlyCollection<GameObject> AllObjects => _byDef.Values;
 
-    /// <summary>Re-scan the scene for AreaInstance components.</summary>
+    
     public void Refresh()
     {
         var found = FindObjectsByType<AreaInstance>(FindObjectsInactive.Include, FindObjectsSortMode.None);
@@ -27,11 +27,9 @@ public class AreaRegistry : MonoBehaviour
         }
     }
 
-    /// <summary>Try get the area GameObject for a definition.</summary>
     public bool TryGet(AreaDefinition def, out GameObject areaGO) =>
         _byDef.TryGetValue(def, out areaGO);
 
-    /// <summary>Ordered area GameObjects for a floor (skips missing with a warning).</summary>
     public IEnumerable<GameObject> ForFloor(FloorDefinition floor)
     {
         foreach (var def in floor.OrderedAreas)
