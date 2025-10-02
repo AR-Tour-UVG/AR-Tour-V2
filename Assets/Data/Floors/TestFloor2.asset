@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f6579f9a2b70342a873f837ad59380, type: 3}
+  m_Name: TestFloor2
+  m_EditorClassIdentifier: 
+  floorName: TestFloor2
+  orderedAreas:
+  - {fileID: 11400000, guid: 135dc62c2f59f2e408777f7e95a24a0b, type: 2}
+  - {fileID: 11400000, guid: 55c887339e96e794d8cb7439b0b2ab18, type: 2}
+  anchorMapJson: {fileID: 4900000, guid: 64746f1696bc09147ae79270929e1038, type: 3}
+  scenePath: Assets/Scenes/TestRoomB.unity
+  sceneAsset: {fileID: 102900000, guid: cb129b460b295d049ad2a32c4f9c2893, type: 3}
