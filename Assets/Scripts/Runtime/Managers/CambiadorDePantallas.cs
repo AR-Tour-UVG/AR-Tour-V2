@@ -10,7 +10,6 @@ public class CambiadorDePantallas : MonoBehaviour
 
     [Header("Pantallas principales")]
     public GameObject pantallaInicio;
-    public GameObject pantallaEscaneo;
     public GameObject pantallaTour;
 
     private int onboardingIndex = 1;
@@ -38,7 +37,6 @@ public class CambiadorDePantallas : MonoBehaviour
         onboarding4.SetActive(false);
 
         pantallaInicio.SetActive(false);
-        pantallaEscaneo.SetActive(false);
         pantallaTour.SetActive(false);
     }
 
@@ -73,13 +71,6 @@ public class CambiadorDePantallas : MonoBehaviour
         ApagarTodas();
         pantallaInicio.SetActive(true);
     }
-
-    public void MostrarEscaneo()
-    {
-        ApagarTodas();
-        pantallaEscaneo.SetActive(true);
-    }
-
     public void MostrarTour()
     {
         ApagarTodas();

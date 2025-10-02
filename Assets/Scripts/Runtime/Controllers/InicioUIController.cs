@@ -205,7 +205,7 @@ public class InicioUIController : MonoBehaviour
 
         // Cambiar de pantalla
         EstadoRuta.TipoRuta = tipoRuta;
-        cambiador.MostrarEscaneo();
+        cambiador.MostrarTour();;
     }
 
     private static bool s_LogicLoadedOrLoading = false;
@@ -287,7 +287,7 @@ public class InicioUIController : MonoBehaviour
         // Switch the overlay to Escaneo
         EstadoRuta.TipoRuta = tipoRuta;
         Debug.Log($"[InicioUIController] The current route type is: {EstadoRuta.TipoRuta}");
-        cambiador.MostrarEscaneo();
+        cambiador.MostrarTour();
         Debug.Log($"[InicioUIController] Switching overlay to Escaneo.");
     }
 }
