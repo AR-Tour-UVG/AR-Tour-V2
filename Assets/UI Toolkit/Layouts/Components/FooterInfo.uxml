@@ -1,0 +1,14 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="ModalContainer" style="flex-grow: 1; width: 100%; padding-top: 8px; padding-right: 8px; padding-bottom: 8px; padding-left: 8px; background-color: rgba(4, 8, 19, 0.68); background-image: none; -unity-background-image-tint-color: rgba(255, 255, 255, 0.59); -unity-background-scale-mode: scale-and-crop; color: rgb(255, 255, 255); font-size: 25px;">
+        <engine:VisualElement name="ContainerText" style="flex-grow: 1;">
+            <engine:VisualElement name="ContainerHeader" style="flex-grow: 0; flex-direction: row; flex-shrink: 0; justify-content: space-between;">
+                <engine:Label text="Titulo del punto" name="TituloPunto" style="-unity-font-definition: resource(&apos;UI Toolkit/Fonts/TTF/Outfit-Bold&apos;); -unity-text-align: upper-center; white-space: normal; margin-bottom: 10px; flex-direction: column; width: auto; flex-wrap: wrap;" />
+                <engine:Button name="BotonCerrarModal" style="background-image: resource(&apos;ImagenesUI/Iconos/icon_exit&apos;); background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; align-items: stretch; align-self: center; min-width: auto; width: 10px; height: 10px; justify-content: space-around;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="ContainerDescripcion" style="flex-grow: 1; background-color: rgba(4, 8, 19, 0.57); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 8px; padding-right: 8px; padding-bottom: 8px; padding-left: 8px;">
+                <engine:Label text="Descripcion del punto..." name="DescripcionPunto" style="-unity-font-definition: resource(&apos;UI Toolkit/Fonts/TTF/Outfit-Regular&apos;); -unity-text-align: upper-left; font-size: 16px; white-space: normal;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="Jack" style="flex-grow: 0; background-image: resource(&apos;ImagenesUI/DragonJack/JackGood&apos;); width: 125px; align-items: flex-end; align-self: flex-end; position: absolute; flex-shrink: 0; height: 175px; justify-content: flex-start; bottom: 10px;" />
+    </engine:VisualElement>
+</engine:UXML>
