@@ -888,11 +888,11 @@ public class ARTourUIController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         callback?.Invoke();
     }
-    
+
     // ============================================================================
     // SECCIÓN 13: MENÚ HAMBURGUESA LATERAL
     // ============================================================================
-    
+
     /// <summary>
     /// Crea programáticamente el menú hamburguesa lateral.
     /// El menú incluye opciones como: Reconectar Sensores, Reiniciar Tour,
@@ -903,9 +903,13 @@ public class ARTourUIController : MonoBehaviour
     /// </summary>
     private void CrearMenuProgramatico()
     {
+        // Cargar fonts
         var outfitSemiBold = Resources.Load<Font>("UI Toolkit/Fonts/TTF/Outfit-SemiBold");
         var outfitRegular = Resources.Load<Font>("UI Toolkit/Fonts/TTF/Outfit-Regular");
-        
+
+        if (outfitSemiBold == null) Debug.LogWarning("No se pudo cargar Outfit-SemiBold");
+        if (outfitRegular == null) Debug.LogWarning("No se pudo cargar Outfit-Regular");
+
         // Overlay del menú (60% del ancho de la pantalla)
         var menuOverlay = new VisualElement { name = "menu_overlay_programmatico" };
         menuOverlay.style.position = Position.Absolute;
@@ -916,13 +920,14 @@ public class ARTourUIController : MonoBehaviour
         menuOverlay.style.backgroundColor = new Color(0f, 0f, 4f / 255f, 0.95f);
         menuOverlay.style.display = DisplayStyle.None;
         menuOverlay.pickingMode = PickingMode.Position;
-        
+
         // Contenedor del menú
         var menu = new VisualElement { name = "menu_hamburguesa_programmatico" };
         menu.style.width = Length.Percent(100);
         menu.style.height = Length.Percent(100);
         menu.style.flexDirection = FlexDirection.Column;
-        
+        menu.pickingMode = PickingMode.Position;
+
         // Header del menú (título + botón cerrar)
         var header = new VisualElement { name = "menu_header_programmatico" };
         header.style.flexDirection = FlexDirection.Row;
@@ -932,27 +937,37 @@ public class ARTourUIController : MonoBehaviour
         header.style.paddingBottom = 15;
         header.style.paddingLeft = 20;
         header.style.paddingRight = 20;
-        
+
         var titulo = new Label("Menú") { name = "titulo_programmatico" };
         titulo.style.color = Color.white;
         titulo.style.fontSize = 22;
         if (outfitSemiBold != null) titulo.style.unityFont = outfitSemiBold;
-        
-        var btnCerrar = new Button(() => { menuOverlay.style.display = DisplayStyle.None; })
-        {
-            text = "✖"
-        };
+
+        var btnCerrar = new Button(() => { menuOverlay.style.display = DisplayStyle.None; }){text = "✖"};
         btnCerrar.style.width = 35;
         btnCerrar.style.height = 35;
         btnCerrar.style.backgroundColor = Color.clear;
+        btnCerrar.style.borderTopWidth = 0;
+        btnCerrar.style.borderRightWidth = 0;
+        btnCerrar.style.borderBottomWidth = 0;
+        btnCerrar.style.borderLeftWidth = 0;
         btnCerrar.style.color = Color.white;
         btnCerrar.style.fontSize = 24;
-        
+        btnCerrar.style.unityTextAlign = TextAnchor.MiddleCenter;
+        btnCerrar.RegisterCallback<MouseEnterEvent>(_ => { btnCerrar.style.color = new Color(1f, 1f, 1f, 0.7f); });
+        btnCerrar.RegisterCallback<MouseLeaveEvent>(_ => { btnCerrar.style.color = Color.white; });
+
         header.Add(titulo);
         header.Add(btnCerrar);
-        
+
         // Opciones del menú
         var contenedorOpciones = new VisualElement { name = "contenedor_botones_programmatico" };
+        contenedorOpciones.style.flexGrow = 1;
+        contenedorOpciones.style.width = Length.Percent(100);
+        contenedorOpciones.style.paddingLeft = 20;
+        contenedorOpciones.style.paddingRight = 20;
+        contenedorOpciones.style.paddingTop = 10;
+
         string[] opcionesMenu = {
             "Reconectar Sensores",
             "Reiniciar Tour",
@@ -960,58 +975,80 @@ public class ARTourUIController : MonoBehaviour
             "Reportar un Problema",
             "Salir a Inicio"
         };
-        
+
         foreach (string opcion in opcionesMenu)
         {
             var btnOpcion = new Button(() =>
             {
                 menuOverlay.style.display = DisplayStyle.None;
-                
+                Debug.Log($"Opción clickeada: {opcion}");
+
                 // Manejar acción según la opción seleccionada
                 switch (opcion)
                 {
                     case "Salir a Inicio":
                         if (cambiador != null) cambiador.MostrarInicio();
                         break;
-                    
+
                     case "Reconectar Sensores":
                         // TODO: Implementar reconexión con sensores
-                        Debug.Log("[Menu] Reconectar Sensores - Por implementar");
+                        Debug.Log("[MenuUI] Reconectar Sensores - Por implementar");
                         break;
-                    
+
                     case "Reiniciar Tour":
                         // TODO: Implementar reinicio del tour
-                        Debug.Log("[Menu] Reiniciar Tour - Por implementar");
+                        Debug.Log("[MenuUI] Reiniciar Tour - Por implementar");
                         break;
-                    
+
                     case "Diagnóstico de Conexión":
                         // TODO: Implementar pantalla de diagnóstico
-                        Debug.Log("[Menu] Diagnóstico - Por implementar");
+                        Debug.Log("[MenuUI] Diagnóstico - Por implementar");
                         break;
-                    
+
                     case "Reportar un Problema":
                         // TODO: Implementar sistema de reportes
-                        Debug.Log("[Menu] Reportar Problema - Por implementar");
+                        Debug.Log("[MenuUI] Reportar Problema - Por implementar");
                         break;
                 }
             })
             { text = opcion };
-            
+
+            // Estilo idéntico a Escaneo
             btnOpcion.style.color = Color.white;
             btnOpcion.style.backgroundColor = Color.clear;
+            btnOpcion.style.borderTopWidth = 0;
+            btnOpcion.style.borderRightWidth = 0;
+            btnOpcion.style.borderBottomWidth = 1;
+            btnOpcion.style.borderLeftWidth = 0;
+            btnOpcion.style.borderBottomColor = new Color(1f, 1f, 1f, 0.3f);
+            btnOpcion.style.fontSize = 14;
+            btnOpcion.style.paddingTop = 15;
+            btnOpcion.style.paddingBottom = 15;
+            btnOpcion.style.paddingLeft = 0;
+            btnOpcion.style.paddingRight = 5;
+            btnOpcion.style.marginBottom = 5;
+            btnOpcion.style.unityTextAlign = TextAnchor.MiddleLeft;
+            btnOpcion.style.whiteSpace = WhiteSpace.Normal;
+            btnOpcion.style.flexWrap = Wrap.Wrap;
             if (outfitRegular != null) btnOpcion.style.unityFont = outfitRegular;
-            
+
+            btnOpcion.RegisterCallback<MouseEnterEvent>(_ => { btnOpcion.style.backgroundColor = new Color(1f, 1f, 1f, 0.1f); });
+            btnOpcion.RegisterCallback<MouseLeaveEvent>(_ => { btnOpcion.style.backgroundColor = Color.clear; });
+
             contenedorOpciones.Add(btnOpcion);
         }
-        
+
         // Ensamblar menú
         menu.Add(header);
         menu.Add(contenedorOpciones);
         menuOverlay.Add(menu);
+        menu.RegisterCallback<ClickEvent>(evt => evt.StopPropagation());
         root.Add(menuOverlay);
-        
+
         menuHamburguesaVisual = menuOverlay;
         menuInicializado = true;
+        
+        Debug.Log("[MenuUI] Menú programático creado exitosamente en ARTour");
     }
     
     /// <summary>
