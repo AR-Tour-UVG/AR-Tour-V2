@@ -12,10 +12,10 @@ public class InicioUIController : MonoBehaviour
     [Header("Tour Variants")]
     [Tooltip("Define the tour for the express route.")]
     [SerializeField] private TourDefinition tourExpress;
-    // [Tooltip("Define the tour for the complete route.")]
-    // [SerializeField] private TourDefinition tourCompleta;
-    public CambiadorDePantallas cambiador;
 
+    [Tooltip("Define the tour for the complete route.")]
+    [SerializeField] private TourDefinition tourCompleta;
+    public CambiadorDePantallas cambiador;
     private VisualElement contenedorPrincipal;
     private VisualElement contenedorBienvenida;
     private VisualElement logoARTour;
@@ -213,7 +213,7 @@ public class InicioUIController : MonoBehaviour
 
         // Cambiar de pantalla
         EstadoRuta.TipoRuta = tipoRuta;
-        cambiador.MostrarEscaneo();
+        cambiador.MostrarTour();;
     }
 
     private IEnumerator LoadLogicThenShowEscaneo(string tipoRuta)
@@ -230,7 +230,7 @@ public class InicioUIController : MonoBehaviour
         // Switch the overlay to Escaneo
         EstadoRuta.TipoRuta = tipoRuta;
         Debug.Log($"[InicioUIController] The current route type is: {EstadoRuta.TipoRuta}");
-        cambiador.MostrarEscaneo();
+        cambiador.MostrarTour();
         Debug.Log($"[InicioUIController] Switching overlay to Escaneo.");
     }
 }
