@@ -8,8 +8,7 @@ using UnityEngine;
 /// </summary>
 /// <remarks>
 /// - Stores metadata such as the area's name, description, audio clips, and associated image path.
-/// - Intended to be created as a ScriptableObject asset. See
-/// <see href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/ScriptableObject.html">ScriptableObject</see>.
+/// - Intended to be created as a ScriptableObject asset.
 /// </remarks>
 public class AreaDefinition : ScriptableObject
 {

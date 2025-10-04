@@ -8,7 +8,7 @@ using UnityEngine;
 /// Class <c>AreaGizmo</c> draws a gizmo in the editor to visualize the area defined by a BoxCollider.
 /// </summary>
 /// <remarks>
-/// - Attach this script to a <see cref="GameObject"/> with a <see cref="BoxCollider"/> to see the gizmo in the editor.
+/// - Attach this script to a GameObject with a BoxCollider to see the gizmo in the editor.
 /// - Configure the appearance using the exposed fields in the Inspector.
 /// </remarks>
 public class AreaGizmo : MonoBehaviour
@@ -45,10 +45,10 @@ public class AreaGizmo : MonoBehaviour
     /// Unity callback that draws gizmos in the Scene view.
     /// </summary>
     /// <remarks>
-    /// Uses the attached <see cref="BoxCollider"/> to determine the gizmo's size,
-    /// position, and orientation. Restores previous Gizmos state after drawing.  
-    /// For Unity reference, see 
-    /// <see href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/MonoBehaviour.OnDrawGizmos.html">OnDrawGizmos</see>.
+    /// - Uses the attached BoxCollider to determine the gizmo's size,
+    /// position, and orientation. 
+    /// - Restores previous Gizmos state after drawing.  
+    /// For Unity OnDrawGizmos reference, see <see href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/MonoBehaviour.OnDrawGizmos.html">OnDrawGizmos</see>.
     /// </remarks>
 
     void OnDrawGizmos()
