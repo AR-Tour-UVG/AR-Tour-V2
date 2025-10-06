@@ -559,11 +559,52 @@ public class ARTourUIController : MonoBehaviour
 
         AnimarReduccionFooterNormal(() =>
         {
-            CrearFooterPOI(titulo, descripcion, imagen);
+            // Crear footer POI si no existe
+            if (footerPOI == null)
+            {
+                CrearFooterPOI(titulo, descripcion, imagen);
+            }
+            else
+            {
+                // Si existe entonces actualizar su contenido
+                ActualizarFooterPOI(titulo, descripcion, imagen);
+            }
+            
             AnimarAparicionFooterPOI();
         });
 
         // footerPOIActivo = true;
+    }
+
+    private void ActualizarFooterPOI(string titulo, string descripcion, Texture2D imagen)
+    {
+        if (footerPOI == null) return;
+
+        var labelTitulo = footerPOI.Q<Label>("TituloPOI");
+        var labelDescripcion = footerPOI.Q<Label>("DescripcionPOI");
+        var imagenElemento = footerPOI.Q<VisualElement>("ImagenPOI") ?? footerPOI.Q<VisualElement>("ImagenPOI_Placeholder");
+
+        if (labelTitulo != null)
+            labelTitulo.text = titulo;
+
+        if (labelDescripcion != null)
+            labelDescripcion.text = descripcion;
+
+        if (imagenElemento != null)
+        {
+            if (imagen != null)
+            {
+                imagenElemento.style.backgroundImage = imagen;
+            }
+            else
+            {
+                var tex = Resources.Load<Texture2D>("ImagenesUI/ImagenesDeTour/placeholder");
+                if (tex != null)
+                {
+                    imagenElemento.style.backgroundImage = tex;
+                }
+            }
+        }
     }
     
     /// <summary>
