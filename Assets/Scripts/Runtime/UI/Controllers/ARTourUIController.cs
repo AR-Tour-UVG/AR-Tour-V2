@@ -73,11 +73,8 @@ public class ARTourUIController : MonoBehaviour
     // Footer POI (Puntos de Interés - información detallada)
     private VisualElement footerPOI;
     private VisualElement iconoInfoMinimizado;
-    private bool footerPOIActivo = false;
+    // private bool footerPOIActivo = false;
     private bool footerPOIMinimizado = false;
-    
-    // Botón de prueba (simula detección de puntos de interés)
-    private Button btnSimularPunto;
     
     // ============================================================================
     // SECCIÓN 6: SISTEMA DE POPUP Y ESTADOS DEL HEADER
@@ -153,7 +150,6 @@ public class ARTourUIController : MonoBehaviour
         CrearMenuProgramatico();
         ConfigurarBotonesHeader();
         ConfigurarFooterNormal();
-        ConfigurarBotonPruebaPOI();
     }
 
     /// <summary>
@@ -518,39 +514,36 @@ public class ARTourUIController : MonoBehaviour
             contenedorFooter.Add(contenidoNormalFooter);
         }
     }
-    
-    /// <summary>
-    /// Configura el botón de prueba para simular detección de puntos de interés.
-    /// Este botón es temporal para testing - en producción será reemplazado
-    /// por detección automática desde sensores.
-    /// </summary>
-    private void ConfigurarBotonPruebaPOI()
-    {
-        btnSimularPunto = root.Q<Button>("btn_simular_punto");
-        if (btnSimularPunto != null)
-        {
-            btnSimularPunto.clicked += () =>
-            {
-                if (!footerPOIActivo)
-                {
-                    // Ejemplo de datos - reemplazar con datos reales de sensores
-                    MostrarFooterPOI(
-                        "Makerspace D-Hive:",
-                        "D por Diseño, Hive por colmena y colaboración.\n\n" +
-                        "Es un espacio de prototipado rápido. Diseñado para desarrollar " +
-                        "habilidades de ideación e interacción rápida para proyectos. " +
-                        "Es un espacio libre, donde todos los estudiantes pueden venir y usar los equipos.",
-                        "ImagenesUI/DragonJack/JackGood"
-                    );
-                }
-            };
-        }
-    }
-    
+
     // ============================================================================
     // SECCIÓN 12: SISTEMA DE FOOTER POI (Puntos de Interés)
     // ============================================================================
-    
+
+    /// <summary>
+    /// Wrapper function to display POI information from an AreaDefinition.
+    /// </summary>
+    /// <param name="area">The AreaDefinition containing POI information.</param>
+    public void ShowAreaPOI(AreaDefinition area)
+    {
+        if (area == null)
+        {
+            RestaurarFooterNormal();
+            return;
+        }
+
+        // Extract data from area definition
+        string title = area.AreaName;
+        string description = (area.AreaText && !string.IsNullOrWhiteSpace(area.AreaText.text))
+            ? area.AreaText.text
+            : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non sem eget nisi cursus vestibulum.";
+
+        var image = area.AreaImage;
+
+        // Show POI footer
+        MostrarFooterPOI(title, description, image);
+    }
+
+
     /// <summary>
     /// Muestra el footer de Punto de Interés con información detallada.
     /// El footer POI reemplaza temporalmente el footer normal con una animación.
@@ -558,19 +551,19 @@ public class ARTourUIController : MonoBehaviour
     /// <param name="titulo">Título del punto de interés</param>
     /// <param name="descripcion">Descripción detallada</param>
     /// <param name="rutaImagen">Ruta en Resources/ de la imagen (sin extensión)</param>
-    private void MostrarFooterPOI(string titulo, string descripcion, string rutaImagen)
+    private void MostrarFooterPOI(string titulo, string descripcion, Texture2D imagen)
     {
         if (contenedorFooter == null) return;
-        
+
         Debug.Log($"[UI] Mostrando POI: {titulo}");
-        
+
         AnimarReduccionFooterNormal(() =>
         {
-            CrearFooterPOI(titulo, descripcion, rutaImagen);
+            CrearFooterPOI(titulo, descripcion, imagen);
             AnimarAparicionFooterPOI();
         });
-        
-        footerPOIActivo = true;
+
+        // footerPOIActivo = true;
     }
     
     /// <summary>
@@ -590,7 +583,7 @@ public class ARTourUIController : MonoBehaviour
     /// Crea programáticamente el footer de POI con toda su estructura visual.
     /// Incluye: título, descripción, imagen del lugar y botón de minimizar.
     /// </summary>
-    private void CrearFooterPOI(string titulo, string descripcion, string rutaImagen)
+    private void CrearFooterPOI(string titulo, string descripcion, Texture2D imagen_tex)
     {
         // Contenedor principal del POI
         footerPOI = new VisualElement { name = "FooterPOI" };
@@ -678,12 +671,19 @@ public class ARTourUIController : MonoBehaviour
         
         // Imagen del lugar
         var imagen = new VisualElement { name = "ImagenPOI" };
-        var rutaLimpia = rutaImagen.Replace("Assets/Resources/", "").Replace(".png", "");
-        var texture = Resources.Load<Texture2D>(rutaLimpia);
-        if (texture != null)
-            imagen.style.backgroundImage = texture;
+        if (imagen_tex != null)
+        {
+            imagen.style.backgroundImage = imagen_tex;
+        }
         else
-            imagen.style.backgroundColor = new Color(0.3f, 0.3f, 0.3f, 0.5f);
+        {
+            imagen = new VisualElement { name = "ImagenPOI_Placeholder" };
+            var tex = Resources.Load<Texture2D>("ImagenesUI/ImagenesDeTour/placeholder");
+            if (tex != null)
+            {
+                imagen.style.backgroundImage = tex;
+            }
+        }
         
         imagen.style.width = 110;
         imagen.style.height = 110;
@@ -848,7 +848,7 @@ public class ARTourUIController : MonoBehaviour
             contenidoNormalFooter.style.display = DisplayStyle.Flex;
         }
         
-        footerPOIActivo = false;
+        // footerPOIActivo = false;
         footerPOIMinimizado = false;
     }
     
@@ -876,7 +876,7 @@ public class ARTourUIController : MonoBehaviour
             contenidoNormalFooter.style.display = DisplayStyle.Flex;
         }
         
-        footerPOIActivo = false;
+        // footerPOIActivo = false;
         footerPOIMinimizado = false;
     }
     
@@ -1140,3 +1140,5 @@ public class ARTourUIController : MonoBehaviour
  * 
  * =============================================================================
  */
+
+ 

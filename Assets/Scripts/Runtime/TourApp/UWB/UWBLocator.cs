@@ -153,7 +153,7 @@ public static class UWBLocator
         }
 #else
         currentAnchorMap = anchorMap; // Update the cached anchor map
-        Debug.LogWarning("[UWBLocator] Not supported on this platform.");
+        Debug.Log("[UWBLocator] Not supported on this platform.");
 #endif
     }
 }

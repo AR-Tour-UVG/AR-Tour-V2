@@ -13,6 +13,8 @@ public class TourRunner : MonoBehaviour
     private string loadedScenePath;
     private Scene baseScene; // Reference to the initial scene (main menu)
     private Camera _fallbackCamera;
+    private int _visitedAcrossTour;
+    private int _totalAcrossTour;
 
     void Awake()
     {
@@ -27,9 +29,12 @@ public class TourRunner : MonoBehaviour
     public void SelectTour(TourDefinition tour)
     {
         currentTour = tour;
+        // Initialize counters
         floorIndex = 0;
+        _visitedAcrossTour = 0;
+        _totalAcrossTour = (tour != null) ? tour.TotalAreasCount() : 0;
         var name = (tour != null) ? tour.TourName : "null";
-        Debug.Log($"[TourRunner] Selected tour: {name}");
+        Debug.Log($"[TourRunner] Selected tour: {name} | Total areas: {_totalAcrossTour}");
     }
 
     // Called by UI right after SelectTour. Loads FIRST floor immediately.
@@ -86,6 +91,9 @@ public class TourRunner : MonoBehaviour
         }
 
         activeFM.FloorCompleted += OnFloorCompleted;
+        activeFM.AreaConfirmed += OnAreaConfirmed;
+        activeFM.GlobalVisited = _visitedAcrossTour;
+        activeFM.GlobalTotal = _totalAcrossTour;
 
         Debug.Log($"[TourRunner] Floor loaded: {floor.FloorName}. FloorManager will wait for UserReady (R in Editor).");
         // NOTE: Escaneo UI can be shown right away; the floor is already loaded and waiting.
@@ -93,8 +101,19 @@ public class TourRunner : MonoBehaviour
 
     private void OnFloorCompleted(FloorManager _)
     {
-        activeFM.FloorCompleted -= OnFloorCompleted;
+        if (activeFM)
+        {
+            activeFM.FloorCompleted -= OnFloorCompleted;
+            activeFM.AreaConfirmed -= OnAreaConfirmed;
+        }
+            
         StartCoroutine(UnloadAndAdvance());
+    }
+
+    private void OnAreaConfirmed(AreaDefinition _)
+    {
+        _visitedAcrossTour++;
+         Debug.Log($"[TourRunner] Global progress: {_visitedAcrossTour}/{_totalAcrossTour}");
     }
 
     private IEnumerator UnloadAndAdvance()
