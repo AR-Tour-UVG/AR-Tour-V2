@@ -99,7 +99,6 @@
     justify-content: center;
     flex-direction: row;
     transition-duration: 0.2s;
-    cursor: link;
 }
 
 .button-primary {
@@ -182,13 +181,13 @@
     font-size: var(--text-xl);
     color: var(--black);
     margin-bottom: 12px;
-    text-align: center;
+    -unity-text-align: middle-center;
 }
 
 .modal-description {
     font-size: var(--text-base);
     color: var(--smoke);
-    text-align: center;
+    -unity-text-align: middle-center;
     margin-bottom: 24px;
 }
 
@@ -222,7 +221,6 @@
     justify-content: center;
     background-color: transparent;
     border-width: 0;
-    cursor: link;
 }
 
 .hamburger-icon {
