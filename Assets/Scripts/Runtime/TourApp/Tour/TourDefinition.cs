@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 [CreateAssetMenu(fileName = "NewTourDefinition", menuName = "AR-Tour/Tour Definition")]
 public class TourDefinition : ScriptableObject
 {
@@ -16,6 +20,25 @@ public class TourDefinition : ScriptableObject
     public IReadOnlyList<FloorDefinition> OrderedFloors => orderedFloors;
 
     public int IndexOf(FloorDefinition floor) => orderedFloors?.IndexOf(floor) ?? -1;
+
+    private void OnValidate()
+    {
+        if (EditorApplication.isCompiling || EditorApplication.isUpdating || BuildPipeline.isBuildingPlayer)
+        return;
+
+        if (orderedFloors == null)
+        {
+            Debug.LogError($"[TourDefinition] No floors assigned for tour '{tourName}'", this);
+            return;
+        }
+        for (int i = 0; i < orderedFloors.Count; i++)
+        {
+            if (orderedFloors[i] == null)
+            {
+                Debug.LogError($"[TourDefinition] Null floor at index {i} in tour '{tourName}'", this);
+            }
+        }
+    }
 
     public FloorDefinition GetNextAfter(FloorDefinition current)
     {

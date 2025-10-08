@@ -18,23 +18,23 @@ public class FloorDefinition : ScriptableObject
     [Tooltip("JSON file with anchors for this floor (TextAsset).")]
     [SerializeField] private TextAsset anchorMapJson;
 
-    // Store scene path for runtime. In editor, we expose a SceneAsset and sync to this.
-    [Header("Scene Binding")]
-    [Tooltip("Unity scene path (auto-filled from SceneAsset in editor).")]
-    [SerializeField] private string scenePath;
-
 #if UNITY_EDITOR
     [Tooltip("Assign the scene asset; its path is stored into 'scenePath'.")]
     [SerializeField] private SceneAsset sceneAsset;
+    
+    [HideInInspector, SerializeField] private string scenePath;
 
     private void OnValidate()
     {
+        if (EditorApplication.isCompiling || EditorApplication.isUpdating || BuildPipeline.isBuildingPlayer)
+            return;
+
         if (sceneAsset != null)
         {
             var path = AssetDatabase.GetAssetPath(sceneAsset);
-            if (!string.IsNullOrEmpty(path) && path != scenePath)
+            if (string.IsNullOrEmpty(path))
             {
-                scenePath = path;
+                Debug.LogError($"[FloorDefinition] Scene asset is not valid: {sceneAsset.name}", this);
             }
         }
 
@@ -56,8 +56,8 @@ public class FloorDefinition : ScriptableObject
     // Read-only accessors
     public string FloorName => floorName;
     public IReadOnlyList<AreaDefinition> OrderedAreas => orderedAreas;
-    public string ScenePath => scenePath;
     public TextAsset AnchorMapJson => anchorMapJson;
+    public string ScenePath => scenePath;
 
     // Helpers
     public int IndexOf(AreaDefinition area) => orderedAreas?.IndexOf(area) ?? -1;
