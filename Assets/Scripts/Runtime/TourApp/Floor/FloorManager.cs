@@ -39,6 +39,19 @@ public class FloorManager : MonoBehaviour
 
     public System.Action<FloorManager> FloorCompleted;
 
+    // Events
+    public event System.Action<AreaDefinition> AreaConfirmed; // fired when an area is confirmed
+    public event System.Action<AreaDefinition> GuidingToNext; // fired when Next() selects a target
+
+    // Optional helpers (read-only)
+    public int CurrentIndex => _currentIndex;                 // -1 before first confirm
+    public bool Started => _started;
+    public FloorDefinition Floor => floor;
+
+    // Global tour progress
+    public int GlobalVisited { get; set; }
+    public int GlobalTotal   { get; set; }
+
     private void Start()
     {
         if (!floor)
@@ -160,6 +173,8 @@ public class FloorManager : MonoBehaviour
             Debug.LogWarning("[FloorManager] Next area GameObject missing.", this);
             return;
         }
+        var nextPOI = nextGO.GetComponent<AreaInstance>();
+        GuidingToNext?.Invoke(nextPOI ? nextPOI.Definition : null);
 
         // Set navigation target and unpause pathing to show directions
         pathProvider.SetTarget(nextGO);
@@ -254,6 +269,9 @@ public class FloorManager : MonoBehaviour
 
         // Disable the area GO to avoid lingering re-triggers
         ai.gameObject.SetActive(false);
+
+        // Fire event
+        AreaConfirmed?.Invoke(def);
 
         // Content handling
         Debug.Log($"[FloorManager] ENTERED area '{def.AreaName}'. TODO: show text and play audio.");

@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: TestArea1
   m_EditorClassIdentifier: 
   areaName: TestAreaStart
-  nextAreaDirections: 
-  areaText: {fileID: 0}
+  areaText: {fileID: 4900000, guid: 2c6c5a751d1cbaa4fba37b2575c9fa51, type: 3}
   audioClips: []
-  areaImagePath: 
+  areaImage: {fileID: 2800000, guid: fde1cf5c2e5a47d4a8cf8b6966ed0607, type: 3}

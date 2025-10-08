@@ -8,8 +8,7 @@ using UnityEngine;
 /// </summary>
 /// <remarks>
 /// - Stores metadata such as the area's name, description, audio clips, and associated image path.
-/// - Intended to be created as a ScriptableObject asset. See
-/// <see href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/ScriptableObject.html">ScriptableObject</see>.
+/// - Intended to be created as a ScriptableObject asset.
 /// </remarks>
 public class AreaDefinition : ScriptableObject
 {
@@ -17,10 +16,6 @@ public class AreaDefinition : ScriptableObject
     [Tooltip("Name of the area")]
     /// <summary>The name of the area.</summary>
     [SerializeField] private string areaName;
-
-    [Tooltip("Directions to the next area (if applicable)")]
-    /// <summary>Directions text to the next area (if applicable).</summary>
-    [SerializeField] private string nextAreaDirections;
 
     [Header("Content References")]
     [Tooltip("Text file containing area description")]
@@ -30,24 +25,22 @@ public class AreaDefinition : ScriptableObject
     [Tooltip("List of audio clips for the area")]
     /// <summary>List of audio clips associated with the area.</summary>
     [SerializeField] private List<AudioClip> audioClips;
-    
-    [Tooltip("Path to the area image in the Resources folder")]
-    /// <summary>Path to the area image in the Resources folder.</summary>
-    [SerializeField] private string areaImagePath;
+
+    [Tooltip("Image file representing the area (for reference only)")]
+    /// <summary>Image in the Resources folder.</summary>
+    [SerializeField] private Texture2D areaImage;
 
     // Public properties to access private fields
     /// <summary>Gets the display name of the area.</summary>
     public string AreaName => areaName;
 
-    /// <summary>Gets the directions text leading to the next area.</summary>
-    public string NextAreaDirections => nextAreaDirections;
 
     /// <summary>Gets the text asset containing the area's description.</summary>
     public TextAsset AreaText => areaText;
 
     /// <summary>Gets the list of audio clips associated with the area.</summary>
     public IReadOnlyList<AudioClip> AudioClips => audioClips;
-
-    /// <summary>Gets the path to the area image in the Resources folder.</summary>
-    public string AreaImagePath => areaImagePath;
+    
+    /// <summary>Gets the image representing the area.</summary>
+    public Texture2D AreaImage => areaImage;
 }

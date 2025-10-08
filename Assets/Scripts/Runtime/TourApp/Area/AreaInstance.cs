@@ -8,7 +8,7 @@ using UnityEngine;
 /// Class <c>AreaInstance</c> represents a runtime instance of an <see cref="AreaDefinition"/> in the scene.
 /// </summary>
 /// <remarks>
-/// - Each instance uses a <see cref="BoxCollider"/> as its trigger area.  
+/// - Each instance uses a BoxCollider as its trigger area.  
 /// - Events are raised when something enters or exits the area.
 /// </remarks>
 public class AreaInstance : MonoBehaviour
@@ -35,9 +35,7 @@ public class AreaInstance : MonoBehaviour
     /// Unity lifecycle method called when the script instance is being loaded.
     /// </summary>
     /// <remarks>
-    /// Initializes the attached <see cref="BoxCollider"/> and sets it as a trigger.  
-    /// For Unity reference, see 
-    /// <see href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/MonoBehaviour.Awake.html">Awake</see>.
+    /// Initializes the attached BoxCollider and sets it as a trigger.  
     /// </remarks>
     private void Awake()
     {
