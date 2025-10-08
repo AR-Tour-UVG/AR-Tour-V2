@@ -1,4 +1,3 @@
-// PathProvider.cs (minimal + optional Inspector target)
 using System;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,6 +15,7 @@ public class PathProvider : MonoBehaviour
 
     public bool Paused;
     public NavMeshPath CurrentPath { get; private set; }
+    public float CurrentDistance { get;  private set; }
     public event Action<NavMeshPath> OnPathUpdated;
 
     private Vector3 _lastPlayerPos = Vector3.positiveInfinity;
@@ -41,8 +41,7 @@ public class PathProvider : MonoBehaviour
         Vector3 t = _targetPoint;
 
         float threshSq = recomputeThreshold * recomputeThreshold;
-        if ((p - _lastPlayerPos).sqrMagnitude < threshSq &&
-            (t - _lastTargetPos).sqrMagnitude < threshSq) return;
+        if ((p - _lastPlayerPos).sqrMagnitude < threshSq && (t - _lastTargetPos).sqrMagnitude < threshSq) return;
 
         _lastPlayerPos = p;
         _lastTargetPos = t;
@@ -52,6 +51,26 @@ public class PathProvider : MonoBehaviour
             CurrentPath = path;
             OnPathUpdated?.Invoke(CurrentPath);
         }
+        if (CurrentPath != null && CurrentPath.corners.Length > 1)
+        {
+            CurrentDistance = ComputePathDistance(CurrentPath);
+            Debug.Log($"[PathProvider] Path distance: {CurrentDistance:F2}m");
+        }
+        else
+        {
+            CurrentDistance = 0f;
+        }
+    }
+    private float ComputePathDistance(NavMeshPath path)
+    {
+        if (path == null || path.corners.Length < 2) return 0f;
+
+        float dist = 0f;
+        for (int i = 1; i < path.corners.Length; i++)
+        {
+            dist += Vector3.Distance(path.corners[i - 1], path.corners[i]);
+        }
+        return dist;
     }
 
     public void SetTarget(GameObject areaGO)

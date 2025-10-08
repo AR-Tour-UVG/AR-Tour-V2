@@ -15,6 +15,7 @@ public class TourRunner : MonoBehaviour
     private Camera _fallbackCamera;
     private int _visitedAcrossTour;
     private int _totalAcrossTour;
+    private double _percentComplete => (_totalAcrossTour > 0) ? (100.0 * _visitedAcrossTour / _totalAcrossTour) : 0.0;
 
     void Awake()
     {
@@ -96,7 +97,6 @@ public class TourRunner : MonoBehaviour
         activeFM.GlobalTotal = _totalAcrossTour;
 
         Debug.Log($"[TourRunner] Floor loaded: {floor.FloorName}. FloorManager will wait for UserReady (R in Editor).");
-        // NOTE: Escaneo UI can be shown right away; the floor is already loaded and waiting.
     }
 
     private void OnFloorCompleted(FloorManager _)
@@ -113,7 +113,7 @@ public class TourRunner : MonoBehaviour
     private void OnAreaConfirmed(AreaDefinition _)
     {
         _visitedAcrossTour++;
-         Debug.Log($"[TourRunner] Global progress: {_visitedAcrossTour}/{_totalAcrossTour}");
+        Debug.Log($"[TourRunner] Global progress: ({_percentComplete:F2}%)");
     }
 
     private IEnumerator UnloadAndAdvance()

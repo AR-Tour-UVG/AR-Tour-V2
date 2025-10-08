@@ -1,10 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 // Allows creation of AreaDefinition assets via the Unity Editor
 [CreateAssetMenu(fileName = "NewAreaDefinition", menuName = "AR-Tour/Area Definition")]
 /// <summary>
@@ -46,37 +42,4 @@ public class AreaDefinition : ScriptableObject
 
     /// <summary>Gets the image representing the area.</summary>
     public Texture2D AreaImage => areaImage;
-
-    private void OnValidate()
-    {
-        if (EditorApplication.isCompiling || EditorApplication.isUpdating || BuildPipeline.isBuildingPlayer)
-            return;
-
-        if (string.IsNullOrWhiteSpace(areaName))
-        {
-            Debug.LogError($"[AreaDefinition] Area name is empty in asset '{name}'", this);
-        }
-        if (string.IsNullOrWhiteSpace(areaText))
-        {
-            Debug.LogWarning($"[AreaDefinition] Area text is empty in area '{areaName}'. Ignore if not needed.", this);
-        }
-        if (audioClips == null || audioClips.Count == 0)
-        {
-            Debug.LogWarning($"[AreaDefinition] No audio clips assigned for area '{areaName}'. Ignore if not needed.", this);
-        }
-        else
-        {
-            for (int i = 0; i < audioClips.Count; i++)
-            {
-                if (audioClips[i] == null)
-                {
-                    Debug.LogError($"[AreaDefinition] Null audio clip at index {i} in area '{areaName}'", this);
-                }
-            }
-        }
-        if (areaImage == null)
-        {
-            Debug.LogWarning($"[AreaDefinition] No area image assigned for area '{areaName}'. Ignore if not needed.", this);
-        }
-    }
 }

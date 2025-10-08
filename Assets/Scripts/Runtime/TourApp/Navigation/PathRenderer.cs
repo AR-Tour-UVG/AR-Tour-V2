@@ -1,6 +1,4 @@
-// SimplePathRenderer.cs
 using UnityEngine;
-using UnityEngine.AI;
 
 [RequireComponent(typeof(LineRenderer))]
 [RequireComponent(typeof(PathProvider))]

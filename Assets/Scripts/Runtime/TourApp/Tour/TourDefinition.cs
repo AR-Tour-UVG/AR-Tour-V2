@@ -1,10 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 [CreateAssetMenu(fileName = "NewTourDefinition", menuName = "AR-Tour/Tour Definition")]
 public class TourDefinition : ScriptableObject
 {
@@ -21,25 +17,6 @@ public class TourDefinition : ScriptableObject
 
     public int IndexOf(FloorDefinition floor) => orderedFloors?.IndexOf(floor) ?? -1;
 
-    private void OnValidate()
-    {
-        if (EditorApplication.isCompiling || EditorApplication.isUpdating || BuildPipeline.isBuildingPlayer)
-        return;
-
-        if (orderedFloors == null)
-        {
-            Debug.LogError($"[TourDefinition] No floors assigned for tour '{tourName}'", this);
-            return;
-        }
-        for (int i = 0; i < orderedFloors.Count; i++)
-        {
-            if (orderedFloors[i] == null)
-            {
-                Debug.LogError($"[TourDefinition] Null floor at index {i} in tour '{tourName}'", this);
-            }
-        }
-    }
-
     public FloorDefinition GetNextAfter(FloorDefinition current)
     {
         var i = IndexOf(current);
@@ -52,14 +29,14 @@ public class TourDefinition : ScriptableObject
     {
         int n = 0;
         foreach (var f in orderedFloors)
-            if (f?.OrderedAreas != null) n += f.OrderedAreas.Count;
+            if (f != null && f.OrderedAreas != null) n += f.OrderedAreas.Count;
         return n;
     }
 
     public IEnumerable<AreaDefinition> EnumerateAllAreas()
     {
         foreach (var f in orderedFloors)
-            if (f?.OrderedAreas != null)
+            if (f != null && f.OrderedAreas != null)
                 foreach (var a in f.OrderedAreas)
                     if (a != null) yield return a;
     }

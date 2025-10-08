@@ -1,9 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
 
 [CreateAssetMenu(fileName = "NewFloorDefinition", menuName = "AR-Tour/Floor Definition")]
 public class FloorDefinition : ScriptableObject
@@ -18,41 +15,14 @@ public class FloorDefinition : ScriptableObject
     [Tooltip("JSON file with anchors for this floor (TextAsset).")]
     [SerializeField] private TextAsset anchorMapJson;
 
+    
+    [Tooltip("Path to the scene asset in the build (read-only).")]
+    [HideInInspector, SerializeField] private string scenePath;
+
 #if UNITY_EDITOR
     [Tooltip("Assign the scene asset; its path is stored into 'scenePath'.")]
     [SerializeField] private SceneAsset sceneAsset;
-    
-    [HideInInspector, SerializeField] private string scenePath;
-
-    private void OnValidate()
-    {
-        if (EditorApplication.isCompiling || EditorApplication.isUpdating || BuildPipeline.isBuildingPlayer)
-            return;
-
-        if (sceneAsset != null)
-        {
-            var path = AssetDatabase.GetAssetPath(sceneAsset);
-            if (string.IsNullOrEmpty(path))
-            {
-                Debug.LogError($"[FloorDefinition] Scene asset is not valid: {sceneAsset.name}", this);
-            }
-        }
-
-        if (anchorMapJson != null)
-        {
-            var jsonPath = AssetDatabase.GetAssetPath(anchorMapJson);
-            if (!jsonPath.EndsWith(".json"))
-            {
-                Debug.LogError($"[FloorDefinition] Anchor map is not a .json file: {jsonPath}", this);
-            }
-        }
-        else
-        {
-            Debug.LogError($"[FloorDefinition] No anchor map assigned for floor '{floorName}'", this);
-        }
-    }
 #endif
-
     // Read-only accessors
     public string FloorName => floorName;
     public IReadOnlyList<AreaDefinition> OrderedAreas => orderedAreas;
@@ -74,8 +44,15 @@ public class FloorDefinition : ScriptableObject
     {
         map = default;
         if (anchorMapJson == null || string.IsNullOrEmpty(anchorMapJson.text)) return false;
-        try { map = JsonUtility.FromJson<T>(anchorMapJson.text); return true; }
-        catch { return false; }
+        try
+        {
+            map = JsonUtility.FromJson<T>(anchorMapJson.text);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
     
     public bool TryGetAnchorMapText(out string json)

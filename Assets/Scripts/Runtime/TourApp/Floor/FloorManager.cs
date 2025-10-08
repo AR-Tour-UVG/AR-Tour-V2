@@ -1,4 +1,3 @@
-// FloorManager.cs
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -188,8 +187,7 @@ public class FloorManager : MonoBehaviour
         _sequence.Clear();
         foreach (var go in registry.ForFloor(floor))
             _sequence.Add(go);
-        if (_sequence.Count == 0)
-            Debug.LogWarning("[FloorManager] Floor has zero resolved areas in this scene.", this);
+        if (_sequence.Count == 0) Debug.LogWarning("[FloorManager] Floor has zero resolved areas in this scene.", this);
     }
 
     private void ApplyAreaVisibility()

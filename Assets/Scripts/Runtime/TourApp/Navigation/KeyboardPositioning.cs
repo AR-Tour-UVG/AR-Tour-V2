@@ -1,6 +1,5 @@
 using UnityEngine;
-#if UNITY_EDITOR
-using UnityEngine.InputSystem; // new input system
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Simple WASD/Arrow key movement for Editor testing.
@@ -23,6 +22,10 @@ public class KeyboardPositioning : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+#if UNITY_EDITOR
+        Debug.Log("[KeyboardPositioning] Enabled in non-Editor build.");
+        enabled = false;
+#else
         if (target == null) target = transform;
         var rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
@@ -30,6 +33,7 @@ public class KeyboardPositioning : MonoBehaviour
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         gameObject.tag = "Player";
+#endif
     }
 
     /// <summary>
@@ -53,15 +57,3 @@ public class KeyboardPositioning : MonoBehaviour
         target.position += moveSpeed * Time.deltaTime * dir;
     }
 }
-#else
-// Component for non-Editor builds. Disables itself and logs a message on Awake().
-public class KeyboardPositioning : MonoBehaviour
-{   
-    // Disable self and log message.
-    private void Awake() 
-    { 
-        Debug.Log("[KeyboardPositioning] Disabled in non-Editor build.");
-        enabled = false;
-    }
-}
-#endif

@@ -52,8 +52,7 @@ public class AreaRegistry : MonoBehaviour
     /// <param name="def">The area definition key.</param>
     /// <param name="areaGO">When this method returns, contains the GameObject if found; otherwise <c>null</c>.</param>
     /// <returns><c>true</c> if the GameObject exists in the registry; otherwise <c>false</c>.</returns>
-    public bool TryGet(AreaDefinition def, out GameObject areaGO) =>
-        _byDef.TryGetValue(def, out areaGO);
+    public bool TryGet(AreaDefinition def, out GameObject areaGO) => _byDef.TryGetValue(def, out areaGO);
 
     /// <summary>
     /// Returns the area GameObjects belonging to a floor in the order defined by the floor.
@@ -72,6 +71,7 @@ public class AreaRegistry : MonoBehaviour
             if (!def) continue;
             // Try to get the corresponding GameObject and yield it; log a warning if not found
             if (_byDef.TryGetValue(def, out var go)) yield return go;
+            
             else Debug.LogWarning($"[AreaRegistry] Missing AreaInstance for '{def.name}' in this scene.", this);
         }
     }
