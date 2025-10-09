@@ -16,6 +16,7 @@ namespace Assets.Minijuegos.Scripts.Breakout
         public UIDocument uxml;
         
         private VisualElement menuContainer;
+        private VisualElement menuBackground;
         private VisualElement mainUI;
         private Button restartButton;
         private Button exitButton;
@@ -30,10 +31,18 @@ namespace Assets.Minijuegos.Scripts.Breakout
             if (uxml != null && uxml.rootVisualElement != null)
             {
                 var menu = uxml.rootVisualElement.Q<VisualElement>("MenuContainer");
+                var bg = uxml.rootVisualElement.Q<VisualElement>("menu-background");
+                
                 if (menu != null)
                 {
                     menu.style.display = DisplayStyle.None;
                     Debug.Log("✅ Menú ocultado en Awake");
+                }
+                
+                if (bg != null)
+                {
+                    bg.style.display = DisplayStyle.None;
+                    Debug.Log("✅ Background ocultado en Awake");
                 }
             }
         }
@@ -43,6 +52,22 @@ namespace Assets.Minijuegos.Scripts.Breakout
             lives = liveIcons.Length;
             lost = false;
             Time.timeScale = 1;
+            
+            // Si uxml no está asignado, intentar encontrarlo en la escena
+            if (uxml == null)
+            {
+                Debug.LogWarning("⚠️ UIDocument no asignado, buscando en la escena...");
+                uxml = FindFirstObjectByType<UIDocument>();
+                
+                if (uxml == null)
+                {
+                    Debug.LogError("❌ No se encontró ningún UIDocument en la escena!");
+                }
+                else
+                {
+                    Debug.Log($"✅ UIDocument encontrado: {uxml.gameObject.name}");
+                }
+            }
             
             // Ocultar assets del juego hasta que todo esté listo
             gameAssets.SetActive(false);
@@ -59,11 +84,22 @@ namespace Assets.Minijuegos.Scripts.Breakout
 
         private System.Collections.IEnumerator WaitAndInitializeUI()
         {
+            Debug.Log("🔄 Esperando a que UIDocument esté listo...");
+            
             // Esperar hasta que UIDocument esté completamente inicializado
+            int attempts = 0;
             while (uxml == null || uxml.rootVisualElement == null)
             {
+                attempts++;
+                if (attempts > 100) // Timeout después de ~3 segundos
+                {
+                    Debug.LogError("❌ UIDocument no se inicializó después de 100 frames");
+                    yield break;
+                }
                 yield return null;
             }
+            
+            Debug.Log($"✅ UIDocument listo después de {attempts} frames");
             
             // Ahora sí inicializar
             InitializeUI();
@@ -71,14 +107,25 @@ namespace Assets.Minijuegos.Scripts.Breakout
 
         private void InitializeUI()
         {
-            if (uxml == null || uxml.rootVisualElement == null)
+            Debug.Log("🎮 Iniciando InitializeUI...");
+            
+            if (uxml == null)
             {
-                Debug.LogError("❌ UIDocument no está asignado o no tiene rootVisualElement");
+                Debug.LogError("❌ uxml es null");
+                return;
+            }
+            
+            if (uxml.rootVisualElement == null)
+            {
+                Debug.LogError("❌ rootVisualElement es null");
                 return;
             }
 
+            Debug.Log("✅ UIDocument y rootVisualElement están OK");
+
             // Obtener contenedor completo del menú
             menuContainer = uxml.rootVisualElement.Q<VisualElement>("MenuContainer");
+            menuBackground = uxml.rootVisualElement.Q<VisualElement>("menu-background");
             
             if (menuContainer == null)
             {
@@ -86,12 +133,25 @@ namespace Assets.Minijuegos.Scripts.Breakout
                 return;
             }
 
-            mainUI = menuContainer.Q<VisualElement>("ContainerPauseMenu");
-            restartButton = mainUI?.Q<Button>("restart-button");
-            exitButton = mainUI?.Q<Button>("exit-button");
+            Debug.Log("✅ MenuContainer encontrado");
 
-            // Asegurar que el menú está oculto
+            mainUI = menuContainer.Q<VisualElement>("ContainerPauseMenu");
+            
+            if (mainUI == null)
+            {
+                Debug.LogError("❌ No se encontró ContainerPauseMenu");
+                return;
+            }
+            
+            Debug.Log("✅ ContainerPauseMenu encontrado");
+            
+            restartButton = mainUI.Q<Button>("restart-button");
+            exitButton = mainUI.Q<Button>("exit-button");
+
+            // Asegurar que el menú y background están ocultos
             menuContainer.style.display = DisplayStyle.None;
+            if (menuBackground != null)
+                menuBackground.style.display = DisplayStyle.None;
 
             // Registrar eventos de botones
             if (restartButton != null)
@@ -115,7 +175,7 @@ namespace Assets.Minijuegos.Scripts.Breakout
             }
 
             uiInitialized = true;
-            Debug.Log("✅ UI de Breakout inicializada correctamente");
+            Debug.Log("✅✅✅ UI de Breakout inicializada correctamente - uiInitialized = TRUE");
         }
 
         private void ExitGame()
@@ -191,29 +251,35 @@ namespace Assets.Minijuegos.Scripts.Breakout
                 // Si solo está pausado, continuar
                 Time.timeScale = 1;
                 if (menuContainer != null)
-                {
                     menuContainer.style.display = DisplayStyle.None;
-                    Debug.Log("✅ Menú ocultado - Juego continuado");
-                }
+                if (menuBackground != null)
+                    menuBackground.style.display = DisplayStyle.None;
+                    
+                Debug.Log("✅ Menú ocultado - Juego continuado");
             }
         }
 
         public void Pause()
         {
+            Debug.Log($"🔍 Pause llamado - uiInitialized: {uiInitialized}");
+            
             if (!uiInitialized)
             {
                 Debug.LogWarning("⚠️ UI no inicializada, no se puede pausar");
+                Debug.LogWarning($"   uxml: {(uxml == null ? "NULL" : "OK")}");
+                Debug.LogWarning($"   rootVisualElement: {(uxml?.rootVisualElement == null ? "NULL" : "OK")}");
+                Debug.LogWarning($"   menuContainer: {(menuContainer == null ? "NULL" : "OK")}");
                 return;
             }
 
-            Debug.Log("⏸️ Pause llamado - Lost: " + lost);
+            Debug.Log("⏸️ Pause ejecutándose - Lost: " + lost);
             
             Time.timeScale = 0;
             
             if (menuContainer != null)
-            {
                 menuContainer.style.display = DisplayStyle.Flex;
-            }
+            if (menuBackground != null)
+                menuBackground.style.display = DisplayStyle.Flex;
 
             Label pauseLabel = mainUI?.Q<Label>("pause-label");
             
@@ -231,6 +297,8 @@ namespace Assets.Minijuegos.Scripts.Breakout
                 if (restartButton != null)
                     restartButton.text = "Continuar";
             }
+            
+            Debug.Log("✅ Menú de pausa mostrado correctamente");
         }
 
         private void OnDestroy()
@@ -242,4 +310,4 @@ namespace Assets.Minijuegos.Scripts.Breakout
                 exitButton.clicked -= ExitGame;
         }
     }
-}   
+}
