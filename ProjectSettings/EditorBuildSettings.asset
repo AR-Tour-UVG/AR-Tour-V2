@@ -14,6 +14,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestRoomB.unity
     guid: cb129b460b295d049ad2a32c4f9c2893
+  - enabled: 1
+    path: Assets/Minijuegos/Scenes/Breakout.unity
+    guid: 5c227dda1589f9b46b991dfc9c1fd0b9
+  - enabled: 1
+    path: Assets/Minijuegos/Scenes/FlappyBird.unity
+    guid: 7aca58869b71e02428e761494130db71
+  - enabled: 1
+    path: Assets/Minijuegos/Scenes/Trivia.unity
+    guid: 1c0ed8fbf69e0b2499708a28b0652b2b
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 7bf74cbf374d8524082094c16bf61f23, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 1c501e307a66f3a48b62f77237755d7a, type: 2}

@@ -86,15 +86,18 @@ public class InicioUIController : MonoBehaviour
 
         if (botonMinijuegos != null)
         {
-            // Deshabilitar temporalmente
-            botonMinijuegos.SetEnabled(false);
+            botonMinijuegos.SetEnabled(true);
 
             botonMinijuegos.clicked += () =>
             {
-                // Aquí puedes agregar navegación a minijuegos
-                Debug.Log("Navegando a minijuegos...");
+                // Mostrar el menú de minijuegos
+                if (cambiador != null)
+                {
+                    cambiador.MostrarMinijuegos();
+                }
             };
         }
+
     }
 
     IEnumerator SecuenciaAnimacionEntrada()

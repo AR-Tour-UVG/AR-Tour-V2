@@ -11,6 +11,7 @@ public class CambiadorDePantallas : MonoBehaviour
     [Header("Pantallas principales")]
     public GameObject pantallaInicio;
     public GameObject pantallaTour;
+    public GameObject pantallaMinijuegos;
 
     private int onboardingIndex = 1;
 
@@ -75,5 +76,11 @@ public class CambiadorDePantallas : MonoBehaviour
     {
         ApagarTodas();
         pantallaTour.SetActive(true);
+    }
+
+    public void MostrarMinijuegos()
+    {
+        ApagarTodas();
+        pantallaMinijuegos.SetActive(true);
     }
 }
