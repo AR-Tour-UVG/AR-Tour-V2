@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Minijuegos.Scripts
+namespace Assets.Minijuegos.Scripts.Breakout
 {
     public abstract class Tiles : MonoBehaviour
     {
@@ -9,7 +9,7 @@ namespace Assets.Minijuegos.Scripts
 
         public abstract bool TakeDamage();
 
-        // Método para morir
+        // Mï¿½todo para morir
         protected void Die()
         {
             // Destruir el tile

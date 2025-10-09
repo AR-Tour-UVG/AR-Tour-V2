@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Minijuegos.Scripts
+namespace Assets.Minijuegos.Scripts.Breakout
 {
     public class BallController : MonoBehaviour
     {

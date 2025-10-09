@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Minijuegos.Scripts
+namespace Assets.Minijuegos.Scripts.Breakout
 {
     /// <summary>
     /// Algoritmo de generacion de tiles desarrollado con ChatGPT y modificaciones seg�n comportamiento esperado

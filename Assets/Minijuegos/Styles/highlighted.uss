@@ -1,0 +1,3 @@
+button.highlighted {
+    background-color: rgba(209, 250, 166, 0);
+}

@@ -501,12 +501,8 @@ MonoBehaviour:
   gameMenuName: GameMenu
   menuName: PantallaInicio
   disableObjects:
-  - {fileID: 554738746}
-  - {fileID: 603149928}
-  - {fileID: 510312500}
-  - {fileID: 5299381}
-  - {fileID: 632061383}
   - {fileID: 307712971}
+  - {fileID: 75360301}
 --- !u!4 &595212791
 Transform:
   m_ObjectHideFlags: 0

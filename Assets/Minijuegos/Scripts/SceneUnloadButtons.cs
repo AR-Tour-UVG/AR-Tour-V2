@@ -1,53 +1,94 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Minijuegos.Scripts
 {
     public class SceneUnloadButtons : MonoBehaviour
     {
         [SerializeField]
-        private UIDocument uxml;
-        [SerializeField]
-        private Scene scene;
-        [SerializeField]
-        private string menuName;
+        private UIDocument uiDocument;
+        
+        private Button exitButton;
+        private Scene sceneManager;
+        
+    private void OnEnable()
+    {
+        StartCoroutine(WaitForUIDocument());
+    }
 
-        [SerializeField]
-        private string[] sceneNames;
-        [SerializeField]
-        private string[] buttonNames;
-
-        //void Start()
-        //{
-        //    VisualElement mainMenu = uxml.rootVisualElement.Q<VisualElement>(menuName);
-        //    scene = Scene.Instance;
-
-        //    for (int i = 0; i < sceneNames.Length; i++)
-        //    {
-        //        Button button = mainMenu.Q<Button>(buttonNames[i]);
-        //        int index = i;
-        //        button.clicked += () => LoadScene(sceneNames[index]);
-        //    }
-        //}
-
-        public void LoadScene(string sceneName)
+    private System.Collections.IEnumerator WaitForUIDocument()
+    {
+        // Esperar a que el UIDocument exista en el GameObject
+        int tries = 0;
+        while (uiDocument == null && tries < 10)
         {
-            Scene.Instance.UnloadScene(sceneName);
+            uiDocument = GetComponent<UIDocument>();
+            tries++;
+            yield return new WaitForSeconds(0.1f);
         }
 
-        void OnEnable()
+        if (uiDocument == null)
         {
-            print("enabling buttons");
-            VisualElement mainMenu = uxml.rootVisualElement.Q<VisualElement>(menuName);
+            Debug.LogError("⚠️ UIDocument sigue sin encontrarse tras varios intentos.");
+            yield break;
+        }
 
-            for (int i = 0; i < sceneNames.Length; i++)
+        // Esperar a que el rootVisualElement esté disponible
+        while (uiDocument.rootVisualElement == null)
+            yield return null;
+
+        InitializeUI();
+    }
+
+        private void InitializeUI()
+        {
+            if (uiDocument == null || uiDocument.rootVisualElement == null)
             {
-                Button button = mainMenu.Q<Button>(buttonNames[i]);
-                int index = i;
-
-                // Aseg�rate de limpiar eventos anteriores para evitar m�ltiples asignaciones
-                button.clicked -= null;
-                button.clicked += () => LoadScene(sceneNames[index]);
+                Debug.LogError("⚠️ No se pudo inicializar UI en SceneUnloadButtons");
+                return;
+            }
+            
+            var root = uiDocument.rootVisualElement;
+            exitButton = root.Q<Button>("exit-button");
+            
+            if (exitButton != null)
+            {
+                exitButton.clicked += OnExitButtonClicked;
+                Debug.Log("✅ Botón de salida inicializado correctamente");
+            }
+            else
+            {
+                Debug.LogWarning("⚠️ No se encontró el botón 'exit-button'");
+            }
+            
+            sceneManager = Scene.Instance;
+            if (sceneManager == null)
+            {
+                Debug.LogWarning("⚠️ Scene Manager no encontrado");
+            }
+        }
+        
+        private void OnExitButtonClicked()
+        {
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            Debug.Log($"🚪 Saliendo del minijuego: {currentSceneName}");
+            
+            if (sceneManager != null)
+            {
+                sceneManager.UnloadScene(currentSceneName);
+            }
+            else
+            {
+                Debug.LogError("⚠️ Scene Manager no disponible para descargar escena");
+            }
+        }
+        
+        private void OnDisable()
+        {
+            if (exitButton != null)
+            {
+                exitButton.clicked -= OnExitButtonClicked;
             }
         }
     }

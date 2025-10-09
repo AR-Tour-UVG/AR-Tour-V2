@@ -1,8 +1,6 @@
-
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -13,7 +11,6 @@ namespace Assets.Minijuegos.Scripts.Trivia
 {
     public class GameManager : MonoBehaviour
     {
-
         [SerializeField]
         private TriviaData triviaData;
         [SerializeField]
@@ -22,88 +19,160 @@ namespace Assets.Minijuegos.Scripts.Trivia
         private UIDocument uxml;
         [SerializeField]
         private CategoriesManager categoriesManager;
-
+        
         string saveFilePath;
         private VisualElement mainMenu;
         private VisualElement questionMenu;
         private Label scoreText;
         private Label rachaText;
-
         private Pregunta preguntaActual;
         private int puntos = 0;
         private int racha = 0;
-
         private List<RespuestaButton> respuestas = new List<RespuestaButton>();
-
+        private bool uiInitialized = false;
+        
         private void Start()
         {
-            mainMenu = uxml.rootVisualElement.Q<VisualElement>("main-menu");
-            questionMenu = uxml.rootVisualElement.Q<VisualElement>("question-menu");
-
-            scoreText = mainMenu.Q<Label>("ScoreText");
-            rachaText = mainMenu.Q<Label>("StreakText");
-
-            mainMenu.style.display = DisplayStyle.Flex;
-            questionMenu.style.display = DisplayStyle.None;
             saveFilePath = Application.persistentDataPath + "/TriviaData.json";
-
+            InitializeUI();
             StartCoroutine(GetData());
         }
-
+        
+        private void InitializeUI()
+        {
+            if (uxml == null)
+            {
+                Debug.LogError("⚠️ UIDocument no asignado en Trivia GameManager");
+                return;
+            }
+            
+            if (uxml.rootVisualElement == null)
+            {
+                Debug.LogWarning("⚠️ rootVisualElement no está listo en Trivia, reintentando...");
+                Invoke(nameof(InitializeUI), 0.1f);
+                return;
+            }
+            
+            try
+            {
+                mainMenu = uxml.rootVisualElement.Q<VisualElement>("main-menu");
+                questionMenu = uxml.rootVisualElement.Q<VisualElement>("question-menu");
+                scoreText = mainMenu?.Q<Label>("ScoreText");
+                rachaText = mainMenu?.Q<Label>("StreakText");
+                
+                if (mainMenu != null)
+                {
+                    mainMenu.style.display = DisplayStyle.Flex;
+                }
+                
+                if (questionMenu != null)
+                {
+                    questionMenu.style.display = DisplayStyle.None;
+                }
+                
+                uiInitialized = true;
+                Debug.Log("✅ UI de Trivia inicializada correctamente");
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"⚠️ Error al inicializar UI de Trivia: {e.Message}");
+            }
+        }
+        
         private void Update()
         {
-            scoreText.text = "" + puntos;
-            rachaText.text = "" + racha;
+            if (!uiInitialized) return;
+            
+            if (scoreText != null)
+            {
+                scoreText.text = "" + puntos;
+            }
+            
+            if (rachaText != null)
+            {
+                rachaText.text = "" + racha;
+            }
         }
-
+        
         /// <summary>
-        /// Prepara el juego para iniciar una nueva categor�a.
+        /// Prepara el juego para iniciar una nueva categoría.
         /// </summary>
         public void RegresarAMain()
         {
-            mainMenu.style.display = DisplayStyle.Flex;
-            questionMenu.style.display = DisplayStyle.None;
-
-            categoriesManager.ResetCategoryButtons();
-            categoriesManager.currentCategory = null;
+            if (!uiInitialized) return;
+            
+            if (mainMenu != null)
+            {
+                mainMenu.style.display = DisplayStyle.Flex;
+            }
+            
+            if (questionMenu != null)
+            {
+                questionMenu.style.display = DisplayStyle.None;
+            }
+            
+            if (categoriesManager != null)
+            {
+                categoriesManager.ResetCategoryButtons();
+                categoriesManager.currentCategory = null;
+            }
         }
-
+        
         /// <summary>
-        /// Carga la categor�a seleccionada a la pantalla respectiva
+        /// Carga la categoría seleccionada a la pantalla respectiva
         /// </summary>
         /// <param name="categoria"></param>
         public void StartCategory(Categoria categoria)
         {
-            mainMenu.style.display = DisplayStyle.None;
-            questionMenu.style.display = DisplayStyle.Flex;
-
+            if (!uiInitialized)
+            {
+                Debug.LogWarning("⚠️ UI no inicializada, no se puede iniciar categoría");
+                return;
+            }
+            
+            if (mainMenu != null)
+            {
+                mainMenu.style.display = DisplayStyle.None;
+            }
+            
+            if (questionMenu != null)
+            {
+                questionMenu.style.display = DisplayStyle.Flex;
+            }
+            
             var pregunta = GetQuestion(categoria.preguntas);
             preguntaActual = pregunta;
+            
+            var nombreCategoriaLabel = questionMenu?.Q<Label>("nombre-categoria");
+            if (nombreCategoriaLabel != null)
+                nombreCategoriaLabel.text = categoria.nombre.ToUpper();
 
-            questionMenu.Q<Label>("nombre-categoria").text = categoria.nombre.ToUpper();
-            questionMenu.Q<Label>("pregunta").text = pregunta.pregunta;
+            var preguntaLabel = questionMenu?.Q<Label>("pregunta");
+            if (preguntaLabel != null)
+                preguntaLabel.text = pregunta.pregunta;
             
             ResetRespuestas();
-
             SetRespuestasButtons(preguntaActual.respuestas);
         }
-
+        
         /// <summary>
         /// Asigna las respuestas a los botones de la pantalla.
         /// </summary>
         /// <param name="respuestasTexto"></param>
         private void SetRespuestasButtons(List<string> respuestasTexto)
         {
+            if (!uiInitialized || questionMenu == null) return;
+            
             VisualElement respuestasContainer = questionMenu.Q<VisualElement>("question-menu");
-
+            
             foreach (var respuestaButton in respuestas)
             {
                 if (respuestaButton.button != null)
                 {
-                    respuestaButton.button.clicked -= respuestaButton.Revisar;  // Desvincular el evento de clic
+                    respuestaButton.button.clicked -= respuestaButton.Revisar;
                 }
             }
-
+            
             for (int i = 0; i < respuestasTexto.Count; i++)
             {
                 RespuestaButton respuestaButton = new();
@@ -112,7 +181,7 @@ namespace Assets.Minijuegos.Scripts.Trivia
                 respuestas.Add(respuestaButton);
             }
         }
-
+        
         /// <summary>
         /// Reinicia los colores de los botones de respuesta. 
         /// </summary>
@@ -129,33 +198,33 @@ namespace Assets.Minijuegos.Scripts.Trivia
             }
             respuestas.Clear();
         }
-
+        
         /// <summary>
-        /// Obtiene los datos de la API o del archivo local si no hay conexi�n a internet.
+        /// Obtiene los datos de la API o del archivo local si no hay conexión a internet.
         /// </summary>
         /// <returns></returns>
         private IEnumerator GetData()
         {
             UnityWebRequest request = UnityWebRequest.Get(triviaURL.URL);
-
             yield return request.SendWebRequest();
-
+            
             if (request.result == UnityWebRequest.Result.Success)
             {
                 string json = request.downloadHandler.text;
-
                 File.WriteAllText(saveFilePath, json);
                 SaveTriviaData(json);
             }
             else
             {
-                string loadPlayerData = File.ReadAllText(saveFilePath);
-                SaveTriviaData(loadPlayerData);
-
+                if (File.Exists(saveFilePath))
+                {
+                    string loadPlayerData = File.ReadAllText(saveFilePath);
+                    SaveTriviaData(loadPlayerData);
+                }
                 Debug.LogError("Error: " + request.error);
             }
         }
-
+        
         /// <summary>
         /// Guarda los datos de la trivia en el scriptable object.
         /// </summary>
@@ -163,12 +232,14 @@ namespace Assets.Minijuegos.Scripts.Trivia
         public void SaveTriviaData(string data)
         {
             triviaData = ScriptableObject.CreateInstance<TriviaData>();
-
             JsonConvert.PopulateObject(data, triviaData);
-
-            categoriesManager.GenerateButtons(triviaData.categorias);
+            
+            if (categoriesManager != null)
+            {
+                categoriesManager.GenerateButtons(triviaData.categorias);
+            }
         }
-
+        
         /// <summary>
         /// Obtiene una pregunta aleatoria de la lista de preguntas.
         /// </summary>
@@ -177,15 +248,13 @@ namespace Assets.Minijuegos.Scripts.Trivia
         public Pregunta GetQuestion(List<Pregunta> preguntas)
         {
             var pregunta = preguntas.ToArray()[Random.Range(0, preguntas.Count)];
-
-            if(pregunta == preguntaActual && preguntas.Count > 1)
+            if (pregunta == preguntaActual && preguntas.Count > 1)
             {
                 return GetQuestion(preguntas);
             }
-
             return pregunta;
         }
-
+        
         /// <summary>
         /// Revisa si la respuesta es correcta y actualiza los puntos.
         /// </summary>
@@ -193,7 +262,6 @@ namespace Assets.Minijuegos.Scripts.Trivia
         /// <param name="boton">Boton de la respuesta seleccionada</param>
         public void Respuesta(int index, Button boton)
         {
-            
             var correcta = preguntaActual.correcta == index;
             boton.style.backgroundColor = correcta ? new StyleColor(new Color(0.82f, 0.98f, 0.65f)) : new StyleColor(new Color(0.980f, 0.37f, 0.33f));
             
@@ -203,7 +271,7 @@ namespace Assets.Minijuegos.Scripts.Trivia
             {
                 respuesta.button.SetEnabled(false);
             }
-
+            
             if (correcta)
             {
                 puntos += preguntaActual.puntos;
@@ -211,13 +279,12 @@ namespace Assets.Minijuegos.Scripts.Trivia
             }
             else
             {
-
                 racha = 0;
             }
-
+            
             StartCoroutine(Regresar());
         }
-
+        
         /// <summary>
         /// Regresa a la pantalla principal luego de unos segundos.
         /// </summary>
