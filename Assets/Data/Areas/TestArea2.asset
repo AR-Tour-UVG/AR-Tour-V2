@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a5e38ce4e5c1df4ebfa2c7c381dae2d, type: 3}
-  m_Name: TestTour
+  m_Script: {fileID: 11500000, guid: 2b55ed11d9565f2429cf480ede22b093, type: 3}
+  m_Name: TestArea2
   m_EditorClassIdentifier: 
-  tourName: TestTour
-  orderedFloors:
-  - {fileID: 11400000, guid: 8b831e1696b720a4fb1b39fb3d07ad85, type: 2}
-  - {fileID: 11400000, guid: 0d2bfbb1a5c35294fab80ca5a63c052b, type: 2}
+  areaName: TestAreaEnd
+  nextAreaDirections: 
+  areaText: {fileID: 0}
+  audioClips: []
+  areaImagePath: 

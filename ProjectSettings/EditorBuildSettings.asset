@@ -18,11 +18,11 @@ EditorBuildSettings:
     path: Assets/Scenes/PantallaPrincipal.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/CIT-6.unity
-    guid: 62864c9ea0473ee40a903d76d97a07ab
+    path: Assets/Scenes/TestRoomA.unity
+    guid: f5f7e01c13b93a843a1e4ec391ec2ff6
   - enabled: 0
-    path: Assets/Scenes/TestRoom.unity
-    guid: 1541038be87fd8a4fb8e9d4de041a419
+    path: Assets/Scenes/TestRoomB.unity
+    guid: cb129b460b295d049ad2a32c4f9c2893
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 7bf74cbf374d8524082094c16bf61f23, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 1c501e307a66f3a48b62f77237755d7a, type: 2}
