@@ -1,0 +1,34 @@
+.container {
+    background-image: url("project://database/Assets/Visuals/Backgrounds/Basic/Dark%20Glass.png?fileID=2800000&guid=21c37f3bbba75264281cff8c0c326fd0&type=3#Dark Glass");
+    flex-direction: row;
+    -unity-background-scale-mode: scale-and-crop;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    flex-grow: 1;
+}
+
+.icon {
+    -unity-background-image-tint-color: rgb(0, 165, 0);
+    -unity-background-scale-mode: scale-to-fit;
+    flex-grow: 1;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+.title {
+    flex-grow: 5;
+    -unity-font-definition: url("project://database/Assets/Fonts/Outfit-Bold.ttf?fileID=12800000&guid=009c88122ff54034eba16c07ef9b6b79&type=3#Outfit-Bold");
+    font-size: 30px;
+    -unity-text-align: middle-left;
+    text-overflow: ellipsis;
+    color: rgb(0, 140, 54);
+    overflow: hidden;
+}

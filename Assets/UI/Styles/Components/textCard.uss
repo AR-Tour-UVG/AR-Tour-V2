@@ -15,14 +15,15 @@
     border-bottom-left-radius: 20px;
     justify-content: center;
     align-items: flex-start;
+    flex-grow: 1;
 }
 
 .text {
     -unity-font-definition: url("project://database/Assets/Fonts/Outfit-SemiBold.ttf?fileID=12800000&guid=b8a090f2eefc036448c302f364fb6e9d&type=3#Outfit-SemiBold");
     font-size: 28px;
     color: rgb(242, 242, 242);
-    -unity-text-align: middle-center;
-    white-space: pre-wrap;
+    -unity-text-align: middle-left;
+    white-space: normal;
     text-overflow: ellipsis;
     margin-top: 10px;
     margin-right: 10px;
@@ -32,4 +33,9 @@
     padding-right: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
+    flex-grow: 1;
+    align-self: center;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
 }
