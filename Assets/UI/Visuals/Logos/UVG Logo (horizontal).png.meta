@@ -1,0 +1,1014 @@
+fileFormatVersion: 2
+guid: eb7113e4460cc4e46a1916ae8ea0825f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8559422465115960472
+    second: UVG Logo (horizontal)_0
+  - first:
+      213: 9115946999007420141
+    second: UVG Logo (horizontal)_1
+  - first:
+      213: -5017618247152232923
+    second: UVG Logo (horizontal)_2
+  - first:
+      213: 6045185112219495176
+    second: UVG Logo (horizontal)_3
+  - first:
+      213: 6081868693443247090
+    second: UVG Logo (horizontal)_4
+  - first:
+      213: 1948157654067976050
+    second: UVG Logo (horizontal)_5
+  - first:
+      213: -1694693906497120405
+    second: UVG Logo (horizontal)_6
+  - first:
+      213: -510149224494152918
+    second: UVG Logo (horizontal)_7
+  - first:
+      213: -3301770688118510323
+    second: UVG Logo (horizontal)_8
+  - first:
+      213: 687791286159545319
+    second: UVG Logo (horizontal)_9
+  - first:
+      213: -1179002594921584289
+    second: UVG Logo (horizontal)_10
+  - first:
+      213: -8911695032748982734
+    second: UVG Logo (horizontal)_11
+  - first:
+      213: 5805060667603504504
+    second: UVG Logo (horizontal)_12
+  - first:
+      213: 1777012058178532779
+    second: UVG Logo (horizontal)_13
+  - first:
+      213: -7469583318424662880
+    second: UVG Logo (horizontal)_14
+  - first:
+      213: 3232682102864738889
+    second: UVG Logo (horizontal)_15
+  - first:
+      213: -6177059311820895289
+    second: UVG Logo (horizontal)_16
+  - first:
+      213: 201412660689905204
+    second: UVG Logo (horizontal)_17
+  - first:
+      213: 4562640357728063741
+    second: UVG Logo (horizontal)_18
+  - first:
+      213: 155071118345610850
+    second: UVG Logo (horizontal)_19
+  - first:
+      213: -8772918387347693836
+    second: UVG Logo (horizontal)_20
+  - first:
+      213: -8834660131342841057
+    second: UVG Logo (horizontal)_21
+  - first:
+      213: -857924684298192639
+    second: UVG Logo (horizontal)_22
+  - first:
+      213: 5760487542060362755
+    second: UVG Logo (horizontal)_23
+  - first:
+      213: 8427933204373743410
+    second: UVG Logo (horizontal)_24
+  - first:
+      213: 8778975613042775567
+    second: UVG Logo (horizontal)_25
+  - first:
+      213: -2325499142883276956
+    second: UVG Logo (horizontal)_26
+  - first:
+      213: 7114719836162238026
+    second: UVG Logo (horizontal)_27
+  - first:
+      213: -1229568443802097735
+    second: UVG Logo (horizontal)_28
+  - first:
+      213: 7360660670969169464
+    second: UVG Logo (horizontal)_29
+  - first:
+      213: -5510358906857641804
+    second: UVG Logo (horizontal)_30
+  - first:
+      213: 7332431105947616088
+    second: UVG Logo (horizontal)_31
+  - first:
+      213: 7695141613757739001
+    second: UVG Logo (horizontal)_32
+  - first:
+      213: 7038758146210484268
+    second: UVG Logo (horizontal)_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 62
+        width: 146
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86bc3442e92d63980800000000000000
+      internalID: -8559422465115960472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_1
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 65
+        width: 165
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dee102b4f79528e70800000000000000
+      internalID: 9115946999007420141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_2
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 62
+        width: 149
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52619f7e9c6dd5ab0800000000000000
+      internalID: -5017618247152232923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_3
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 51
+        width: 9
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80ba25fa4dfc4e350800000000000000
+      internalID: 6045185112219495176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_4
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 194
+        width: 42
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fbf0438a53276450800000000000000
+      internalID: 6081868693443247090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_5
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 195
+        width: 45
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2771e29801f390b10800000000000000
+      internalID: 1948157654067976050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_6
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 195
+        width: 11
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b675834fedc3b78e0800000000000000
+      internalID: -1694693906497120405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_7
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 195
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a23c593bbf59be8f0800000000000000
+      internalID: -510149224494152918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_8
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 195
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0d26ec7d01cd22d0800000000000000
+      internalID: -3301770688118510323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_9
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 195
+        width: 41
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e3162bd7868b8900800000000000000
+      internalID: 687791286159545319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_10
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 194
+        width: 35
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f596f64f26753afe0800000000000000
+      internalID: -1179002594921584289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_11
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 195
+        width: 11
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23e326a759c435480800000000000000
+      internalID: -8911695032748982734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_12
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 195
+        width: 44
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87d4910bbe7bf8050800000000000000
+      internalID: 5805060667603504504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_13
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 195
+        width: 49
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba531594d0739a810800000000000000
+      internalID: 1777012058178532779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_14
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 195
+        width: 44
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ac4d152c85b65890800000000000000
+      internalID: -7469583318424662880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_15
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 116
+        width: 58
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94af30dbe3bccdc20800000000000000
+      internalID: 3232682102864738889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_16
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 116
+        width: 41
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cb856a884da64aa0800000000000000
+      internalID: -6177059311820895289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_17
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 116
+        width: 42
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43620bd6fbf8bc200800000000000000
+      internalID: 201412660689905204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_18
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 116
+        width: 61
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df01e304b31c15f30800000000000000
+      internalID: 4562640357728063741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_19
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 116
+        width: 64
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 266a9eb4c5ce62200800000000000000
+      internalID: 155071118345610850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_20
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 116
+        width: 42
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fed5a62535504680800000000000000
+      internalID: -8772918387347693836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_21
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 116
+        width: 42
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1b01082b6bf46580800000000000000
+      internalID: -8834660131342841057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_22
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 116
+        width: 41
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 109fd5c8b0a0814f0800000000000000
+      internalID: -857924684298192639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_23
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 57
+        width: 38
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30c229d26ec51ff40800000000000000
+      internalID: 5760487542060362755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_24
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 57
+        width: 27
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 237aa65a89806f470800000000000000
+      internalID: 8427933204373743410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_25
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 56
+        width: 40
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f065b3b9ecf25d970800000000000000
+      internalID: 8778975613042775567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_26
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 56
+        width: 37
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46787feb9da2abfd0800000000000000
+      internalID: -2325499142883276956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_27
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 57
+        width: 42
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4620eedeff8cb260800000000000000
+      internalID: 7114719836162238026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_28
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 57
+        width: 36
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b76520d302bfeee0800000000000000
+      internalID: -1229568443802097735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_29
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 57
+        width: 46
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8364e4db1e1562660800000000000000
+      internalID: 7360660670969169464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_30
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 57
+        width: 27
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b827d3f4c54783b0800000000000000
+      internalID: -5510358906857641804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_31
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 57
+        width: 42
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8534802fd3702c560800000000000000
+      internalID: 7332431105947616088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_32
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 57
+        width: 27
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ff2b50f682aaca60800000000000000
+      internalID: 7695141613757739001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UVG Logo (horizontal)_33
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 57
+        width: 42
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2053c4bd31bea160800000000000000
+      internalID: 7038758146210484268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UVG Logo (horizontal)_0: -8559422465115960472
+      UVG Logo (horizontal)_1: 9115946999007420141
+      UVG Logo (horizontal)_10: -1179002594921584289
+      UVG Logo (horizontal)_11: -8911695032748982734
+      UVG Logo (horizontal)_12: 5805060667603504504
+      UVG Logo (horizontal)_13: 1777012058178532779
+      UVG Logo (horizontal)_14: -7469583318424662880
+      UVG Logo (horizontal)_15: 3232682102864738889
+      UVG Logo (horizontal)_16: -6177059311820895289
+      UVG Logo (horizontal)_17: 201412660689905204
+      UVG Logo (horizontal)_18: 4562640357728063741
+      UVG Logo (horizontal)_19: 155071118345610850
+      UVG Logo (horizontal)_2: -5017618247152232923
+      UVG Logo (horizontal)_20: -8772918387347693836
+      UVG Logo (horizontal)_21: -8834660131342841057
+      UVG Logo (horizontal)_22: -857924684298192639
+      UVG Logo (horizontal)_23: 5760487542060362755
+      UVG Logo (horizontal)_24: 8427933204373743410
+      UVG Logo (horizontal)_25: 8778975613042775567
+      UVG Logo (horizontal)_26: -2325499142883276956
+      UVG Logo (horizontal)_27: 7114719836162238026
+      UVG Logo (horizontal)_28: -1229568443802097735
+      UVG Logo (horizontal)_29: 7360660670969169464
+      UVG Logo (horizontal)_3: 6045185112219495176
+      UVG Logo (horizontal)_30: -5510358906857641804
+      UVG Logo (horizontal)_31: 7332431105947616088
+      UVG Logo (horizontal)_32: 7695141613757739001
+      UVG Logo (horizontal)_33: 7038758146210484268
+      UVG Logo (horizontal)_4: 6081868693443247090
+      UVG Logo (horizontal)_5: 1948157654067976050
+      UVG Logo (horizontal)_6: -1694693906497120405
+      UVG Logo (horizontal)_7: -510149224494152918
+      UVG Logo (horizontal)_8: -3301770688118510323
+      UVG Logo (horizontal)_9: 687791286159545319
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
