@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: c52b1529fffbd594694a36ab35650e91
+guid: c798434441d0a0144b1961790c6be034
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2694656857560135644
-    second: express-route_0
-  - first:
-      213: -1404785800341511565
-    second: express-route_1
-  - first:
-      213: 4533450662847641667
-    second: express-route_2
+      213: 8140434836895361577
+    second: winding_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -59,7 +53,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -119,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: express-route_0
+      name: winding_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 17
-        width: 250
-        height: 176
+        x: 10
+        y: 10
+        width: 236
+        height: 236
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd731729228556520800000000000000
-      internalID: 2694656857560135644
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: express-route_1
-      rect:
-        serializedVersion: 2
-        x: 191
-        y: 174
-        width: 65
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 372a129e1c2318ce0800000000000000
-      internalID: -1404785800341511565
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: express-route_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 75
-        height: 75
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 348facdcb5d0aee30800000000000000
-      internalID: 4533450662847641667
+      spriteID: 92aec52ba52a8f070800000000000000
+      internalID: 8140434836895361577
       vertices: []
       indices: 
       edges: []
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      express-route_0: 2694656857560135644
-      express-route_1: -1404785800341511565
-      express-route_2: 4533450662847641667
+      winding_0: 8140434836895361577
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

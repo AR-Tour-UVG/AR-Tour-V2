@@ -1,6 +1,0 @@
-<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/Styles/Components/textCard.uss?fileID=7433441132597879392&amp;guid=e63fa1246f0a8fa4cba29907b93054ed&amp;type=3#textCard" />
-    <ui:VisualElement name="Container" class="container">
-        <ui:Label name="Description" enabled="true" class="text" style="white-space: normal; text-overflow: ellipsis;" />
-    </ui:VisualElement>
-</ui:UXML>

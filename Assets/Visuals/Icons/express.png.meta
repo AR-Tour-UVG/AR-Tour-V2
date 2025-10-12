@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 28d61caf236bb63418877dcec96d6a57
+guid: 34c30f955661c3d4cb8d38199e8d139a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7853172964777749588
-    second: full-route_0
+      213: 3981345213585239988
+    second: deadline_0
+  - first:
+      213: 6731410120118226267
+    second: deadline_1
+  - first:
+      213: -3204193777966131382
+    second: deadline_2
+  - first:
+      213: 659998025881675138
+    second: deadline_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -53,7 +62,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -113,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: full-route_0
+      name: deadline_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
+        x: 44
+        y: 161
+        width: 45
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ca398b2ebcce30390800000000000000
-      internalID: -7853172964777749588
+      spriteID: 4bf23ffa064904730800000000000000
+      internalID: 3981345213585239988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadline_1
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 49
+        width: 157
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5dcd17f6d5ca6d50800000000000000
+      internalID: 6731410120118226267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadline_2
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 119
+        width: 67
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a47dfc84cba6883d0800000000000000
+      internalID: -3204193777966131382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadline_3
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 76
+        width: 45
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 285e22d25b8c82900800000000000000
+      internalID: 659998025881675138
       vertices: []
       indices: 
       edges: []
@@ -148,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      full-route_0: -7853172964777749588
+      deadline_0: 3981345213585239988
+      deadline_1: 6731410120118226267
+      deadline_2: -3204193777966131382
+      deadline_3: 659998025881675138
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

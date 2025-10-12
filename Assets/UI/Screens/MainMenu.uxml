@@ -1,0 +1,27 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/mainScreen.uss?fileID=7433441132597879392&amp;guid=e7825dddaea9bb54e80c8aca1987e5b7&amp;type=3#mainScreen" />
+    <ui:VisualElement name="Viewport" class="root">
+        <ui:VisualElement name="TopInset" class="top-inset" />
+        <ui:VisualElement name="SafeArea" class="safe-area" style="margin-top: 5%; margin-right: 10%; margin-bottom: 5%; margin-left: 10%;">
+            <ui:VisualElement name="DragonIcon" class="dragon" />
+            <ui:Label text="Bienvenidos a" name="Suptitle" class="suptitle" />
+            <ui:Label text="AR TOUR" name="Title" class="title" />
+            <ui:VisualElement name="Options" class="options" style="flex-grow: 1; align-items: center;">
+                <ui:VisualElement name="ExpressBtn" class="button" style="width: 100%; margin-top: 0%;">
+                    <ui:VisualElement name="ExpressIcon" class="button-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/express.png?fileID=21300000&amp;guid=34c30f955661c3d4cb8d38199e8d139a&amp;type=3#express&quot;);" />
+                    <ui:Label text="Ruta Express" name="ExpressText" class="button-text" />
+                </ui:VisualElement>
+                <ui:VisualElement name="CompleteBtn" class="button" style="width: 100%; margin-top: 10%; margin-right: 0%; margin-bottom: 0%; margin-left: 0%;">
+                    <ui:VisualElement name="CompleteIcon" class="button-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/route.png?fileID=21300000&amp;guid=c798434441d0a0144b1961790c6be034&amp;type=3#route&quot;);" />
+                    <ui:Label text="Ruta Completa" name="CompleteText" class="button-text" />
+                </ui:VisualElement>
+                <ui:VisualElement name="MinigamesBtn" class="button" style="width: 100%; margin-top: 10%; margin-right: 0%; margin-bottom: 0%; margin-left: 0%;">
+                    <ui:VisualElement name="GamesBtn" class="button-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/game-controller.png?fileID=21300000&amp;guid=07c797151f3a0cf4c98d17f6142d392d&amp;type=3#game-controller&quot;);" />
+                    <ui:Label text="Minijuegos" name="GamesText" class="button-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="UVG" class="uvg" />
+        </ui:VisualElement>
+        <ui:VisualElement name="BottomInset" class="bottom-inset" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,104 @@
+.root {
+    width: 100%;
+    height: 100%;
+    font-size: 110px;
+    background-image: url("project://database/Assets/Visuals/Backgrounds/Basic/Main%20Screen.png?fileID=21300000&guid=d48928f6e30615841ada57ab4e4fd60a&type=3#Main Screen");
+}
+
+.top-inset {
+    width: 100%;
+    height: 7%;
+}
+
+.bottom-inset {
+    width: 100%;
+    height: 4%;
+}
+
+.safe-area {
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+}
+
+.dragon {
+    background-image: url("project://database/Assets/Visuals/Icons/Dragon%20Icon%20(color)@0.5x.png?fileID=21300000&guid=b5c5228cdd90d1a478b27f6d0bb6274f&type=3#Dragon Icon (color)@0.5x");
+    -unity-background-scale-mode: scale-to-fit;
+    width: 400px;
+    height: 400px;
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+}
+
+.suptitle {
+    -unity-font-definition: url("project://database/Assets/Fonts/Outfit-SemiBold.ttf?fileID=12800000&guid=b8a090f2eefc036448c302f364fb6e9d&type=3#Outfit-SemiBold");
+    color: rgb(242, 242, 242);
+    font-size: 110%;
+    -unity-text-align: middle-center;
+    text-overflow: ellipsis;
+}
+
+.title {
+    -unity-font-definition: url("project://database/Assets/Fonts/Outfit-Bold.ttf?fileID=12800000&guid=009c88122ff54034eba16c07ef9b6b79&type=3#Outfit-Bold");
+    -unity-text-align: middle-center;
+    text-overflow: ellipsis;
+    font-size: 150%;
+    color: rgb(242, 242, 242);
+    -unity-font-style: normal;
+}
+
+.options {
+    width: 100%;
+    margin-top: 10%;
+}
+
+.button-text {
+    -unity-font-definition: url("project://database/Assets/Fonts/Outfit-Bold.ttf?fileID=12800000&guid=009c88122ff54034eba16c07ef9b6b79&type=3#Outfit-Bold");
+    color: rgb(4, 8, 19);
+    font-size: 70px;
+    -unity-text-align: middle-left;
+    flex-grow: 0;
+    margin-top: 0%;
+    margin-right: 0%;
+    margin-bottom: 0%;
+    margin-left: 5%;
+}
+
+.button-icon {
+    flex-grow: 0;
+    -unity-background-image-tint-color: rgb(4, 8, 19);
+    -unity-background-scale-mode: scale-to-fit;
+    background-position-x: right 0;
+    width: 120px;
+}
+
+.button {
+    flex-direction: row;
+    justify-content: center;
+    width: 100px;
+    background-color: rgb(0, 140, 54);
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    height: 17%;
+}
+
+.uvg {
+    background-image: url("project://database/Assets/Visuals/Logos/UVG%20Logo%20(horizontal)@0.5x.png?fileID=2800000&guid=385dfc931bd73df498403c95db679ad3&type=3#UVG Logo (horizontal)@0.5x");
+    -unity-background-scale-mode: scale-to-fit;
+    flex-direction: column-reverse;
+    flex-grow: 0;
+    width: 600px;
+    height: 200px;
+}
