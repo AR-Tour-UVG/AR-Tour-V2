@@ -28,7 +28,7 @@ public static class UWBLocator
     private static string currentAnchorMap; // cache to avoid redundant sets
 
     // Check if the platform is iOS and import the required native functions
-#if !UNITY_IOS || UNITY_EDITOR
+#if UNITY_IOS 
     // Log-once guard for non-iOS/editor runs
     private static bool hasWarned = false;
 
@@ -42,14 +42,14 @@ public static class UWBLocator
     [DllImport("__Internal")] private static extern void setAnchorMap(string jsonUtf8);
 
     // Configure plugin to use uwb anchor map
-    [DllImport("__Internal", EntryPoint = "start")] private static extern void uwb_start();
+    [DllImport("__Internal")] private static extern void start();
 
 #else
     // Stubs implementation for non-iOS platforms
     private static IntPtr getCoords() => IntPtr.Zero; // Always returns null pointer
     private static void freeCString(IntPtr ptr) { } // No-op for non-iOS platforms
     private static void setAnchorMap(string jsonUtf8) { } // No-op for non-iOS platforms
-    private static void uwb_start() { } // No-op for non-iOS platforms
+    private static void start() { } // No-op for non-iOS platforms
 
 #endif
 
@@ -138,7 +138,7 @@ public static class UWBLocator
 
             if (!isInitialized)
             {
-                uwb_start(); // Start the UWB plugin
+                start(); // Start the UWB plugin
                 isInitialized = true;
                 Debug.Log("[UWBLocator] Native Plugin started.");
             }

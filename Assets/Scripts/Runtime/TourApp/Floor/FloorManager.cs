@@ -82,6 +82,10 @@ public class FloorManager : MonoBehaviour
         pathProvider.Paused = true;
         pathProvider.ClearTarget();
         Debug.Log($"[FloorManager] Floor Initialization Complete. Waiting for UserReady().");
+
+        // for testing on iOS
+        UserReady();        
+        Next();
     }
 
     private void OnDestroy()
@@ -100,7 +104,7 @@ public class FloorManager : MonoBehaviour
         {
             UserReady();
         }
-#endif
+#endif        
         // Debounce confirmation only after tour started
         if (!_started) return;
 

@@ -389,6 +389,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7980126661448803600, guid: 36d607f3dfda97e4cb2492026a8db711, type: 3}
+      propertyPath: pollIntervalSeconds
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980126661448803600, guid: 36d607f3dfda97e4cb2492026a8db711, type: 3}
+      propertyPath: noiseThresholdMeters
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 8152217625354228052, guid: 36d607f3dfda97e4cb2492026a8db711, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.701
