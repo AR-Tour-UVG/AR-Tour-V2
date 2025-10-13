@@ -16,7 +16,7 @@
                     <ui:Label text="Ruta Completa" name="CompleteText" class="button-text" />
                 </ui:VisualElement>
                 <ui:VisualElement name="MinigamesBtn" class="button" style="width: 100%; margin-top: 10%; margin-right: 0%; margin-bottom: 0%; margin-left: 0%;">
-                    <ui:VisualElement name="GamesBtn" class="button-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/game-controller.png?fileID=21300000&amp;guid=07c797151f3a0cf4c98d17f6142d392d&amp;type=3#game-controller&quot;);" />
+                    <ui:VisualElement name="GamesBtn" class="button-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/game.png?fileID=21300000&amp;guid=f0d24f6588e9107429db780a97b9fb57&amp;type=3#game&quot;);" />
                     <ui:Label text="Minijuegos" name="GamesText" class="button-text" />
                 </ui:VisualElement>
             </ui:VisualElement>
