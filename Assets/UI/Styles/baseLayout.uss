@@ -1,0 +1,26 @@
+.root {
+    width: 100%;
+    height: 100%;
+    font-size: 110px;
+    -unity-font-definition: url("project://database/Assets/Fonts/Outfit-Regular.ttf?fileID=12800000&guid=fab92155c4946e04989ea5c5828f7daa&type=3#Outfit-Regular");
+}
+
+.top-inset {
+    width: 100%;
+    height: 7%;
+}
+
+.bottom-inset {
+    width: 100%;
+    height: 4%;
+}
+
+.safe-area {
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+}
