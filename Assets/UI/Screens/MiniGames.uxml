@@ -11,7 +11,7 @@
                 <ui:VisualElement name="TriviaUVG" class="game-selector" style="background-image: url(&quot;project://database/Assets/Visuals/Minigames/uvg-trivia.png?fileID=21300000&amp;guid=a8a96a03058a1fb4ab9a33cb1b0727d4&amp;type=3#uvg-trivia&quot;);" />
                 <ui:VisualElement name="FlappyJack" class="game-selector" style="background-image: url(&quot;project://database/Assets/Visuals/Minigames/flappy-jack.png?fileID=21300000&amp;guid=9874a066923823348bdda5518ac9108b&amp;type=3#flappy-jack&quot;);" />
             </ui:VisualElement>
-            <ui:VisualElement name="Exit" class="exit" />
+            <ui:VisualElement name="Exit" class="exit" style="-unity-background-image-tint-color: rgb(0, 165, 0);" />
         </ui:VisualElement>
         <ui:VisualElement name="BottomInset" class="bottom-inset" />
     </ui:VisualElement>

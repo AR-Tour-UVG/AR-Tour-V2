@@ -22,22 +22,12 @@
     margin-right: 10%;
     margin-bottom: 5%;
     margin-left: 10%;
-    border-left-color: rgb(102, 255, 102);
-    border-right-color: rgb(102, 255, 102);
-    border-top-color: rgb(102, 255, 102);
-    border-bottom-color: rgb(102, 255, 102);
-    border-top-width: 10px;
-    border-right-width: 10px;
-    border-bottom-width: 10px;
-    border-left-width: 10px;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
     -unity-background-scale-mode: stretch-to-fill;
     -unity-background-image-tint-color: rgb(255, 255, 255);
-    background-position-x: center 0;
-    background-position-y: center 0;
 }
 
 .options {
