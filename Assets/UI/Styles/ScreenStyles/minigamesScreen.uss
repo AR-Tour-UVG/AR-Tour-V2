@@ -34,8 +34,10 @@
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
-    -unity-background-scale-mode: scale-and-crop;
+    -unity-background-scale-mode: stretch-to-fill;
     -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-position-x: center 0;
+    background-position-y: center 0;
 }
 
 .options {
