@@ -1,28 +1,19 @@
 fileFormatVersion: 2
-guid: 737dc0d8b4c17c947a0b53a5e5839b96
+guid: f604cc09475f8d1458632d222c333742
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8395325799919703782
-    second: distance_0
+      213: -1451677054605553910
+    second: scared_0
   - first:
-      213: 5664498416571748658
-    second: distance_1
+      213: -5760083544461635866
+    second: scared_1
   - first:
-      213: 8985471201837211364
-    second: distance_2
+      213: 8849352786301955492
+    second: scared_2
   - first:
-      213: -9189616481223270323
-    second: distance_3
-  - first:
-      213: -9007599720205430144
-    second: distance_4
-  - first:
-      213: -1966126400627263997
-    second: distance_5
-  - first:
-      213: -3381994404213296386
-    second: distance_6
+      213: 6666530561335186772
+    second: scared_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: distance_0
+      name: scared_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 148
-        width: 76
-        height: 108
+        x: 480
+        y: 899
+        width: 33
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e6d2eda550328470800000000000000
-      internalID: 8395325799919703782
+      spriteID: a0f86aff86b9adbe0800000000000000
+      internalID: -1451677054605553910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: distance_1
+      name: scared_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 147
-        width: 29
-        height: 14
+        x: 507
+        y: 915
+        width: 91
+        height: 109
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 231958e4c475c9e40800000000000000
-      internalID: 5664498416571748658
+      spriteID: 6ee8ac7d8821010b0800000000000000
+      internalID: -5760083544461635866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: distance_2
+      name: scared_2
       rect:
         serializedVersion: 2
-        x: 87
-        y: 127
-        width: 29
-        height: 27
+        x: 528
+        y: 921
+        width: 93
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,20 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4ee5205737ec2bc70800000000000000
-      internalID: 8985471201837211364
+      spriteID: 4ad24a729773fca70800000000000000
+      internalID: 8849352786301955492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: distance_3
+      name: scared_3
       rect:
         serializedVersion: 2
-        x: 159
+        x: 48
         y: 0
-        width: 97
-        height: 151
+        width: 928
+        height: 914
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,74 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d40ac9ebf7ce77080800000000000000
-      internalID: -9189616481223270323
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: distance_4
-      rect:
-        serializedVersion: 2
-        x: 111
-        y: 86
-        width: 16
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0825f3e57c39ef280800000000000000
-      internalID: -9007599720205430144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: distance_5
-      rect:
-        serializedVersion: 2
-        x: 115
-        y: 43
-        width: 16
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3063813a47ae6b4e0800000000000000
-      internalID: -1966126400627263997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: distance_6
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 8
-        width: 28
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ef2f188020eb011d0800000000000000
-      internalID: -3381994404213296386
+      spriteID: 4555ba88936448c50800000000000000
+      internalID: 6666530561335186772
       vertices: []
       indices: 
       edges: []
@@ -298,13 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      distance_0: 8395325799919703782
-      distance_1: 5664498416571748658
-      distance_2: 8985471201837211364
-      distance_3: -9189616481223270323
-      distance_4: -9007599720205430144
-      distance_5: -1966126400627263997
-      distance_6: -3381994404213296386
+      scared_0: -1451677054605553910
+      scared_1: -5760083544461635866
+      scared_2: 8849352786301955492
+      scared_3: 6666530561335186772
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

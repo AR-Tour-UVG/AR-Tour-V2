@@ -1,28 +1,16 @@
 fileFormatVersion: 2
-guid: 737dc0d8b4c17c947a0b53a5e5839b96
+guid: ca072917eff8845479d003e9df8cb261
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8395325799919703782
-    second: distance_0
+      213: -3536386202968524564
+    second: dragon-color_0
   - first:
-      213: 5664498416571748658
-    second: distance_1
+      213: 1010873905846617186
+    second: dragon-color_1
   - first:
-      213: 8985471201837211364
-    second: distance_2
-  - first:
-      213: -9189616481223270323
-    second: distance_3
-  - first:
-      213: -9007599720205430144
-    second: distance_4
-  - first:
-      213: -1966126400627263997
-    second: distance_5
-  - first:
-      213: -3381994404213296386
-    second: distance_6
+      213: -455244473267086975
+    second: dragon-color_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: distance_0
+      name: dragon-color_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 148
-        width: 76
-        height: 108
+        y: 6
+        width: 440
+        height: 708
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e6d2eda550328470800000000000000
-      internalID: 8395325799919703782
+      spriteID: ce8f7772c7b3ceec0800000000000000
+      internalID: -3536386202968524564
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: distance_1
+      name: dragon-color_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 147
-        width: 29
-        height: 14
+        x: 59
+        y: 226
+        width: 965
+        height: 798
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,42 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 231958e4c475c9e40800000000000000
-      internalID: 5664498416571748658
+      spriteID: 26403b62678570e00800000000000000
+      internalID: 1010873905846617186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: distance_2
+      name: dragon-color_2
       rect:
         serializedVersion: 2
-        x: 87
-        y: 127
-        width: 29
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4ee5205737ec2bc70800000000000000
-      internalID: 8985471201837211364
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: distance_3
-      rect:
-        serializedVersion: 2
-        x: 159
+        x: 286
         y: 0
-        width: 97
-        height: 151
+        width: 445
+        height: 347
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,74 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d40ac9ebf7ce77080800000000000000
-      internalID: -9189616481223270323
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: distance_4
-      rect:
-        serializedVersion: 2
-        x: 111
-        y: 86
-        width: 16
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0825f3e57c39ef280800000000000000
-      internalID: -9007599720205430144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: distance_5
-      rect:
-        serializedVersion: 2
-        x: 115
-        y: 43
-        width: 16
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3063813a47ae6b4e0800000000000000
-      internalID: -1966126400627263997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: distance_6
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 8
-        width: 28
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ef2f188020eb011d0800000000000000
-      internalID: -3381994404213296386
+      spriteID: 18994f44095aea9f0800000000000000
+      internalID: -455244473267086975
       vertices: []
       indices: 
       edges: []
@@ -298,13 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      distance_0: 8395325799919703782
-      distance_1: 5664498416571748658
-      distance_2: 8985471201837211364
-      distance_3: -9189616481223270323
-      distance_4: -9007599720205430144
-      distance_5: -1966126400627263997
-      distance_6: -3381994404213296386
+      dragon-color_0: -3536386202968524564
+      dragon-color_1: 1010873905846617186
+      dragon-color_2: -455244473267086975
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

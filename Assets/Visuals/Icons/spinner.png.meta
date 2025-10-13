@@ -1,28 +1,31 @@
 fileFormatVersion: 2
-guid: 737dc0d8b4c17c947a0b53a5e5839b96
+guid: 86792975b5a42964894ea08ec9cc32fd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8395325799919703782
-    second: distance_0
+      213: -6019722226161093732
+    second: spinner_0
   - first:
-      213: 5664498416571748658
-    second: distance_1
+      213: -5134952779202485544
+    second: spinner_1
   - first:
-      213: 8985471201837211364
-    second: distance_2
+      213: -5726398647286544521
+    second: spinner_2
   - first:
-      213: -9189616481223270323
-    second: distance_3
+      213: 3167318411406360526
+    second: spinner_3
   - first:
-      213: -9007599720205430144
-    second: distance_4
+      213: 1045432808422478720
+    second: spinner_4
   - first:
-      213: -1966126400627263997
-    second: distance_5
+      213: -9091927987733010543
+    second: spinner_5
   - first:
-      213: -3381994404213296386
-    second: distance_6
+      213: 275820409204642176
+    second: spinner_6
+  - first:
+      213: 7924525843249450009
+    second: spinner_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,13 +134,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: distance_0
+      name: spinner_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 148
-        width: 76
-        height: 108
+        x: 32
+        y: 165
+        width: 59
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e6d2eda550328470800000000000000
-      internalID: 8395325799919703782
+      spriteID: c93f4277786a57ca0800000000000000
+      internalID: -6019722226161093732
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: distance_1
+      name: spinner_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 147
-        width: 29
-        height: 14
+        x: 101
+        y: 193
+        width: 64
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,106 +171,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 231958e4c475c9e40800000000000000
-      internalID: 5664498416571748658
+      spriteID: 8d22b3947abfcb8b0800000000000000
+      internalID: -5134952779202485544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: distance_2
+      name: spinner_2
       rect:
         serializedVersion: 2
-        x: 87
-        y: 127
-        width: 29
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4ee5205737ec2bc70800000000000000
-      internalID: 8985471201837211364
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: distance_3
-      rect:
-        serializedVersion: 2
-        x: 159
-        y: 0
-        width: 97
-        height: 151
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d40ac9ebf7ce77080800000000000000
-      internalID: -9189616481223270323
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: distance_4
-      rect:
-        serializedVersion: 2
-        x: 111
-        y: 86
-        width: 16
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0825f3e57c39ef280800000000000000
-      internalID: -9007599720205430144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: distance_5
-      rect:
-        serializedVersion: 2
-        x: 115
-        y: 43
-        width: 16
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3063813a47ae6b4e0800000000000000
-      internalID: -1966126400627263997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: distance_6
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 8
+        x: 191
+        y: 180
         width: 28
         height: 29
       alignment: 0
@@ -278,8 +193,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ef2f188020eb011d0800000000000000
-      internalID: -3381994404213296386
+      spriteID: 777453225ceb780b0800000000000000
+      internalID: -5726398647286544521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spinner_3
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 96
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecf3e62605394fb20800000000000000
+      internalID: 3167318411406360526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spinner_4
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 106
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0839f8ea99f128e00800000000000000
+      internalID: 1045432808422478720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spinner_5
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 27
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 197edbf8aabf2d180800000000000000
+      internalID: -9091927987733010543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spinner_6
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 0
+        width: 44
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08112786339e3d300800000000000000
+      internalID: 275820409204642176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spinner_7
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 32
+        width: 39
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91c494cb44299fd60800000000000000
+      internalID: 7924525843249450009
       vertices: []
       indices: 
       edges: []
@@ -298,13 +323,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      distance_0: 8395325799919703782
-      distance_1: 5664498416571748658
-      distance_2: 8985471201837211364
-      distance_3: -9189616481223270323
-      distance_4: -9007599720205430144
-      distance_5: -1966126400627263997
-      distance_6: -3381994404213296386
+      spinner_0: -6019722226161093732
+      spinner_1: -5134952779202485544
+      spinner_2: -5726398647286544521
+      spinner_3: 3167318411406360526
+      spinner_4: 1045432808422478720
+      spinner_5: -9091927987733010543
+      spinner_6: 275820409204642176
+      spinner_7: 7924525843249450009
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

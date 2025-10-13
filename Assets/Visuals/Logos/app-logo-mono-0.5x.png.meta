@@ -1,28 +1,34 @@
 fileFormatVersion: 2
-guid: 737dc0d8b4c17c947a0b53a5e5839b96
+guid: dbd6880720d8562488334b40d7f1619f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8395325799919703782
-    second: distance_0
+      213: 3880690658388468646
+    second: app-logo-mono-0.5x_0
   - first:
-      213: 5664498416571748658
-    second: distance_1
+      213: -4520670807124448127
+    second: app-logo-mono-0.5x_1
   - first:
-      213: 8985471201837211364
-    second: distance_2
+      213: 8038851254097550231
+    second: app-logo-mono-0.5x_2
   - first:
-      213: -9189616481223270323
-    second: distance_3
+      213: 934532275564288819
+    second: app-logo-mono-0.5x_3
   - first:
-      213: -9007599720205430144
-    second: distance_4
+      213: -4889677952129746804
+    second: app-logo-mono-0.5x_4
   - first:
-      213: -1966126400627263997
-    second: distance_5
+      213: 1183516102247820250
+    second: app-logo-mono-0.5x_5
   - first:
-      213: -3381994404213296386
-    second: distance_6
+      213: -7801896627525279159
+    second: app-logo-mono-0.5x_6
+  - first:
+      213: -520282924183384755
+    second: app-logo-mono-0.5x_7
+  - first:
+      213: 8767280032576036650
+    second: app-logo-mono-0.5x_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,13 +137,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: distance_0
+      name: app-logo-mono-0.5x_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 148
-        width: 76
-        height: 108
+        x: 60
+        y: 105
+        width: 169
+        height: 271
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e6d2eda550328470800000000000000
-      internalID: 8395325799919703782
+      spriteID: 6a3eb60d79bfad530800000000000000
+      internalID: 3880690658388468646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: distance_1
+      name: app-logo-mono-0.5x_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 147
-        width: 29
-        height: 14
+        x: 83
+        y: 189
+        width: 369
+        height: 305
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 231958e4c475c9e40800000000000000
-      internalID: 5664498416571748658
+      spriteID: 18c6eda3ad95341c0800000000000000
+      internalID: -4520670807124448127
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: distance_2
+      name: app-logo-mono-0.5x_2
       rect:
         serializedVersion: 2
-        x: 87
-        y: 127
-        width: 29
-        height: 27
+        x: 169
+        y: 102
+        width: 171
+        height: 134
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4ee5205737ec2bc70800000000000000
-      internalID: 8985471201837211364
+      spriteID: 79b10babf9cbf8f60800000000000000
+      internalID: 8038851254097550231
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: distance_3
+      name: app-logo-mono-0.5x_3
       rect:
         serializedVersion: 2
-        x: 159
-        y: 0
-        width: 97
-        height: 151
+        x: 50
+        y: 16
+        width: 69
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d40ac9ebf7ce77080800000000000000
-      internalID: -9189616481223270323
+      spriteID: 33b952c372028fc00800000000000000
+      internalID: 934532275564288819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: distance_4
+      name: app-logo-mono-0.5x_4
       rect:
         serializedVersion: 2
-        x: 111
-        y: 86
-        width: 16
-        height: 34
+        x: 123
+        y: 16
+        width: 58
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,20 +240,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0825f3e57c39ef280800000000000000
-      internalID: -9007599720205430144
+      spriteID: c883f352fcf542cb0800000000000000
+      internalID: -4889677952129746804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: distance_5
+      name: app-logo-mono-0.5x_5
       rect:
         serializedVersion: 2
-        x: 115
-        y: 43
-        width: 16
-        height: 35
+        x: 204
+        y: 16
+        width: 52
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,20 +262,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3063813a47ae6b4e0800000000000000
-      internalID: -1966126400627263997
+      spriteID: adbaf6cdf91bc6010800000000000000
+      internalID: 1183516102247820250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: distance_6
+      name: app-logo-mono-0.5x_6
       rect:
         serializedVersion: 2
-        x: 125
-        y: 8
-        width: 28
-        height: 29
+        x: 259
+        y: 15
+        width: 66
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,8 +284,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ef2f188020eb011d0800000000000000
-      internalID: -3381994404213296386
+      spriteID: 942a90e7a581ab390800000000000000
+      internalID: -7801896627525279159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: app-logo-mono-0.5x_7
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 15
+        width: 59
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4d0951ef6597c8f0800000000000000
+      internalID: -520282924183384755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: app-logo-mono-0.5x_8
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 16
+        width: 58
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2fd1141db2aba970800000000000000
+      internalID: 8767280032576036650
       vertices: []
       indices: 
       edges: []
@@ -298,13 +348,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      distance_0: 8395325799919703782
-      distance_1: 5664498416571748658
-      distance_2: 8985471201837211364
-      distance_3: -9189616481223270323
-      distance_4: -9007599720205430144
-      distance_5: -1966126400627263997
-      distance_6: -3381994404213296386
+      app-logo-mono-0.5x_0: 3880690658388468646
+      app-logo-mono-0.5x_1: -4520670807124448127
+      app-logo-mono-0.5x_2: 8038851254097550231
+      app-logo-mono-0.5x_3: 934532275564288819
+      app-logo-mono-0.5x_4: -4889677952129746804
+      app-logo-mono-0.5x_5: 1183516102247820250
+      app-logo-mono-0.5x_6: -7801896627525279159
+      app-logo-mono-0.5x_7: -520282924183384755
+      app-logo-mono-0.5x_8: 8767280032576036650
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,0 +1,1040 @@
+fileFormatVersion: 2
+guid: c0f20258b8a0b1949be507f4dd4a869d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -266303268839811993
+    second: uvg-vertical_0
+  - first:
+      213: 4803300378433927790
+    second: uvg-vertical_1
+  - first:
+      213: 2882345956251130823
+    second: uvg-vertical_2
+  - first:
+      213: -6317293350579682307
+    second: uvg-vertical_3
+  - first:
+      213: 694374322022133308
+    second: uvg-vertical_4
+  - first:
+      213: -612120255987759079
+    second: uvg-vertical_5
+  - first:
+      213: 5711657337287417882
+    second: uvg-vertical_6
+  - first:
+      213: -1597877153381883252
+    second: uvg-vertical_7
+  - first:
+      213: -8151742379479458000
+    second: uvg-vertical_8
+  - first:
+      213: 4350273507365870015
+    second: uvg-vertical_9
+  - first:
+      213: 2708666824912813126
+    second: uvg-vertical_10
+  - first:
+      213: -594095315514112383
+    second: uvg-vertical_11
+  - first:
+      213: -1848937199020340713
+    second: uvg-vertical_12
+  - first:
+      213: 3695244880948879556
+    second: uvg-vertical_13
+  - first:
+      213: -7817767100904561031
+    second: uvg-vertical_14
+  - first:
+      213: 8652338980995665249
+    second: uvg-vertical_15
+  - first:
+      213: 9144143779165197549
+    second: uvg-vertical_16
+  - first:
+      213: 3688542721383043529
+    second: uvg-vertical_17
+  - first:
+      213: 8179443135422134856
+    second: uvg-vertical_18
+  - first:
+      213: 6472289157552151964
+    second: uvg-vertical_19
+  - first:
+      213: -7308231382405493019
+    second: uvg-vertical_20
+  - first:
+      213: 6984047575390659407
+    second: uvg-vertical_21
+  - first:
+      213: 2233866491606259059
+    second: uvg-vertical_22
+  - first:
+      213: -2089823115564549714
+    second: uvg-vertical_23
+  - first:
+      213: 2741065790564291755
+    second: uvg-vertical_24
+  - first:
+      213: 3702268412969621390
+    second: uvg-vertical_25
+  - first:
+      213: -9083104333221946876
+    second: uvg-vertical_26
+  - first:
+      213: 565076611570415456
+    second: uvg-vertical_27
+  - first:
+      213: 7496219110798715524
+    second: uvg-vertical_28
+  - first:
+      213: -2799531863979554775
+    second: uvg-vertical_29
+  - first:
+      213: -5843400898298547038
+    second: uvg-vertical_30
+  - first:
+      213: -5464746247479501906
+    second: uvg-vertical_31
+  - first:
+      213: 8571555500403085525
+    second: uvg-vertical_32
+  - first:
+      213: 7024832306303584734
+    second: uvg-vertical_33
+  - first:
+      213: -7085068473519536975
+    second: uvg-vertical_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: uvg-vertical_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 259
+        width: 144
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76417428696ed4cf0800000000000000
+      internalID: -266303268839811993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_1
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 262
+        width: 163
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6abd06ce30c8a240800000000000000
+      internalID: 4803300378433927790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_2
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 259
+        width: 147
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cbd12a3066200820800000000000000
+      internalID: 2882345956251130823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 231
+        width: 476
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df3c2c80b277458a0800000000000000
+      internalID: -6317293350579682307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 165
+        width: 44
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3e284554c9e2a900800000000000000
+      internalID: 694374322022133308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_5
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 166
+        width: 46
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 918470ecedf4187f0800000000000000
+      internalID: -612120255987759079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 166
+        width: 11
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1025cb2612e34f40800000000000000
+      internalID: 5711657337287417882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_7
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 166
+        width: 48
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c82e5f5e13333d9e0800000000000000
+      internalID: -1597877153381883252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_8
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 166
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03f11a2ee713fde80800000000000000
+      internalID: -8151742379479458000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_9
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 166
+        width: 41
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb9d55ac4b64f5c30800000000000000
+      internalID: 4350273507365870015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_10
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 165
+        width: 36
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64c30d9402e179520800000000000000
+      internalID: 2708666824912813126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_11
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 166
+        width: 11
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 186ce0c457951c7f0800000000000000
+      internalID: -594095315514112383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_12
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 166
+        width: 45
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71a0360e9614756e0800000000000000
+      internalID: -1848937199020340713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_13
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 166
+        width: 51
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c0e90714a5284330800000000000000
+      internalID: 3695244880948879556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_14
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 166
+        width: 45
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97629d5fd36b18390800000000000000
+      internalID: -7817767100904561031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_15
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 82
+        width: 59
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16d038e0678431870800000000000000
+      internalID: 8652338980995665249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_16
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 82
+        width: 42
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de45d34c15686ee70800000000000000
+      internalID: 9144143779165197549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_17
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 82
+        width: 43
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c193e6ff06503330800000000000000
+      internalID: 3688542721383043529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_18
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 82
+        width: 63
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84af753f138338170800000000000000
+      internalID: 8179443135422134856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_19
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 82
+        width: 67
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9d128772b032d950800000000000000
+      internalID: 6472289157552151964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_20
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 82
+        width: 43
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eecb534742f39a90800000000000000
+      internalID: -7308231382405493019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_21
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 82
+        width: 43
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f43a69944425ce060800000000000000
+      internalID: 6984047575390659407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_22
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 82
+        width: 42
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 375d6d31db9400f10800000000000000
+      internalID: 2233866491606259059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_23
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 20
+        width: 39
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea9ff51e2f47ff2e0800000000000000
+      internalID: -2089823115564549714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_24
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 20
+        width: 28
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba45f8050d83a0620800000000000000
+      internalID: 2741065790564291755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_25
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 19
+        width: 41
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8714329189116330800000000000000
+      internalID: 3702268412969621390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_26
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 19
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40a9e78bbb452f180800000000000000
+      internalID: -9083104333221946876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_27
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 20
+        width: 43
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 067398f2f2e87d700800000000000000
+      internalID: 565076611570415456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_28
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 20
+        width: 37
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48ae6a9809be70860800000000000000
+      internalID: 7496219110798715524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_29
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 20
+        width: 48
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9288c1e2a901629d0800000000000000
+      internalID: -2799531863979554775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_30
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 20
+        width: 28
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a477b8b7d118eea0800000000000000
+      internalID: -5843400898298547038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_31
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 20
+        width: 43
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eabd55bcd325924b0800000000000000
+      internalID: -5464746247479501906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_32
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 20
+        width: 28
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d05216405844f670800000000000000
+      internalID: 8571555500403085525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_33
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 20
+        width: 43
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed9c9ef63c73d7160800000000000000
+      internalID: 7024832306303584734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uvg-vertical_34
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 476
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b48c8af2c7ccad90800000000000000
+      internalID: -7085068473519536975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      uvg-vertical_0: -266303268839811993
+      uvg-vertical_1: 4803300378433927790
+      uvg-vertical_10: 2708666824912813126
+      uvg-vertical_11: -594095315514112383
+      uvg-vertical_12: -1848937199020340713
+      uvg-vertical_13: 3695244880948879556
+      uvg-vertical_14: -7817767100904561031
+      uvg-vertical_15: 8652338980995665249
+      uvg-vertical_16: 9144143779165197549
+      uvg-vertical_17: 3688542721383043529
+      uvg-vertical_18: 8179443135422134856
+      uvg-vertical_19: 6472289157552151964
+      uvg-vertical_2: 2882345956251130823
+      uvg-vertical_20: -7308231382405493019
+      uvg-vertical_21: 6984047575390659407
+      uvg-vertical_22: 2233866491606259059
+      uvg-vertical_23: -2089823115564549714
+      uvg-vertical_24: 2741065790564291755
+      uvg-vertical_25: 3702268412969621390
+      uvg-vertical_26: -9083104333221946876
+      uvg-vertical_27: 565076611570415456
+      uvg-vertical_28: 7496219110798715524
+      uvg-vertical_29: -2799531863979554775
+      uvg-vertical_3: -6317293350579682307
+      uvg-vertical_30: -5843400898298547038
+      uvg-vertical_31: -5464746247479501906
+      uvg-vertical_32: 8571555500403085525
+      uvg-vertical_33: 7024832306303584734
+      uvg-vertical_34: -7085068473519536975
+      uvg-vertical_4: 694374322022133308
+      uvg-vertical_5: -612120255987759079
+      uvg-vertical_6: 5711657337287417882
+      uvg-vertical_7: -1597877153381883252
+      uvg-vertical_8: -8151742379479458000
+      uvg-vertical_9: 4350273507365870015
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
