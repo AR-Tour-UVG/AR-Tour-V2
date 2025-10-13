@@ -1,0 +1,18 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/ScreenStyles/minigamesScreen.uss?fileID=7433441132597879392&amp;guid=d750bb0ec47bebb4e978d50f135e4e83&amp;type=3#minigamesScreen" />
+    <Style src="project://database/Assets/UI/Styles/baseLayout.uss?fileID=7433441132597879392&amp;guid=28ac6e247c5360949b32cbce032f8d7e&amp;type=3#baseLayout" />
+    <ui:VisualElement name="Viewport" class="root">
+        <ui:VisualElement name="TopInset" class="top-inset" />
+        <ui:VisualElement name="SafeArea" class="safe-area">
+            <ui:VisualElement name="MiniGameIcon" class="icon" />
+            <ui:Label text="MINI JUEGOS" name="Title" class="title" />
+            <ui:VisualElement name="GameSelection" class="options">
+                <ui:VisualElement name="Breakout" class="game-selector" />
+                <ui:VisualElement name="TriviaUVG" class="game-selector" />
+                <ui:VisualElement name="FlappyJack" class="game-selector" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Exit" class="exit" />
+        </ui:VisualElement>
+        <ui:VisualElement name="BottomInset" class="bottom-inset" />
+    </ui:VisualElement>
+</ui:UXML>
