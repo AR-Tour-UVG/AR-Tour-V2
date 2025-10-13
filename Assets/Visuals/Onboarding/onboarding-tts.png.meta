@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dc61ec03172173347bfa0c6556fe63f8
+guid: d0cd2d8c19496594ab29c4513a7951d2
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: onboarding-tts_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1290
-        height: 2796
+        x: 195
+        y: 978
+        width: 955
+        height: 1325
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
