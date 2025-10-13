@@ -1,9 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ui:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ui="UnityEngine.UIElements"
-    xmlns:uie="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
->
-    
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/ScreenStyles/onboardingScreen.uss?fileID=7433441132597879392&amp;guid=e17a5a0ff0d6157498bffea84e6ef825&amp;type=3#onboardingScreen" />
+    <Style src="project://database/Assets/UI/Styles/baseLayout.uss?fileID=7433441132597879392&amp;guid=28ac6e247c5360949b32cbce032f8d7e&amp;type=3#baseLayout" />
+    <ui:VisualElement name="Viewport" class="root">
+        <ui:VisualElement name="TopInset" class="top-inset" />
+        <ui:VisualElement name="SafeArea" class="safe-area" style="flex-direction: column-reverse;">
+            <ui:VisualElement name="Onboarding" class="onboarding" style="flex-grow: 0; width: 100%; height: 30%;">
+                <ui:Label name="Title" class="title" />
+                <ui:Label name="Description" class="description" />
+                <ui:VisualElement name="Button" class="button">
+                    <ui:Label text="Siguiente" name="Text" class="button-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="BottomInset" class="bottom-inset" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Art" class="art" />
 </ui:UXML>
