@@ -1,0 +1,12 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="MainUI" style="flex-grow: 1; align-self: center; align-items: center;">
+        <ui:Label text="0" name="Score" style="-unity-text-align: upper-center; -unity-font-definition: resource(&apos;UI Toolkit/Fonts/TTF/Outfit-Bold&apos;); color: rgb(255, 255, 255); font-size: 50px; -unity-text-outline-color: rgb(82, 56, 70); height: 99px; -unity-font-style: bold; width: 322px;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="pause-menu" style="flex-grow: 1;">
+        <ui:VisualElement name="menu-panel" style="flex-grow: 1;">
+            <ui:Label text="Label" name="pause-label" style="-unity-font-definition: resource(&apos;UI Toolkit/Fonts/TTF/Outfit-Bold&apos;); -unity-text-align: upper-center; font-size: 45px; color: rgb(255, 255, 255);" />
+            <ui:Button text="Volver a Intentar" name="restart-button" style="border-top-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; border-bottom-left-radius: 25px; background-color: rgb(21, 21, 21); -unity-font-definition: resource(&apos;UI Toolkit/Fonts/TTF/Outfit-Medium&apos;); color: rgb(129, 209, 180); font-size: 15px;" />
+            <ui:Button text="Regresar" name="back-button" style="border-top-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; border-bottom-left-radius: 25px; color: rgb(129, 209, 180); background-color: rgb(21, 21, 21); -unity-font-definition: resource(&apos;UI Toolkit/Fonts/TTF/Outfit-Medium&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
