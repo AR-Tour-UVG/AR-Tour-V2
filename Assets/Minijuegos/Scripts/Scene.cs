@@ -139,7 +139,7 @@ namespace Assets.Minijuegos.Scripts
             // Mostrar pantalla de inicio si se cierra el juego
             if (cambiador != null)
             {
-                cambiador.MostrarInicio();
+                cambiador.MostrarMinijuegos();
             }
         }
         

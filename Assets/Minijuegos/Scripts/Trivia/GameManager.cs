@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement; // 🔹 AGREGAR ESTO
 using UnityEngine.UIElements;
 using System.Linq;
 
@@ -25,6 +26,7 @@ namespace Assets.Minijuegos.Scripts.Trivia
         private VisualElement questionMenu;
         private Label scoreText;
         private Label rachaText;
+        private Button backButton; // 🔹 NUEVO
         private Pregunta preguntaActual;
         private int puntos = 0;
         private int racha = 0;
@@ -60,6 +62,18 @@ namespace Assets.Minijuegos.Scripts.Trivia
                 scoreText = mainMenu?.Q<Label>("ScoreText");
                 rachaText = mainMenu?.Q<Label>("StreakText");
                 
+                // 🔹 BUSCAR Y CONECTAR EL BOTÓN REGRESAR
+                backButton = mainMenu?.Q<Button>("back-button");
+                if (backButton != null)
+                {
+                    backButton.clicked += ReturnToMainMenu;
+                    Debug.Log("✅ Botón 'Regresar' conectado");
+                }
+                else
+                {
+                    Debug.LogWarning("⚠️ No se encontró el botón 'back-button'");
+                }
+                
                 if (mainMenu != null)
                 {
                     mainMenu.style.display = DisplayStyle.Flex;
@@ -94,6 +108,14 @@ namespace Assets.Minijuegos.Scripts.Trivia
             }
         }
         
+        // 🔹 NUEVO MÉTODO: Regresar al menú de minijuegos
+        private void ReturnToMainMenu()
+        {
+            Debug.Log("🚪 Regresando al menú de minijuegos desde Trivia...");
+            Time.timeScale = 1; // Restaurar tiempo
+            SceneManager.LoadScene("PantallaPrincipal");
+        }
+        
         /// <summary>
         /// Prepara el juego para iniciar una nueva categoría.
         /// </summary>
@@ -118,10 +140,6 @@ namespace Assets.Minijuegos.Scripts.Trivia
             }
         }
         
-        /// <summary>
-        /// Carga la categoría seleccionada a la pantalla respectiva
-        /// </summary>
-        /// <param name="categoria"></param>
         public void StartCategory(Categoria categoria)
         {
             if (!uiInitialized)
@@ -145,25 +163,33 @@ namespace Assets.Minijuegos.Scripts.Trivia
             
             var nombreCategoriaLabel = questionMenu?.Q<Label>("nombre-categoria");
             if (nombreCategoriaLabel != null)
+            {
                 nombreCategoriaLabel.text = categoria.nombre.ToUpper();
-
+                Debug.Log($"📋 Categoría cargada: {categoria.nombre.ToUpper()}");
+            }
+            
             var preguntaLabel = questionMenu?.Q<Label>("pregunta");
             if (preguntaLabel != null)
+            {
                 preguntaLabel.text = pregunta.pregunta;
+                Debug.Log($"❓ Pregunta: {pregunta.pregunta}");
+            }
             
             ResetRespuestas();
             SetRespuestasButtons(preguntaActual.respuestas);
         }
         
-        /// <summary>
-        /// Asigna las respuestas a los botones de la pantalla.
-        /// </summary>
-        /// <param name="respuestasTexto"></param>
         private void SetRespuestasButtons(List<string> respuestasTexto)
         {
             if (!uiInitialized || questionMenu == null) return;
             
-            VisualElement respuestasContainer = questionMenu.Q<VisualElement>("question-menu");
+            VisualElement respuestasContainer = questionMenu.Q<VisualElement>("respuestas");
+            
+            if (respuestasContainer == null)
+            {
+                Debug.LogError("⚠️ No se encontró el contenedor 'respuestas'");
+                return;
+            }
             
             foreach (var respuestaButton in respuestas)
             {
@@ -179,12 +205,11 @@ namespace Assets.Minijuegos.Scripts.Trivia
                 respuestaButton.Initialize(respuestasContainer, i);
                 respuestaButton.SetText(respuestasTexto[i]);
                 respuestas.Add(respuestaButton);
+                
+                Debug.Log($"🔘 Respuesta {i + 1}: {respuestasTexto[i]}");
             }
         }
         
-        /// <summary>
-        /// Reinicia los colores de los botones de respuesta. 
-        /// </summary>
         private void ResetRespuestas()
         {
             foreach (var respuesta in respuestas)
@@ -199,10 +224,6 @@ namespace Assets.Minijuegos.Scripts.Trivia
             respuestas.Clear();
         }
         
-        /// <summary>
-        /// Obtiene los datos de la API o del archivo local si no hay conexión a internet.
-        /// </summary>
-        /// <returns></returns>
         private IEnumerator GetData()
         {
             UnityWebRequest request = UnityWebRequest.Get(triviaURL.URL);
@@ -225,10 +246,6 @@ namespace Assets.Minijuegos.Scripts.Trivia
             }
         }
         
-        /// <summary>
-        /// Guarda los datos de la trivia en el scriptable object.
-        /// </summary>
-        /// <param name="data">Data a guardar</param>
         public void SaveTriviaData(string data)
         {
             triviaData = ScriptableObject.CreateInstance<TriviaData>();
@@ -240,11 +257,6 @@ namespace Assets.Minijuegos.Scripts.Trivia
             }
         }
         
-        /// <summary>
-        /// Obtiene una pregunta aleatoria de la lista de preguntas.
-        /// </summary>
-        /// <param name="preguntas">Listado de preguntas</param>
-        /// <returns></returns>
         public Pregunta GetQuestion(List<Pregunta> preguntas)
         {
             var pregunta = preguntas.ToArray()[Random.Range(0, preguntas.Count)];
@@ -255,11 +267,6 @@ namespace Assets.Minijuegos.Scripts.Trivia
             return pregunta;
         }
         
-        /// <summary>
-        /// Revisa si la respuesta es correcta y actualiza los puntos.
-        /// </summary>
-        /// <param name="index">Indice seleccionado</param>
-        /// <param name="boton">Boton de la respuesta seleccionada</param>
         public void Respuesta(int index, Button boton)
         {
             var correcta = preguntaActual.correcta == index;
@@ -285,14 +292,17 @@ namespace Assets.Minijuegos.Scripts.Trivia
             StartCoroutine(Regresar());
         }
         
-        /// <summary>
-        /// Regresa a la pantalla principal luego de unos segundos.
-        /// </summary>
-        /// <returns></returns>
         IEnumerator Regresar()
         {
             yield return new WaitForSeconds(5);
             RegresarAMain();
+        }
+        
+        // 🔹 IMPORTANTE: Limpiar eventos al destruir
+        private void OnDestroy()
+        {
+            if (backButton != null)
+                backButton.clicked -= ReturnToMainMenu;
         }
     }
 }
