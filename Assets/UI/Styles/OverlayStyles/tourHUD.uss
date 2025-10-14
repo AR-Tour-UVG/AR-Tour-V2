@@ -128,7 +128,7 @@
     height: auto;
 }
 
-.jack {
+.pointing-jack {
     background-image: url("project://database/Assets/Visuals/Jack/Full%20Body/pointing.png?fileID=21300000&guid=6eb5542303daac248be0bd21dcafad63&type=3#pointing");
     flex-grow: 0;
     -unity-background-scale-mode: scale-to-fit;

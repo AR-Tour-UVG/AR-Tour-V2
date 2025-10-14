@@ -21,7 +21,7 @@
             <ui:VisualElement name="Content" class="content" />
             <ui:VisualElement name="Footer" class="footer">
                 <ui:VisualElement name="JackContainer" class="jack-container">
-                    <ui:VisualElement name="Jack" class="jack" />
+                    <ui:VisualElement name="Jack" class="pointing-jack" />
                 </ui:VisualElement>
                 <ui:VisualElement name="StatusCard" class="status-card">
                     <ui:Label text="Progreso del Tour" name="StatusTitle" class="status-title" />
