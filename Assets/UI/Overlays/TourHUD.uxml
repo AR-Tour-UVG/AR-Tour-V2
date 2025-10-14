@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/Styles/OverlayStyles/tourHUD.uss?fileID=7433441132597879392&amp;guid=c35c03674c53f4c43b6a0421aa5f0407&amp;type=3#tourHUD" />
-    <Style src="project://database/Assets/UI/Styles/baseLayout.uss?fileID=7433441132597879392&amp;guid=28ac6e247c5360949b32cbce032f8d7e&amp;type=3#baseLayout" />
-    <ui:VisualElement name="Viewport" class="root" style="background-image: url(&quot;project://database/Assets/Visuals/Pictures/AdmisionesYRecepcion.png?fileID=21300000&amp;guid=3388bdd2f566fe8479401a4cfa52ebba&amp;type=3#AdmisionesYRecepcion&quot;); -unity-background-scale-mode: scale-and-crop;">
+    <Style src="project://database/Assets/UI/Styles/OverlayStyles/tourHUD.uss?fileID=7433441132597879392&amp;guid=c35c03674c53f4c43b6a0421aa5f0407&amp;type=3" />
+    <Style src="project://database/Assets/UI/Styles/baseLayout.uss?fileID=7433441132597879392&amp;guid=28ac6e247c5360949b32cbce032f8d7e&amp;type=3" />
+    <ui:VisualElement name="Viewport" class="root">
         <ui:VisualElement name="TopInset" class="top-inset" />
         <ui:VisualElement name="SafeArea" class="safe-area" style="justify-content: space-between;">
             <ui:VisualElement name="Header" class="header">

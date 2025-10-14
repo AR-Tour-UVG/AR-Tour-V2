@@ -12,7 +12,7 @@
     padding-left: 5%;
     align-items: center;
     -unity-background-scale-mode: scale-and-crop;
-    -unity-background-image-tint-color: rgba(255, 255, 255, 0.96);
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.95);
 }
 
 .root {
