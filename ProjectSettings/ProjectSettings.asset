@@ -42,9 +42,9 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000f000000000000000, type: 0}
     duration: 2
-  - logo: {fileID: 21300000, guid: eb7113e4460cc4e46a1916ae8ea0825f, type: 3}
+  - logo: {fileID: 21300000, guid: fae7f96f30625b543b6c5ca3227dfcb7, type: 3}
     duration: 2
-  - logo: {fileID: 21300000, guid: 53cdc9a0697d8964d99d219e8bcac1a3, type: 3}
+  - logo: {fileID: 21300000, guid: d1b98a5794f6c9245b590408fd0d8769, type: 3}
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 2800000, guid: b47ae0fd9095aa44eb065a334fae87b2, type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
@@ -304,7 +304,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: f1892eea1c1051648b9e489b429ccd0c, type: 3}
+      m_Icon: {fileID: 2800000, guid: 2ce2d266ca6bebc4f8ca6b2c99d8922b, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -357,6 +357,31 @@ PlayerSettings:
       m_Height: 40
       m_Kind: 3
       m_SubKind: iPad
+    - m_Textures: []
+      m_Width: 87
+      m_Height: 87
+      m_Kind: 1
+      m_SubKind: iPhone
+    - m_Textures: []
+      m_Width: 58
+      m_Height: 58
+      m_Kind: 1
+      m_SubKind: iPhone
+    - m_Textures: []
+      m_Width: 29
+      m_Height: 29
+      m_Kind: 1
+      m_SubKind: iPhone
+    - m_Textures: []
+      m_Width: 58
+      m_Height: 58
+      m_Kind: 1
+      m_SubKind: iPad
+    - m_Textures: []
+      m_Width: 29
+      m_Height: 29
+      m_Kind: 1
+      m_SubKind: iPad
     - m_Textures:
       - {fileID: 2800000, guid: 2ce2d266ca6bebc4f8ca6b2c99d8922b, type: 3}
       m_Width: 180
@@ -383,31 +408,6 @@ PlayerSettings:
       m_Width: 76
       m_Height: 76
       m_Kind: 0
-      m_SubKind: iPad
-    - m_Textures: []
-      m_Width: 87
-      m_Height: 87
-      m_Kind: 1
-      m_SubKind: iPhone
-    - m_Textures: []
-      m_Width: 58
-      m_Height: 58
-      m_Kind: 1
-      m_SubKind: iPhone
-    - m_Textures: []
-      m_Width: 29
-      m_Height: 29
-      m_Kind: 1
-      m_SubKind: iPhone
-    - m_Textures: []
-      m_Width: 58
-      m_Height: 58
-      m_Kind: 1
-      m_SubKind: iPad
-    - m_Textures: []
-      m_Width: 29
-      m_Height: 29
-      m_Kind: 1
       m_SubKind: iPad
   - m_BuildTarget: Android
     m_Icons:
