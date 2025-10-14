@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/OverlayStyles/popUp.uss?fileID=7433441132597879392&amp;guid=fea24fdeeaa7b3f45a5da5c56aa7ebf6&amp;type=3#popUp" />
+    <ui:VisualElement name="Viewport" class="root">
+        <ui:VisualElement name="PopUP" class="popup-container">
+            <ui:VisualElement name="RoundImage" class="rounded-image" />
+            <ui:Label text="Lorem Ipsum" name="MessageTitle" class="message-title" />
+            <ui:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." name="Message" class="message" style="white-space: normal; padding-bottom: 0%; padding-right: 5%; padding-left: 5%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
