@@ -9,6 +9,7 @@
     padding-right: 10%;
     padding-bottom: 10%;
     padding-left: 10%;
+    -unity-background-scale-mode: stretch-to-fill;
 }
 
 .option-text {
