@@ -1,0 +1,89 @@
+.root {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.popup-container {
+    width: 76%;
+    height: 35%;
+    padding-top: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    justify-content: center;
+    background-image: url("project://database/Assets/Visuals/Backgrounds/diagonal-gradient.png?fileID=21300000&guid=472306e4f7c67e54a8a042e7077e0014&type=3#diagonal-gradient");
+    -unity-background-scale-mode: scale-and-crop;
+    align-items: center;
+}
+
+.rounded-image {
+    background-image: url("project://database/Assets/Visuals/Icons/dragon-color.png?fileID=21300000&guid=ca072917eff8845479d003e9df8cb261&type=3#dragon-color");
+    -unity-background-scale-mode: scale-to-fit;
+    width: 250px;
+    height: 250px;
+    border-left-color: rgb(242, 242, 242);
+    border-right-color: rgb(242, 242, 242);
+    border-top-color: rgb(242, 242, 242);
+    border-bottom-color: rgb(242, 242, 242);
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.96);
+}
+
+.action-title {
+    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-Bold%20SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold SDF");
+    font-size: 60%;
+    -unity-text-align: middle-center;
+    color: rgb(242, 242, 242);
+    width: 100%;
+    height: 20%;
+    text-overflow: ellipsis;
+    padding-top: 2%;
+    padding-right: 2%;
+    padding-bottom: 0%;
+    padding-left: 2%;
+    flex-grow: 1;
+}
+
+.action-text {
+    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-SemiBold%20SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold SDF");
+    color: rgb(242, 242, 242);
+    -unity-text-align: middle-center;
+    text-overflow: ellipsis;
+    font-size: 50%;
+    width: 100%;
+    height: 30%;
+    padding-top: 2%;
+    padding-right: 2%;
+    padding-bottom: 10%;
+    padding-left: 2%;
+    white-space: normal;
+}
+
+.button-text {
+    width: 100%;
+    height: 100%;
+}
+
+.button {
+    width: 75%;
+    background-color: rgb(0, 140, 54);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    height: 12%;
+    justify-content: center;
+}
