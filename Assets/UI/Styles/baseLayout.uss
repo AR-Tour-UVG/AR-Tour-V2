@@ -2,7 +2,7 @@
     width: 100%;
     height: 100%;
     font-size: 110px;
-    -unity-font-definition: url("project://database/Assets/Fonts/Outfit-Regular.ttf?fileID=12800000&guid=fab92155c4946e04989ea5c5828f7daa&type=3#Outfit-Regular");
+    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-Regular%20SDF.asset?fileID=11400000&guid=5ca79f15c435d9c468768628c1e23902&type=2#Outfit-Regular SDF");
 }
 
 .top-inset {
@@ -19,8 +19,8 @@
     flex-grow: 1;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 5%;
+    margin-top: 0%;
     margin-right: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 0%;
     margin-left: 5%;
 }

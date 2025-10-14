@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/ScreenStyles/minigamesScreen.uss?fileID=7433441132597879392&amp;guid=d750bb0ec47bebb4e978d50f135e4e83&amp;type=3#minigamesScreen" />
     <Style src="project://database/Assets/UI/Styles/baseLayout.uss?fileID=7433441132597879392&amp;guid=28ac6e247c5360949b32cbce032f8d7e&amp;type=3#baseLayout" />
-    <ui:VisualElement name="Viewport" class="root">
+    <ui:VisualElement name="Viewport" class="root" style="background-image: url(&quot;project://database/Assets/Visuals/Backgrounds/horizontal-gradient.png?fileID=21300000&amp;guid=8bfebf6f2fa1afb4cb37b64ef112da1e&amp;type=3#horizontal-gradient&quot;);">
         <ui:VisualElement name="TopInset" class="top-inset" />
         <ui:VisualElement name="SafeArea" class="safe-area">
             <ui:VisualElement name="MiniGameIcon" class="icon" />
@@ -11,7 +11,7 @@
                 <ui:VisualElement name="TriviaUVG" class="game-selector" style="background-image: url(&quot;project://database/Assets/Visuals/Minigames/uvg-trivia.png?fileID=21300000&amp;guid=a8a96a03058a1fb4ab9a33cb1b0727d4&amp;type=3#uvg-trivia&quot;);" />
                 <ui:VisualElement name="FlappyJack" class="game-selector" style="background-image: url(&quot;project://database/Assets/Visuals/Minigames/flappy-jack.png?fileID=21300000&amp;guid=9874a066923823348bdda5518ac9108b&amp;type=3#flappy-jack&quot;);" />
             </ui:VisualElement>
-            <ui:VisualElement name="Exit" class="exit" style="-unity-background-image-tint-color: rgb(0, 165, 0);" />
+            <ui:VisualElement name="Exit" class="exit" />
         </ui:VisualElement>
         <ui:VisualElement name="BottomInset" class="bottom-inset" />
     </ui:VisualElement>

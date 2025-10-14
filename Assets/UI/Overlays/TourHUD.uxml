@@ -1,0 +1,42 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/OverlayStyles/tourHUD.uss?fileID=7433441132597879392&amp;guid=c35c03674c53f4c43b6a0421aa5f0407&amp;type=3#tourHUD" />
+    <Style src="project://database/Assets/UI/Styles/baseLayout.uss?fileID=7433441132597879392&amp;guid=28ac6e247c5360949b32cbce032f8d7e&amp;type=3#baseLayout" />
+    <ui:VisualElement name="Viewport" class="root" style="background-image: url(&quot;project://database/Assets/Visuals/Pictures/AdmisionesYRecepcion.png?fileID=21300000&amp;guid=3388bdd2f566fe8479401a4cfa52ebba&amp;type=3#AdmisionesYRecepcion&quot;); -unity-background-scale-mode: scale-and-crop;">
+        <ui:VisualElement name="TopInset" class="top-inset" />
+        <ui:VisualElement name="SafeArea" class="safe-area" style="justify-content: space-between;">
+            <ui:VisualElement name="Header" class="header">
+                <ui:VisualElement name="TopContainer" class="top-container">
+                    <ui:VisualElement name="TitleCard" class="title-card">
+                        <ui:VisualElement name="TitleIcon" class="title-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/location.png?fileID=21300000&amp;guid=4d7c514c124c6074ab28ca865305f6c8&amp;type=3#location&quot;); margin-top: 3%; margin-right: 3%; margin-bottom: 3%; margin-left: 3%;" />
+                        <ui:Label name="Title" text="Admisiones y Recepción" class="title-text" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="MenuButton" class="menu">
+                        <ui:VisualElement name="Icon" class="menu-icon" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="DirectionsCard" class="directions">
+                    <ui:Label name="Directions" text="Dirigete a: Elevadores del Nivel 2" class="directions-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Content" class="content" />
+            <ui:VisualElement name="Footer" class="footer">
+                <ui:VisualElement name="JackContainer" class="jack-container">
+                    <ui:VisualElement name="Jack" class="jack" />
+                </ui:VisualElement>
+                <ui:VisualElement name="StatusCard" class="status-card">
+                    <ui:Label text="Progreso del Tour" name="StatusTitle" class="status-title" />
+                    <ui:VisualElement name="ProgressCard" class="metric-card">
+                        <ui:VisualElement name="ProgressIcon" class="progress-icon" />
+                        <ui:Label text="Completado: " name="ProgressText" class="metric-label" />
+                        <ui:Label text="0.0%" name="ProgressValue" class="metric-value" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="DistanceCard" class="metric-card">
+                        <ui:Label text="Próximo Destino:" name="DistanceText" class="metric-label" />
+                        <ui:Label text="0.00m" name="DistanceValue" class="metric-value" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="BottomInset" class="bottom-inset" />
+    </ui:VisualElement>
+</ui:UXML>

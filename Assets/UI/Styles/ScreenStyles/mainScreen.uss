@@ -10,7 +10,7 @@
 }
 
 .suptitle {
-    -unity-font-definition: url("project://database/Assets/Fonts/Outfit-SemiBold.ttf?fileID=12800000&guid=b8a090f2eefc036448c302f364fb6e9d&type=3#Outfit-SemiBold");
+    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-SemiBold%20SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold SDF");
     color: rgb(242, 242, 242);
     font-size: 110%;
     -unity-text-align: middle-center;
@@ -18,7 +18,7 @@
 }
 
 .title {
-    -unity-font-definition: url("project://database/Assets/Fonts/Outfit-Bold.ttf?fileID=12800000&guid=009c88122ff54034eba16c07ef9b6b79&type=3#Outfit-Bold");
+    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-Bold%20SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold SDF");
     -unity-text-align: middle-center;
     text-overflow: ellipsis;
     font-size: 150%;
@@ -32,7 +32,7 @@
 }
 
 .button-text {
-    -unity-font-definition: url("project://database/Assets/Fonts/Outfit-Bold.ttf?fileID=12800000&guid=009c88122ff54034eba16c07ef9b6b79&type=3#Outfit-Bold");
+    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-SemiBold%20SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold SDF");
     color: rgb(242, 242, 242);
     font-size: 70px;
     -unity-text-align: middle-left;

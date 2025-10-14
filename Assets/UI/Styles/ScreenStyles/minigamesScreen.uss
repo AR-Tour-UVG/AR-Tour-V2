@@ -1,13 +1,13 @@
 .icon {
     background-image: url("project://database/Assets/Visuals/Icons/game.png?fileID=21300000&guid=f0d24f6588e9107429db780a97b9fb57&type=3#game");
-    -unity-background-image-tint-color: rgb(0, 165, 0);
+    -unity-background-image-tint-color: rgb(102, 255, 102);
     width: 35%;
     height: 15%;
     -unity-background-scale-mode: scale-to-fit;
 }
 
 .title {
-    -unity-font-definition: url("project://database/Assets/Fonts/Outfit-Bold.ttf?fileID=12800000&guid=009c88122ff54034eba16c07ef9b6b79&type=3#Outfit-Bold");
+    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-Bold%20SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold SDF");
     color: rgb(242, 242, 242);
     margin-top: 5%;
     -unity-text-align: middle-center;
@@ -39,7 +39,7 @@
 .exit {
     background-image: url("project://database/Assets/Visuals/Icons/exit.png?fileID=21300000&guid=2c69a9bee7278dd44be128b292e9c429&type=3#exit");
     -unity-background-scale-mode: scale-to-fit;
-    -unity-background-image-tint-color: rgb(102, 255, 102);
+    -unity-background-image-tint-color: rgb(242, 242, 242);
     width: 12%;
     height: 8%;
     position: absolute;
