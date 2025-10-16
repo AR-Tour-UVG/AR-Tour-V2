@@ -36,3 +36,10 @@
 .hidden {
     display: none;
 }
+
+.scrim {
+    width: 100%;
+    height: 100%;
+    -unity-background-image-tint-color: rgb(55, 55, 55);
+    background-color: rgba(4, 8, 19, 0.78);
+}
