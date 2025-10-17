@@ -7,19 +7,18 @@ using UnityEngine.UIElements;
 public sealed class ViewFactory : IViewFactory
 {   
     // dependencies
-    private readonly UIDocument doc; // Base document for UI
-    private readonly VisualTreeAsset homeUxml; // UXML for Home screen
-
+    private readonly UIAtlas atlas; // Reference to the UI Atlas
+    private readonly UIDocument doc; // Base document for UI (base layout)
 
     /// <summary> 
     /// Constructor for the ViewFactory.
     /// </summary>
     /// <param name="doc">The base UIDocument for the UI.</param>
-    /// <param name="homeUxml">The UXML for the Home screen.</param>
-    public ViewFactory(UIDocument doc, VisualTreeAsset homeUxml)
+    /// <param name="atlas">The UI Atlas containing all UXML references.</param>
+    public ViewFactory(UIDocument doc, UIAtlas atlas)
     {
         this.doc = doc; // assign the UIDocument
-        this.homeUxml = homeUxml; // assign the Home screen UXML
+        this.atlas = atlas; // assign the UI Atlas
     }
 
 
@@ -31,7 +30,7 @@ public sealed class ViewFactory : IViewFactory
     public IScreenView CreateScreen(ScreenState s) => s switch
     {   
         // Create and return the appropriate screen view based on the screen state
-        ScreenState.Home => new HomeView(Clone(homeUxml)),
+        ScreenState.Home => new HomeView(Clone(atlas.Home)),
         _ => null
     };
 
@@ -52,8 +51,8 @@ public sealed class ViewFactory : IViewFactory
             return null; 
         }
         // Clone the VisualTreeAsset and set its style to flex-grow
-        var root = vta.CloneTree();
-        root.style.flexGrow = 1;
-        return root;
+        var ve = vta.CloneTree();
+        ve.style.flexGrow = 1;
+        return ve;
     }
 }

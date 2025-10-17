@@ -4,12 +4,15 @@ using UnityEngine.UIElements;
 /// <summary>
 /// Bootstrapper for UI system. Sets up UIRouter and ViewFactory.
 /// </summary>
+[RequireComponent(typeof(UIDocument))]
 public sealed class UIBootstrap : MonoBehaviour
 {
     [Header("Scene references")]
+    [Tooltip("UXML for the Base Layout")]
     [SerializeField] private UIDocument uiDocument;          // has BaseLayout.uxml
-    [SerializeField] private VisualTreeAsset homeScreenUxml; // MainMenu/Home UXML
-
+    [Tooltip("UXML for the UI Atlas Asset")]
+    [SerializeField] private UIAtlas atlas;                  // has all shared styles and resources
+    
     // Layers from BaseLayout
     private VisualElement baseLayer;
     private VisualElement modalLayer;
@@ -55,7 +58,7 @@ public sealed class UIBootstrap : MonoBehaviour
         menuLayer.style.display  = DisplayStyle.None;
 
         // Create factory and router
-        factory = new ViewFactory(uiDocument, homeScreenUxml);
+        factory = new ViewFactory(uiDocument, atlas);
         router  = new UIRouter(baseLayer, modalLayer, popupLayer, menuLayer, scrim, factory);
 
         // First screen for this iteration

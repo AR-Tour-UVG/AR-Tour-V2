@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9b70087d089064fbe2fe03cd1a8f74, type: 3}
+  m_Name: AtlasUI
+  m_EditorClassIdentifier: 
+  Home: {fileID: 9197481963319205126, guid: da2241da9e20ae543ad207c95fd017bd, type: 3}
+  Minigames: {fileID: 9197481963319205126, guid: f11af630231fca247a5003d11ac4cb1a, type: 3}
+  Onboarding: {fileID: 9197481963319205126, guid: 2ffa7beaf9d83c44a94b0c86073c051e, type: 3}
+  TourHUD: {fileID: 9197481963319205126, guid: b313d9f57a8959f46a2b84b95d681d37, type: 3}
+  InfoWidget: {fileID: 9197481963319205126, guid: a0d14245442d04a4c85d338adacd3392, type: 3}
+  NoticePopup: {fileID: 9197481963319205126, guid: 4d39b13aa9b05624b87be4f7a7d4104d, type: 3}
+  ActionPopup: {fileID: 9197481963319205126, guid: 745f3a5e9d3bc0947884aecda64dcd04, type: 3}
+  Menu: {fileID: 9197481963319205126, guid: 78d9a8849c2cb7e43be689a98d4d0eaa, type: 3}
