@@ -1,6 +1,29 @@
-using UnityEngine;
+using UnityEngine.UIElements;
 
-public class IView
+public enum ScreenState
 {
-    
+    Onboarding,
+    Home, 
+    TourHUD
+}
+public enum OverlayType
+{
+    InfoModal,
+    Popup,
+    Menu
+}
+
+public interface IView { 
+    VisualElement Root { get; }
+    void Bind(UIDocument doc);
+    void Unbind(); 
+}
+
+public interface IScreenView : IView { }
+
+public interface IOverlayView : IView { }
+
+public interface IViewFactory {
+    IScreenView  CreateScreen(ScreenState s);
+    IOverlayView CreateOverlay(OverlayType t);
 }

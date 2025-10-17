@@ -21,7 +21,6 @@ public class TourRunner : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
         baseScene = SceneManager.GetActiveScene();
         Debug.Log($"[TourRunner] Awake. Base scene: {baseScene.name}");
     }
