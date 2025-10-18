@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 975345985}
   - component: {fileID: 975345986}
   m_Layer: 0
-  m_Name: TourRunner
+  m_Name: Tour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,8 +208,9 @@ GameObject:
   - component: {fileID: 995628172}
   - component: {fileID: 995628173}
   - component: {fileID: 995628174}
+  - component: {fileID: 995628175}
   m_Layer: 0
-  m_Name: UIBootstrap
+  m_Name: GUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,6 +264,18 @@ MonoBehaviour:
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
+--- !u!114 &995628175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995628171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b7fa169fa0ab74eb21cd8b280a7a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1309669304
 GameObject:
   m_ObjectHideFlags: 0
