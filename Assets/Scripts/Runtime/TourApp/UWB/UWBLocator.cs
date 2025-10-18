@@ -1,7 +1,6 @@
 using System;
-using UnityEngine;
 using System.Runtime.InteropServices;
-
+using UnityEngine;
 
 // ----- Data Structures -----
 /// <summary>
@@ -30,24 +29,29 @@ public static class UWBLocator
     private static bool hasWarned = false;
 
     // Returns pointer to a null-terminated JSON string allocated with strdup (must be freed).
-    [DllImport("__Internal")] private static extern IntPtr getCoords();
+    [DllImport("__Internal")]
+    private static extern IntPtr getCoords();
 
     // Frees the JSON string allocated by getCoords().
-    [DllImport("__Internal")] private static extern void freeCString(IntPtr ptr);
+    [DllImport("__Internal")]
+    private static extern void freeCString(IntPtr ptr);
 
     // Sets the anchor map in the native plugin.
-    [DllImport("__Internal")] private static extern void setAnchorMap(string jsonUtf8);
+    [DllImport("__Internal")]
+    private static extern void setAnchorMap(string jsonUtf8);
 
     // Configure plugin to use uwb anchor map
-    [DllImport("__Internal", EntryPoint = "start")] private static extern void uwb_start();
-
+    [DllImport("__Internal", EntryPoint = "start")]
+    private static extern void uwb_start();
 #else
     // Stubs implementation for non-iOS platforms
     private static IntPtr getCoords() => IntPtr.Zero; // Always returns null pointer
-    private static void freeCString(IntPtr ptr) { } // No-op for non-iOS platforms
-    private static void setAnchorMap(string jsonUtf8) { } // No-op for non-iOS platforms
-    private static void uwb_start() { } // No-op for non-iOS platforms
 
+    private static void freeCString(IntPtr ptr) { } // No-op for non-iOS platforms
+
+    private static void setAnchorMap(string jsonUtf8) { } // No-op for non-iOS platforms
+
+    private static void uwb_start() { } // No-op for non-iOS platforms
 #endif
 
     /// <summary>
@@ -65,13 +69,15 @@ public static class UWBLocator
         // Warn only the firts time it runs on non iOS device
         if (!hasWarned)
         {
-            Debug.LogWarning("[UWBLocator] Real time positioning is supported only on iOS device builds.");
+            Debug.LogWarning(
+                "[UWBLocator] Real time positioning is supported only on iOS device builds."
+            );
             hasWarned = true; // Set the flag to true after the first warning
         }
         return false; // Not running on iOS, return false
 #else
         IntPtr coordsPtr = getCoords(); // Call the native function to get the coordinates
-        // Validate the pointer 
+        // Validate the pointer
         if (coordsPtr == IntPtr.Zero)
         {
             Debug.LogWarning("[UWBLocator] getCoords() returned null pointer.");
@@ -88,7 +94,9 @@ public static class UWBLocator
             // Filter invalid JSON or null coordinate cases
             if (string.IsNullOrEmpty(json) || json == "{}" || json.Contains("null"))
             {
-                Debug.LogWarning("[UWBLocator] Received invalid JSON or null coordinates from UWB plugin.");
+                Debug.LogWarning(
+                    "[UWBLocator] Received invalid JSON or null coordinates from UWB plugin."
+                );
                 return false; // Invalid JSON or null coordinates
             }
 

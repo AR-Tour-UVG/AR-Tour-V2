@@ -5,26 +5,29 @@ public enum ScreenState
     Onboarding,
     Home,
     Minigames,
-    TourHUD
+    TourHUD,
 }
+
 public enum OverlayType
 {
     InfoModal,
     Popup,
-    Menu
+    Menu,
 }
 
-public interface IView { 
+public interface IView
+{
     VisualElement Root { get; }
     void Bind(UIDocument doc);
-    void Unbind(); 
+    void Unbind();
 }
 
 public interface IScreenView : IView { }
 
 public interface IOverlayView : IView { }
 
-public interface IViewFactory {
-    IScreenView  CreateScreen(ScreenState s);
+public interface IViewFactory
+{
+    IScreenView CreateScreen(ScreenState s);
     IOverlayView CreateOverlay(OverlayType t);
 }

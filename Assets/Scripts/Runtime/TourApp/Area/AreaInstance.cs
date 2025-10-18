@@ -8,13 +8,14 @@ using UnityEngine;
 /// Class <c>AreaInstance</c> represents a runtime instance of an <see cref="AreaDefinition"/> in the scene.
 /// </summary>
 /// <remarks>
-/// - Each instance uses a BoxCollider as its trigger area.  
+/// - Each instance uses a BoxCollider as its trigger area.
 /// - Events are raised when something enters or exits the area.
 /// </remarks>
 public class AreaInstance : MonoBehaviour
 {
     /// <summary>The area definition that this instance represents.</summary>
-    [SerializeField] private AreaDefinition definition;
+    [SerializeField]
+    private AreaDefinition definition;
 
     /// <summary>The BoxCollider component used for area detection.</summary>
     private BoxCollider _box;
@@ -35,7 +36,7 @@ public class AreaInstance : MonoBehaviour
     /// Unity lifecycle method called when the script instance is being loaded.
     /// </summary>
     /// <remarks>
-    /// Initializes the attached BoxCollider and sets it as a trigger.  
+    /// Initializes the attached BoxCollider and sets it as a trigger.
     /// </remarks>
     private void Awake()
     {
@@ -48,7 +49,7 @@ public class AreaInstance : MonoBehaviour
     /// Raises the Entered event to notify subscribers that something has entered the area.
     /// </summary>
     internal void RaiseEntered() => Entered?.Invoke(this);
-    
+
     /// <summary>
     /// Raises the Exited event to notify subscribers that something has exited the area.
     /// </summary>

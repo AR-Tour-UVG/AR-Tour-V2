@@ -1,13 +1,14 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 [DisallowMultipleComponent]
 public class TourRunner : MonoBehaviour
 {
     public static TourRunner Instance { get; private set; }
 
-    [SerializeField] private TourDefinition currentTour;
+    [SerializeField]
+    private TourDefinition currentTour;
     private int floorIndex = -1;
     private FloorManager activeFM;
     private string loadedScenePath;
@@ -15,11 +16,16 @@ public class TourRunner : MonoBehaviour
     private Camera _fallbackCamera;
     private int _visitedAcrossTour;
     private int _totalAcrossTour;
-    private double _percentComplete => (_totalAcrossTour > 0) ? (100.0 * _visitedAcrossTour / _totalAcrossTour) : 0.0;
+    private double _percentComplete =>
+        (_totalAcrossTour > 0) ? (100.0 * _visitedAcrossTour / _totalAcrossTour) : 0.0;
 
     void Awake()
     {
-        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
         baseScene = SceneManager.GetActiveScene();
         Debug.Log($"[TourRunner] Awake. Base scene: {baseScene.name}");
@@ -40,8 +46,15 @@ public class TourRunner : MonoBehaviour
     // Called by UI right after SelectTour. Loads FIRST floor immediately.
     public void BeginTour()
     {
-        if (currentTour == null || currentTour.OrderedFloors == null || currentTour.OrderedFloors.Count == 0)
-        { Debug.LogError("[TourRunner] No tour/floors."); return; }
+        if (
+            currentTour == null
+            || currentTour.OrderedFloors == null
+            || currentTour.OrderedFloors.Count == 0
+        )
+        {
+            Debug.LogError("[TourRunner] No tour/floors.");
+            return;
+        }
 
         StartCoroutine(LoadFloorAt(floorIndex));
     }
@@ -50,7 +63,11 @@ public class TourRunner : MonoBehaviour
     {
         DisableFallbackCamera(); // Floor will provide its own cameras
         var floor = currentTour.OrderedFloors[idx];
-        if (!floor) { Debug.LogError("[TourRunner] Null floor asset."); yield break; }
+        if (!floor)
+        {
+            Debug.LogError("[TourRunner] Null floor asset.");
+            yield break;
+        }
         if (string.IsNullOrEmpty(floor.ScenePath))
         {
             Debug.LogError("[TourRunner] Floor.ScenePath empty.");
@@ -65,7 +82,9 @@ public class TourRunner : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"[TourRunner] Floor '{floor.FloorName}' has no valid AnchorMap assigned.");
+            Debug.LogError(
+                $"[TourRunner] Floor '{floor.FloorName}' has no valid AnchorMap assigned."
+            );
         }
 
         // Load scene additively
@@ -95,7 +114,9 @@ public class TourRunner : MonoBehaviour
         activeFM.GlobalVisited = _visitedAcrossTour;
         activeFM.GlobalTotal = _totalAcrossTour;
 
-        Debug.Log($"[TourRunner] Floor loaded: {floor.FloorName}. FloorManager will wait for UserReady (R in Editor).");
+        Debug.Log(
+            $"[TourRunner] Floor loaded: {floor.FloorName}. FloorManager will wait for UserReady (R in Editor)."
+        );
     }
 
     private void OnFloorCompleted(FloorManager _)
@@ -105,7 +126,7 @@ public class TourRunner : MonoBehaviour
             activeFM.FloorCompleted -= OnFloorCompleted;
             activeFM.AreaConfirmed -= OnAreaConfirmed;
         }
-            
+
         StartCoroutine(UnloadAndAdvance());
     }
 
@@ -121,7 +142,8 @@ public class TourRunner : MonoBehaviour
         {
             Debug.Log($"[TourRunner] Unloading scene: {loadedScenePath}");
             var op = SceneManager.UnloadSceneAsync(loadedScenePath);
-            if (op != null) yield return op;
+            if (op != null)
+                yield return op;
             loadedScenePath = null;
             activeFM = null;
         }
@@ -148,7 +170,8 @@ public class TourRunner : MonoBehaviour
     {
         // If any enabled camera exists, do nothing
         foreach (var cam in Camera.allCameras)
-            if (cam && cam.enabled) return;
+            if (cam && cam.enabled)
+                return;
 
         if (_fallbackCamera == null)
         {
@@ -156,8 +179,8 @@ public class TourRunner : MonoBehaviour
             DontDestroyOnLoad(go);
             _fallbackCamera = go.AddComponent<Camera>();
             _fallbackCamera.clearFlags = CameraClearFlags.SolidColor;
-            _fallbackCamera.backgroundColor = Color.black;  // or whatever
-            _fallbackCamera.cullingMask = 0;                // Nothing
+            _fallbackCamera.backgroundColor = Color.black; // or whatever
+            _fallbackCamera.cullingMask = 0; // Nothing
             _fallbackCamera.depth = -100;
         }
         _fallbackCamera.enabled = true;
@@ -165,6 +188,7 @@ public class TourRunner : MonoBehaviour
 
     private void DisableFallbackCamera()
     {
-        if (_fallbackCamera) _fallbackCamera.enabled = false;
+        if (_fallbackCamera)
+            _fallbackCamera.enabled = false;
     }
 }

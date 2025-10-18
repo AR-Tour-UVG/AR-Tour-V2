@@ -6,16 +6,20 @@ using UnityEngine.AI;
 public class PathProvider : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private float sampleRadius = 2f;
-    [SerializeField] private float recomputeThreshold = 0.01f;
+    [SerializeField]
+    private float sampleRadius = 2f;
+
+    [SerializeField]
+    private float recomputeThreshold = 0.01f;
 
     [Header("Optional")]
     [Tooltip("Assign an Area GameObject in the scene to start with (uses its BoxCollider center).")]
-    [SerializeField] private GameObject initialTarget;
+    [SerializeField]
+    private GameObject initialTarget;
 
     public bool Paused;
     public NavMeshPath CurrentPath { get; private set; }
-    public float CurrentDistance { get;  private set; }
+    public float CurrentDistance { get; private set; }
     public event Action<NavMeshPath> OnPathUpdated;
 
     private Vector3 _lastPlayerPos = Vector3.positiveInfinity;
@@ -30,18 +34,24 @@ public class PathProvider : MonoBehaviour
 
     private void Start()
     {
-        if (initialTarget) SetTarget(initialTarget);
+        if (initialTarget)
+            SetTarget(initialTarget);
     }
 
     private void Update()
     {
-        if (Paused || !_hasTargetPoint) return;
+        if (Paused || !_hasTargetPoint)
+            return;
 
-        Vector3 p = transform.position;     // player = this transform
+        Vector3 p = transform.position; // player = this transform
         Vector3 t = _targetPoint;
 
         float threshSq = recomputeThreshold * recomputeThreshold;
-        if ((p - _lastPlayerPos).sqrMagnitude < threshSq && (t - _lastTargetPos).sqrMagnitude < threshSq) return;
+        if (
+            (p - _lastPlayerPos).sqrMagnitude < threshSq
+            && (t - _lastTargetPos).sqrMagnitude < threshSq
+        )
+            return;
 
         _lastPlayerPos = p;
         _lastTargetPos = t;
@@ -61,9 +71,11 @@ public class PathProvider : MonoBehaviour
             CurrentDistance = 0f;
         }
     }
+
     private float ComputePathDistance(NavMeshPath path)
     {
-        if (path == null || path.corners.Length < 2) return 0f;
+        if (path == null || path.corners.Length < 2)
+            return 0f;
 
         float dist = 0f;
         for (int i = 1; i < path.corners.Length; i++)
@@ -75,7 +87,8 @@ public class PathProvider : MonoBehaviour
 
     public void SetTarget(GameObject areaGO)
     {
-        if (!areaGO) return;
+        if (!areaGO)
+            return;
 
         var ai = areaGO.GetComponent<AreaInstance>();
         var box = ai ? ai.NavTarget : areaGO.GetComponent<BoxCollider>();
@@ -107,11 +120,14 @@ public class PathProvider : MonoBehaviour
     {
         path = new NavMeshPath();
 
-        if (!NavMesh.SamplePosition(from, out var fromHit, sampleRadius, NavMesh.AllAreas)) return false;
-        if (!NavMesh.SamplePosition(to,   out var toHit,   sampleRadius, NavMesh.AllAreas)) return false;
+        if (!NavMesh.SamplePosition(from, out var fromHit, sampleRadius, NavMesh.AllAreas))
+            return false;
+        if (!NavMesh.SamplePosition(to, out var toHit, sampleRadius, NavMesh.AllAreas))
+            return false;
 
         bool ok = NavMesh.CalculatePath(fromHit.position, toHit.position, NavMesh.AllAreas, path);
-        if (!ok || path.status == NavMeshPathStatus.PathInvalid) return false;
+        if (!ok || path.status == NavMeshPathStatus.PathInvalid)
+            return false;
 
         return true;
     }

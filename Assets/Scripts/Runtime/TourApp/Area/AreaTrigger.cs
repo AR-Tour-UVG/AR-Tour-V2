@@ -5,7 +5,7 @@ using UnityEngine;
 /// Class <c>AreaTrigger</c> detects player entry and exit events for an <c>AreaInstance</c>.
 /// </summary>
 /// <remarks>
-/// - Requires both a BoxCollider and an AreaInstance on the same GameObject.  
+/// - Requires both a BoxCollider and an AreaInstance on the same GameObject.
 /// - Raises events when the player enters or exits the collider trigger.
 /// </remarks>
 public class AreaTrigger : MonoBehaviour
@@ -16,7 +16,7 @@ public class AreaTrigger : MonoBehaviour
     /// Unity lifecycle method called when the script instance is being loaded.
     /// </summary>
     /// <remarks>
-    /// Initializes the reference to the <c>AreaInstance</c> and ensures the BoxCollider is set as a trigger.  
+    /// Initializes the reference to the <c>AreaInstance</c> and ensures the BoxCollider is set as a trigger.
     /// </remarks>
     private void Awake()
     {
@@ -31,12 +31,13 @@ public class AreaTrigger : MonoBehaviour
     /// </summary>
     /// <param name="other">The collider that entered the trigger.</param>
     /// <remarks>
-    /// Checks for the "Player" tag. Logs entry and raises the <c>Entered</c> event.  
+    /// Checks for the "Player" tag. Logs entry and raises the <c>Entered</c> event.
     /// </remarks>
     private void OnTriggerEnter(Collider other)
     {
         // Only respond to objects tagged as "Player"
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player"))
+            return;
         // Log entry and raise the Entered event
         Debug.Log("[AreaTrigger] Player entered area: " + _area.Definition.name);
         // Raise the Entered event
@@ -48,12 +49,13 @@ public class AreaTrigger : MonoBehaviour
     /// </summary>
     /// <param name="other">The collider that exited the trigger.</param>
     /// <remarks>
-    /// Checks for the "Player" tag. Logs exit and raises the <c>Exited</c> event.  
+    /// Checks for the "Player" tag. Logs exit and raises the <c>Exited</c> event.
     /// </remarks>
     private void OnTriggerExit(Collider other)
     {
         // Only respond to objects tagged as "Player"
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player"))
+            return;
         // Log exit and raise the Exited event
         Debug.Log("[AreaTrigger] Player exited area: " + _area.Definition.name);
         // Raise the Exited event

@@ -15,20 +15,24 @@ public class AreaDefinition : ScriptableObject
     [Header("Area Info")]
     [Tooltip("Name of the area")]
     /// <summary>The name of the area.</summary>
-    [SerializeField] private string areaName;
+    [SerializeField]
+    private string areaName;
 
     [Header("Content References")]
     [Tooltip("Text containing area description")]
     /// <summary>Text containing the area's description.</summary>
-    [SerializeField] private string areaText;
+    [SerializeField]
+    private string areaText;
 
     [Tooltip("List of audio clips for the area")]
     /// <summary>List of audio clips associated with the area.</summary>
-    [SerializeField] private List<AudioClip> audioClips;
+    [SerializeField]
+    private List<AudioClip> audioClips;
 
     [Tooltip("Image file representing the area (for reference only)")]
     /// <summary>Image in the Resources folder.</summary>
-    [SerializeField] private Texture2D areaImage;
+    [SerializeField]
+    private Texture2D areaImage;
 
     // Public properties to access private fields
     /// <summary>Gets the display name of the area.</summary>

@@ -9,8 +9,10 @@ public sealed class UIRouter
     private readonly VisualElement modalLayer;
     private readonly VisualElement popupLayer;
     private readonly VisualElement menuLayer;
+
     // Optional scrim for modals/popups
     private readonly VisualElement scrim;
+
     // Factory to create views
     private readonly IViewFactory factory;
 
@@ -18,22 +20,22 @@ public sealed class UIRouter
     public ScreenState CurrentScreen { get; private set; }
     public IScreenView CurrentScreenView { get; private set; }
 
-
     /// <summary>
     /// Constructor for UIRouter.
     /// </summary>
     public UIRouter(
-        VisualElement baseLayer, 
+        VisualElement baseLayer,
         VisualElement modalLayer,
-        VisualElement popupLayer, 
+        VisualElement popupLayer,
         VisualElement menuLayer,
-        VisualElement scrim, 
-        IViewFactory factory)
+        VisualElement scrim,
+        IViewFactory factory
+    )
     {
         this.baseLayer = baseLayer;
         this.modalLayer = modalLayer;
         this.popupLayer = popupLayer;
-        this.menuLayer  = menuLayer;
+        this.menuLayer = menuLayer;
         this.scrim = scrim;
         this.factory = factory;
     }

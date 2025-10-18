@@ -4,7 +4,8 @@ using UnityEngine.AI;
 [DefaultExecutionOrder(300)]
 public class FloorValidator : MonoBehaviour
 {
-    [SerializeField] private FloorDefinition floor; // assign the same asset used by FloorManager
+    [SerializeField]
+    private FloorDefinition floor; // assign the same asset used by FloorManager
 
     private void Start()
     {
@@ -48,10 +49,12 @@ public class FloorValidator : MonoBehaviour
             }
             else
             {
-                int found = 0, missing = 0;
+                int found = 0,
+                    missing = 0;
                 foreach (var def in floor.OrderedAreas)
                 {
-                    if (!def) continue;
+                    if (!def)
+                        continue;
 
                     if (reg.TryGet(def, out var go))
                     {
@@ -59,7 +62,9 @@ public class FloorValidator : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogError($"[FloorValidator] Missing AreaInstance for '{def.name}' in this scene.");
+                        Debug.LogError(
+                            $"[FloorValidator] Missing AreaInstance for '{def.name}' in this scene."
+                        );
                         missing++;
                     }
                 }
@@ -80,6 +85,7 @@ public class FloorValidator : MonoBehaviour
             ok = false;
         }
 
-        if (ok) Debug.Log("[FloorValidator] OK: player, registry, areas, and NavMesh are valid.");
+        if (ok)
+            Debug.Log("[FloorValidator] OK: player, registry, areas, and NavMesh are valid.");
     }
 }

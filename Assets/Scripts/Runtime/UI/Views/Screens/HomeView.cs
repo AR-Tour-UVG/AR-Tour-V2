@@ -2,8 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-
-/// <summary> 
+/// <summary>
 /// Represents the Home screen view in the UI.
 /// </summary>
 public sealed class HomeView : IScreenView
@@ -28,15 +27,15 @@ public sealed class HomeView : IScreenView
         Root = root;
     }
 
-    /// <summary> 
-    /// Binds the UI elements and sets up event listeners. 
+    /// <summary>
+    /// Binds the UI elements and sets up event listeners.
     /// </summary>
     /// <param name="doc">The UIDocument containing the UI elements.</param>
     public void Bind(UIDocument doc)
-    {   
+    {
         // Query UI elements by their names in the UI hierarchy
-        expressBtn   = Root.Q<VisualElement>("ExpressBtn");
-        completeBtn  = Root.Q<VisualElement>("CompleteBtn");
+        expressBtn = Root.Q<VisualElement>("ExpressBtn");
+        completeBtn = Root.Q<VisualElement>("CompleteBtn");
         minigamesBtn = Root.Q<VisualElement>("MinigamesBtn");
 
         // Register click event callbacks
@@ -45,8 +44,7 @@ public sealed class HomeView : IScreenView
         minigamesBtn?.RegisterCallback<ClickEvent>(_ => OnMinigames?.Invoke());
     }
 
-
-    /// <summary> 
+    /// <summary>
     /// Unbinds the UI elements and removes event listeners.
     /// </summary>
     public void Unbind()

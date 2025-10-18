@@ -1,6 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
 
 /// <summary>
 /// Moves a target object based on UWBLocator positions, with filtering and NavMesh clamping.
@@ -11,44 +11,60 @@ public class UWBPositioning : MonoBehaviour
 {
     [Header("Polling")]
     [Tooltip("How often to poll UWBLocator for a new position.")]
-    [SerializeField] private float pollIntervalSeconds = 0.5f;
+    [SerializeField]
+    private float pollIntervalSeconds = 0.5f;
 
     [Header("Filtering")]
     [Tooltip("Minimum movement distance to consider a new position valid.")]
-    [SerializeField] private float noiseThresholdMeters = 0.10f;
+    [SerializeField]
+    private float noiseThresholdMeters = 0.10f;
+
     [Tooltip("Maximum speed (m/s) to consider a new position valid.")]
-    [SerializeField] private float maxSpeedMetersPerSecond = 3.0f;
+    [SerializeField]
+    private float maxSpeedMetersPerSecond = 3.0f;
+
     [Tooltip("Tolerance factor for jump filtering (e.g. 1.25 = 25% extra).")]
-    [SerializeField] private float jumpToleranceFactor = 1.25f;
+    [SerializeField]
+    private float jumpToleranceFactor = 1.25f;
 
     [Header("NavMesh Clamp")]
     [Tooltip("Radius to sample the NavMesh for valid positions.")]
-    [SerializeField] private float navmeshSampleRadius = 2.0f;
+    [SerializeField]
+    private float navmeshSampleRadius = 2.0f;
+
     [Tooltip("Maximum radius to sample the NavMesh.")]
-    [SerializeField] private float navmeshMaxSampleRadius = 10.0f;
+    [SerializeField]
+    private float navmeshMaxSampleRadius = 10.0f;
+
     [Tooltip("Growth factor for NavMesh sampling radius (e.g. 2.0 = double each step).")]
-    [SerializeField] private float navmeshRadiusGrowth = 2.0f;
+    [SerializeField]
+    private float navmeshRadiusGrowth = 2.0f;
 
     [Header("Movement")]
     [Tooltip("Whether to smoothly move towards the target position.")]
-    [SerializeField] private bool smoothMove = false;
+    [SerializeField]
+    private bool smoothMove = false;
+
     [Tooltip("Speed of smoothing (higher = snappier).")]
-    [SerializeField] private float smoothSpeed = 5f;
+    [SerializeField]
+    private float smoothSpeed = 5f;
 
     [Header("Target")]
     [Tooltip("The player object to move")]
-    [SerializeField] private Transform target;
+    [SerializeField]
+    private Transform target;
 
     [Header("Signal Loss")]
     [Tooltip("How many consecutive nulls before declaring connection lost.")]
-    [SerializeField] private int lostConnectionThreshold = 5;
+    [SerializeField]
+    private int lostConnectionThreshold = 5;
 
     private Coroutine pollRoutine; // null when not polling
     private Vector3 lastAccepted; // last accepted position
     private bool hasLastAccepted = false; // whether we have a valid last accepted position
 
     // null handling
-    private int consecutiveNulls = 0;  // how many nulls in a row
+    private int consecutiveNulls = 0; // how many nulls in a row
     private bool lossDeclared = false; // whether loss has been logged
 
     // smoothing
@@ -61,7 +77,8 @@ public class UWBPositioning : MonoBehaviour
     private void Awake()
     {
 #if UNITY_IOS && !UNITY_EDITOR
-        if (target == null) target = transform;
+        if (target == null)
+            target = transform;
         var rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
         rb.useGravity = false;
@@ -74,17 +91,23 @@ public class UWBPositioning : MonoBehaviour
 #endif
     }
 
-    /// <summary> 
+    /// <summary>
     /// If smoothing, move towards goal each frame.
     /// </summary>
     private void Update()
     {
         if (smoothMove && hasGoal)
         {
-            if (smoothSpeed <= 0f) return;
-            Vector3 next = Vector3.MoveTowards(target.position, currentGoal, smoothSpeed * Time.deltaTime);
+            if (smoothSpeed <= 0f)
+                return;
+            Vector3 next = Vector3.MoveTowards(
+                target.position,
+                currentGoal,
+                smoothSpeed * Time.deltaTime
+            );
             target.position = next;
-            if ((next - currentGoal).sqrMagnitude < 0.0001f) hasGoal = false;
+            if ((next - currentGoal).sqrMagnitude < 0.0001f)
+                hasGoal = false;
         }
     }
 
@@ -93,7 +116,8 @@ public class UWBPositioning : MonoBehaviour
     /// </summary>
     public void StartTracking()
     {
-        if (pollRoutine != null) return;
+        if (pollRoutine != null)
+            return;
         pollRoutine = StartCoroutine(PollLoop());
     }
 
@@ -102,7 +126,8 @@ public class UWBPositioning : MonoBehaviour
     /// </summary>
     public void StopTracking()
     {
-        if (pollRoutine == null) return;
+        if (pollRoutine == null)
+            return;
         StopCoroutine(pollRoutine);
         pollRoutine = null;
     }
@@ -112,7 +137,10 @@ public class UWBPositioning : MonoBehaviour
     /// </summary>
     public void ToggleTracking()
     {
-        if (pollRoutine == null) StartTracking(); else StopTracking();
+        if (pollRoutine == null)
+            StartTracking();
+        else
+            StopTracking();
     }
 
     /// <summary>
@@ -143,7 +171,8 @@ public class UWBPositioning : MonoBehaviour
         // Recovered from a null streak
         if (consecutiveNulls > 0)
         {
-            if (lossDeclared) Debug.Log("[UWBPositioning] UWB reconnected.");
+            if (lossDeclared)
+                Debug.Log("[UWBPositioning] UWB reconnected.");
             consecutiveNulls = 0;
             lossDeclared = false;
         }
@@ -152,25 +181,41 @@ public class UWBPositioning : MonoBehaviour
         if (hasLastAccepted)
         {
             float delta = Vector3.Distance(uwbWorld, lastAccepted);
-            if (delta < noiseThresholdMeters) return;
+            if (delta < noiseThresholdMeters)
+                return;
 
             float dt = Mathf.Max(0.01f, pollIntervalSeconds);
             float maxStep = maxSpeedMetersPerSecond * dt * jumpToleranceFactor;
             if (delta > maxStep)
             {
-                Debug.LogWarning($"[UWBPositioning] Rejected jump {delta:F2}m (> {maxStep:F2}m in {dt:F2}s).");
+                Debug.LogWarning(
+                    $"[UWBPositioning] Rejected jump {delta:F2}m (> {maxStep:F2}m in {dt:F2}s)."
+                );
                 return;
             }
         }
 
         // Clamp to nearest NavMesh (any area)
-        Vector3 clamped = ClampToNavmesh(uwbWorld, navmeshSampleRadius, navmeshMaxSampleRadius, navmeshRadiusGrowth);
+        Vector3 clamped = ClampToNavmesh(
+            uwbWorld,
+            navmeshSampleRadius,
+            navmeshMaxSampleRadius,
+            navmeshRadiusGrowth
+        );
 
         lastAccepted = clamped;
         hasLastAccepted = true;
 
-        if (smoothMove) { currentGoal = clamped; hasGoal = true; }
-        else { target.position = clamped; hasGoal = false; }
+        if (smoothMove)
+        {
+            currentGoal = clamped;
+            hasGoal = true;
+        }
+        else
+        {
+            target.position = clamped;
+            hasGoal = false;
+        }
     }
 
     /// <summary>
@@ -192,7 +237,12 @@ public class UWBPositioning : MonoBehaviour
     /// Attempt to clamp a position to the NavMesh within a max radius.
     /// If no NavMesh is found, returns the original position.
     /// </summary>
-    private static Vector3 ClampToNavmesh(Vector3 desired, float startRadius, float maxRadius, float growth)
+    private static Vector3 ClampToNavmesh(
+        Vector3 desired,
+        float startRadius,
+        float maxRadius,
+        float growth
+    )
     {
         float r = Mathf.Max(0.01f, startRadius);
         float cap = Mathf.Max(r, maxRadius);
@@ -205,8 +255,9 @@ public class UWBPositioning : MonoBehaviour
             r *= g;
         }
 
-        Debug.LogWarning("[UWBPositioning] No NavMesh found within max radius. Using raw coordinate.");
+        Debug.LogWarning(
+            "[UWBPositioning] No NavMesh found within max radius. Using raw coordinate."
+        );
         return desired;
     }
 }
-

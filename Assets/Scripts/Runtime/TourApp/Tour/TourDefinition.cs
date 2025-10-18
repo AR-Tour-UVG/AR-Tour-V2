@@ -6,11 +6,13 @@ public class TourDefinition : ScriptableObject
 {
     [Header("Identity")]
     [Tooltip("Name of the tour")]
-    [SerializeField] private string tourName;
+    [SerializeField]
+    private string tourName;
 
     [Header("Floor Order (first -> last)")]
     [Tooltip("List of floors in the order they should be visited in this tour.")]
-    [SerializeField] private List<FloorDefinition> orderedFloors = new();
+    [SerializeField]
+    private List<FloorDefinition> orderedFloors = new();
 
     public string TourName => tourName;
     public IReadOnlyList<FloorDefinition> OrderedFloors => orderedFloors;
@@ -20,7 +22,8 @@ public class TourDefinition : ScriptableObject
     public FloorDefinition GetNextAfter(FloorDefinition current)
     {
         var i = IndexOf(current);
-        if (i < 0) return null;
+        if (i < 0)
+            return null;
         var ni = i + 1;
         return ni < orderedFloors.Count ? orderedFloors[ni] : null;
     }
@@ -29,7 +32,8 @@ public class TourDefinition : ScriptableObject
     {
         int n = 0;
         foreach (var f in orderedFloors)
-            if (f != null && f.OrderedAreas != null) n += f.OrderedAreas.Count;
+            if (f != null && f.OrderedAreas != null)
+                n += f.OrderedAreas.Count;
         return n;
     }
 
@@ -38,6 +42,7 @@ public class TourDefinition : ScriptableObject
         foreach (var f in orderedFloors)
             if (f != null && f.OrderedAreas != null)
                 foreach (var a in f.OrderedAreas)
-                    if (a != null) yield return a;
+                    if (a != null)
+                        yield return a;
     }
 }

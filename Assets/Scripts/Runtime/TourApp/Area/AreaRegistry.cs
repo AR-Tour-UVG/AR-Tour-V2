@@ -26,19 +26,26 @@ public class AreaRegistry : MonoBehaviour
     public void Refresh()
     {
         // Find all AreaInstance components in the scene, including inactive ones
-        var found = FindObjectsByType<AreaInstance>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        var found = FindObjectsByType<AreaInstance>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
         _byDef.Clear(); // Clear existing registry
 
         // Populate the registry with found AreaInstances
         foreach (var ai in found)
         {
             // Skip if AreaInstance or its Definition is null
-            if (!ai || !ai.Definition) continue;
+            if (!ai || !ai.Definition)
+                continue;
 
             // Check for duplicates and log a warning if found
             if (_byDef.TryGetValue(ai.Definition, out var existing) && existing != ai.gameObject)
             {
-                Debug.LogWarning($"[AreaRegistry] Duplicate AreaDefinition '{ai.Definition.name}'. Using first.", ai);
+                Debug.LogWarning(
+                    $"[AreaRegistry] Duplicate AreaDefinition '{ai.Definition.name}'. Using first.",
+                    ai
+                );
                 continue;
             }
             // Register the AreaDefinition with its GameObject
@@ -52,7 +59,8 @@ public class AreaRegistry : MonoBehaviour
     /// <param name="def">The area definition key.</param>
     /// <param name="areaGO">When this method returns, contains the GameObject if found; otherwise <c>null</c>.</param>
     /// <returns><c>true</c> if the GameObject exists in the registry; otherwise <c>false</c>.</returns>
-    public bool TryGet(AreaDefinition def, out GameObject areaGO) => _byDef.TryGetValue(def, out areaGO);
+    public bool TryGet(AreaDefinition def, out GameObject areaGO) =>
+        _byDef.TryGetValue(def, out areaGO);
 
     /// <summary>
     /// Returns the area GameObjects belonging to a floor in the order defined by the floor.
@@ -68,11 +76,16 @@ public class AreaRegistry : MonoBehaviour
         foreach (var def in floor.OrderedAreas)
         {
             // Skip if the definition is null
-            if (!def) continue;
+            if (!def)
+                continue;
             // Try to get the corresponding GameObject and yield it; log a warning if not found
-            if (_byDef.TryGetValue(def, out var go)) yield return go;
-            
-            else Debug.LogWarning($"[AreaRegistry] Missing AreaInstance for '{def.name}' in this scene.", this);
+            if (_byDef.TryGetValue(def, out var go))
+                yield return go;
+            else
+                Debug.LogWarning(
+                    $"[AreaRegistry] Missing AreaInstance for '{def.name}' in this scene.",
+                    this
+                );
         }
     }
 }
