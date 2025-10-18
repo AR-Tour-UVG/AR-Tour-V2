@@ -28,9 +28,10 @@ public sealed class ViewFactory : IViewFactory
     /// <param name="s">The screen state for which to create the view.</param>
     /// <returns>The created screen view or null if the state is unrecognized.</returns>
     public IScreenView CreateScreen(ScreenState s) => s switch
-    {   
+    {
         // Create and return the appropriate screen view based on the screen state
         ScreenState.Home => new HomeView(Clone(atlas.Home)),
+        ScreenState.Minigames => new MinigamesView(Clone(atlas.Minigames)),
         _ => null
     };
 

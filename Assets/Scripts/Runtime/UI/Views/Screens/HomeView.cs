@@ -40,9 +40,9 @@ public sealed class HomeView : IScreenView
         minigamesBtn = Root.Q<VisualElement>("MinigamesBtn");
 
         // Register click event callbacks
-        if (expressBtn != null)   expressBtn.RegisterCallback<ClickEvent>(_ => OnExpress?.Invoke());
-        if (completeBtn != null)  completeBtn.RegisterCallback<ClickEvent>(_ => OnComplete?.Invoke());
-        if (minigamesBtn != null) minigamesBtn.RegisterCallback<ClickEvent>(_ => OnMinigames?.Invoke());
+        expressBtn?.RegisterCallback<ClickEvent>(_ => OnExpress?.Invoke());
+        completeBtn?.RegisterCallback<ClickEvent>(_ => OnComplete?.Invoke());
+        minigamesBtn?.RegisterCallback<ClickEvent>(_ => OnMinigames?.Invoke());
     }
 
 
@@ -51,8 +51,8 @@ public sealed class HomeView : IScreenView
     /// </summary>
     public void Unbind()
     {
-        if (expressBtn != null)   expressBtn.UnregisterCallback<ClickEvent>(_ => OnExpress?.Invoke());
-        if (completeBtn != null)  completeBtn.UnregisterCallback<ClickEvent>(_ => OnComplete?.Invoke());
-        if (minigamesBtn != null) minigamesBtn.UnregisterCallback<ClickEvent>(_ => OnMinigames?.Invoke());
+        expressBtn?.UnregisterCallback<ClickEvent>(_ => OnExpress?.Invoke());
+        completeBtn?.UnregisterCallback<ClickEvent>(_ => OnComplete?.Invoke());
+        minigamesBtn?.UnregisterCallback<ClickEvent>(_ => OnMinigames?.Invoke());
     }
 }

@@ -63,21 +63,33 @@ public sealed class UIBootstrap : MonoBehaviour
 
         // First screen for this iteration
         router.ShowScreen(ScreenState.Home);
-        HookHomeForNow();
+        HookHome();
     }
 
 
     /// <summary>
     /// Temporary hooks for Home screen buttons.
     /// </summary>
-    private void HookHomeForNow()
+    private void HookHome()
     {
         if (router.CurrentScreenView is HomeView home)
         {
             // TODO: Replace with proper navigation
-            home.OnExpress   += () => Debug.Log("Express selected");
-            home.OnComplete  += () => Debug.Log("Complete selected");
-            home.OnMinigames += () => Debug.Log("Minigames selected");
+            home.OnExpress += () => Debug.Log("Express selected");
+            home.OnComplete += () => Debug.Log("Complete selected");
+            home.OnMinigames += () => { router.ShowScreen(ScreenState.Minigames); HookMinigames(); };
+        }
+    }
+
+    private void HookMinigames()
+    {
+        if (router.CurrentScreenView is MinigamesView minigames)
+        {
+            minigames.OnBreakout += () => Debug.Log("Breakout selected");
+            minigames.OnTrivia += () => Debug.Log("Trivia selected");
+            minigames.OnFlappy += () => Debug.Log("Flappy selected");
+            minigames.OnExit += () => { router.ShowScreen(ScreenState.Home); HookHome(); };
+
         }
     }
 }

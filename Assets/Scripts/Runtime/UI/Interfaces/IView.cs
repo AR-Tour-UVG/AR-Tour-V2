@@ -3,7 +3,8 @@ using UnityEngine.UIElements;
 public enum ScreenState
 {
     Onboarding,
-    Home, 
+    Home,
+    Minigames,
     TourHUD
 }
 public enum OverlayType

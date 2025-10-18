@@ -44,7 +44,7 @@ public sealed class UIRouter
     public void ShowScreen(ScreenState s)
     {
         // Unbind previous
-        if (CurrentScreenView != null) CurrentScreenView.Unbind();
+        CurrentScreenView?.Unbind();
 
         // Clear base layer
         baseLayer.Clear();
