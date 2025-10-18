@@ -20,3 +20,4 @@ MonoBehaviour:
   NoticePopup: {fileID: 9197481963319205126, guid: 4d39b13aa9b05624b87be4f7a7d4104d, type: 3}
   ActionPopup: {fileID: 9197481963319205126, guid: 745f3a5e9d3bc0947884aecda64dcd04, type: 3}
   Menu: {fileID: 9197481963319205126, guid: 78d9a8849c2cb7e43be689a98d4d0eaa, type: 3}
+  onboardingSet: {fileID: 11400000, guid: fed39a83f2fdb794c948c775fe5da06e, type: 2}

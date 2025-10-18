@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Allows creation of AreaDefinition assets via the Unity Editor
-[CreateAssetMenu(fileName = "NewAreaDefinition", menuName = "AR-Tour/Area Definition")]
+[CreateAssetMenu(fileName = "NewAreaDefinition", menuName = "AR Tour/Area Definition")]
 /// <summary>
 /// Class <c>AreaDefinition</c> represents data for an area in the AR Tour.
 /// </summary>
@@ -32,7 +32,7 @@ public class AreaDefinition : ScriptableObject
     [Tooltip("Image file representing the area (for reference only)")]
     /// <summary>Image in the Resources folder.</summary>
     [SerializeField]
-    private Texture2D areaImage;
+    private Sprite areaImage;
 
     // Public properties to access private fields
     /// <summary>Gets the display name of the area.</summary>
@@ -45,5 +45,5 @@ public class AreaDefinition : ScriptableObject
     public IReadOnlyList<AudioClip> AudioClips => audioClips;
 
     /// <summary>Gets the image representing the area.</summary>
-    public Texture2D AreaImage => areaImage;
+    public Sprite AreaImage => areaImage;
 }

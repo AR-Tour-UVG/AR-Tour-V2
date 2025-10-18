@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewFloorDefinition", menuName = "AR-Tour/Floor Definition")]
+[CreateAssetMenu(fileName = "NewFloorDefinition", menuName = "AR Tour/Floor Definition")]
 public class FloorDefinition : ScriptableObject
 {
     [Header("Floor Info")]

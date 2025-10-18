@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 // Enable creating from Unity menu
-[CreateAssetMenu(fileName = "Atlas", menuName = "AR-GUI/Atlas", order = 1)]
+[CreateAssetMenu(fileName = "NewAtlas", menuName = "AR GUI/Atlas", order = 1)]
 /// <summary>
 /// ScriptableObject holding references to UI VisualTreeAssets (UXML).
 /// </summary>
@@ -43,6 +43,11 @@ public sealed class UIAtlas : ScriptableObject
     [SerializeField]
     private VisualTreeAsset Menu;
 
+    [Header("Onboarding")]
+    [Tooltip("Onboarding Set ScriptableObject containing onboarding slides")]
+    [SerializeField]
+    private OnboardingSet onboardingSet;
+
     // Public properties to access private fields
 
     public VisualTreeAsset HomeUXML => Home;
@@ -53,4 +58,5 @@ public sealed class UIAtlas : ScriptableObject
     public VisualTreeAsset NoticePopupUXML => NoticePopup;
     public VisualTreeAsset ActionPopupUXML => ActionPopup;
     public VisualTreeAsset MenuUXML => Menu;
+    public OnboardingSet OnboardingSet => onboardingSet;
 }

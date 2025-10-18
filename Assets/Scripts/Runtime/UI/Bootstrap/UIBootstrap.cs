@@ -13,8 +13,7 @@ public sealed class UIBootstrap : MonoBehaviour
     private UIDocument uiDocument; // has BaseLayout.uxml
 
     [Tooltip("UXML for the UI Atlas Asset")]
-    [SerializeField]
-    private UIAtlas atlas; // has all shared styles and resources
+    public UIAtlas atlas; // has all shared styles and resources
 
     public UIRouter Router { get; private set; }
 
@@ -61,7 +60,10 @@ public sealed class UIBootstrap : MonoBehaviour
         var factory = new ViewFactory(uiDocument, atlas);
         // Create UIRouter instance
         Router = new UIRouter(baseLayer, modalLayer, popupLayer, menuLayer, null, factory);
-
-        Router.ShowScreen(ScreenState.Home);
+        // Decide where to start the UI navigation
+        var showOnboarding =
+            atlas.OnboardingSet && OnboardingGate.ShouldShow(atlas.OnboardingSet.ShowEveryNDays);
+        // Show initial screen
+        Router.ShowScreen(showOnboarding ? ScreenState.Onboarding : ScreenState.Home);
     }
 }

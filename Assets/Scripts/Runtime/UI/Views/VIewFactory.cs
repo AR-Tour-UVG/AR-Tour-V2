@@ -32,6 +32,7 @@ public sealed class ViewFactory : IViewFactory
             // Create and return the appropriate screen view based on the screen state
             ScreenState.Home => new HomeView(Clone(atlas.HomeUXML)),
             ScreenState.Minigames => new MinigamesView(Clone(atlas.MinigamesUXML)),
+            ScreenState.Onboarding => new OnboardingView(Clone(atlas.OnboardingUXML)),
             _ => null,
         };
 

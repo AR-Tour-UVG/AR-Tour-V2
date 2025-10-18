@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewTourDefinition", menuName = "AR-Tour/Tour Definition")]
+[CreateAssetMenu(fileName = "NewTourDefinition", menuName = "AR Tour/Tour Definition")]
 public class TourDefinition : ScriptableObject
 {
     [Header("Identity")]
