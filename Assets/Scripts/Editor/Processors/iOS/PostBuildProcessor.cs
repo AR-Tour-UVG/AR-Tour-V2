@@ -33,6 +33,10 @@ public static class PostBuildProcessor
             "Bluetooth is required to communicate with nearby accessories.");
         root.SetString("NSCameraUsageDescription",
             "Camera is used by ARKit for spatial understanding.");
+        root.SetString("NSLocationWhenInUseUsageDescription",
+            "Your app needs access to your location to provide compass functionality.");
+        root.SetString("NSMotionUsageDescription",
+            "Your app needs access to motion data to provide features");            
 
         // Write changes to Info.plist
         File.WriteAllText(plistPath, plist.WriteToString());

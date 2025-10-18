@@ -71,6 +71,10 @@ public class TourRunner : MonoBehaviour
 
         // Load scene additively
         var op = SceneManager.LoadSceneAsync(floor.ScenePath, LoadSceneMode.Additive);
+
+        // for testing arrow
+        var arrowScene = SceneManager.LoadSceneAsync("ArrowDisplay", LoadSceneMode.Additive);
+
         yield return op;
 
         var scene = SceneManager.GetSceneByPath(floor.ScenePath);
