@@ -20,6 +20,9 @@ public sealed class UIRouter
     public ScreenState CurrentScreen { get; private set; }
     public IScreenView CurrentScreenView { get; private set; }
 
+    // Notify when the screen changes to coordinators
+    public event System.Action<IScreenView> ScreenChanged;
+
     /// <summary>
     /// Constructor for UIRouter.
     /// </summary>
@@ -45,7 +48,7 @@ public sealed class UIRouter
     /// </summary>
     public void ShowScreen(ScreenState s)
     {
-        // Unbind previous
+        // Unmount and Unbind previous
         CurrentScreenView?.Unbind();
 
         // Clear base layer
@@ -59,12 +62,14 @@ public sealed class UIRouter
             return;
         }
 
-        // Mount
+        // Mount and bind new
         baseLayer.Add(view.Root);
         view.Bind(GetDoc(baseLayer));
-
+        // Update state
         CurrentScreen = s;
         CurrentScreenView = view;
+        // Notify coordinators
+        ScreenChanged?.Invoke(view);
     }
 
     /// <summary>
@@ -72,9 +77,8 @@ public sealed class UIRouter
     /// </summary>
     private static UIDocument GetDoc(VisualElement any)
     {
-        // Find the UIDocument via panel owner
-        var panel = any.panel;
-        // In practice we pass the UIDocument into the factory; this is a fallback
+        // In practice we pass the UIDocument into the factory
+        // this is a fallback
         return Object.FindFirstObjectByType<UIDocument>();
     }
 }

@@ -30,8 +30,8 @@ public sealed class ViewFactory : IViewFactory
         s switch
         {
             // Create and return the appropriate screen view based on the screen state
-            ScreenState.Home => new HomeView(Clone(atlas.Home)),
-            ScreenState.Minigames => new MinigamesView(Clone(atlas.Minigames)),
+            ScreenState.Home => new HomeView(Clone(atlas.HomeUXML)),
+            ScreenState.Minigames => new MinigamesView(Clone(atlas.MinigamesUXML)),
             _ => null,
         };
 

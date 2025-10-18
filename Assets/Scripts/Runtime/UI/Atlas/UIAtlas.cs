@@ -12,34 +12,45 @@ public sealed class UIAtlas : ScriptableObject
     [Header("UI Screens")]
     [Tooltip("UXML file for the Home/Main Menu screen")]
     [SerializeField]
-    public VisualTreeAsset Home;
+    private VisualTreeAsset Home;
 
     [Tooltip("UXML file for the Minigames screen")]
     [SerializeField]
-    public VisualTreeAsset Minigames;
+    private VisualTreeAsset Minigames;
 
     [Tooltip("UXML file for the Onboarding screen")]
     [SerializeField]
-    public VisualTreeAsset Onboarding;
+    private VisualTreeAsset Onboarding;
 
     [Header("UI Overlays")]
     [Tooltip("UXML file for the Tour HUD overlay")]
     [SerializeField]
-    public VisualTreeAsset TourHUD;
+    private VisualTreeAsset TourHUD;
 
     [Tooltip("UXML file for the Info Widget")]
     [SerializeField]
-    public VisualTreeAsset InfoWidget;
+    private VisualTreeAsset InfoWidget;
 
     [Tooltip("UXML file for the Notice Popup")]
     [SerializeField]
-    public VisualTreeAsset NoticePopup;
+    private VisualTreeAsset NoticePopup;
 
     [Tooltip("UXML file for the Action Popup")]
     [SerializeField]
-    public VisualTreeAsset ActionPopup;
+    private VisualTreeAsset ActionPopup;
 
     [Tooltip("UXML file for the Collapsible Menu")]
     [SerializeField]
-    public VisualTreeAsset Menu;
+    private VisualTreeAsset Menu;
+
+    // Public properties to access private fields
+
+    public VisualTreeAsset HomeUXML => Home;
+    public VisualTreeAsset MinigamesUXML => Minigames;
+    public VisualTreeAsset OnboardingUXML => Onboarding;
+    public VisualTreeAsset TourHUDUXML => TourHUD;
+    public VisualTreeAsset InfoWidgetUXML => InfoWidget;
+    public VisualTreeAsset NoticePopupUXML => NoticePopup;
+    public VisualTreeAsset ActionPopupUXML => ActionPopup;
+    public VisualTreeAsset MenuUXML => Menu;
 }

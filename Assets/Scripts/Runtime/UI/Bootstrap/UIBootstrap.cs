@@ -16,89 +16,52 @@ public sealed class UIBootstrap : MonoBehaviour
     [SerializeField]
     private UIAtlas atlas; // has all shared styles and resources
 
-    // Layers from BaseLayout
-    private VisualElement baseLayer;
-    private VisualElement modalLayer;
-    private VisualElement popupLayer;
-    private VisualElement menuLayer;
-    private VisualElement scrim; // Optional scrim for modals/popups
-
-    private UIRouter router; // Manages screen navigation
-    private ViewFactory factory; // Creates views from UXML
+    public UIRouter Router { get; private set; }
 
     /// <summary>
     /// Access the UIRouter for screen navigation.
     /// </summary>
     private void Awake()
     {
-        // Validate references
+        // Get Base UI Document if not assigned
         if (!uiDocument)
         {
+            uiDocument = GetComponent<UIDocument>();
+        }
+        // Validate references
+        if (!uiDocument || !atlas)
+        {
             // If UIDocument is missing, disable this component
-            Debug.LogError("[UIBootstrap] UIDocument missing");
+            Debug.LogError("[UIBootstrap] Missing references in UIBootstrap");
             enabled = false;
             return;
         }
-        // Get layers from BaseLayout
+
+        // Setup layers
         var root = uiDocument.rootVisualElement;
-        baseLayer = root.Q<VisualElement>("BaseLayer");
-        modalLayer = root.Q<VisualElement>("ModalLayer");
-        popupLayer = root.Q<VisualElement>("PopupLayer");
-        menuLayer = root.Q<VisualElement>("MenuLayer");
+        var baseLayer = root.Q<VisualElement>("BaseLayer");
+        var modalLayer = root.Q<VisualElement>("ModalLayer");
+        var popupLayer = root.Q<VisualElement>("PopupLayer");
+        var menuLayer = root.Q<VisualElement>("MenuLayer");
 
         // Validate layers
         if (baseLayer == null || modalLayer == null || popupLayer == null || menuLayer == null)
         {
-            // If any layer is missing, disable this component
-            Debug.LogError("[UIBootstrap] Some BaseLayout layers missing");
+            Debug.LogError("[UIBootstrap] Missing layers in BaseLayout UXML.");
             enabled = false;
             return;
         }
 
-        // Disable layers except base initially
+        // Disable all layers initially
         modalLayer.style.display = DisplayStyle.None;
         popupLayer.style.display = DisplayStyle.None;
         menuLayer.style.display = DisplayStyle.None;
 
-        // Create factory and router
-        factory = new ViewFactory(uiDocument, atlas);
-        router = new UIRouter(baseLayer, modalLayer, popupLayer, menuLayer, scrim, factory);
+        // Create View Factory
+        var factory = new ViewFactory(uiDocument, atlas);
+        // Create UIRouter instance
+        Router = new UIRouter(baseLayer, modalLayer, popupLayer, menuLayer, null, factory);
 
-        // First screen for this iteration
-        router.ShowScreen(ScreenState.Home);
-        HookHome();
-    }
-
-    /// <summary>
-    /// Temporary hooks for Home screen buttons.
-    /// </summary>
-    private void HookHome()
-    {
-        if (router.CurrentScreenView is HomeView home)
-        {
-            // TODO: Replace with proper navigation
-            home.OnExpress += () => Debug.Log("Express selected");
-            home.OnComplete += () => Debug.Log("Complete selected");
-            home.OnMinigames += () =>
-            {
-                router.ShowScreen(ScreenState.Minigames);
-                HookMinigames();
-            };
-        }
-    }
-
-    private void HookMinigames()
-    {
-        if (router.CurrentScreenView is MinigamesView minigames)
-        {
-            minigames.OnBreakout += () => Debug.Log("Breakout selected");
-            minigames.OnTrivia += () => Debug.Log("Trivia selected");
-            minigames.OnFlappy += () => Debug.Log("Flappy selected");
-            minigames.OnExit += () =>
-            {
-                router.ShowScreen(ScreenState.Home);
-                HookHome();
-            };
-        }
+        Router.ShowScreen(ScreenState.Home);
     }
 }
