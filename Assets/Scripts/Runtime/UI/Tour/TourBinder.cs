@@ -134,4 +134,26 @@ public sealed class TourBinder : MonoBehaviour
     // Optional getters for coordinators
     public FloorManager ActiveFloorManager => fm;
     public MovementAgent Movement => movementAgent;
+
+    public void RequestUserReady()
+    {
+        if (fm == null)
+        {
+            Debug.LogWarning("[TourBinder] RequestUserReady called with no FloorManager.");
+            return;
+        }
+        fm.UserReady(); // enables movement and confirms first area per your FM
+        vm.SetPaused(false); // reflect movement state in the VM
+        // Phase will advance via FM events (GuidingToNext/AreaConfirmed) and SetConnection()
+    }
+
+    public void RequestNext()
+    {
+        if (fm == null)
+        {
+            Debug.LogWarning("[TourBinder] RequestNext called with no FloorManager.");
+            return;
+        }
+        fm.Next(); // FM will emit GuidingToNext → VM.SetPhase(Navigating) in OnGuidingToNext
+    }
 }
