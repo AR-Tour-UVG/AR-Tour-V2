@@ -9,7 +9,8 @@ public enum ScreenState
 public enum OverlayType
 {
     InfoModal,
-    Popup,
+    NoticePopup,
+    ActionPopup,
     Menu,
 }
 

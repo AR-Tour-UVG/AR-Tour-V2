@@ -23,9 +23,14 @@ public sealed class UIRouter
     // Notify when the screen changes to coordinators
     public event System.Action<IScreenView> ScreenChanged;
 
-    /// <summary>
-    /// Constructor for UIRouter.
-    /// </summary>
+    // Track active overlays
+    private readonly Dictionary<OverlayType, IOverlayView> overlays = new();
+
+    // per-layer counts to toggle layer visibility
+    private int modalCount,
+        popupCount,
+        menuCount;
+
     public UIRouter(
         VisualElement baseLayer,
         VisualElement modalLayer,
@@ -43,9 +48,6 @@ public sealed class UIRouter
         this.factory = factory;
     }
 
-    /// <summary>
-    /// Show a screen in the base layer.
-    /// </summary>
     public void ShowScreen(ScreenState s)
     {
         // Unmount and Unbind previous
@@ -72,9 +74,105 @@ public sealed class UIRouter
         ScreenChanged?.Invoke(view);
     }
 
-    /// <summary>
-    /// Show the UIDocument owning the given VisualElement.
-    /// </summary>
+    // -------- Overlays --------
+    public IOverlayView ShowOverlay(OverlayType t)
+    {
+        // already visible → return
+        if (overlays.TryGetValue(t, out var existing))
+            return existing;
+
+        var v = factory.CreateOverlay(t);
+        if (v == null || v.Root == null)
+        {
+            Debug.LogError($"[UIRouter] Failed to create overlay {t}");
+            return null;
+        }
+
+        var layer = ResolveLayer(t);
+        if (layer == null)
+        {
+            Debug.LogError($"[UIRouter] No layer for overlay {t}");
+            return null;
+        }
+
+        // ensure layer visible
+        layer.style.display = DisplayStyle.Flex;
+        IncrementLayerCount(t);
+
+        layer.Add(v.Root);
+        v.Bind(GetDoc(layer));
+        overlays[t] = v;
+        return v;
+    }
+
+    public void HideOverlay(OverlayType t)
+    {
+        if (!overlays.TryGetValue(t, out var v))
+            return;
+        v.Unbind();
+        v.Root.RemoveFromHierarchy();
+        overlays.Remove(t);
+        DecrementLayerCount(t);
+    }
+
+    public T GetOverlay<T>(OverlayType t)
+        where T : class, IOverlayView
+    {
+        return overlays.TryGetValue(t, out var v) ? v as T : null;
+    }
+
+    private VisualElement ResolveLayer(OverlayType t) =>
+        t switch
+        {
+            OverlayType.InfoModal => modalLayer,
+            OverlayType.NoticePopup => popupLayer,
+            OverlayType.ActionPopup => popupLayer,
+            OverlayType.Menu => menuLayer,
+            _ => null,
+        };
+
+    private void IncrementLayerCount(OverlayType t)
+    {
+        switch (t)
+        {
+            case OverlayType.InfoModal:
+                modalCount++;
+                break;
+            case OverlayType.NoticePopup:
+            case OverlayType.ActionPopup:
+                popupCount++;
+                break;
+            case OverlayType.Menu:
+                menuCount++;
+                break;
+        }
+    }
+
+    private void DecrementLayerCount(OverlayType t)
+    {
+        switch (t)
+        {
+            case OverlayType.InfoModal:
+                modalCount = Mathf.Max(0, modalCount - 1);
+                if (modalCount == 0)
+                    modalLayer.style.display = DisplayStyle.None;
+                break;
+
+            case OverlayType.NoticePopup:
+            case OverlayType.ActionPopup:
+                popupCount = Mathf.Max(0, popupCount - 1);
+                if (popupCount == 0)
+                    popupLayer.style.display = DisplayStyle.None;
+                break;
+
+            case OverlayType.Menu:
+                menuCount = Mathf.Max(0, menuCount - 1);
+                if (menuCount == 0)
+                    menuLayer.style.display = DisplayStyle.None;
+                break;
+        }
+    }
+
     private static UIDocument GetDoc(VisualElement any)
     {
         // In practice we pass the UIDocument into the factory
