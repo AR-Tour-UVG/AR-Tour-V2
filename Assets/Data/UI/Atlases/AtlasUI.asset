@@ -21,3 +21,8 @@ MonoBehaviour:
   ActionPopup: {fileID: 9197481963319205126, guid: 745f3a5e9d3bc0947884aecda64dcd04, type: 3}
   Menu: {fileID: 9197481963319205126, guid: 78d9a8849c2cb7e43be689a98d4d0eaa, type: 3}
   onboardingSet: {fileID: 11400000, guid: fed39a83f2fdb794c948c775fe5da06e, type: 2}
+  NoticeConnecting: {fileID: 11400000, guid: 38efae6ee16acbb479510a6bbe7a2e67, type: 2}
+  NoticeLostConnection: {fileID: 11400000, guid: fa560ec27ba655c428da31941d37af8c, type: 2}
+  NoticeTourComplete: {fileID: 11400000, guid: 84a7b589ba7deff44bb4af81049dcc0a, type: 2}
+  ActionStart: {fileID: 11400000, guid: a5268fd2c32a7194db15f46b3488f41e, type: 2}
+  ActionReadyOnFloor: {fileID: 11400000, guid: 10d82dd49df90f6418f3aacd599fa103, type: 2}

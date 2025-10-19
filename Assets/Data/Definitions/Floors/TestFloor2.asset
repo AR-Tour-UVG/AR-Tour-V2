@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TestFloor2
   m_EditorClassIdentifier: 
   floorName: TestFloor2
+  transitionText: You completed the tour
   orderedAreas:
   - {fileID: 11400000, guid: 135dc62c2f59f2e408777f7e95a24a0b, type: 2}
   - {fileID: 11400000, guid: 55c887339e96e794d8cb7439b0b2ab18, type: 2}
