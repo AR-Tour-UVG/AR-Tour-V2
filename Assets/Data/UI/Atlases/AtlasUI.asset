@@ -15,7 +15,7 @@ MonoBehaviour:
   Home: {fileID: 9197481963319205126, guid: da2241da9e20ae543ad207c95fd017bd, type: 3}
   Minigames: {fileID: 9197481963319205126, guid: f11af630231fca247a5003d11ac4cb1a, type: 3}
   Onboarding: {fileID: 9197481963319205126, guid: 2ffa7beaf9d83c44a94b0c86073c051e, type: 3}
-  TourHUD: {fileID: 9197481963319205126, guid: b313d9f57a8959f46a2b84b95d681d37, type: 3}
+  BaseHUD: {fileID: 9197481963319205126, guid: b313d9f57a8959f46a2b84b95d681d37, type: 3}
   InfoWidget: {fileID: 9197481963319205126, guid: a0d14245442d04a4c85d338adacd3392, type: 3}
   NoticePopup: {fileID: 9197481963319205126, guid: 4d39b13aa9b05624b87be4f7a7d4104d, type: 3}
   ActionPopup: {fileID: 9197481963319205126, guid: 745f3a5e9d3bc0947884aecda64dcd04, type: 3}

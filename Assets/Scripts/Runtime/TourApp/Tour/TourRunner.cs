@@ -3,9 +3,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [DisallowMultipleComponent]
-public class TourRunner : MonoBehaviour
+public sealed class TourRunner : MonoBehaviour
 {
     public static TourRunner Instance { get; private set; }
+
+    // Signals for the tour binder
+    public event System.Action<FloorDefinition, FloorManager> FloorLoaded;
+    public event System.Action<FloorDefinition> FloorUnloaded;
+    public event System.Action TourCompleted;
+
+    // Expose current tour progress
+    public int VisitedAcrossTour => visitedAcrossTour;
+    public int TotalAcrossTour => totalAcrossTour;
+    public float Progress =>
+        (totalAcrossTour > 0) ? (visitedAcrossTour / (float)totalAcrossTour) : 0f;
 
     [SerializeField]
     private TourDefinition currentTour;
@@ -13,11 +24,9 @@ public class TourRunner : MonoBehaviour
     private FloorManager activeFM;
     private string loadedScenePath;
     private Scene baseScene; // Reference to the initial scene (main menu)
-    private Camera _fallbackCamera;
-    private int _visitedAcrossTour;
-    private int _totalAcrossTour;
-    private double _percentComplete =>
-        (_totalAcrossTour > 0) ? (100.0 * _visitedAcrossTour / _totalAcrossTour) : 0.0;
+    private Camera fallbackCamera;
+    private int visitedAcrossTour;
+    private int totalAcrossTour;
 
     void Awake()
     {
@@ -37,10 +46,10 @@ public class TourRunner : MonoBehaviour
         currentTour = tour;
         // Initialize counters
         floorIndex = 0;
-        _visitedAcrossTour = 0;
-        _totalAcrossTour = (tour != null) ? tour.TotalAreasCount() : 0;
+        visitedAcrossTour = 0;
+        totalAcrossTour = (tour != null) ? tour.TotalAreasCount() : 0;
         var name = (tour != null) ? tour.TourName : "null";
-        Debug.Log($"[TourRunner] Selected tour: {name} | Total areas: {_totalAcrossTour}");
+        Debug.Log($"[TourRunner] Selected tour: {name} | Total areas: {totalAcrossTour}");
     }
 
     // Called by UI right after SelectTour. Loads FIRST floor immediately.
@@ -111,8 +120,11 @@ public class TourRunner : MonoBehaviour
 
         activeFM.FloorCompleted += OnFloorCompleted;
         activeFM.AreaConfirmed += OnAreaConfirmed;
-        activeFM.GlobalVisited = _visitedAcrossTour;
-        activeFM.GlobalTotal = _totalAcrossTour;
+        activeFM.GlobalVisited = visitedAcrossTour;
+        activeFM.GlobalTotal = totalAcrossTour;
+
+        // Notify listeners that floor is ready
+        FloorLoaded?.Invoke(currentTour.OrderedFloors[idx], activeFM);
 
         Debug.Log(
             $"[TourRunner] Floor loaded: {floor.FloorName}. FloorManager will wait for UserReady (R in Editor)."
@@ -132,8 +144,8 @@ public class TourRunner : MonoBehaviour
 
     private void OnAreaConfirmed(AreaDefinition _)
     {
-        _visitedAcrossTour++;
-        Debug.Log($"[TourRunner] Global progress: ({_percentComplete:F2}%)");
+        visitedAcrossTour++;
+        Debug.Log($"[TourRunner] Global progress: ({Progress * 100:F2}%)");
     }
 
     private IEnumerator UnloadAndAdvance()
@@ -141,6 +153,11 @@ public class TourRunner : MonoBehaviour
         if (!string.IsNullOrEmpty(loadedScenePath))
         {
             Debug.Log($"[TourRunner] Unloading scene: {loadedScenePath}");
+            var prevFloor = currentTour?.OrderedFloors[floorIndex];
+            if (prevFloor)
+            {
+                FloorUnloaded?.Invoke(prevFloor);
+            }
             var op = SceneManager.UnloadSceneAsync(loadedScenePath);
             if (op != null)
                 yield return op;
@@ -153,6 +170,7 @@ public class TourRunner : MonoBehaviour
         {
             SceneManager.SetActiveScene(baseScene);
         }
+
         yield return null; // wait a frame
         EnsureFallbackCamera(); // in case the base scene has no active cameras
 
@@ -160,6 +178,7 @@ public class TourRunner : MonoBehaviour
         if (currentTour == null || floorIndex >= currentTour.OrderedFloors.Count)
         {
             Debug.Log("[TourRunner] Tour complete.");
+            TourCompleted?.Invoke();
             yield break;
         }
 
@@ -173,22 +192,22 @@ public class TourRunner : MonoBehaviour
             if (cam && cam.enabled)
                 return;
 
-        if (_fallbackCamera == null)
+        if (fallbackCamera == null)
         {
             var go = new GameObject("FallbackClearCamera");
             DontDestroyOnLoad(go);
-            _fallbackCamera = go.AddComponent<Camera>();
-            _fallbackCamera.clearFlags = CameraClearFlags.SolidColor;
-            _fallbackCamera.backgroundColor = Color.black; // or whatever
-            _fallbackCamera.cullingMask = 0; // Nothing
-            _fallbackCamera.depth = -100;
+            fallbackCamera = go.AddComponent<Camera>();
+            fallbackCamera.clearFlags = CameraClearFlags.SolidColor;
+            fallbackCamera.backgroundColor = Color.black; // or whatever
+            fallbackCamera.cullingMask = 0; // Nothing
+            fallbackCamera.depth = -100;
         }
-        _fallbackCamera.enabled = true;
+        fallbackCamera.enabled = true;
     }
 
     private void DisableFallbackCamera()
     {
-        if (_fallbackCamera)
-            _fallbackCamera.enabled = false;
+        if (fallbackCamera)
+            fallbackCamera.enabled = false;
     }
 }

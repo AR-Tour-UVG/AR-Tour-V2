@@ -33,6 +33,18 @@ public sealed class UIController : MonoBehaviour
 
     private void Start()
     {
+        // Setup View Model
+        var vm = new TourViewModel();
+        // Setup Tour Binder
+        var binder = FindFirstObjectByType<TourBinder>(FindObjectsInactive.Include);
+        if (binder != null)
+        {
+            binder.Init(vm);
+        }
+        else
+        {
+            Debug.LogError("[UIController] Missing TourBinder in scene.");
+        }
         // setup router
         var r = bootstrap.Router;
         // Check if router is valid
