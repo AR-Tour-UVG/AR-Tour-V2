@@ -23,9 +23,9 @@ public sealed class UIAtlas : ScriptableObject
     private VisualTreeAsset Onboarding;
 
     [Header("UI Overlays")]
-    [Tooltip("UXML file for the Tour HUD overlay")]
+    [Tooltip("UXML file for the Base HUD overlay")]
     [SerializeField]
-    private VisualTreeAsset TourHUD;
+    private VisualTreeAsset BaseHUD;
 
     [Tooltip("UXML file for the Info Widget")]
     [SerializeField]
@@ -70,7 +70,7 @@ public sealed class UIAtlas : ScriptableObject
     public VisualTreeAsset HomeUXML => Home;
     public VisualTreeAsset MinigamesUXML => Minigames;
     public VisualTreeAsset OnboardingUXML => Onboarding;
-    public VisualTreeAsset TourHUDUXML => TourHUD;
+    public VisualTreeAsset BaseHUDUXML => BaseHUD;
     public VisualTreeAsset InfoWidgetUXML => InfoWidget;
     public VisualTreeAsset NoticePopupUXML => NoticePopup;
     public VisualTreeAsset ActionPopupUXML => ActionPopup;
