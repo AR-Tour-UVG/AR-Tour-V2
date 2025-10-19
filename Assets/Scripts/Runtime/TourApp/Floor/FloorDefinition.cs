@@ -10,6 +10,10 @@ public class FloorDefinition : ScriptableObject
     [SerializeField]
     private string floorName;
 
+    [Tooltip("Text to display when transitioning from this floor")]
+    [SerializeField]
+    private string transitionText;
+
     [Header("Content References")]
     [Tooltip("List of areas in the order they should be visited on this floor.")]
     [SerializeField]
@@ -34,6 +38,8 @@ public class FloorDefinition : ScriptableObject
     public IReadOnlyList<AreaDefinition> OrderedAreas => orderedAreas;
     public TextAsset AnchorMapJson => anchorMapJson;
     public string ScenePath => scenePath;
+
+    public string TransitionText => transitionText;
 
     // Helpers
     public int IndexOf(AreaDefinition area) => orderedAreas?.IndexOf(area) ?? -1;

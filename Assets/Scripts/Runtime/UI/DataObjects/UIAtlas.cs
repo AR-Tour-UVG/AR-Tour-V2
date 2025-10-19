@@ -48,6 +48,23 @@ public sealed class UIAtlas : ScriptableObject
     [SerializeField]
     private OnboardingSet onboardingSet;
 
+    [Header("Notice Pop Ups")]
+    [SerializeField]
+    private NoticeData NoticeConnecting;
+
+    [SerializeField]
+    private NoticeData NoticeLostConnection;
+
+    [SerializeField]
+    private NoticeData NoticeTourComplete;
+
+    [Header("Action Pop Ups")]
+    [SerializeField]
+    private ActionData ActionStart;
+
+    [SerializeField]
+    private ActionData ActionReadyOnFloor;
+
     // Public properties to access private fields
 
     public VisualTreeAsset HomeUXML => Home;
@@ -59,4 +76,10 @@ public sealed class UIAtlas : ScriptableObject
     public VisualTreeAsset ActionPopupUXML => ActionPopup;
     public VisualTreeAsset MenuUXML => Menu;
     public OnboardingSet OnboardingSet => onboardingSet;
+
+    public NoticeData NoticeConnectingData => NoticeConnecting;
+    public NoticeData NoticeLostConnectionData => NoticeLostConnection;
+    public NoticeData NoticeTourCompleteData => NoticeTourComplete;
+    public ActionData ActionStartData => ActionStart;
+    public ActionData ActionReadyOnFloorData => ActionReadyOnFloor;
 }

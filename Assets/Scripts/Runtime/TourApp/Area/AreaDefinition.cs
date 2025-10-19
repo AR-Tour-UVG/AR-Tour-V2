@@ -34,6 +34,15 @@ public class AreaDefinition : ScriptableObject
     [SerializeField]
     private Sprite areaImage;
 
+    [Header("UI Configuration")]
+    [Tooltip("Icon representing the area in the UI")]
+    [SerializeField]
+    private Sprite areaIcon;
+
+    [Tooltip("Whether to show area info in the UI")]
+    [SerializeField]
+    private bool showInfo = true;
+
     // Public properties to access private fields
     /// <summary>Gets the display name of the area.</summary>
     public string AreaName => areaName;
@@ -46,4 +55,10 @@ public class AreaDefinition : ScriptableObject
 
     /// <summary>Gets the image representing the area.</summary>
     public Sprite AreaImage => areaImage;
+
+    /// <summary>Indicates whether to show area info in the UI.</summary>
+    public bool ShowInfo => showInfo;
+
+    /// <summary>Gets the icon representing the area in the UI.</summary>
+    public Sprite AreaIcon => areaIcon;
 }
