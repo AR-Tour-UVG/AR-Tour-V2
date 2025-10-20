@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b55ed11d9565f2429cf480ede22b093, type: 3}
+  m_Name: MidArea1
+  m_EditorClassIdentifier: 
+  areaName: Intermediate Area 1
+  areaText: This is the first middle area
+  audioClips: []
+  areaImage: {fileID: 21300000, guid: b4bc43a8ed456e44c8bda8b781d3f3c2, type: 3}
+  areaIcon: {fileID: 21300000, guid: c798434441d0a0144b1961790c6be034, type: 3}
+  showInfo: 1

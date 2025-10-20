@@ -197,8 +197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f40e496ff7c3449b87e554681889f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expressTour: {fileID: 11400000, guid: 65ff702a00890d3419f65b3d05b11a47, type: 2}
-  completeTour: {fileID: 11400000, guid: 65ff702a00890d3419f65b3d05b11a47, type: 2}
+  expressTour: {fileID: 11400000, guid: aad51bde44460454086b6b3ab4a29b3b, type: 2}
+  completeTour: {fileID: 11400000, guid: aad51bde44460454086b6b3ab4a29b3b, type: 2}
 --- !u!114 &975345987
 MonoBehaviour:
   m_ObjectHideFlags: 0
