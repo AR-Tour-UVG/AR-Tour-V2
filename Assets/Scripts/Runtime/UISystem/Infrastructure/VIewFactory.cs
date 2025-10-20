@@ -20,6 +20,8 @@ public sealed class ViewFactory : IViewFactory
             ScreenState.Home => new HomeView(Clone(atlas.HomeUXML)),
             ScreenState.Minigames => new MinigamesView(Clone(atlas.MinigamesUXML)),
             ScreenState.Onboarding => new OnboardingView(Clone(atlas.OnboardingUXML)),
+            // The TourHUD is a special case, it uses the BaseHUDView as the main view
+            ScreenState.TourHUD => new BaseHUDView(Clone(atlas.BaseHUDUXML)),
             _ => null,
         };
 

@@ -17,8 +17,6 @@ public sealed class TourRunner : MonoBehaviour
     public int TotalAcrossTour => totalAcrossTour;
     public float Progress =>
         (totalAcrossTour > 0) ? (visitedAcrossTour / (float)totalAcrossTour) : 0f;
-
-    [SerializeField]
     private TourDefinition currentTour;
     private int floorIndex = -1;
     private FloorManager activeFM;
@@ -27,6 +25,14 @@ public sealed class TourRunner : MonoBehaviour
     private Camera fallbackCamera;
     private int visitedAcrossTour;
     private int totalAcrossTour;
+
+    [SerializeField]
+    private TourDefinition expressTour;
+    public TourDefinition ExpressTour => expressTour;
+
+    [SerializeField]
+    private TourDefinition completeTour;
+    public TourDefinition CompleteTour => completeTour;
 
     void Awake()
     {
@@ -70,7 +76,6 @@ public sealed class TourRunner : MonoBehaviour
 
     private IEnumerator LoadFloorAt(int idx)
     {
-        DisableFallbackCamera(); // Floor will provide its own cameras
         var floor = currentTour.OrderedFloors[idx];
         if (!floor)
         {
@@ -108,6 +113,10 @@ public sealed class TourRunner : MonoBehaviour
         }
 
         SceneManager.SetActiveScene(scene);
+
+        // Handle cameras
+        AdoptSceneCameraOrKeepFallback(scene);
+
         loadedScenePath = floor.ScenePath;
 
         // Find FM and inject this floor
@@ -197,9 +206,8 @@ public sealed class TourRunner : MonoBehaviour
             var go = new GameObject("FallbackClearCamera");
             DontDestroyOnLoad(go);
             fallbackCamera = go.AddComponent<Camera>();
-            fallbackCamera.clearFlags = CameraClearFlags.SolidColor;
-            fallbackCamera.backgroundColor = Color.black; // or whatever
-            fallbackCamera.cullingMask = 0; // Nothing
+            fallbackCamera.clearFlags = CameraClearFlags.Skybox;
+            fallbackCamera.cullingMask = ~0; // Everything
             fallbackCamera.depth = -100;
         }
         fallbackCamera.enabled = true;
@@ -209,5 +217,34 @@ public sealed class TourRunner : MonoBehaviour
     {
         if (fallbackCamera)
             fallbackCamera.enabled = false;
+    }
+
+    private void AdoptSceneCameraOrKeepFallback(Scene scene)
+    {
+        Camera sceneCam = null;
+        var cams = FindObjectsByType<Camera>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach (var c in cams)
+        {
+            if (!c || !c.enabled)
+                continue;
+            if (c.gameObject.scene == scene)
+            {
+                sceneCam = c;
+                break;
+            }
+        }
+
+        if (sceneCam != null)
+        {
+            DisableFallbackCamera();
+            Debug.Log($"[TourRunner] Using scene camera: {sceneCam.name}");
+        }
+        else
+        {
+            EnsureFallbackCamera(); // fallback clears screen; change if you want it to render geometry
+            Debug.LogWarning(
+                "[TourRunner] No enabled camera found in floor scene. Using fallback camera."
+            );
+        }
     }
 }

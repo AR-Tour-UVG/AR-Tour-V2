@@ -76,7 +76,6 @@ public sealed class UIAtlas : ScriptableObject
     public VisualTreeAsset ActionPopupUXML => ActionPopup;
     public VisualTreeAsset MenuUXML => Menu;
     public OnboardingSet OnboardingSet => onboardingSet;
-
     public NoticeData NoticeConnectingData => NoticeConnecting;
     public NoticeData NoticeLostConnectionData => NoticeLostConnection;
     public NoticeData NoticeTourCompleteData => NoticeTourComplete;

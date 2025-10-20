@@ -24,13 +24,28 @@ public class FloorDefinition : ScriptableObject
     private TextAsset anchorMapJson;
 
     [Tooltip("Path to the scene asset in the build (read-only).")]
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private string scenePath;
 
 #if UNITY_EDITOR
     [Tooltip("Assign the scene asset; its path is stored into 'scenePath'.")]
     [SerializeField]
     private SceneAsset sceneAsset;
+
+    private void OnValidate()
+    {
+        if (sceneAsset != null)
+        {
+            string path = AssetDatabase.GetAssetPath(sceneAsset);
+            if (scenePath != path)
+            {
+                // Update the stored scene path
+                scenePath = path;
+                // Mark the ScriptableObject as dirty to ensure the change is saved
+                EditorUtility.SetDirty(this);
+            }
+        }
+    }
 #endif
 
     // Read-only accessors

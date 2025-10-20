@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 135dc62c2f59f2e408777f7e95a24a0b, type: 2}
   - {fileID: 11400000, guid: 55c887339e96e794d8cb7439b0b2ab18, type: 2}
   anchorMapJson: {fileID: 4900000, guid: 64746f1696bc09147ae79270929e1038, type: 3}
-  scenePath: Assets/Scenes/TestRoomB.unity
+  scenePath: Assets/Scenes/Test/TestRoomB.unity
   sceneAsset: {fileID: 102900000, guid: cb129b460b295d049ad2a32c4f9c2893, type: 3}
