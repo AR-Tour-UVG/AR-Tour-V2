@@ -11,6 +11,14 @@ public sealed class TourBinder : MonoBehaviour
     private TourViewModel vm;
     private FloorManager fm;
 
+    // Connection Flags
+    private bool waitingForFloorStart; // after a floor loads and before UserReady
+    private bool waitingForFloorContinue; // after a floor unload and before user continues
+    private TourUIPhase lastPhaseBeforeDisconnect = TourUIPhase.Navigating;
+
+    public bool WaitingForFloorStart => waitingForFloorStart;
+    public bool WaitingForFloorContinue => waitingForFloorContinue;
+
     public void Init(TourViewModel model)
     {
         vm = model;
@@ -58,6 +66,8 @@ public sealed class TourBinder : MonoBehaviour
     {
         SwapFM(floorMgr);
         vm.SetCurrentFloor(floor);
+        waitingForFloorStart = true; // gate set
+        waitingForFloorContinue = false;
         vm.SetPhase(TourUIPhase.WaitingForConnection);
         vm.SetProgress(tourRunner.Progress);
         vm.SetDistance(0f);
@@ -66,6 +76,9 @@ public sealed class TourBinder : MonoBehaviour
     private void OnFloorUnloaded(FloorDefinition floor)
     {
         vm.NotifyFloorEnded(floor);
+        waitingForFloorStart = false;
+        waitingForFloorContinue = true; // gate set during elevator time
+        vm.SetPhase(TourUIPhase.FloorTransition);
     }
 
     private void SwapFM(FloorManager floorMgr)
@@ -109,10 +122,44 @@ public sealed class TourBinder : MonoBehaviour
     public void SetConnection(bool connected)
     {
         vm.SetConnected(connected);
-        if (connected && !vm.HasBegunTour && vm.Phase == TourUIPhase.WaitingForConnection)
+
+        if (!connected)
+        {
+            lastPhaseBeforeDisconnect = vm.Phase;
+            if (waitingForFloorStart || waitingForFloorContinue)
+                vm.SetPhase(TourUIPhase.WaitingForConnection); // expected during elevator
+            else
+                vm.SetPhase(TourUIPhase.ConnectionLost); // mid-tour loss
+            return;
+        }
+
+        // connected == true
+        if (waitingForFloorContinue)
+        {
+            // Still in elevator gate → show Ready once.
             vm.SetPhase(TourUIPhase.ReadyPrompt);
-        else if (!connected && !vm.Paused)
-            vm.SetPhase(TourUIPhase.WaitingForConnection);
+            return;
+        }
+
+        if (waitingForFloorStart)
+        {
+            if (!vm.HasBegunTour)
+            {
+                // First floor only: ask to Start.
+                vm.SetPhase(TourUIPhase.ReadyPrompt);
+            }
+            else
+            {
+                // Subsequent floors: auto start the floor on connect.
+                waitingForFloorStart = false;
+                vm.SetPhase(TourUIPhase.Navigating);
+                RequestUserReady(); // enable movement + confirm first area
+            }
+            return;
+        }
+
+        // Mid-tour reconnection: resume previous phase.
+        vm.SetPhase(lastPhaseBeforeDisconnect);
     }
 
 #if UNITY_EDITOR
@@ -142,6 +189,7 @@ public sealed class TourBinder : MonoBehaviour
             Debug.LogWarning("[TourBinder] RequestUserReady called with no FloorManager.");
             return;
         }
+        waitingForFloorStart = false; // gate clear
         fm.UserReady(); // enables movement and confirms first area per your FM
         vm.SetPaused(false); // reflect movement state in the VM
         // Phase will advance via FM events (GuidingToNext/AreaConfirmed) and SetConnection()

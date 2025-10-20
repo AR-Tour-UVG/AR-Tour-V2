@@ -5,6 +5,7 @@ using UnityEngine;
 public enum TourUIPhase
 {
     WaitingForConnection, // scene loaded, not connected
+    ConnectionLost, // lost connection during tour
     ReadyPrompt, // show Start/Ready action popup
     Navigating, // HUD directions/footer visible
     InAreaInfo, // InfoWidget showing

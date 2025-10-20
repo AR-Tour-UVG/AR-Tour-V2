@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestFloor
   m_EditorClassIdentifier: 
   floorName: Test Floor
-  transitionText: Go to the Test Room
+  transitionText: 
   orderedAreas:
   - {fileID: 11400000, guid: d4f3424a105eb334192fda456b9e859b, type: 2}
   - {fileID: 11400000, guid: 49ff6145f4d109f4f95cf341a9763345, type: 2}

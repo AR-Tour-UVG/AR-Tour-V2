@@ -50,5 +50,11 @@ public sealed class ActionPopupView : IOverlayView
         Root.style.display = DisplayStyle.Flex;
     }
 
+    public void OverrideDescription(string text)
+    {
+        if (description != null)
+            description.text = text ?? "";
+    }
+
     public void Hide() => Root.style.display = DisplayStyle.None;
 }

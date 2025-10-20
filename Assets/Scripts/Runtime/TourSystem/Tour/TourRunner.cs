@@ -34,6 +34,9 @@ public sealed class TourRunner : MonoBehaviour
     private TourDefinition completeTour;
     public TourDefinition CompleteTour => completeTour;
 
+    private bool waitingForUserToContinue;
+    public bool WaitingForUserToContinue => waitingForUserToContinue;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -167,21 +170,22 @@ public sealed class TourRunner : MonoBehaviour
             {
                 FloorUnloaded?.Invoke(prevFloor);
             }
+
             var op = SceneManager.UnloadSceneAsync(loadedScenePath);
             if (op != null)
                 yield return op;
+
             loadedScenePath = null;
             activeFM = null;
         }
 
-        // Switch active scene back to base and force a camera clear
+        // Return to base scene
         if (baseScene.IsValid() && baseScene.isLoaded)
-        {
             SceneManager.SetActiveScene(baseScene);
-        }
 
-        yield return null; // wait a frame
-        EnsureFallbackCamera(); // in case the base scene has no active cameras
+        yield return null; // let Unity settle scene references
+
+        EnsureFallbackCamera(); // re-enable a camera if none active
 
         floorIndex++;
         if (currentTour == null || floorIndex >= currentTour.OrderedFloors.Count)
@@ -191,7 +195,9 @@ public sealed class TourRunner : MonoBehaviour
             yield break;
         }
 
-        yield return LoadFloorAt(floorIndex);
+        // Pause until user confirms continuation
+        waitingForUserToContinue = true;
+        Debug.Log("[TourRunner] Waiting for user to continue to next floor.");
     }
 
     private void EnsureFallbackCamera()
@@ -246,5 +252,13 @@ public sealed class TourRunner : MonoBehaviour
                 "[TourRunner] No enabled camera found in floor scene. Using fallback camera."
             );
         }
+    }
+
+    public void ContinueToNextFloor()
+    {
+        if (!waitingForUserToContinue)
+            return;
+        waitingForUserToContinue = false;
+        StartCoroutine(LoadFloorAt(floorIndex));
     }
 }

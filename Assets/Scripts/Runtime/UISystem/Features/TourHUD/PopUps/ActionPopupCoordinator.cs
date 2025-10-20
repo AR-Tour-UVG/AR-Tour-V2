@@ -29,16 +29,21 @@ public sealed class ActionPopupCoordinator
         }
     }
 
-    public void ShowReadyOnFloor()
+    public void ShowReadyOnFloor(string descriptionOverride = null)
     {
         var v = router.ShowOverlay(OverlayType.ActionPopup) as ActionPopupView;
         if (v == null)
             return;
         v.Show(atlas.ActionReadyOnFloorData, OnClick);
+        if (!string.IsNullOrEmpty(descriptionOverride))
+            v.OverrideDescription(descriptionOverride); // add this helper on the view
         void OnClick()
         {
             router.HideOverlay(OverlayType.ActionPopup);
-            binder.RequestUserReady();
+            if (vm.Phase == TourUIPhase.FloorTransition)
+                TourRunner.Instance?.ContinueToNextFloor(); // when you add gating
+            else
+                binder.RequestUserReady();
         }
     }
 
