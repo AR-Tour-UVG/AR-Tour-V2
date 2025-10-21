@@ -65,8 +65,21 @@ public sealed class UIAtlas : ScriptableObject
     [SerializeField]
     private ActionData ActionReadyOnFloor;
 
+    [Header("HUD Icons")]
     [SerializeField]
     private Sprite hudSpinnerIcon;
+
+    [SerializeField]
+    private Sprite hudElevatorIcon;
+
+    [SerializeField]
+    private Sprite hudWalkingIcon;
+
+    [SerializeField]
+    private Sprite hudDoneIcon;
+
+    [SerializeField]
+    private Sprite hudStartIcon;
 
     // Public properties to access private fields
 
@@ -85,4 +98,8 @@ public sealed class UIAtlas : ScriptableObject
     public ActionData ActionStartData => ActionStart;
     public ActionData ActionReadyOnFloorData => ActionReadyOnFloor;
     public Sprite HudSpinnerIcon => hudSpinnerIcon;
+    public Sprite HudElevatorIcon => hudElevatorIcon;
+    public Sprite HudWalkingIcon => hudWalkingIcon;
+    public Sprite HudDoneIcon => hudDoneIcon;
+    public Sprite HudStartIcon => hudStartIcon;
 }

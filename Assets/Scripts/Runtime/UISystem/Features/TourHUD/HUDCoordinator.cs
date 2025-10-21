@@ -32,7 +32,15 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
     public void Attach(BaseHUDView view)
     {
         v = view;
-        baseHud = new BaseHUDCoordinator(router, vm, atlas.HudSpinnerIcon);
+        baseHud = new BaseHUDCoordinator(
+            router,
+            vm,
+            atlas.HudSpinnerIcon,
+            atlas.HudElevatorIcon,
+            atlas.HudWalkingIcon,
+            atlas.HudDoneIcon,
+            atlas.HudStartIcon
+        );
         baseHud.Attach(view);
 
         // react to VM signals

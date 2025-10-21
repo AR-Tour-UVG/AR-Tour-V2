@@ -26,3 +26,8 @@ MonoBehaviour:
   NoticeTourComplete: {fileID: 11400000, guid: 84a7b589ba7deff44bb4af81049dcc0a, type: 2}
   ActionStart: {fileID: 11400000, guid: a5268fd2c32a7194db15f46b3488f41e, type: 2}
   ActionReadyOnFloor: {fileID: 11400000, guid: 10d82dd49df90f6418f3aacd599fa103, type: 2}
+  hudSpinnerIcon: {fileID: 21300000, guid: 86792975b5a42964894ea08ec9cc32fd, type: 3}
+  hudElevatorIcon: {fileID: 21300000, guid: 546682107bbe69a4085cce9961e33223, type: 3}
+  hudWalkingIcon: {fileID: 21300000, guid: 5609e246cd0e2b14d86671fc29789699, type: 3}
+  hudDoneIcon: {fileID: 21300000, guid: dcd78ceb746c31c45aef984dcf312d62, type: 3}
+  hudStartIcon: {fileID: 21300000, guid: 775279097dcc8ae4b94c99694b8959f6, type: 3}
