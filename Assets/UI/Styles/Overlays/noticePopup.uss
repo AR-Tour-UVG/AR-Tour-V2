@@ -20,14 +20,14 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-Regular%20SDF.asset?fileID=11400000&guid=5ca79f15c435d9c468768628c1e23902&type=2#Outfit-Regular SDF");
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Regular-SDF.asset?fileID=11400000&guid=5ca79f15c435d9c468768628c1e23902&type=2#Outfit-Regular-SDF");
     font-size: 100px;
     background-image: url("project://database/Assets/Visuals/Backgrounds/dark-glass.png?fileID=21300000&guid=21c37f3bbba75264281cff8c0c326fd0&type=3#dark-glass");
     -unity-background-image-tint-color: rgba(255, 255, 255, 0.59);
 }
 
 .rounded-image {
-    background-image: url("project://database/Assets/Visuals/Icons/Dragon%20Icons/dragon-color-0.5x.png?fileID=21300000&guid=fef0754821ec7374c97c6ed3baa60dda&type=3#dragon-color-0.5x");
+    background-image: url("project://database/Assets/Visuals/Icons/Dragon/dragon-color-0.5x.png?fileID=21300000&guid=fef0754821ec7374c97c6ed3baa60dda&type=3#dragon-color-0.5x");
     -unity-background-scale-mode: scale-to-fit;
     width: 350px;
     height: 350px;
@@ -48,7 +48,7 @@
 .message-title {
     -unity-text-align: middle-center;
     font-size: 60%;
-    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-Bold%20SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold SDF");
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Bold-SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold-SDF");
     color: rgb(242, 242, 242);
     width: 100%;
     height: 20%;
@@ -63,7 +63,7 @@
 
 .message {
     font-size: 50%;
-    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-SemiBold%20SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold SDF");
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-SemiBold-SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold-SDF");
     color: rgb(242, 242, 242);
     width: 100%;
     -unity-text-align: middle-center;

@@ -63,7 +63,7 @@
 }
 
 .menu-icon {
-    background-image: url("project://database/Assets/Visuals/Icons/UI Icons/menu.png?fileID=21300000&guid=7b48bb81acc3c0c4497c2c89fa596013&type=3#menu");
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/menu.png?fileID=21300000&guid=7b48bb81acc3c0c4497c2c89fa596013&type=3#menu");
     -unity-background-image-tint-color: rgb(0, 165, 0);
     flex-grow: 1;
     padding-top: 5%;
@@ -78,7 +78,7 @@
 
 .title-text {
     color: rgb(0, 140, 54);
-    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-Bold%20SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold SDF");
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Bold-SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold-SDF");
     -unity-text-align: middle-left;
     text-overflow: ellipsis;
     white-space: normal;
@@ -102,11 +102,11 @@
     padding-right: 0;
     padding-bottom: 0;
     padding-left: 0;
-    background-image: url("project://database/Assets/Visuals/Icons/UI Icons/location.png?fileID=21300000&guid=4d7c514c124c6074ab28ca865305f6c8&type=3#location");
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/location.png?fileID=21300000&guid=4d7c514c124c6074ab28ca865305f6c8&type=3#location");
 }
 
 .directions-text {
-    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-SemiBold%20SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold SDF");
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-SemiBold-SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold-SDF");
     color: rgb(242, 242, 242);
     white-space: normal;
     text-overflow: ellipsis;
@@ -130,7 +130,7 @@
 }
 
 .pointing-jack {
-    background-image: url("project://database/Assets/Visuals/Jack/Full%20Body/pointing.png?fileID=21300000&guid=6eb5542303daac248be0bd21dcafad63&type=3#pointing");
+    background-image: url("project://database/Assets/Visuals/Jack/Full/pointing.png?fileID=21300000&guid=6eb5542303daac248be0bd21dcafad63&type=3#pointing");
     flex-grow: 0;
     -unity-background-scale-mode: scale-to-fit;
     width: 100%;
@@ -149,7 +149,7 @@
 }
 
 .status-title {
-    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-SemiBold%20SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold SDF");
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-SemiBold-SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold-SDF");
     color: rgb(242, 242, 242);
     -unity-text-align: middle-center;
     font-size: 60%;
@@ -157,7 +157,7 @@
 }
 
 .metric-label {
-    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-SemiBold%20SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold SDF");
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-SemiBold-SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold-SDF");
     color: rgb(0, 165, 0);
     -unity-text-align: middle-left;
     text-overflow: ellipsis;
@@ -165,7 +165,7 @@
 }
 
 .metric-value {
-    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-Regular%20SDF.asset?fileID=11400000&guid=5ca79f15c435d9c468768628c1e23902&type=2#Outfit-Regular SDF");
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Regular-SDF.asset?fileID=11400000&guid=5ca79f15c435d9c468768628c1e23902&type=2#Outfit-Regular-SDF");
     font-size: 45%;
     color: rgb(0, 165, 0);
     -unity-text-align: middle-center;
@@ -191,7 +191,7 @@
 }
 
 .progress-icon {
-    background-image: url("project://database/Assets/Visuals/Icons/UI Icons/visited.png?fileID=21300000&guid=48bc524d8255a96409e7c8dcb31d8b1a&type=3#visited");
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/visited.png?fileID=21300000&guid=48bc524d8255a96409e7c8dcb31d8b1a&type=3#visited");
     -unity-background-image-tint-color: rgb(0, 165, 0);
     -unity-background-scale-mode: scale-to-fit;
     width: 13%;

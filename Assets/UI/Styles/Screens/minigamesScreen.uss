@@ -1,5 +1,5 @@
 .icon {
-    background-image: url("project://database/Assets/Visuals/Icons/UI Icons/game.png?fileID=21300000&guid=f0d24f6588e9107429db780a97b9fb57&type=3#game");
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/game.png?fileID=21300000&guid=f0d24f6588e9107429db780a97b9fb57&type=3#game");
     -unity-background-image-tint-color: rgb(102, 255, 102);
     width: 35%;
     height: 15%;
@@ -7,7 +7,7 @@
 }
 
 .title {
-    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-Bold%20SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold SDF");
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Bold-SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold-SDF");
     color: rgb(242, 242, 242);
     margin-top: 5%;
     -unity-text-align: middle-center;
@@ -37,7 +37,7 @@
 }
 
 .exit {
-    background-image: url("project://database/Assets/Visuals/Icons/UI Icons/exit.png?fileID=21300000&guid=2c69a9bee7278dd44be128b292e9c429&type=3#exit");
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/exit.png?fileID=21300000&guid=2c69a9bee7278dd44be128b292e9c429&type=3#exit");
     -unity-background-scale-mode: scale-to-fit;
     -unity-background-image-tint-color: rgb(242, 242, 242);
     width: 12%;

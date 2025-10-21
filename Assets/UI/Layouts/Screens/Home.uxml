@@ -9,15 +9,15 @@
             <ui:Label text="AR TOUR" name="Title" class="title" />
             <ui:VisualElement name="Options" class="options" style="flex-grow: 1; align-items: center;">
                 <ui:VisualElement name="ExpressBtn" class="button" style="width: 100%; margin-top: 0%;">
-                    <ui:VisualElement name="ExpressIcon" class="button-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/express.png?fileID=21300000&amp;guid=34c30f955661c3d4cb8d38199e8d139a&amp;type=3#express&quot;);" />
+                    <ui:VisualElement name="ExpressIcon" class="button-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/GUI/express.png?fileID=21300000&amp;guid=34c30f955661c3d4cb8d38199e8d139a&amp;type=3#express&quot;);" />
                     <ui:Label text="Ruta Express" name="ExpressText" class="button-text" />
                 </ui:VisualElement>
                 <ui:VisualElement name="CompleteBtn" class="button" style="width: 100%; margin-top: 10%; margin-right: 0%; margin-bottom: 0%; margin-left: 0%;">
-                    <ui:VisualElement name="CompleteIcon" class="button-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/route.png?fileID=21300000&amp;guid=c798434441d0a0144b1961790c6be034&amp;type=3#route&quot;);" />
+                    <ui:VisualElement name="CompleteIcon" class="button-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/GUI/route.png?fileID=21300000&amp;guid=c798434441d0a0144b1961790c6be034&amp;type=3#route&quot;);" />
                     <ui:Label text="Ruta Completa" name="CompleteText" class="button-text" />
                 </ui:VisualElement>
                 <ui:VisualElement name="MinigamesBtn" class="button" style="width: 100%; margin-top: 10%; margin-right: 0%; margin-bottom: 0%; margin-left: 0%;">
-                    <ui:VisualElement name="GamesBtn" class="button-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/game.png?fileID=21300000&amp;guid=f0d24f6588e9107429db780a97b9fb57&amp;type=3#game&quot;);" />
+                    <ui:VisualElement name="GamesBtn" class="button-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/GUI/game.png?fileID=21300000&amp;guid=f0d24f6588e9107429db780a97b9fb57&amp;type=3#game&quot;);" />
                     <ui:Label text="Minijuegos" name="GamesText" class="button-text" />
                 </ui:VisualElement>
             </ui:VisualElement>

@@ -7,24 +7,24 @@
             <ui:VisualElement name="TopSection" class="top-section">
                 <ui:VisualElement name="CloseButton" class="close-icon" />
             </ui:VisualElement>
-            <ui:VisualElement name="Options" class="options-cotainer">
+            <ui:VisualElement name="Options" class="options-container">
                 <ui:VisualElement name="Restart" class="option">
-                    <ui:VisualElement name="Icon" class="option-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/UI%20Icons/restart.png?fileID=21300000&amp;guid=d6838a6b0320a724cb5451e7dd5138f5&amp;type=3#restart&quot;);" />
+                    <ui:VisualElement name="Icon" class="option-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/GUI/restart.png?fileID=21300000&amp;guid=d6838a6b0320a724cb5451e7dd5138f5&amp;type=3#restart&quot;);" />
                     <ui:Label text="Reiniciar Tour" name="RestartLabel" class="option-text" />
                 </ui:VisualElement>
                 <ui:VisualElement name="Separator" class="separator" />
                 <ui:VisualElement name="Help" class="option">
-                    <ui:VisualElement name="Icon" class="option-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/UI%20Icons/help.png?fileID=21300000&amp;guid=4aa7ae64347c3014189f2c3d6b63f90c&amp;type=3#help&quot;);" />
+                    <ui:VisualElement name="Icon" class="option-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/GUI/help.png?fileID=21300000&amp;guid=4aa7ae64347c3014189f2c3d6b63f90c&amp;type=3#help&quot;);" />
                     <ui:Label text="Ayuda" name="HelpLabel" class="option-text" />
                 </ui:VisualElement>
                 <ui:VisualElement name="Separator" class="separator" />
                 <ui:VisualElement name="Settings" class="option">
-                    <ui:VisualElement name="Icon" class="option-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/UI%20Icons/settings.png?fileID=21300000&amp;guid=7cb2ad61dfa4890498709492fbe7c2f4&amp;type=3#settings&quot;);" />
+                    <ui:VisualElement name="Icon" class="option-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/GUI/settings.png?fileID=21300000&amp;guid=7cb2ad61dfa4890498709492fbe7c2f4&amp;type=3#settings&quot;);" />
                     <ui:Label text="Preferencias" name="SettingsLabel" class="option-text" />
                 </ui:VisualElement>
                 <ui:VisualElement name="Separator" class="separator" />
                 <ui:VisualElement name="Return" class="option">
-                    <ui:VisualElement name="Icon" class="option-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/UI%20Icons/exit.png?fileID=21300000&amp;guid=2c69a9bee7278dd44be128b292e9c429&amp;type=3#exit&quot;);" />
+                    <ui:VisualElement name="Icon" class="option-icon" style="background-image: url(&quot;project://database/Assets/Visuals/Icons/GUI/exit.png?fileID=21300000&amp;guid=2c69a9bee7278dd44be128b292e9c429&amp;type=3#exit&quot;);" />
                     <ui:Label text="Inicio" name="ReturnLabel" class="option-text" />
                 </ui:VisualElement>
             </ui:VisualElement>

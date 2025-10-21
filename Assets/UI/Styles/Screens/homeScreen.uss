@@ -1,5 +1,5 @@
 .dragon {
-    background-image: url("project://database/Assets/Visuals/Icons/Dragon Icons/dragon-color-0.5x.png?fileID=21300000&guid=fef0754821ec7374c97c6ed3baa60dda&type=3#dragon-color-0.5x");
+    background-image: url("project://database/Assets/Visuals/Icons/Dragon/dragon-color-0.5x.png?fileID=21300000&guid=fef0754821ec7374c97c6ed3baa60dda&type=3#dragon-color-0.5x");
     -unity-background-scale-mode: scale-to-fit;
     width: 400px;
     height: 400px;
@@ -10,7 +10,7 @@
 }
 
 .suptitle {
-    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-SemiBold%20SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold SDF");
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-SemiBold-SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold-SDF");
     color: rgb(242, 242, 242);
     font-size: 110%;
     -unity-text-align: middle-center;
@@ -18,7 +18,7 @@
 }
 
 .title {
-    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-Bold%20SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold SDF");
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Bold-SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold-SDF");
     -unity-text-align: middle-center;
     text-overflow: ellipsis;
     font-size: 150%;
@@ -32,7 +32,7 @@
 }
 
 .button-text {
-    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-SemiBold%20SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold SDF");
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-SemiBold-SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold-SDF");
     color: rgb(242, 242, 242);
     font-size: 70px;
     -unity-text-align: middle-left;

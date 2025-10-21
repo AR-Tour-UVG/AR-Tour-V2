@@ -13,7 +13,7 @@
 }
 
 .option-text {
-    -unity-font-definition: url("project://database/Assets/Fonts/Font%20Assets/Outfit-SemiBold%20SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold SDF");
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-SemiBold-SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold-SDF");
     color: rgb(242, 242, 242);
     -unity-text-align: middle-left;
     font-size: 80%;
@@ -32,7 +32,7 @@
 .close-icon {
     width: 120px;
     height: 100px;
-    background-image: url("project://database/'Assets/Visuals/Icons/UI Icons/quit.png?fileID=21300000&guid=601bf6fc0b8767d4cba76eef8704982f&type=3#quit");
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/quit.png?fileID=21300000&guid=601bf6fc0b8767d4cba76eef8704982f&type=3#quit");
     -unity-background-image-tint-color: rgb(242, 242, 242);
 }
 
@@ -43,7 +43,7 @@
     justify-content: center;
 }
 
-.options-cotainer {
+.options-container {
     align-items: flex-start;
     margin-top: 20%;
     width: 100%;
