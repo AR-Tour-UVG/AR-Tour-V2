@@ -17,6 +17,9 @@ public class PathProvider : MonoBehaviour
     [SerializeField]
     private GameObject initialTarget;
 
+    [SerializeField]
+    private Transform playerPosition;
+
     public bool Paused;
     public NavMeshPath CurrentPath { get; private set; }
     public float CurrentDistance { get; private set; }
@@ -30,6 +33,24 @@ public class PathProvider : MonoBehaviour
     private void Awake()
     {
         CurrentPath = new NavMeshPath();
+
+        if (playerPosition == null)
+        {
+            var movement = FindFirstObjectByType<MovementAgent>(FindObjectsInactive.Include);
+            if (movement != null)
+            {
+                playerPosition = movement.transform;
+            }
+            else
+            {
+                var tagged = GameObject.FindWithTag("Player");
+                if (tagged != null)
+                    playerPosition = tagged.transform;
+            }
+
+            if (playerPosition == null)
+                Debug.LogWarning("[PathProvider] No player position found. Distance will stay 0.");
+        }
     }
 
     private void Start()
@@ -43,7 +64,7 @@ public class PathProvider : MonoBehaviour
         if (Paused || !_hasTargetPoint)
             return;
 
-        Vector3 p = transform.position; // player = this transform
+        Vector3 p = playerPosition ? playerPosition.position : transform.position;
         Vector3 t = _targetPoint;
 
         float threshSq = recomputeThreshold * recomputeThreshold;
@@ -59,16 +80,14 @@ public class PathProvider : MonoBehaviour
         if (TryComputePath(p, t, out var path))
         {
             CurrentPath = path;
+            CurrentDistance = ComputePathDistance(CurrentPath); // meters if 1u = 1m
             OnPathUpdated?.Invoke(CurrentPath);
-        }
-        if (CurrentPath != null && CurrentPath.corners.Length > 1)
-        {
-            CurrentDistance = ComputePathDistance(CurrentPath);
-            Debug.Log($"[PathProvider] Path distance: {CurrentDistance:F2}m");
         }
         else
         {
+            CurrentPath = null;
             CurrentDistance = 0f;
+            OnPathUpdated?.Invoke(null);
         }
     }
 
@@ -107,7 +126,8 @@ public class PathProvider : MonoBehaviour
     {
         _hasTargetPoint = false;
         CurrentPath = null;
-        OnPathUpdated?.Invoke(CurrentPath);
+        CurrentDistance = 0f;
+        OnPathUpdated?.Invoke(null);
     }
 
     public void ForceRecompute()
@@ -119,16 +139,12 @@ public class PathProvider : MonoBehaviour
     private bool TryComputePath(Vector3 from, Vector3 to, out NavMeshPath path)
     {
         path = new NavMeshPath();
-
         if (!NavMesh.SamplePosition(from, out var fromHit, sampleRadius, NavMesh.AllAreas))
             return false;
         if (!NavMesh.SamplePosition(to, out var toHit, sampleRadius, NavMesh.AllAreas))
             return false;
-
-        bool ok = NavMesh.CalculatePath(fromHit.position, toHit.position, NavMesh.AllAreas, path);
-        if (!ok || path.status == NavMeshPathStatus.PathInvalid)
+        if (!NavMesh.CalculatePath(fromHit.position, toHit.position, NavMesh.AllAreas, path))
             return false;
-
-        return true;
+        return path.status != NavMeshPathStatus.PathInvalid;
     }
 }

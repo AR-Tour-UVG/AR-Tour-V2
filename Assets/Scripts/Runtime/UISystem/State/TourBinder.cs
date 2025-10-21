@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public sealed class TourBinder : MonoBehaviour
 {
@@ -25,13 +26,6 @@ public sealed class TourBinder : MonoBehaviour
 
         if (!tourRunner)
             tourRunner = FindFirstObjectByType<TourRunner>(FindObjectsInactive.Include);
-        if (!pathProvider)
-            pathProvider = FindFirstObjectByType<PathProvider>(FindObjectsInactive.Include);
-        if (!movementAgent)
-            movementAgent = FindFirstObjectByType<MovementAgent>(FindObjectsInactive.Include);
-
-        if (pathProvider)
-            pathProvider.OnPathUpdated += _ => vm.SetDistance(pathProvider.CurrentDistance);
 
         if (tourRunner != null)
         {
@@ -43,10 +37,54 @@ public sealed class TourBinder : MonoBehaviour
 
         // Initial FM hookup if already present (editor play-in-scene)
         HookToActiveFloorManager();
+    }
 
-        // Paused flag reflects movement agent; if you later expose an event, set from there.
+    private void BindPathProvider()
+    {
+        if (pathProvider)
+            return;
+
+        // Prefer PathProvider on the same GO as MovementAgent
+        if (!movementAgent)
+            movementAgent = FindFirstObjectByType<MovementAgent>(FindObjectsInactive.Include);
         if (movementAgent)
-            vm.SetPaused(!movementAgent.IsEnabled);
+            pathProvider = movementAgent.GetComponent<PathProvider>();
+
+        // Fallback by tag
+        if (!pathProvider)
+        {
+            var player = GameObject.FindWithTag("Player");
+            if (player)
+                pathProvider = player.GetComponent<PathProvider>();
+        }
+
+        if (pathProvider)
+        {
+            pathProvider.OnPathUpdated += OnPathUpdated;
+            Debug.Log(
+                $"[Binder] Subscribed to PathProvider #{pathProvider.GetInstanceID()} on {pathProvider.gameObject.name}"
+            );
+        }
+        else
+        {
+            Debug.LogWarning("[Binder] No PathProvider found after floor load.");
+        }
+    }
+
+    private void UnbindPathProvider()
+    {
+        if (pathProvider)
+        {
+            pathProvider.OnPathUpdated -= OnPathUpdated;
+            Debug.Log("[Binder] Unsubscribed from PathProvider");
+            pathProvider = null;
+        }
+    }
+
+    private void OnPathUpdated(NavMeshPath path)
+    {
+        if (vm != null && pathProvider != null)
+            vm.SetDistance(pathProvider.CurrentDistance);
     }
 
     void OnDestroy()
@@ -59,12 +97,21 @@ public sealed class TourBinder : MonoBehaviour
         }
         UnhookFM();
         if (pathProvider)
-            pathProvider.OnPathUpdated -= _ => vm.SetDistance(pathProvider.CurrentDistance);
+            pathProvider.OnPathUpdated -= OnPathUpdated;
     }
 
     private void OnFloorLoaded(FloorDefinition floor, FloorManager floorMgr)
     {
         SwapFM(floorMgr);
+
+        // Resolve per floor MovementAgent
+        movementAgent = FindFirstObjectByType<MovementAgent>(FindObjectsInactive.Include);
+        vm.SetPaused(movementAgent ? !movementAgent.IsEnabled : true);
+
+        // Bind to PathProvider for distance updates
+        BindPathProvider();
+
+        // Notify VM
         vm.SetCurrentFloor(floor);
         waitingForFloorStart = true; // gate set
         waitingForFloorContinue = false;
@@ -75,6 +122,9 @@ public sealed class TourBinder : MonoBehaviour
 
     private void OnFloorUnloaded(FloorDefinition floor)
     {
+        UnbindPathProvider();
+        movementAgent = null; // movement goes away with the scene
+        vm.SetPaused(true); // UI reflects that we’re paused between floors
         vm.NotifyFloorEnded(floor);
         waitingForFloorStart = false;
         waitingForFloorContinue = true; // gate set during elevator time

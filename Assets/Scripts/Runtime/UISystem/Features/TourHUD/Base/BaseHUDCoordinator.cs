@@ -68,7 +68,6 @@ public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
             _ => "",
         };
         v.SetTitle(title);
-
         Sprite icon = null;
         switch (vm.Phase)
         {

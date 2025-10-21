@@ -68,6 +68,7 @@ public sealed class BaseHUDView : IScreenView
 
     public void SetDistance(float meters)
     {
+        Debug.Log($"[VIEW] SetDistance {meters:0.00}  labelNull={distanceValue == null}");
         if (distanceValue != null)
             distanceValue.text = $"{meters:0.00}m";
     }
