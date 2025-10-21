@@ -6,13 +6,15 @@ public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
     private readonly UIRouter router;
     private readonly TourViewModel vm;
     private readonly MenuCoordinator menu;
+    private readonly Sprite spinnerIcon;
 
     private BaseHUDView v;
 
-    public BaseHUDCoordinator(UIRouter r, TourViewModel model)
+    public BaseHUDCoordinator(UIRouter r, TourViewModel model, Sprite spinner)
     {
         router = r;
         vm = model;
+        spinnerIcon = spinner;
         menu = new MenuCoordinator(r);
     }
 
@@ -41,6 +43,7 @@ public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
         var title = vm.Phase switch
         {
             TourUIPhase.WaitingForConnection => "Conectando…",
+            TourUIPhase.ConnectionLost => "Reconectando…",
             TourUIPhase.ReadyPrompt => "Listo para empezar",
             TourUIPhase.Navigating => "En ruta",
             TourUIPhase.InAreaInfo => vm.CurrentArea,
@@ -49,6 +52,9 @@ public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
             _ => "",
         };
         v.SetTitle(title);
+
+        bool spinning = vm.Phase is TourUIPhase.WaitingForConnection or TourUIPhase.ConnectionLost;
+        v.SetTitleIcon(spinning ? spinnerIcon : null);
 
         // Directions card
         var showDir = vm.Phase == TourUIPhase.Navigating && !string.IsNullOrEmpty(vm.NextArea);

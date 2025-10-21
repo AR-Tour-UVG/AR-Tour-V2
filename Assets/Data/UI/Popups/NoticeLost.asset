@@ -15,3 +15,4 @@ MonoBehaviour:
   noticeTitle: Conexion perdida
   noticeMessage: se perdio conexion
   noticeJack: {fileID: 21300000, guid: 561a7e28f0a17224288cd9637b421a66, type: 3}
+  hudTitleIcon: {fileID: 21300000, guid: 86792975b5a42964894ea08ec9cc32fd, type: 3}

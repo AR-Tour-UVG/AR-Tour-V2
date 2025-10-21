@@ -77,4 +77,11 @@ public sealed class BaseHUDView : IScreenView
         if (footer != null)
             footer.style.display = on ? DisplayStyle.Flex : DisplayStyle.None;
     }
+
+    public void SetTitleIcon(Sprite s)
+    {
+        if (titleIcon == null)
+            return;
+        titleIcon.style.backgroundImage = s != null ? new StyleBackground(s) : StyleKeyword.Null; // falls back to USS default
+    }
 }

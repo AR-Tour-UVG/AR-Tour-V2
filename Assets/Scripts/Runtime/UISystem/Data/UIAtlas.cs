@@ -65,6 +65,9 @@ public sealed class UIAtlas : ScriptableObject
     [SerializeField]
     private ActionData ActionReadyOnFloor;
 
+    [SerializeField]
+    private Sprite hudSpinnerIcon;
+
     // Public properties to access private fields
 
     public VisualTreeAsset HomeUXML => Home;
@@ -81,4 +84,5 @@ public sealed class UIAtlas : ScriptableObject
     public NoticeData NoticeTourCompleteData => NoticeTourComplete;
     public ActionData ActionStartData => ActionStart;
     public ActionData ActionReadyOnFloorData => ActionReadyOnFloor;
+    public Sprite HudSpinnerIcon => hudSpinnerIcon;
 }

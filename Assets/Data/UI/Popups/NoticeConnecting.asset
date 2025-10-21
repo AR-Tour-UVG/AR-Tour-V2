@@ -15,3 +15,4 @@ MonoBehaviour:
   noticeTitle: Conectando
   noticeMessage: algo de conectar
   noticeJack: {fileID: 21300000, guid: 18d820d417bd56946a1c2fe76441c08e, type: 3}
+  hudTitleIcon: {fileID: 21300000, guid: 86792975b5a42964894ea08ec9cc32fd, type: 3}
