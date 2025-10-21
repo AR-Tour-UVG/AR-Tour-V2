@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/Styles/ScreenStyles/mainScreen.uss?fileID=7433441132597879392&amp;guid=e7825dddaea9bb54e80c8aca1987e5b7&amp;type=3#mainScreen" />
+    <Style src="project://database/Assets/UI/Styles/Screens/homeScreen.uss?fileID=7433441132597879392&amp;guid=e7825dddaea9bb54e80c8aca1987e5b7&amp;type=3#homeScreen" />
     <Style src="project://database/Assets/UI/Styles/baseLayout.uss?fileID=7433441132597879392&amp;guid=28ac6e247c5360949b32cbce032f8d7e&amp;type=3#baseLayout" />
     <ui:VisualElement name="Viewport" class="root" style="background-image: url(&quot;project://database/Assets/Visuals/Backgrounds/main-gradient.png?fileID=21300000&amp;guid=35a72a99042af26489680096859da0ff&amp;type=3#main-gradient&quot;); -unity-background-scale-mode: stretch-to-fill;">
         <ui:VisualElement name="TopInset" class="top-inset" />

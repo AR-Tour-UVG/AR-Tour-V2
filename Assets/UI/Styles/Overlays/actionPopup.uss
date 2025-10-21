@@ -3,6 +3,8 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    background-image: url("project://database/Assets/Visuals/Backgrounds/dark-glass.png?fileID=21300000&guid=21c37f3bbba75264281cff8c0c326fd0&type=3#dark-glass");
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.59);
 }
 
 .popup-container {
@@ -20,11 +22,11 @@
     background-image: url("project://database/Assets/Visuals/Backgrounds/diagonal-gradient.png?fileID=21300000&guid=472306e4f7c67e54a8a042e7077e0014&type=3#diagonal-gradient");
     -unity-background-scale-mode: scale-and-crop;
     align-items: center;
-    -unity-background-image-tint-color: rgba(255, 255, 255, 0.95);
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.94);
 }
 
 .rounded-image {
-    background-image: url("project://database/Assets/Visuals/Icons/dragon-color.png?fileID=21300000&guid=ca072917eff8845479d003e9df8cb261&type=3#dragon-color");
+    background-image: url("project://database/Assets/Visuals/Icons/Dragon%20Icons/dragon-color.png?fileID=21300000&guid=ca072917eff8845479d003e9df8cb261&type=3#dragon-color");
     -unity-background-scale-mode: scale-to-fit;
     width: 250px;
     height: 250px;

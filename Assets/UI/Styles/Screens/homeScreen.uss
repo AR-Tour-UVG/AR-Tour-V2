@@ -1,5 +1,5 @@
 .dragon {
-    background-image: url("project://database/Assets/Visuals/Icons/dragon-color-0.5x.png?fileID=21300000&guid=fef0754821ec7374c97c6ed3baa60dda&type=3#dragon-color-0.5x");
+    background-image: url("project://database/Assets/Visuals/Icons/Dragon Icons/dragon-color-0.5x.png?fileID=21300000&guid=fef0754821ec7374c97c6ed3baa60dda&type=3#dragon-color-0.5x");
     -unity-background-scale-mode: scale-to-fit;
     width: 400px;
     height: 400px;
