@@ -23,6 +23,13 @@ public sealed class InfoWidgetView : IOverlayView
         areaImage = Root.Q<VisualElement>("AreaImage");
         description = Root.Q<Label>("Description");
         continueBtn = Root.Q<VisualElement>("ContinueButton");
+
+        // Disable raycast blocking for the info widget
+        UIPickingUtils.ConfigureTreePickingMode(Root, PickingMode.Ignore);
+
+        // Re-enable picking for the widget and its children
+        UIPickingUtils.ConfigureTreePickingMode(widget, PickingMode.Position);
+
         continueBtn?.RegisterCallback<ClickEvent>(_ => OnContinue?.Invoke());
         Hide();
     }

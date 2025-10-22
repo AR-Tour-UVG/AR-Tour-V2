@@ -7,15 +7,14 @@ public sealed class BaseHUDView : IScreenView
     public VisualElement Root { get; }
     public event Action OnMenu;
 
-    VisualElement header,
-        directionsCard,
+    VisualElement directionsCard,
         footer,
-        menuBtn;
+        menuBtn,
+        titleIcon;
     Label titleLabel,
         directionsLabel,
         progressValue,
         distanceValue;
-    VisualElement titleIcon; // if you use an icon VE
 
     public BaseHUDView(VisualElement root)
     {
@@ -24,7 +23,6 @@ public sealed class BaseHUDView : IScreenView
 
     public void Bind(UIDocument doc)
     {
-        header = Root.Q<VisualElement>("Header");
         directionsCard = Root.Q<VisualElement>("DirectionsCard");
         footer = Root.Q<VisualElement>("Footer");
         menuBtn = Root.Q<VisualElement>("MenuButton");
@@ -33,6 +31,12 @@ public sealed class BaseHUDView : IScreenView
         progressValue = Root.Q<Label>("ProgressValue");
         distanceValue = Root.Q<Label>("DistanceValue");
         titleIcon = Root.Q<VisualElement>("TitleIcon");
+
+        // Disable raycast blocking for the HUD
+        UIPickingUtils.ConfigureTreePickingMode(Root, PickingMode.Ignore);
+
+        // enable menu button picking
+        UIPickingUtils.SetPickable(menuBtn);
 
         menuBtn?.RegisterCallback<ClickEvent>(_ => OnMenu?.Invoke());
     }

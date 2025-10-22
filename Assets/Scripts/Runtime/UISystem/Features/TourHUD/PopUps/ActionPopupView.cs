@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,7 +8,8 @@ public sealed class ActionPopupView : IOverlayView
     public VisualElement Root { get; }
 
     VisualElement roundedImage,
-        button;
+        button,
+        container;
     Label title,
         description,
         buttonText;
@@ -20,11 +22,18 @@ public sealed class ActionPopupView : IOverlayView
 
     public void Bind(UIDocument doc)
     {
+        container = Root.Q<VisualElement>("PopUP") ?? Root.Q<VisualElement>("PopUp");
         roundedImage = Root.Q<VisualElement>("RoundedImage");
         title = Root.Q<Label>("ActionTitle");
         description = Root.Q<Label>("ActionDescription");
         button = Root.Q<VisualElement>("ActionButton");
         buttonText = Root.Q<Label>("ButtonText");
+
+        // Disable raycast blocking for the action popup
+        UIPickingUtils.ConfigureTreePickingMode(Root, PickingMode.Ignore);
+        // Re-enable raycast blocking for the popup elements
+        UIPickingUtils.ConfigureTreePickingMode(container, PickingMode.Position);
+
         button?.RegisterCallback<ClickEvent>(_ => click?.Invoke());
         Hide();
     }

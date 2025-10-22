@@ -17,7 +17,7 @@ public sealed class MenuView : IOverlayView
         restart,
         help,
         settings,
-        ret;
+        returnBtn;
 
     public MenuView(VisualElement root)
     {
@@ -31,13 +31,18 @@ public sealed class MenuView : IOverlayView
         restart = Root.Q<VisualElement>("Restart");
         help = Root.Q<VisualElement>("Help");
         settings = Root.Q<VisualElement>("Settings");
-        ret = Root.Q<VisualElement>("Return");
+        returnBtn = Root.Q<VisualElement>("Return");
+
+        // Disable raycast blocking for the menu modal
+        UIPickingUtils.ConfigureTreePickingMode(Root, PickingMode.Ignore);
+        // Re-enable raycast blocking for the container
+        UIPickingUtils.ConfigureTreePickingMode(container, PickingMode.Position);
 
         closeBtn?.RegisterCallback<ClickEvent>(_ => OnClose?.Invoke());
         restart?.RegisterCallback<ClickEvent>(_ => OnRestart?.Invoke());
         help?.RegisterCallback<ClickEvent>(_ => OnHelp?.Invoke());
         settings?.RegisterCallback<ClickEvent>(_ => OnSettings?.Invoke());
-        ret?.RegisterCallback<ClickEvent>(_ => OnReturnHome?.Invoke());
+        returnBtn?.RegisterCallback<ClickEvent>(_ => OnReturnHome?.Invoke());
 
         Hide(); // start hidden
     }
@@ -48,7 +53,7 @@ public sealed class MenuView : IOverlayView
         restart?.UnregisterCallback<ClickEvent>(_ => OnRestart?.Invoke());
         help?.UnregisterCallback<ClickEvent>(_ => OnHelp?.Invoke());
         settings?.UnregisterCallback<ClickEvent>(_ => OnSettings?.Invoke());
-        ret?.UnregisterCallback<ClickEvent>(_ => OnReturnHome?.Invoke());
+        returnBtn?.UnregisterCallback<ClickEvent>(_ => OnReturnHome?.Invoke());
     }
 
     public void Show() => Root.style.display = DisplayStyle.Flex;

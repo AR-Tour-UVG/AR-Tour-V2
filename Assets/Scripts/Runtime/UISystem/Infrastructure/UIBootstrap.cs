@@ -56,6 +56,12 @@ public sealed class UIBootstrap : MonoBehaviour
         popupLayer.style.display = DisplayStyle.None;
         menuLayer.style.display = DisplayStyle.None;
 
+        //Disable picking on layers that should not block input
+        baseLayer.pickingMode = PickingMode.Position; // receives input
+        modalLayer.pickingMode = PickingMode.Ignore; // pass-through by default
+        popupLayer.pickingMode = PickingMode.Ignore;
+        menuLayer.pickingMode = PickingMode.Ignore;
+
         // Create View Factory
         var factory = new ViewFactory(uiDocument, atlas);
         // Create UIRouter instance
