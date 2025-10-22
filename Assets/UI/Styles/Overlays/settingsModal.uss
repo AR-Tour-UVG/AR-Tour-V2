@@ -1,0 +1,222 @@
+.settings-container {
+    width: 76%;
+    height: 40%;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background-image: url("project://database/Assets/Visuals/Backgrounds/horizontal-gradient.png?fileID=21300000&guid=8bfebf6f2fa1afb4cb37b64ef112da1e&type=3#horizontal-gradient");
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.94);
+    -unity-background-scale-mode: scale-and-crop;
+    padding-top: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+}
+
+.top-section {
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 30%;
+}
+
+.close-section {
+    flex-direction: row-reverse;
+    height: 22%;
+    width: 100%;
+}
+
+.close-icon {
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/quit.png?fileID=21300000&guid=601bf6fc0b8767d4cba76eef8704982f&type=3#quit");
+    width: 80px;
+    -unity-background-image-tint-color: rgb(242, 242, 242);
+    height: 70px;
+}
+
+.settings-icon {
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/settings.png?fileID=21300000&guid=7cb2ad61dfa4890498709492fbe7c2f4&type=3#settings");
+    -unity-background-image-tint-color: rgb(242, 242, 242);
+    -unity-background-scale-mode: scale-to-fit;
+    width: 100px;
+    height: 100px;
+}
+
+.header {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-SemiBold-SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold-SDF");
+    color: rgb(242, 242, 242);
+    -unity-text-align: middle-center;
+    text-overflow: ellipsis;
+    font-size: 80%;
+}
+
+.options-section {
+    flex-grow: 1;
+    height: 70%;
+    width: 100%;
+    align-items: center;
+    padding-top: 10%;
+    padding-right: 5%;
+    padding-bottom: 0%;
+    padding-left: 5%;
+}
+
+.setting-section {
+    align-items: stretch;
+    align-self: flex-start;
+    height: 50%;
+    width: 100%;
+}
+
+.setting-title {
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-SemiBold-SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold-SDF");
+    font-size: 50%;
+    color: rgb(242, 242, 242);
+    text-overflow: ellipsis;
+    -unity-text-align: middle-left;
+}
+
+.setting-container {
+    flex-direction: row;
+    padding-top: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.volume-icon {
+    width: 100px;
+    height: 100px;
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/volume-high.png?fileID=21300000&guid=f34f5b64529d769468e5ecd6b8658d14&type=3#volume-high");
+    -unity-background-image-tint-color: rgb(242, 242, 242);
+    -unity-background-scale-mode: scale-to-fit;
+    margin-right: 5%;
+}
+
+#Viewport > #SettingsContainer > #Settings > #VolumeSection > #VolumeContainer > .unity-slider {
+    flex-grow: 1;
+    height: 50%;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+#Viewport > #SettingsContainer > #Settings > #VolumeSection > #VolumeContainer > .unity-slider > .unity-slider__input {
+    height: 100%;
+    width: 100%;
+}
+
+#Viewport > #SettingsContainer > #Settings > #VolumeSection > #VolumeContainer > .unity-slider > .unity-slider__input > #unity-drag-container > #unity-tracker {
+    height: 30px;
+    position: absolute;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    background-color: rgb(69, 69, 69);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    top: 10px;
+}
+
+#Viewport > #SettingsContainer > #Settings > #VolumeSection > #VolumeContainer > #Slider > .unity-slider__input > #unity-drag-container > #unity-dragger {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    position: absolute;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    height: 50px;
+    width: 50px;
+    -unity-background-image-tint-color: rgb(242, 242, 242);
+    top: 0;
+}
+
+.font-icon {
+    width: 100px;
+    height: 100px;
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/font-size.png?fileID=21300000&guid=7d5ed9291203c8b42853f7f34f48c4a9&type=3#font-size");
+    -unity-background-image-tint-color: rgb(242, 242, 242);
+    -unity-background-scale-mode: scale-to-fit;
+    margin-right: 5%;
+}
+
+.font-size-selector {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.small-font {
+    -unity-text-align: middle-center;
+    text-overflow: ellipsis;
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Regular-SDF.asset?fileID=11400000&guid=5ca79f15c435d9c468768628c1e23902&type=2#Outfit-Regular-SDF");
+    color: rgb(242, 242, 242);
+    font-size: 60px;
+}
+
+.normal-font {
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Regular-SDF.asset?fileID=11400000&guid=5ca79f15c435d9c468768628c1e23902&type=2#Outfit-Regular-SDF");
+    color: rgb(242, 242, 242);
+    -unity-text-align: middle-center;
+    font-size: 75px;
+}
+
+.large-font {
+    font-size: 90px;
+    -unity-font-definition: url("project://database/Assets/Fonts/TTF/Outfit-Regular.ttf?fileID=12800000&guid=fab92155c4946e04989ea5c5828f7daa&type=3#Outfit-Regular");
+    -unity-text-align: middle-center;
+    color: rgb(242, 242, 242);
+}
+
+.font-option {
+    background-color: rgb(80, 80, 80);
+    height: 80%;
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding-top: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    padding-left: 2%;
+}

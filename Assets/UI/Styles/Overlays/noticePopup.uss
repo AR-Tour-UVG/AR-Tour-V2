@@ -36,7 +36,7 @@
 
 .message-title {
     -unity-text-align: middle-center;
-    font-size: 60%;
+    font-size: 80%;
     -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Bold-SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold-SDF");
     color: rgb(242, 242, 242);
     width: 100%;

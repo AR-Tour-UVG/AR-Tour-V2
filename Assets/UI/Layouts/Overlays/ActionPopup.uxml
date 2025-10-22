@@ -7,7 +7,7 @@
             <ui:Label name="ActionTitle" text="Lorem Ipsum" class="action-title" />
             <ui:Label name="ActionDescription" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." class="action-text" />
             <ui:VisualElement name="ActionButton" class="button">
-                <ui:Label name="ButtonText" text="Lorem" class="button-text" style="width: 100%; color: rgb(242, 242, 242); -unity-text-align: middle-center; text-overflow: ellipsis; white-space: normal; font-size: 55%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/FontAssets/Outfit-Bold-SDF.asset?fileID=11400000&amp;guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&amp;type=2#Outfit-Bold-SDF&quot;);" />
+                <ui:Label name="ButtonText" text="Lorem" class="button-text" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

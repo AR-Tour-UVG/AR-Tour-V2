@@ -32,7 +32,7 @@
                     </ui:VisualElement>
                     <ui:VisualElement name="DistanceCard" class="metric-card">
                         <ui:Label text="Próximo Destino:" name="DistanceText" class="metric-label" />
-                        <ui:Label text="0.00m" name="DistanceValue" class="metric-value" />
+                        <ui:Label text="00.0m" name="DistanceValue" class="metric-value" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>

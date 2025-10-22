@@ -1,6 +1,6 @@
 .menu-container {
     background-image: url("project://database/Assets/Visuals/Backgrounds/horizontal-gradient.png?fileID=21300000&guid=8bfebf6f2fa1afb4cb37b64ef112da1e&type=3#horizontal-gradient");
-    width: 75%;
+    width: 80%;
     height: 100%;
     position: absolute;
     top: 0;
