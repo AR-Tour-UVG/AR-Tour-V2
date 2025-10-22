@@ -1,12 +1,3 @@
-.root {
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-image: url("project://database/Assets/Visuals/Backgrounds/dark-glass.png?fileID=21300000&guid=21c37f3bbba75264281cff8c0c326fd0&type=3#dark-glass");
-    -unity-background-image-tint-color: rgba(255, 255, 255, 0.59);
-}
-
 .popup-container {
     width: 76%;
     height: 35%;

@@ -37,6 +37,8 @@ public sealed class TourRunner : MonoBehaviour
     private bool waitingForUserToContinue;
     public bool WaitingForUserToContinue => waitingForUserToContinue;
 
+    public TourDefinition CurrentTour => currentTour;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -260,5 +262,26 @@ public sealed class TourRunner : MonoBehaviour
             return;
         waitingForUserToContinue = false;
         StartCoroutine(LoadFloorAt(floorIndex));
+    }
+
+    public void StopTour(bool returnToHome)
+    {
+        if (!string.IsNullOrEmpty(loadedScenePath))
+        {
+            Debug.Log($"[TourRunner] Stopping tour. Unloading active scene: {loadedScenePath}");
+            SceneManager.UnloadSceneAsync(loadedScenePath);
+            loadedScenePath = null;
+            activeFM = null;
+        }
+
+        currentTour = null;
+        floorIndex = -1;
+        visitedAcrossTour = 0;
+        totalAcrossTour = 0;
+
+        if (returnToHome)
+        {
+            Debug.Log("[TourRunner] Tour stopped. Returning to home state.");
+        }
     }
 }
