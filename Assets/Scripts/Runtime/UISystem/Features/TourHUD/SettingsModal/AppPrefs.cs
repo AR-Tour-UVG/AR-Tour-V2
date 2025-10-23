@@ -32,4 +32,12 @@ public static class AppPrefs
         PlayerPrefs.SetInt(FontPxKey, px);
         PlayerPrefs.Save();
     }
+
+    public static void ClearAll()
+    {
+        PlayerPrefs.DeleteKey(VolumeKey);
+        PlayerPrefs.DeleteKey(FontPxKey);
+        PlayerPrefs.DeleteKey(FirstRunKey);
+        PlayerPrefs.Save();
+    }
 }

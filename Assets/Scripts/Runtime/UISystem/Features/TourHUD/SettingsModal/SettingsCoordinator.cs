@@ -11,8 +11,7 @@ public sealed class SettingsCoordinator
 
     public void Show()
     {
-        var v = router.ShowOverlay(OverlayType.Settings) as SettingsView;
-        if (v == null)
+        if (router.ShowOverlay(OverlayType.Settings) is not SettingsView v)
             return;
 
         // load persisted or defaults

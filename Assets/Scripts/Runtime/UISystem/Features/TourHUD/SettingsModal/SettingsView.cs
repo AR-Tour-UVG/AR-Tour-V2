@@ -69,11 +69,4 @@ public sealed class SettingsView : IOverlayView
             return;
         ve.EnableInClassList("selected", on);
     }
-
-    // helper for font apply by coordinator
-    public VisualElement GetRootClassElement()
-    {
-        var AppRoot = baseDoc.rootVisualElement.Q<VisualElement>("AppRoot");
-        return AppRoot?.Q<VisualElement>(name: null, className: "root");
-    }
 }

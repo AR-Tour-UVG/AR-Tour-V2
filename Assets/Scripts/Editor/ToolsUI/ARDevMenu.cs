@@ -16,6 +16,13 @@ public static class ARDevMenu
         Debug.Log("[Dev Tools] Onboarding progress reset.");
     }
 
+    [MenuItem("AR Tour Dev Tools/AppPrefs/Reset Preferences")]
+    public static void ResetPreferences()
+    {
+        AppPrefs.ClearAll();
+        Debug.Log("[Dev Tools] Preferences reset.");
+    }
+
     [MenuItem("AR Tour Dev Tools/Simulation/Connect")]
     public static void Connect()
     {
