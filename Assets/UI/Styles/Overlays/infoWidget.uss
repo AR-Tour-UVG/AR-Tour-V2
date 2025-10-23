@@ -26,6 +26,7 @@
     height: 75%;
     align-items: center;
     -unity-background-scale-mode: scale-and-crop;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.98);
 }
 
 .area-image {
@@ -110,7 +111,7 @@
 }
 
 .info-container .unity-base-slider--vertical .unity-base-slider__dragger {
-    background-color: rgb(69, 69, 69);
+    background-color: rgb(75, 75, 75);
     min-height: 25px;
     border-radius: 12px;
 }

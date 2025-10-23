@@ -5,13 +5,12 @@
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
-    background-image: url("project://database/Assets/Visuals/Backgrounds/diagonal-gradient.png?fileID=21300000&guid=472306e4f7c67e54a8a042e7077e0014&type=3#diagonal-gradient");
-    -unity-background-image-tint-color: rgba(255, 255, 255, 0.94);
-    -unity-background-scale-mode: stretch-to-fill;
+    -unity-background-scale-mode: scale-and-crop;
     padding-top: 5%;
     padding-right: 5%;
     padding-bottom: 5%;
     padding-left: 5%;
+    background-image: url("project://database/Assets/Visuals/Backgrounds/modal-gradient.png?fileID=21300000&guid=0754f01599ad749449f83a8c210221c5&type=3#modal-gradient");
 }
 
 .top-section {
@@ -103,7 +102,7 @@
 
 #Viewport > #SettingsContainer > #Settings > #VolumeSection > #VolumeContainer > .unity-slider {
     flex-grow: 1;
-    height: 50%;
+    height: 80%;
     margin-top: 0;
     margin-right: 0;
     margin-bottom: 0;
@@ -119,13 +118,13 @@
     width: 100%;
 }
 
-#Viewport > #SettingsContainer > #Settings > #VolumeSection > #VolumeContainer > .unity-slider > .unity-slider__input > #unity-drag-container > #unity-tracker {
-    height: 30px;
+#Viewport > #SettingsContainer > #Settings > #VolumeSection > #VolumeContainer > #Slider > .unity-slider__input > #unity-drag-container > #unity-tracker {
+    height: 40px;
     position: absolute;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
     margin-top: 0;
     margin-right: 0;
     margin-bottom: 0;
@@ -134,13 +133,12 @@
     padding-right: 0;
     padding-bottom: 0;
     padding-left: 0;
-    background-color: rgb(69, 69, 69);
+    background-color: rgb(75, 75, 75);
     border-top-width: 0;
     border-right-width: 0;
     border-bottom-width: 0;
     border-left-width: 0;
-    top: 10px;
-    overflow: hidden;
+    top: 25%;
 }
 
 #Viewport > #SettingsContainer > #Settings > #VolumeSection > #VolumeContainer > #Slider > .unity-slider__input > #unity-drag-container > #unity-dragger {
@@ -161,10 +159,10 @@
     padding-right: 0;
     padding-bottom: 0;
     padding-left: 0;
-    height: 50px;
-    width: 50px;
-    -unity-background-image-tint-color: rgb(242, 242, 242);
-    top: 0;
+    height: 80px;
+    width: 80px;
+    top: 0%;
+    background-color: rgb(242, 242, 242);
 }
 
 .font-icon {
@@ -207,7 +205,7 @@
 }
 
 .font-option {
-    background-color: rgb(80, 80, 80);
+    background-color: rgb(75, 75, 75);
     height: 80%;
     width: 30%;
     align-items: center;

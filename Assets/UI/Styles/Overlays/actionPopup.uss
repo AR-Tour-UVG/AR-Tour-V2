@@ -13,7 +13,7 @@
     background-image: url("project://database/Assets/Visuals/Backgrounds/diagonal-gradient.png?fileID=21300000&guid=472306e4f7c67e54a8a042e7077e0014&type=3#diagonal-gradient");
     -unity-background-scale-mode: scale-and-crop;
     align-items: center;
-    -unity-background-image-tint-color: rgba(255, 255, 255, 0.94);
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.98);
 }
 
 .rounded-image {
