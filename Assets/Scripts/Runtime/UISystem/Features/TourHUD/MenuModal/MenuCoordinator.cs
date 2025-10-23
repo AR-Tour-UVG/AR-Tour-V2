@@ -3,10 +3,12 @@ using UnityEngine;
 public sealed class MenuCoordinator
 {
     private readonly UIRouter router;
+    private readonly SettingsCoordinator settings;
 
     public MenuCoordinator(UIRouter r)
     {
         router = r;
+        settings = new SettingsCoordinator(router);
     }
 
     public void Show()
@@ -46,7 +48,7 @@ public sealed class MenuCoordinator
         }
         void Settings()
         {
-            Debug.Log("[MenuCoordinator] Settings pressed.");
+            settings.Show();
         }
 
         void Unhook()

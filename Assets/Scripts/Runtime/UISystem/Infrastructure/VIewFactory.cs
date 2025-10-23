@@ -32,6 +32,7 @@ public sealed class ViewFactory : IViewFactory
             OverlayType.NoticePopup => new NoticePopupView(Clone(atlas.NoticePopupUXML)),
             OverlayType.ActionPopup => new ActionPopupView(Clone(atlas.ActionPopupUXML)),
             OverlayType.Menu => new MenuView(Clone(atlas.MenuUXML)),
+            OverlayType.Settings => new SettingsView(Clone(atlas.SettingsUXML)),
             _ => null,
         };
 

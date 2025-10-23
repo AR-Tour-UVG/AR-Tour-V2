@@ -12,6 +12,7 @@ public enum OverlayType
     NoticePopup,
     ActionPopup,
     Menu,
+    Settings,
 }
 
 public interface IViewFactory

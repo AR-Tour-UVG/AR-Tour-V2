@@ -5,9 +5,9 @@
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
-    background-image: url("project://database/Assets/Visuals/Backgrounds/horizontal-gradient.png?fileID=21300000&guid=8bfebf6f2fa1afb4cb37b64ef112da1e&type=3#horizontal-gradient");
+    background-image: url("project://database/Assets/Visuals/Backgrounds/diagonal-gradient.png?fileID=21300000&guid=472306e4f7c67e54a8a042e7077e0014&type=3#diagonal-gradient");
     -unity-background-image-tint-color: rgba(255, 255, 255, 0.94);
-    -unity-background-scale-mode: scale-and-crop;
+    -unity-background-scale-mode: stretch-to-fill;
     padding-top: 5%;
     padding-right: 5%;
     padding-bottom: 5%;
@@ -140,6 +140,7 @@
     border-bottom-width: 0;
     border-left-width: 0;
     top: 10px;
+    overflow: hidden;
 }
 
 #Viewport > #SettingsContainer > #Settings > #VolumeSection > #VolumeContainer > #Slider > .unity-slider__input > #unity-drag-container > #unity-dragger {
@@ -219,4 +220,17 @@
     padding-right: 2%;
     padding-bottom: 2%;
     padding-left: 2%;
+}
+
+.slider-progress {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 165, 0);
+    align-self: flex-end;
+}
+
+.font-option.selected {
+    background-color: rgb(0, 165, 0);
 }

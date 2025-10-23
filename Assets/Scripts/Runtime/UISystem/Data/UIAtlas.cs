@@ -43,6 +43,10 @@ public sealed class UIAtlas : ScriptableObject
     [SerializeField]
     private VisualTreeAsset Menu;
 
+    [Tooltip("UXML file for the Settings Modal")]
+    [SerializeField]
+    private VisualTreeAsset Settings;
+
     [Header("Onboarding")]
     [Tooltip("Onboarding Set ScriptableObject containing onboarding slides")]
     [SerializeField]
@@ -91,6 +95,7 @@ public sealed class UIAtlas : ScriptableObject
     public VisualTreeAsset NoticePopupUXML => NoticePopup;
     public VisualTreeAsset ActionPopupUXML => ActionPopup;
     public VisualTreeAsset MenuUXML => Menu;
+    public VisualTreeAsset SettingsUXML => Settings;
     public OnboardingSet OnboardingSet => onboardingSet;
     public NoticeData NoticeConnectingData => NoticeConnecting;
     public NoticeData NoticeLostConnectionData => NoticeLostConnection;

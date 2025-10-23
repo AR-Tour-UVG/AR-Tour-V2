@@ -9,9 +9,7 @@ public sealed class UIRouter
     private readonly VisualElement modalLayer;
     private readonly VisualElement popupLayer;
     private readonly VisualElement menuLayer;
-
-    // Optional scrim for modals/popups
-    private readonly VisualElement scrim;
+    private readonly VisualElement settingsLayer;
 
     // Factory to create views
     private readonly IViewFactory factory;
@@ -29,14 +27,15 @@ public sealed class UIRouter
     // per-layer counts to toggle layer visibility
     private int modalCount,
         popupCount,
-        menuCount;
+        menuCount,
+        settingsCount;
 
     public UIRouter(
         VisualElement baseLayer,
         VisualElement modalLayer,
         VisualElement popupLayer,
         VisualElement menuLayer,
-        VisualElement scrim,
+        VisualElement settingsLayer,
         IViewFactory factory
     )
     {
@@ -44,7 +43,7 @@ public sealed class UIRouter
         this.modalLayer = modalLayer;
         this.popupLayer = popupLayer;
         this.menuLayer = menuLayer;
-        this.scrim = scrim;
+        this.settingsLayer = settingsLayer;
         this.factory = factory;
     }
 
@@ -128,6 +127,7 @@ public sealed class UIRouter
             OverlayType.NoticePopup => popupLayer,
             OverlayType.ActionPopup => popupLayer,
             OverlayType.Menu => menuLayer,
+            OverlayType.Settings => settingsLayer,
             _ => null,
         };
 
@@ -137,6 +137,9 @@ public sealed class UIRouter
         {
             case OverlayType.InfoModal:
                 modalCount++;
+                break;
+            case OverlayType.Settings:
+                settingsCount++;
                 break;
             case OverlayType.NoticePopup:
             case OverlayType.ActionPopup:
@@ -156,6 +159,11 @@ public sealed class UIRouter
                 modalCount = Mathf.Max(0, modalCount - 1);
                 if (modalCount == 0)
                     modalLayer.style.display = DisplayStyle.None;
+                break;
+            case OverlayType.Settings:
+                settingsCount = Mathf.Max(0, settingsCount - 1);
+                if (settingsCount == 0)
+                    settingsLayer.style.display = DisplayStyle.None;
                 break;
 
             case OverlayType.NoticePopup:

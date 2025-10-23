@@ -15,6 +15,7 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
     private InfoWidgetCoordinator info;
     private ActionPopupCoordinator action;
     private NoticePopupCoordinator notice;
+    private SettingsCoordinator settings;
 
     public HUDCoordinator(UIRouter r, UIAtlas a, TourViewModel model, TourBinder b)
     {
@@ -25,6 +26,7 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
         info = new InfoWidgetCoordinator(r, vm, b);
         action = new ActionPopupCoordinator(r, a, b, model);
         notice = new NoticePopupCoordinator(r, a);
+        settings = new SettingsCoordinator(r);
     }
 
     private BaseHUDView v;
@@ -172,6 +174,8 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
 
         notice.Hide();
     }
+
+    public void OpenSettings() => settings.Show();
 
     private void OnTourCompleted() { /* router back to home is handled elsewhere if desired */
     }
