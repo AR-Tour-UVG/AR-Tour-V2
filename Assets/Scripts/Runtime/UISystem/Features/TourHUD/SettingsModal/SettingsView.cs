@@ -8,11 +8,11 @@ public sealed class SettingsView : IOverlayView
     public event Action CloseRequested;
     public event Action<int> VolumeChanged; // 0..100
     public event Action<int> FontPxPicked; // 80/100/120
-
     Slider slider;
     VisualElement smallOpt,
         normalOpt,
-        largeOpt;
+        largeOpt,
+        volumeIcon;
     UIDocument baseDoc;
 
     public SettingsView(VisualElement root) => Root = root;
@@ -24,6 +24,7 @@ public sealed class SettingsView : IOverlayView
         smallOpt = Root.Q<VisualElement>("Small");
         normalOpt = Root.Q<VisualElement>("Normal");
         largeOpt = Root.Q<VisualElement>("Large");
+        volumeIcon = Root.Q<VisualElement>("VolumeIcon");
         Root.Q<VisualElement>("CloseIcon")
             ?.RegisterCallback<ClickEvent>(_ => CloseRequested?.Invoke());
 
@@ -68,5 +69,15 @@ public sealed class SettingsView : IOverlayView
         if (ve == null)
             return;
         ve.EnableInClassList("selected", on);
+    }
+
+    public void SetVolumeIcon(VolumeLevel level)
+    {
+        if (volumeIcon == null)
+            return;
+        volumeIcon.EnableInClassList("mute", level == VolumeLevel.Mute);
+        volumeIcon.EnableInClassList("low", level == VolumeLevel.Low);
+        volumeIcon.EnableInClassList("med", level == VolumeLevel.Med);
+        volumeIcon.EnableInClassList("high", level == VolumeLevel.High);
     }
 }

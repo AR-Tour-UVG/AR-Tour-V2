@@ -100,7 +100,7 @@
     margin-right: 5%;
 }
 
-#Viewport > #SettingsContainer > #Settings > #VolumeSection > #VolumeContainer > .unity-slider {
+#Viewport > #SettingsContainer > #Settings > #VolumeSection > #VolumeContainer > #Slider {
     height: 80%;
     margin-top: 0;
     margin-right: 0;
@@ -111,11 +111,6 @@
     padding-bottom: 0;
     padding-left: 0;
     flex-grow: 1;
-}
-
-#Viewport > #SettingsContainer > #Settings > #VolumeSection > #VolumeContainer > .unity-slider > .unity-slider__input {
-    height: 100%;
-    width: 100%;
 }
 
 #Viewport > #SettingsContainer > #Settings > #VolumeSection > #VolumeContainer > #Slider > .unity-slider__input > #unity-drag-container > #unity-tracker {
@@ -227,4 +222,24 @@
 
 .font-option.selected {
     background-color: rgb(0, 165, 0);
+}
+
+.volume-icon.mute {
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/volume-muted.png?fileID=21300000&guid=f5fc26fff75699a45ae4aac75100e607&type=3#volume-muted");
+    -unity-background-image-tint-color: rgb(242, 242, 242);
+}
+
+.volume-icon.low {
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/volume-low.png?fileID=21300000&guid=232da3a3714390a4192ee885e8e77944&type=3#volume-low");
+    -unity-background-image-tint-color: rgb(242, 242, 242);
+}
+
+.volume-icon.med {
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/volume-mid.png?fileID=21300000&guid=2644a0d89a8f9bc49898ef9dd66dffa3&type=3#volume-mid");
+    -unity-background-image-tint-color: rgb(242, 242, 242);
+}
+
+.volume-icon.high {
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/volume-high.png?fileID=21300000&guid=f34f5b64529d769468e5ecd6b8658d14&type=3#volume-high");
+    -unity-background-image-tint-color: rgb(242, 242, 242);
 }

@@ -21,6 +21,7 @@ public sealed class SettingsCoordinator
         // push into UI
         v.SetSlider(volume);
         v.SetSelectedFontPx(fontPx);
+        v.SetVolumeIcon(LevelFor(volume));
 
         // apply to systems once on open
         ApplyVolume(volume);
@@ -37,6 +38,7 @@ public sealed class SettingsCoordinator
             val = Mathf.Clamp(val, 0, 100);
             AppPrefs.SaveVolume(val);
             ApplyVolume(val);
+            v.SetVolumeIcon(LevelFor(val));
         }
 
         void OnFont(int px)
@@ -57,6 +59,18 @@ public sealed class SettingsCoordinator
         v.CloseRequested += OnClose;
         v.VolumeChanged += OnVol;
         v.FontPxPicked += OnFont;
+    }
+
+    static VolumeLevel LevelFor(int v)
+    {
+        int d = Mathf.RoundToInt(v); // 0..100
+        if (d == 0)
+            return VolumeLevel.Mute; // 0
+        if (d <= 35)
+            return VolumeLevel.Low; // 1..35
+        if (d <= 70)
+            return VolumeLevel.Med; // 36..70
+        return VolumeLevel.High; // 71..100
     }
 
     static int NormalizeFontPx(int px) => (px == 80 || px == 120) ? px : 100;
