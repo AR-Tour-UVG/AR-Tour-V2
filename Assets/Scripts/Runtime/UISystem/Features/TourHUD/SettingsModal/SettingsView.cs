@@ -16,6 +16,9 @@ public sealed class SettingsView : IOverlayView
         volumeIcon;
     UIDocument baseDoc;
 
+    // debounce scheduler
+    IVisualElementScheduledItem previewSched;
+
     public SettingsView(VisualElement root) => Root = root;
 
     public void Bind(UIDocument doc)
@@ -32,12 +35,27 @@ public sealed class SettingsView : IOverlayView
 
         slider.lowValue = 0;
         slider.highValue = 100;
+
+        // Live volume update
         slider.RegisterValueChangedCallback(e =>
         {
             VolumeChanged?.Invoke(Mathf.RoundToInt(e.newValue));
+
+            // Debounce commit (fires 250 ms after last change)
+            previewSched?.Pause();
+            previewSched = slider
+                .schedule.Execute(() => VolumeChangeCommitted?.Invoke())
+                .StartingIn(250);
         });
 
-        slider.RegisterCallback<PointerUpEvent>(_ => VolumeChangeCommitted?.Invoke());
+        // Touch release / cancel on the dragger
+        var dragger = slider.Q<VisualElement>("unity-dragger");
+        if (dragger != null)
+        {
+            dragger.RegisterCallback<PointerUpEvent>(_ => VolumeChangeCommitted?.Invoke());
+            dragger.RegisterCallback<PointerCaptureOutEvent>(_ => VolumeChangeCommitted?.Invoke());
+            dragger.RegisterCallback<PointerCancelEvent>(_ => VolumeChangeCommitted?.Invoke());
+        }
 
         smallOpt?.RegisterCallback<ClickEvent>(_ => FontPxPicked?.Invoke(80));
         normalOpt?.RegisterCallback<ClickEvent>(_ => FontPxPicked?.Invoke(100));

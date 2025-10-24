@@ -5,8 +5,6 @@ public sealed class SettingsCoordinator
     private readonly UIRouter router;
     private readonly AudioAtlas audioAtlas;
 
-    Coroutine previewDebounce;
-
     public SettingsCoordinator(UIRouter r, AudioAtlas aa)
     {
         router = r;
@@ -92,6 +90,7 @@ public sealed class SettingsCoordinator
     static void ApplyVolume(int v)
     {
         // example mapping
+        AppPrefs.SaveVolume(v);
         AudioDirector.ApplyVolumeFromPrefs();
     }
 
