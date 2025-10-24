@@ -14,7 +14,10 @@ public sealed class UIBootstrap : MonoBehaviour
     private UIDocument uiDocument; // has BaseLayout.uxml
 
     [Tooltip("UXML for the UI Atlas Asset")]
-    public UIAtlas atlas; // has all shared styles and resources
+    public UIAtlas uiAtlas; // has all shared styles and resources
+
+    [Tooltip("Audio Atlas for UI sounds")]
+    public AudioAtlas audioAtlas;
 
     public UIRouter Router { get; private set; }
 
@@ -38,7 +41,7 @@ public sealed class UIBootstrap : MonoBehaviour
             uiDocument = GetComponent<UIDocument>();
         }
         // Validate references
-        if (!uiDocument || !atlas)
+        if (!uiDocument || !uiAtlas)
         {
             // If UIDocument is missing, disable this component
             Debug.LogError("[UIBootstrap] Missing references in UIBootstrap");
@@ -53,6 +56,7 @@ public sealed class UIBootstrap : MonoBehaviour
         {
             AppRoot.style.fontSize = AppPrefs.LoadFontPx(); // Apply user font size preference
         }
+
         AudioListener.volume = AppPrefs.LoadVolume() / 100f; // Apply user volume preference
 
         var baseLayer = AppRoot.Q<VisualElement>("BaseLayer");
@@ -91,12 +95,13 @@ public sealed class UIBootstrap : MonoBehaviour
         ApplyGlobalFontPx(AppPrefs.LoadFontPx());
 
         // Create View Factory
-        var factory = new ViewFactory(uiDocument, atlas);
+        var factory = new ViewFactory(uiDocument, uiAtlas);
         // Create UIRouter instance
         Router = new UIRouter(baseLayer, modalLayer, popupLayer, menuLayer, settingsLayer, factory);
         // Decide where to start the UI navigation
         var showOnboarding =
-            atlas.OnboardingSet && OnboardingGate.ShouldShow(atlas.OnboardingSet.ShowEveryNDays);
+            uiAtlas.OnboardingSet
+            && OnboardingGate.ShouldShow(uiAtlas.OnboardingSet.ShowEveryNDays);
         // Show initial screen
         Router.ShowScreen(showOnboarding ? ScreenState.Onboarding : ScreenState.Home);
     }

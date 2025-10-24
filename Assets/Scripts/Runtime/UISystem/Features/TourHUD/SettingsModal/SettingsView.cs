@@ -7,6 +7,7 @@ public sealed class SettingsView : IOverlayView
     public VisualElement Root { get; }
     public event Action CloseRequested;
     public event Action<int> VolumeChanged; // 0..100
+    public event Action VolumeChangeCommitted; // after debounce
     public event Action<int> FontPxPicked; // 80/100/120
     Slider slider;
     VisualElement smallOpt,
@@ -35,6 +36,8 @@ public sealed class SettingsView : IOverlayView
         {
             VolumeChanged?.Invoke(Mathf.RoundToInt(e.newValue));
         });
+
+        slider.RegisterCallback<PointerUpEvent>(_ => VolumeChangeCommitted?.Invoke());
 
         smallOpt?.RegisterCallback<ClickEvent>(_ => FontPxPicked?.Invoke(80));
         normalOpt?.RegisterCallback<ClickEvent>(_ => FontPxPicked?.Invoke(100));

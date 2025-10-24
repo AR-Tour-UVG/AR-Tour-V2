@@ -27,6 +27,8 @@ public sealed class ActionPopupCoordinator
             vm.MarkTourBegan();
             binder.RequestUserReady();
         }
+        if (atlas.ActionStartData != null && atlas.ActionStartData.ActionAudioClip)
+            AudioDirector.Instance.Play(atlas.ActionStartData.ActionAudioClip, 0.05f, 0.1f);
     }
 
     public void ShowReadyOnFloor(string descriptionOverride = null)
@@ -45,6 +47,8 @@ public sealed class ActionPopupCoordinator
             else
                 binder.RequestUserReady();
         }
+        if (atlas.ActionReadyOnFloorData != null && atlas.ActionReadyOnFloorData.ActionAudioClip)
+            AudioDirector.Instance.Play(atlas.ActionReadyOnFloorData.ActionAudioClip, 0.05f, 0.1f);
     }
 
     public void Hide() => router.HideOverlay(OverlayType.ActionPopup);

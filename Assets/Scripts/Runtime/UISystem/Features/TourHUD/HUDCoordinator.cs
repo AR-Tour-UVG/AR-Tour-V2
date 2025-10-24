@@ -1,12 +1,13 @@
-// HUDCoordinator.cs
 using UnityEngine;
 
 public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
 {
     private readonly UIRouter router;
-    private readonly UIAtlas atlas;
+    private readonly UIAtlas uiAtlas;
     private readonly TourViewModel vm;
     private readonly TourBinder binder;
+
+    private readonly AudioAtlas audioAtlas;
 
     private bool sawConnectionThisFloor;
 
@@ -17,16 +18,18 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
     private NoticePopupCoordinator notice;
     private SettingsCoordinator settings;
 
-    public HUDCoordinator(UIRouter r, UIAtlas a, TourViewModel model, TourBinder b)
+    public HUDCoordinator(UIRouter r, TourViewModel model, TourBinder b, UIAtlas ua, AudioAtlas aa)
     {
         router = r;
-        atlas = a;
+        uiAtlas = ua;
         vm = model;
         binder = b;
+        audioAtlas = aa;
         info = new InfoWidgetCoordinator(r, vm, b);
-        action = new ActionPopupCoordinator(r, a, b, model);
-        notice = new NoticePopupCoordinator(r, a);
-        settings = new SettingsCoordinator(r);
+        action = new ActionPopupCoordinator(r, ua, b, model);
+        notice = new NoticePopupCoordinator(r, ua);
+        settings = new SettingsCoordinator(r, audioAtlas);
+        baseHud = new BaseHUDCoordinator(r, vm, ua, aa);
     }
 
     private BaseHUDView v;
@@ -34,15 +37,6 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
     public void Attach(BaseHUDView view)
     {
         v = view;
-        baseHud = new BaseHUDCoordinator(
-            router,
-            vm,
-            atlas.HudSpinnerIcon,
-            atlas.HudElevatorIcon,
-            atlas.HudWalkingIcon,
-            atlas.HudDoneIcon,
-            atlas.HudStartIcon
-        );
         baseHud.Attach(view);
 
         // react to VM signals
@@ -78,18 +72,21 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
         switch (vm.Phase)
         {
             case TourUIPhase.WaitingForConnection:
+                AudioDirector.Instance.Stop(0.12f);
                 action.Hide();
                 info.Hide();
                 notice.ShowConnecting();
                 break;
 
             case TourUIPhase.ConnectionLost:
+                AudioDirector.Instance.Stop(0.12f);
                 action.Hide();
                 info.Hide();
                 notice.ShowLostConnection();
                 break;
 
             case TourUIPhase.ReadyPrompt:
+                AudioDirector.Instance.Stop(0.12f);
                 notice.Hide();
                 info.Hide();
                 if (!vm.HasBegunTour)
@@ -109,12 +106,17 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
                 break;
 
             case TourUIPhase.Navigating:
+                if (audioAtlas && audioAtlas.navigating)
+                    AudioDirector.Instance.Play(audioAtlas.navigating, 0f, 0.1f);
+                else
+                    AudioDirector.Instance.Stop(0.12f);
                 notice.Hide();
                 action.Hide();
                 info.Hide();
                 break;
 
             case TourUIPhase.InAreaInfo:
+                // Audio managed by InfoWidgetCoordinator
                 notice.Hide();
                 action.Hide();
                 // ensure the widget is visible after restore
@@ -123,12 +125,14 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
                 break;
 
             case TourUIPhase.FloorTransition:
+                AudioDirector.Instance.Stop(0.12f);
                 notice.Hide();
                 action.ShowReadyOnFloor();
                 info.Hide();
                 break;
 
             case TourUIPhase.TourComplete:
+                AudioDirector.Instance.Stop(0.12f);
                 action.Hide();
                 info.Hide();
                 notice.ShowTourComplete();

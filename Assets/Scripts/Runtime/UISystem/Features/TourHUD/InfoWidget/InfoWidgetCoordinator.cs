@@ -38,6 +38,7 @@ public sealed class InfoWidgetCoordinator
             w.OnContinue -= Continue;
             showing = false;
             router.HideOverlay(OverlayType.InfoModal);
+            AudioDirector.Instance.Stop(0.2f); // fade out any audio associated with the widget
             binder.RequestNext(); // advances to next area
         }
     }

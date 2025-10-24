@@ -15,6 +15,10 @@ public sealed class NoticePopupCoordinator
         if (v == null)
             return;
         v.Show(atlas.NoticeConnectingData);
+        if (atlas.NoticeConnectingData != null && atlas.NoticeConnectingData.NoticeAudioClip)
+        {
+            AudioDirector.Instance.Play(atlas.NoticeConnectingData.NoticeAudioClip);
+        }
     }
 
     public void ShowLostConnection()
@@ -23,6 +27,13 @@ public sealed class NoticePopupCoordinator
         if (v == null)
             return;
         v.Show(atlas.NoticeLostConnectionData);
+        if (
+            atlas.NoticeLostConnectionData != null
+            && atlas.NoticeLostConnectionData.NoticeAudioClip
+        )
+        {
+            AudioDirector.Instance.Play(atlas.NoticeLostConnectionData.NoticeAudioClip);
+        }
     }
 
     public void ShowTourComplete()
@@ -31,6 +42,10 @@ public sealed class NoticePopupCoordinator
         if (v == null)
             return;
         v.Show(atlas.NoticeTourCompleteData);
+        if (atlas.NoticeTourCompleteData != null && atlas.NoticeTourCompleteData.NoticeAudioClip)
+        {
+            AudioDirector.Instance.Play(atlas.NoticeTourCompleteData.NoticeAudioClip);
+        }
     }
 
     public void Hide() => router.HideOverlay(OverlayType.NoticePopup);

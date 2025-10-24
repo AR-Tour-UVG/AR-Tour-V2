@@ -3,12 +3,13 @@ using UnityEngine;
 public sealed class MenuCoordinator
 {
     private readonly UIRouter router;
-    private readonly SettingsCoordinator settings;
+    private readonly AudioAtlas audioAtlas;
+    private readonly UIAtlas uiAtlas;
 
-    public MenuCoordinator(UIRouter r)
+    public MenuCoordinator(UIRouter r, UIAtlas ua, AudioAtlas aa)
     {
         router = r;
-        settings = new SettingsCoordinator(router);
+        audioAtlas = aa;
     }
 
     public void Show()
@@ -46,8 +47,10 @@ public sealed class MenuCoordinator
         {
             Debug.Log("[MenuCoordinator] Help pressed.");
         }
+
         void Settings()
         {
+            var settings = new SettingsCoordinator(router, audioAtlas);
             settings.Show();
         }
 

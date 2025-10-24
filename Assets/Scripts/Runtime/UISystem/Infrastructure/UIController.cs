@@ -57,12 +57,13 @@ public sealed class UIController : MonoBehaviour
         // Register screen coordinators
         map[typeof(HomeView)] = new HomeCoordinator(r);
         map[typeof(MinigamesView)] = new MinigamesCoordinator(r);
-        map[typeof(OnboardingView)] = new OnboardingCoordinator(r, bootstrap.atlas.OnboardingSet);
+        map[typeof(OnboardingView)] = new OnboardingCoordinator(r, bootstrap.uiAtlas.OnboardingSet);
         map[typeof(BaseHUDView)] = new HUDCoordinator(
             bootstrap.Router,
-            bootstrap.atlas,
             vm,
-            binder
+            binder,
+            bootstrap.uiAtlas,
+            bootstrap.audioAtlas
         );
 
         // Subscribe to screen changes
