@@ -25,6 +25,7 @@ public sealed class SettingsView : IOverlayView
         normalOpt = Root.Q<VisualElement>("Normal");
         largeOpt = Root.Q<VisualElement>("Large");
         volumeIcon = Root.Q<VisualElement>("VolumeIcon");
+
         Root.Q<VisualElement>("CloseIcon")
             ?.RegisterCallback<ClickEvent>(_ => CloseRequested?.Invoke());
 
@@ -39,7 +40,34 @@ public sealed class SettingsView : IOverlayView
         normalOpt?.RegisterCallback<ClickEvent>(_ => FontPxPicked?.Invoke(100));
         largeOpt?.RegisterCallback<ClickEvent>(_ => FontPxPicked?.Invoke(120));
 
+        slider.RegisterCallback<GeometryChangedEvent>(_ => ApplySliderStyles());
+        slider.RegisterValueChangedCallback(_ => ApplySliderStyles());
+
         Show();
+    }
+
+    public void ApplySliderStyles()
+    {
+        var tracker = slider.Q<VisualElement>("unity-tracker");
+        var dragger = slider.Q<VisualElement>("unity-dragger");
+        var fill = tracker.Q<VisualElement>("unity-fill");
+
+        if (tracker != null)
+        {
+            tracker.style.backgroundImage = null;
+            tracker.style.unityBackgroundImageTintColor = StyleKeyword.None;
+            tracker.style.backgroundColor = new StyleColor(new Color32(75, 75, 75, 255));
+        }
+        if (dragger != null)
+        {
+            dragger.style.backgroundImage = null;
+            dragger.style.unityBackgroundImageTintColor = StyleKeyword.None;
+            dragger.style.backgroundColor = new StyleColor(new Color32(242, 242, 242, 255));
+        }
+        if (fill != null)
+        {
+            fill.style.backgroundColor = new StyleColor(new Color32(0, 165, 0, 255));
+        }
     }
 
     public void Unbind()
