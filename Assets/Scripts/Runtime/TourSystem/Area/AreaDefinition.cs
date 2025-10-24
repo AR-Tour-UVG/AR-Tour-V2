@@ -24,10 +24,10 @@ public class AreaDefinition : ScriptableObject
     [SerializeField]
     private string areaText;
 
-    [Tooltip("List of audio clips for the area")]
-    /// <summary>List of audio clips associated with the area.</summary>
+    [Tooltip("Audio clip for the area")]
+    /// <summary>Audio clip associated with the area.</summary>
     [SerializeField]
-    private List<AudioClip> audioClips;
+    private AudioClip audioClip;
 
     [Tooltip("Image file representing the area (for reference only)")]
     /// <summary>Image in the Resources folder.</summary>
@@ -50,8 +50,8 @@ public class AreaDefinition : ScriptableObject
     /// <summary>Gets the text asset containing the area's description.</summary>
     public string AreaText => areaText;
 
-    /// <summary>Gets the list of audio clips associated with the area.</summary>
-    public IReadOnlyList<AudioClip> AudioClips => audioClips;
+    /// <summary>Gets the audio clip associated with the area.</summary>
+    public AudioClip AudioClip => audioClip;
 
     /// <summary>Gets the image representing the area.</summary>
     public Sprite AreaImage => areaImage;
