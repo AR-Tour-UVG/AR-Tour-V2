@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public sealed class InfoWidgetCoordinator
 {
     private readonly UIRouter router;

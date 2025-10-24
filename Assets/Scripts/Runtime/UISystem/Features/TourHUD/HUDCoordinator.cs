@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
 {
     private readonly UIRouter router;

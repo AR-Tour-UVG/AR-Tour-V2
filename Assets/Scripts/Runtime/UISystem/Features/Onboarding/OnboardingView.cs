@@ -1,6 +1,4 @@
 using System;
-using NUnit.Framework;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 public sealed class OnboardingView : IScreenView

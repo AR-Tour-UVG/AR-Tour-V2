@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>

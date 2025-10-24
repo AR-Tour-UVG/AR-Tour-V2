@@ -1,5 +1,3 @@
-using System;
-
 public sealed class ActionPopupCoordinator
 {
     private readonly UIRouter router;
