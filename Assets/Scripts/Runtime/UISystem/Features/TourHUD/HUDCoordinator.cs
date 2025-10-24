@@ -49,6 +49,7 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
         vm.ConnectionLost += OnConnLost;
         vm.ConnectionRestored += OnConnRestored;
         vm.TourCompletedEvent += OnTourCompleted;
+        vm.GuidingTo += OnGuidingTo;
         ApplyPhase(); // initial
     }
 
@@ -59,6 +60,7 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
         vm.ConnectionLost -= OnConnLost;
         vm.ConnectionRestored -= OnConnRestored;
         vm.TourCompletedEvent -= OnTourCompleted;
+        vm.GuidingTo -= OnGuidingTo;
 
         baseHud?.Detach();
         info?.Hide();
@@ -106,10 +108,6 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
                 break;
 
             case TourUIPhase.Navigating:
-                if (audioAtlas && audioAtlas.navigating)
-                    AudioDirector.Instance.Play(audioAtlas.navigating, 0f, 0.1f);
-                else
-                    AudioDirector.Instance.Stop(0.12f);
                 notice.Hide();
                 action.Hide();
                 info.Hide();
@@ -177,6 +175,14 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
         }
 
         notice.Hide();
+    }
+
+    private void OnGuidingTo(AreaDefinition _)
+    {
+        if (audioAtlas && audioAtlas.navigating)
+            AudioDirector.Instance.Play(audioAtlas.navigating, 0f, 0.1f);
+        else
+            AudioDirector.Instance.Stop(0.1f);
     }
 
     public void OpenSettings() => settings.Show();
