@@ -1,23 +1,27 @@
-// NarrationDirector.cs
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
+[RequireComponent(typeof(AudioSource))]
 public sealed class AudioDirector : MonoBehaviour
 {
     public static AudioDirector Instance { get; private set; }
 
     [Header("Fades")]
-    [SerializeField, Min(0f)]
-    float defaultFadeIn = 0.2f;
+    [Range(0f, 5f)]
+    [Tooltip("Default fade-in duration in seconds")]
+    [SerializeField]
+    float defaultFadeIn = 0.0f;
 
-    [SerializeField, Min(0f)]
+    [Range(0f, 5f)]
+    [Tooltip("Default fade-out duration in seconds")]
+    [SerializeField]
     float defaultFadeOut = 0.25f;
 
     AudioSource src;
     Coroutine routine;
-    uint token; // cancels in-flight coroutines
+    uint token;
 
     void Awake()
     {
@@ -27,16 +31,60 @@ public sealed class AudioDirector : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
-        src = gameObject.AddComponent<AudioSource>();
-        src.playOnAwake = false;
-        src.loop = false;
-        src.spatialBlend = 0f; // 2D voiceover
-        Debug.Log($"[AudioDirector] Initialized");
+        EnsureAudioInfrastructure();
+        ApplyVolumeFromPrefs();
+
+        Debug.Log("[AudioDirector] Ready");
     }
 
-    // ---- Public API ----
+    // -------- infra helpers --------
+    void EnsureAudioInfrastructure()
+    {
+        // 1) Listener: ensure at least one enabled in scene
+        var listener = FindFirstObjectByType<AudioListener>();
+        if (!listener)
+        {
+            gameObject.AddComponent<AudioListener>();
+            Debug.Log("[AudioDirector] Added AudioListener to Audio GO");
+        }
+        else if (!listener.enabled)
+        {
+            listener.enabled = true;
+        }
+
+        // 2) Source: find or create on this GO
+        src = GetComponent<AudioSource>();
+        if (!src)
+        {
+            src = gameObject.AddComponent<AudioSource>();
+            Debug.Log("[AudioDirector] Added AudioSource to Audio GO");
+        }
+
+        ConfigureNarrationSource(src);
+    }
+
+    static void ConfigureNarrationSource(AudioSource s)
+    {
+        s.playOnAwake = false;
+        s.loop = false;
+        s.spatialBlend = 0f; // 2D
+        s.dopplerLevel = 0f; // no pitch warble
+        s.rolloffMode = AudioRolloffMode.Linear;
+        s.minDistance = 1f;
+        s.maxDistance = 10f;
+        s.volume = 1f; // overall loudness comes from AudioListener.volume
+        s.bypassListenerEffects = false;
+        s.bypassEffects = false;
+        s.bypassReverbZones = true;
+    }
+
+    public static void ApplyVolumeFromPrefs()
+    {
+        AudioListener.volume = AppPrefs.LoadVolume() / 100f;
+    }
+
+    // -------- Public API (unchanged) --------
     public void Play(AudioClip clip, float fadeIn = -1f, float fadeOutPrev = -1f)
     {
         if (!clip)
@@ -73,7 +121,7 @@ public sealed class AudioDirector : MonoBehaviour
         routine = StartCoroutine(CoFadeOut(src, fadeOut));
     }
 
-    // ---- Helpers ----
+    // -------- Internals (your existing code) --------
     void StartOrSwap(IReadOnlyList<AudioClip> clips, float fadeIn, float fadeOutPrev)
     {
         if (routine != null)
@@ -96,8 +144,6 @@ public sealed class AudioDirector : MonoBehaviour
             src.volume = 0f;
             src.Play();
             yield return CoFadeTo(src, 1f, fadeIn);
-
-            // wait until clip ends or cancelled
             while (src.isPlaying && tk == token)
                 yield return null;
             if (tk != token)

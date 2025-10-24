@@ -212,7 +212,6 @@ public sealed class TourRunner : MonoBehaviour
         if (fallbackCamera == null)
         {
             var go = new GameObject("FallbackClearCamera");
-            DontDestroyOnLoad(go);
             fallbackCamera = go.AddComponent<Camera>();
             fallbackCamera.clearFlags = CameraClearFlags.Skybox;
             fallbackCamera.cullingMask = ~0; // Everything

@@ -155,6 +155,9 @@ public sealed class TourBinder : MonoBehaviour
         if (tourRunner != null)
         {
             vm.NotifyEnteredArea(def, tourRunner.VisitedAcrossTour, tourRunner.TotalAcrossTour);
+            // Play audio via AudioDirector
+            if (def != null && def.AudioClips != null && def.AudioClips.Count > 0)
+                AudioDirector.Instance.PlaySequence(def.AudioClips, 0.1f);
         }
         else
         {
