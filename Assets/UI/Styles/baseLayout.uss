@@ -1,0 +1,57 @@
+.root {
+    width: 100%;
+    height: 100%;
+    font-size: 100px;
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Regular-SDF.asset?fileID=11400000&guid=5ca79f15c435d9c468768628c1e23902&type=2#Outfit-Regular-SDF");
+}
+
+.app-font-80  .root { 
+    font-size: 80px; 
+}
+
+.app-font-100 .root { 
+    font-size: 100px; 
+}
+
+.app-font-120 .root { 
+    font-size: 120px; 
+}
+
+.top-inset {
+    width: 100%;
+    height: 7%;
+}
+
+.bottom-inset {
+    width: 100%;
+    height: 4%;
+}
+
+.safe-area {
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 0%;
+    margin-right: 5%;
+    margin-bottom: 0%;
+    margin-left: 5%;
+}
+
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.scrim {
+    width: 100%;
+    height: 100%;
+    -unity-background-image-tint-color: rgb(55, 55, 55);
+    background-color: rgba(4, 8, 19, 0.78);
+}

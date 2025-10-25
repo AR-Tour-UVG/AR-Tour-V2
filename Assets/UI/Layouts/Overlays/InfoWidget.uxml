@@ -1,0 +1,25 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/Overlays/infoWidget.uss?fileID=7433441132597879392&amp;guid=7e26b48c863f9bc45a0c671028a62f2c&amp;type=3#infoWidget" />
+    <Style src="project://database/Assets/UI/Styles/baseLayout.uss?fileID=7433441132597879392&amp;guid=28ac6e247c5360949b32cbce032f8d7e&amp;type=3#baseLayout" />
+    <Style src="project://database/Assets/UI/Styles/Overlays/baseHUD.uss?fileID=7433441132597879392&amp;guid=c35c03674c53f4c43b6a0421aa5f0407&amp;type=3#baseHUD" />
+    <ui:VisualElement name="Viewport" class="root">
+        <ui:VisualElement name="TopInset" class="top-inset"/>
+        <ui:VisualElement name="SafeArea" class="safe-area">
+            <ui:VisualElement name="HeaderSpace" class="header"/>
+            <ui:VisualElement name="InfoWidget" class="widget">
+                <ui:VisualElement name="WidgetContainer" class="widget-container">
+                    <ui:VisualElement name="AreaImage" class="area-image"/>
+                    <ui:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto" class="info-container">
+                        <ui:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mauris mi, ultrices sit amet fringilla at, feugiat vitae velit. Praesent ultrices diam elit, vel dictum nibh euismod sed. Maecenas feugiat turpis massa, porta aliquam diam pharetra vel. Phasellus aliquam orci sit amet urna ultrices sollicitudin. Donec nulla eros, accumsan et urna vitae, tincidunt tempus ligula. Sed dapibus orci vel magna sodales, in consectetur massa venenatis. Suspendisse faucibus magna et eros sodales pretium. Suspendisse vehicula interdum velit ut imperdiet. Donec tortor magna, efficitur ac tortor sit amet, luctus gravida libero. Phasellus eget aliquam magna. Proin ullamcorper at elit ac tristique." name="Description" class="area-description"/>
+                    </ui:ScrollView>
+                    <ui:VisualElement name="ContinueButton" class="continue-button">
+                        <ui:Label text="Ir al Siguiente" name="ButtonText" class="continue-text"/>
+                        <ui:VisualElement name="ArrowIcon" class="continue-icon"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Jack" class="peeking-jack"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="BottomInset" class="bottom-inset"/>
+    </ui:VisualElement>
+</ui:UXML>

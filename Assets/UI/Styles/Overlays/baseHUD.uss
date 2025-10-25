@@ -1,0 +1,203 @@
+.header {
+    width: 100%;
+    height: 16%;
+}
+
+.footer {
+    width: 100%;
+    height: 20%;
+    background-image: url("project://database/Assets/Visuals/Backgrounds/dark-glass.png?fileID=21300000&guid=21c37f3bbba75264281cff8c0c326fd0&type=3#dark-glass");
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    flex-direction: row;
+}
+
+.content {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.top-container {
+    flex-direction: row;
+    width: 100%;
+    height: 60%;
+}
+
+.directions {
+    width: 100%;
+    height: 30%;
+    background-image: url("project://database/Assets/Visuals/Backgrounds/dark-glass.png?fileID=21300000&guid=21c37f3bbba75264281cff8c0c326fd0&type=3#dark-glass");
+    -unity-background-scale-mode: stretch-to-fill;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    justify-content: center;
+    flex-grow: 0;
+}
+
+.title-card {
+    background-image: url("project://database/Assets/Visuals/Backgrounds/dark-glass.png?fileID=21300000&guid=21c37f3bbba75264281cff8c0c326fd0&type=3#dark-glass");
+    width: 80%;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    margin-top: 0%;
+    margin-bottom: 5%;
+    flex-direction: row;
+}
+
+.menu {
+    margin-top: 0%;
+    margin-bottom: 5%;
+    flex-grow: 1;
+    background-image: url("project://database/Assets/Visuals/Backgrounds/dark-glass.png?fileID=21300000&guid=21c37f3bbba75264281cff8c0c326fd0&type=3#dark-glass");
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    margin-left: 5%;
+}
+
+.menu-icon {
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/menu.png?fileID=21300000&guid=7b48bb81acc3c0c4497c2c89fa596013&type=3#menu");
+    -unity-background-image-tint-color: rgb(0, 165, 0);
+    flex-grow: 1;
+    padding-top: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    margin-top: 20%;
+    margin-right: 20%;
+    margin-bottom: 20%;
+    margin-left: 20%;
+}
+
+.title-text {
+    color: rgb(0, 140, 54);
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Bold-SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold-SDF");
+    -unity-text-align: middle-left;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    flex-grow: 0;
+    margin-right: 4%;
+    font-size: 55%;
+    width: 78%;
+    -unity-font-style: normal;
+}
+
+.title-icon {
+    width: 12%;
+    -unity-background-image-tint-color: rgb(0, 165, 0);
+    -unity-background-scale-mode: scale-to-fit;
+    margin-top: 0;
+    margin-right: 2%;
+    margin-bottom: 0;
+    margin-left: 3%;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/location.png?fileID=21300000&guid=4d7c514c124c6074ab28ca865305f6c8&type=3#location");
+}
+
+.directions-text {
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-SemiBold-SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold-SDF");
+    color: rgb(242, 242, 242);
+    white-space: normal;
+    text-overflow: ellipsis;
+    -unity-text-align: middle-center;
+    font-size: 45%;
+    flex-grow: 0;
+    margin-right: 3%;
+    margin-left: 3%;
+    overflow: hidden;
+    height: 100%;
+    width: 94%;
+}
+
+.jack-container {
+    margin-top: 3%;
+    margin-right: 0%;
+    margin-bottom: 3%;
+    margin-left: 0%;
+    width: 35%;
+    height: auto;
+}
+
+.pointing-jack {
+    background-image: url("project://database/Assets/Visuals/Jack/Full/pointing.png?fileID=21300000&guid=6eb5542303daac248be0bd21dcafad63&type=3#pointing");
+    flex-grow: 0;
+    -unity-background-scale-mode: scale-to-fit;
+    width: 100%;
+    height: 100%;
+    background-position-x: left 25px;
+}
+
+.status-card {
+    width: 65%;
+    height: auto;
+    justify-content: space-between;
+    margin-top: 3%;
+    margin-right: 3%;
+    margin-bottom: 3%;
+    margin-left: 3%;
+}
+
+.status-title {
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-SemiBold-SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold-SDF");
+    color: rgb(242, 242, 242);
+    -unity-text-align: middle-center;
+    font-size: 60%;
+    width: 100%;
+}
+
+.metric-label {
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-SemiBold-SDF.asset?fileID=11400000&guid=3ccb137e78966aa49a39850df977b638&type=2#Outfit-SemiBold-SDF");
+    color: rgb(0, 165, 0);
+    -unity-text-align: middle-left;
+    text-overflow: ellipsis;
+    font-size: 45%;
+}
+
+.metric-value {
+    -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Regular-SDF.asset?fileID=11400000&guid=5ca79f15c435d9c468768628c1e23902&type=2#Outfit-Regular-SDF");
+    font-size: 45%;
+    color: rgb(0, 165, 0);
+    -unity-text-align: middle-center;
+    flex-grow: 1;
+}
+
+.metric-card {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    height: 30%;
+    background-image: url("project://database/Assets/Visuals/Backgrounds/dark-glass.png?fileID=21300000&guid=21c37f3bbba75264281cff8c0c326fd0&type=3#dark-glass");
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.59);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding-top: 0%;
+    padding-right: 5%;
+    padding-bottom: 0%;
+    padding-left: 5%;
+}
+
+.progress-icon {
+    background-image: url("project://database/Assets/Visuals/Icons/GUI/visited.png?fileID=21300000&guid=48bc524d8255a96409e7c8dcb31d8b1a&type=3#visited");
+    -unity-background-image-tint-color: rgb(0, 165, 0);
+    -unity-background-scale-mode: scale-to-fit;
+    width: 13%;
+    height: auto;
+    margin-top: 1%;
+    margin-right: 2%;
+    margin-bottom: 1%;
+    margin-left: 0%;
+}
