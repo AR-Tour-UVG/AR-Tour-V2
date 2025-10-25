@@ -19,6 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 49ff6145f4d109f4f95cf341a9763345, type: 2}
   - {fileID: 11400000, guid: b28d4f0647fae9b42a809597eb944e4e, type: 2}
   - {fileID: 11400000, guid: ae33a3a8e049bfe43b4430490615ffa0, type: 2}
-  anchorMapJson: {fileID: 4900000, guid: 64746f1696bc09147ae79270929e1038, type: 3}
+  anchorMapJson: {fileID: 4900000, guid: 62b77f1096a32445aa67158ebb02e33d, type: 3}
   scenePath: Assets/Scenes/Test/TestFloor.unity
   sceneAsset: {fileID: 102900000, guid: e930b081a0570354d80bf33b26e14198, type: 3}

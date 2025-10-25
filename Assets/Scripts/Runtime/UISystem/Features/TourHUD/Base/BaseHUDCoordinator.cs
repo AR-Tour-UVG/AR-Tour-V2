@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
@@ -17,21 +16,18 @@ public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
     public BaseHUDCoordinator(
         UIRouter r,
         TourViewModel model,
-        Sprite spinner,
-        Sprite elevator,
-        Sprite walking,
-        Sprite done,
-        Sprite start
+        UIAtlas uiAtlas,
+        AudioAtlas audioAtlas
     )
     {
         router = r;
         vm = model;
-        spinnerIcon = spinner;
-        elevatorIcon = elevator;
-        walkingIcon = walking;
-        doneIcon = done;
-        startIcon = start;
-        menu = new MenuCoordinator(r);
+        spinnerIcon = uiAtlas.HudSpinnerIcon;
+        elevatorIcon = uiAtlas.HudElevatorIcon;
+        walkingIcon = uiAtlas.HudWalkingIcon;
+        doneIcon = uiAtlas.HudDoneIcon;
+        startIcon = uiAtlas.HudStartIcon;
+        menu = new MenuCoordinator(r, uiAtlas, audioAtlas);
     }
 
     public void Attach(BaseHUDView view)

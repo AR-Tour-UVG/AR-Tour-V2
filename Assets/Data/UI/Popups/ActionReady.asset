@@ -16,3 +16,4 @@ MonoBehaviour:
   actionDescription: aqui algo que este listo
   actionJack: {fileID: 21300000, guid: 33dc1e74fd0830a4898fade34cd48fa5, type: 3}
   actionBtnText: Listo
+  actionAudioClip: {fileID: 8300000, guid: fb5c942d961b19d4b8e929780f9ba889, type: 3}

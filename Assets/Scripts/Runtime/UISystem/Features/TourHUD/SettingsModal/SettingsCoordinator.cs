@@ -3,10 +3,12 @@ using UnityEngine;
 public sealed class SettingsCoordinator
 {
     private readonly UIRouter router;
+    private readonly AudioAtlas audioAtlas;
 
-    public SettingsCoordinator(UIRouter r)
+    public SettingsCoordinator(UIRouter r, AudioAtlas aa)
     {
         router = r;
+        audioAtlas = aa;
     }
 
     public void Show()
@@ -41,6 +43,14 @@ public sealed class SettingsCoordinator
             v.SetVolumeIcon(LevelFor(val));
         }
 
+        void OnVolCommit()
+        {
+            if (audioAtlas && audioAtlas.settingsPreview)
+            {
+                AudioDirector.Instance.Play(audioAtlas.settingsPreview, 0f, 0.1f);
+            }
+        }
+
         void OnFont(int px)
         {
             px = NormalizeFontPx(px);
@@ -54,11 +64,13 @@ public sealed class SettingsCoordinator
             v.CloseRequested -= OnClose;
             v.VolumeChanged -= OnVol;
             v.FontPxPicked -= OnFont;
+            v.VolumeChangeCommitted -= OnVolCommit;
         }
 
         v.CloseRequested += OnClose;
         v.VolumeChanged += OnVol;
         v.FontPxPicked += OnFont;
+        v.VolumeChangeCommitted += OnVolCommit;
     }
 
     static VolumeLevel LevelFor(int v)
@@ -78,13 +90,16 @@ public sealed class SettingsCoordinator
     static void ApplyVolume(int v)
     {
         // example mapping
-        AudioListener.volume = v / 100f;
-        // or hand off to your media player
+        AppPrefs.SaveVolume(v);
+        AudioDirector.ApplyVolumeFromPrefs();
     }
 
     static void ApplyFontPx(int px)
     {
         var boot = Object.FindFirstObjectByType<UIBootstrap>();
-        boot?.ApplyGlobalFontPx(px);
+        if (boot != null)
+        {
+            boot.ApplyGlobalFontPx(px);
+        }
     }
 }
