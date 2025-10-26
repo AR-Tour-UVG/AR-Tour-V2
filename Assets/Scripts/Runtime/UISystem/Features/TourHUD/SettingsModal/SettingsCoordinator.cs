@@ -22,14 +22,21 @@ public sealed class SettingsCoordinator
         v.SetSlider(volume);
         v.SetSelectedFontPx(fontPx);
         v.SetVolumeIcon(LevelFor(volume));
-
         ApplyVolume(volume);
         ApplyFontPx(fontPx);
 
         void OnClose()
         {
-            Unhook();
-            router.HideOverlay(OverlayType.Settings);
+            v.CloseRequested -= OnClose;
+            v.Hidden -= OnHidden; // avoid dupes
+            v.Hidden += OnHidden;
+            v.Hide(); // animate out
+        }
+
+        void OnHidden()
+        {
+            v.Hidden -= OnHidden;
+            router.HideOverlay(OverlayType.Settings); // remove after animation
         }
 
         void OnVol(int val)
@@ -54,14 +61,6 @@ public sealed class SettingsCoordinator
             AppPrefs.SaveFontPx(px);
             v.SetSelectedFontPx(px);
             ApplyFontPx(px);
-        }
-
-        void Unhook()
-        {
-            v.CloseRequested -= OnClose;
-            v.VolumeChanged -= OnVol;
-            v.FontPxPicked -= OnFont;
-            v.VolumeChangeCommitted -= OnVolCommit;
         }
 
         v.CloseRequested += OnClose;

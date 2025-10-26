@@ -243,3 +243,16 @@
     background-image: url("project://database/Assets/Visuals/Icons/GUI/volume-high.png?fileID=21300000&guid=f34f5b64529d769468e5ecd6b8658d14&type=3#volume-high");
     -unity-background-image-tint-color: rgb(242, 242, 242);
 }
+
+#SettingsContainer {
+    scale: 0.5 0.5;
+    opacity: 0;
+    transition-property: scale, opacity;
+    transition-duration: 250ms, 250ms;
+    transition-timing-function: ease-in-out, ease-in-out;
+}
+
+#SettingsContainer.is-open {
+    scale: 1 1;
+    opacity: 1;
+}
