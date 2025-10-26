@@ -1,7 +1,8 @@
+using UnityEngine;
+
 public sealed class InfoWidgetCoordinator
 {
     private readonly UIRouter router;
-    private readonly TourViewModel vm;
     private readonly TourBinder binder;
 
     private bool showing;
@@ -9,7 +10,6 @@ public sealed class InfoWidgetCoordinator
     public InfoWidgetCoordinator(UIRouter r, TourViewModel model, TourBinder b)
     {
         router = r;
-        vm = model;
         binder = b;
     }
 
@@ -22,23 +22,26 @@ public sealed class InfoWidgetCoordinator
         }
 
         var w = router.ShowOverlay(OverlayType.InfoModal) as InfoWidgetView;
-
         if (w == null)
             return;
 
         showing = true;
+
         w.Hidden -= OnHidden;
         w.Hidden += OnHidden;
-
-        w.OnContinue += Continue;
-
-        w.Show(area);
 
         void Continue()
         {
             w.OnContinue -= Continue;
-            Hide();
+
+            AudioDirector.Instance.Stop(0.2f);
+            binder.RequestNext();
+
+            w.Hide();
         }
+
+        w.OnContinue += Continue;
+        w.Show(area);
     }
 
     public void Hide()
@@ -52,7 +55,7 @@ public sealed class InfoWidgetCoordinator
         w.Hide();
     }
 
-    void OnHidden()
+    private void OnHidden()
     {
         var w = router.GetOverlay<InfoWidgetView>(OverlayType.InfoModal);
         if (w != null)

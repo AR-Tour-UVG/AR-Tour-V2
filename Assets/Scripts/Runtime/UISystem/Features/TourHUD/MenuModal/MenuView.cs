@@ -101,7 +101,7 @@ public sealed class MenuView : IOverlayView
             Hidden?.Invoke();
             return;
         }
-        container.RemoveFromClassList("is-open"); // slide-out to right
+        container.RemoveFromClassList("is-open");
         isOpen = false;
     }
 
