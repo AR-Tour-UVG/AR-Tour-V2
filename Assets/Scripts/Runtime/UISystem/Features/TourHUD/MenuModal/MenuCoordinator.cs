@@ -4,7 +4,6 @@ public sealed class MenuCoordinator
 {
     private readonly UIRouter router;
     private readonly AudioAtlas audioAtlas;
-    private readonly UIAtlas uiAtlas;
 
     public MenuCoordinator(UIRouter r, UIAtlas ua, AudioAtlas aa)
     {
@@ -20,9 +19,15 @@ public sealed class MenuCoordinator
 
         void Close()
         {
+            m.Hide();
+        }
+
+        void OnHidden()
+        {
             Unhook();
             router.HideOverlay(OverlayType.Menu);
         }
+
         void ReturnHome()
         {
             Close();
@@ -32,17 +37,19 @@ public sealed class MenuCoordinator
             tr.StopTour(true);
             router.ShowScreen(ScreenState.Home);
         }
+
         void Restart()
         {
             var tr = TourRunner.Instance;
             if (tr == null)
                 return;
-            var currentTour = tr.CurrentTour;
+            var current = tr.CurrentTour;
             tr.StopTour(false);
-            tr.SelectTour(currentTour);
+            tr.SelectTour(current);
             tr.BeginTour();
             Close();
         }
+
         void Help()
         {
             Debug.Log("[MenuCoordinator] Help pressed.");
@@ -61,6 +68,7 @@ public sealed class MenuCoordinator
             m.OnRestart -= Restart;
             m.OnHelp -= Help;
             m.OnSettings -= Settings;
+            m.Hidden -= OnHidden;
         }
 
         m.OnClose += Close;
@@ -68,6 +76,7 @@ public sealed class MenuCoordinator
         m.OnRestart += Restart;
         m.OnHelp += Help;
         m.OnSettings += Settings;
+        m.Hidden += OnHidden;
 
         m.Show();
     }

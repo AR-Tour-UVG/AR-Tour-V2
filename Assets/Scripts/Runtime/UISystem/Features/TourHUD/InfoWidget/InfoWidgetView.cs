@@ -86,7 +86,6 @@ public sealed class InfoWidgetView : IOverlayView
         if (e.target != widget)
             return;
 
-        // Only react to our animated properties
         bool relevant = false;
         foreach (var name in e.stylePropertyNames)
         {
@@ -100,7 +99,6 @@ public sealed class InfoWidgetView : IOverlayView
         if (!relevant)
             return;
 
-        // After slide-out completes, actually hide the root
         if (!isOpen)
             Root.style.display = DisplayStyle.None;
     }

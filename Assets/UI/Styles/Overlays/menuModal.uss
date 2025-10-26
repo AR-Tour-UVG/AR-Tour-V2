@@ -62,3 +62,16 @@
     width: 100%;
     height: 0.5%;
 }
+
+#Menu {
+    opacity: 0;
+    translate: 100% 0;
+    transition-property: opacity, translate;
+    transition-duration: 250ms, 250ms;
+    transition-timing-function: ease-in-out, ease-in-out;
+}
+
+#Menu.is-open {
+    opacity: 1;
+    translate: 0 0;
+}

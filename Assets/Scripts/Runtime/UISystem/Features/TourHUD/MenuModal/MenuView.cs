@@ -11,12 +11,20 @@ public sealed class MenuView : IOverlayView
     public event Action OnSettings;
     public event Action OnReturnHome;
 
+    public event Action Hidden;
     VisualElement container,
         closeBtn,
         restart,
         help,
         settings,
         returnBtn;
+
+    bool isOpen;
+    EventCallback<ClickEvent> cbClose,
+        cbRestart,
+        cbHelp,
+        cbSettings,
+        cbReturn;
 
     public MenuView(VisualElement root)
     {
@@ -35,25 +43,90 @@ public sealed class MenuView : IOverlayView
         UIPickingUtils.ConfigureTreePickingMode(Root, PickingMode.Ignore);
         UIPickingUtils.ConfigureTreePickingMode(container, PickingMode.Position);
 
-        closeBtn?.RegisterCallback<ClickEvent>(_ => OnClose?.Invoke());
-        restart?.RegisterCallback<ClickEvent>(_ => OnRestart?.Invoke());
-        help?.RegisterCallback<ClickEvent>(_ => OnHelp?.Invoke());
-        settings?.RegisterCallback<ClickEvent>(_ => OnSettings?.Invoke());
-        returnBtn?.RegisterCallback<ClickEvent>(_ => OnReturnHome?.Invoke());
+        cbClose = _ => OnClose?.Invoke();
+        cbRestart = _ => OnRestart?.Invoke();
+        cbHelp = _ => OnHelp?.Invoke();
+        cbSettings = _ => OnSettings?.Invoke();
+        cbReturn = _ => OnReturnHome?.Invoke();
 
-        Hide();
+        closeBtn?.RegisterCallback(cbClose);
+        restart?.RegisterCallback(cbRestart);
+        help?.RegisterCallback(cbHelp);
+        settings?.RegisterCallback(cbSettings);
+        returnBtn?.RegisterCallback(cbReturn);
+
+        container.RegisterCallback<TransitionEndEvent>(OnTransitionEnd);
+
+        container.RemoveFromClassList("is-open");
+        Root.style.display = DisplayStyle.None;
+        isOpen = false;
     }
 
     public void Unbind()
     {
-        closeBtn?.UnregisterCallback<ClickEvent>(_ => OnClose?.Invoke());
-        restart?.UnregisterCallback<ClickEvent>(_ => OnRestart?.Invoke());
-        help?.UnregisterCallback<ClickEvent>(_ => OnHelp?.Invoke());
-        settings?.UnregisterCallback<ClickEvent>(_ => OnSettings?.Invoke());
-        returnBtn?.UnregisterCallback<ClickEvent>(_ => OnReturnHome?.Invoke());
+        closeBtn?.UnregisterCallback(cbClose);
+        restart?.UnregisterCallback(cbRestart);
+        help?.UnregisterCallback(cbHelp);
+        settings?.UnregisterCallback(cbSettings);
+        returnBtn?.UnregisterCallback(cbReturn);
+        container?.UnregisterCallback<TransitionEndEvent>(OnTransitionEnd);
     }
 
-    public void Show() => Root.style.display = DisplayStyle.Flex;
+    public void Show()
+    {
+        if (isOpen)
+            return;
 
-    public void Hide() => Root.style.display = DisplayStyle.None;
+        Root.style.display = DisplayStyle.Flex;
+        container.RemoveFromClassList("is-open");
+
+        void AfterLayout(GeometryChangedEvent _)
+        {
+            container.UnregisterCallback<GeometryChangedEvent>(AfterLayout);
+            container
+                .schedule.Execute(() =>
+                {
+                    container.AddToClassList("is-open");
+                    isOpen = true;
+                })
+                .StartingIn(0);
+        }
+        container.RegisterCallback<GeometryChangedEvent>(AfterLayout);
+    }
+
+    public void Hide()
+    {
+        if (!isOpen && Root.style.display == DisplayStyle.None)
+        {
+            Hidden?.Invoke();
+            return;
+        }
+        container.RemoveFromClassList("is-open"); // slide-out to right
+        isOpen = false;
+    }
+
+    void OnTransitionEnd(TransitionEndEvent e)
+    {
+        if (e.target != container)
+            return;
+
+        bool relevant = false;
+        foreach (var n in e.stylePropertyNames)
+        {
+            var prop = n.ToString();
+            if (prop == "translate" || prop == "opacity")
+            {
+                relevant = true;
+                break;
+            }
+        }
+        if (!relevant)
+            return;
+
+        if (!isOpen)
+        {
+            Root.style.display = DisplayStyle.None;
+            Hidden?.Invoke();
+        }
+    }
 }
