@@ -57,16 +57,9 @@ public class MovementAgent : MonoBehaviour
         SafeEnable(editorMover, on);
         Debug.Log("[MovementAgent] Keyboard Control ON (Editor)");
 #elif UNITY_IOS && !UNITY_EDITOR
-        SafeEnable(uwbMover, on);
+        // UWBPositioning always enabled and tracking. Do not gate movement here.
+        SafeEnable(uwbMover, true);
         Debug.Log("[MovementAgent] UWB Positioning ON (iOS device)");
-        if (uwbMover)
-        {
-            if (on)
-                uwbMover.SetApplyTransforms(on);
-            Debug.Log(
-                $"[MovementAgent] UWB Positioning {(on ? "APPLY ON" : "APPLY OFF")} (iOS device)"
-            );
-        }
 #else
         SafeEnable(uwbMover, false);
         SafeEnable(editorMover, false);

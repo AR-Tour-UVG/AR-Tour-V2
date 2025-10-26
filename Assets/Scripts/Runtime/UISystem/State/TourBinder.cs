@@ -159,7 +159,6 @@ public sealed class TourBinder : MonoBehaviour
         {
             u.enabled = true;
             Debug.Log("[TourBinder] Enabled UWBPositioning component.");
-            u.SetApplyTransforms(false);
             u.StartTracking();
         }
         else
@@ -300,13 +299,7 @@ public sealed class TourBinder : MonoBehaviour
             Debug.LogWarning("[TourBinder] RequestUserReady called with no FloorManager.");
             return;
         }
-#if UNITY_IOS
-        var u = movementAgent ? movementAgent.GetComponent<UWBPositioning>() : null;
-        if (u)
-        {
-            u.SetApplyTransforms(true);
-        }
-#endif
+
         waitingForFloorStart = false;
         fm.UserReady();
         vm.SetPaused(false);

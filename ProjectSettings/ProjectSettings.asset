@@ -175,7 +175,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Standalone: com.DefaultCompany.2D-Project
-    iPhone: Uwb.uvg.edu.gt
+    iPhone: uwb.uvg.edu.gt.gus
   buildNumber:
     Standalone: 0
     VisionOS: 0
