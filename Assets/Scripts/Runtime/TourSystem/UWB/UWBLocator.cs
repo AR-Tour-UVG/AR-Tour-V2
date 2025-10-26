@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 [Serializable]
@@ -43,7 +44,7 @@ public static class UWBLocator
     {
         position = default;
 
-#if !UNITY_IOS || UNITY_EDITOR
+#if UNITY_EDITOR && !UNITY_IOS
         if (!hasWarned)
         {
             Debug.LogWarning(
