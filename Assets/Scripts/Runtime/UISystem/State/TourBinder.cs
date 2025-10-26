@@ -8,6 +8,7 @@ public sealed class TourBinder : MonoBehaviour
     private PathProvider pathProvider;
 
     private MovementAgent movementAgent;
+    private UWBPositioning uwb;
 
     private TourViewModel vm;
     private FloorManager fm;
@@ -42,9 +43,10 @@ public sealed class TourBinder : MonoBehaviour
         if (pathProvider)
             return;
 
-        if (!movementAgent)
+        if (movementAgent == null)
             movementAgent = FindFirstObjectByType<MovementAgent>(FindObjectsInactive.Include);
-        if (movementAgent)
+
+        if (pathProvider == null)
             pathProvider = movementAgent.GetComponent<PathProvider>();
 
         if (!pathProvider)
@@ -77,6 +79,47 @@ public sealed class TourBinder : MonoBehaviour
         }
     }
 
+    private void BindUWB()
+    {
+        if (uwb)
+            return;
+
+        if (movementAgent == null)
+        {
+            movementAgent = FindFirstObjectByType<MovementAgent>(FindObjectsInactive.Include);
+        }
+
+        if (movementAgent)
+        {
+            uwb = movementAgent.GetComponent<UWBPositioning>();
+        }
+        if (uwb == null)
+        {
+            uwb = FindFirstObjectByType<UWBPositioning>(FindObjectsInactive.Include);
+        }
+        if (uwb)
+        {
+            uwb.OnConnectionStatusChanged += HandleUWBConnectionChanged;
+        }
+    }
+
+    private void UnbindUWB()
+    {
+        if (uwb == null)
+            return;
+        uwb.OnConnectionStatusChanged -= HandleUWBConnectionChanged;
+        uwb = null;
+    }
+
+    private void HandleUWBConnectionChanged(bool connected)
+    {
+        SetConnection(connected);
+        if (connected && waitingForFloorStart)
+        {
+            vm.SetPhase(TourUIPhase.ReadyPrompt);
+        }
+    }
+
     private void OnPathUpdated(NavMeshPath path)
     {
         if (vm != null && pathProvider != null)
@@ -104,6 +147,16 @@ public sealed class TourBinder : MonoBehaviour
         vm.SetPaused(movementAgent ? !movementAgent.IsEnabled : true);
 
         BindPathProvider();
+        BindUWB();
+#if UNITY_IOS
+        var u = movementAgent ? movementAgent.GetComponent<UWBPositioning>() : null;
+        if (u)
+        {
+            u.enabled = true;
+            u.SetApplyTransforms(false);
+            u.StartTracking();
+        }
+#endif
 
         vm.SetCurrentFloor(floor);
         waitingForFloorStart = true;
@@ -116,6 +169,15 @@ public sealed class TourBinder : MonoBehaviour
     private void OnFloorUnloaded(FloorDefinition floor)
     {
         UnbindPathProvider();
+        UnbindUWB();
+# if UNITY_IOS
+        var u = movementAgent ? movementAgent.GetComponent<UWBPositioning>() : null;
+        if (u)
+        {
+            u.StopTracking();
+            u.enabled = false;
+        }
+#endif
         movementAgent = null;
         vm.SetPaused(true);
         waitingForFloorStart = false;
@@ -225,6 +287,13 @@ public sealed class TourBinder : MonoBehaviour
             Debug.LogWarning("[TourBinder] RequestUserReady called with no FloorManager.");
             return;
         }
+#if UNITY_IOS
+        var u = movementAgent ? movementAgent.GetComponent<UWBPositioning>() : null;
+        if (u)
+        {
+            u.SetApplyTransforms(true);
+        }
+#endif
         waitingForFloorStart = false;
         fm.UserReady();
         vm.SetPaused(false);

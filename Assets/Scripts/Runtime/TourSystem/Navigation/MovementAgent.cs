@@ -22,6 +22,8 @@ public class MovementAgent : MonoBehaviour
             return editorMover && editorMover.enabled;
 #elif UNITY_IOS && !UNITY_EDITOR
             return uwbMover && uwbMover.enabled;
+#else
+            return false;
 #endif
         }
     }

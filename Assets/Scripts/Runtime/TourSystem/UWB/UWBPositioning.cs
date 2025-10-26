@@ -67,6 +67,13 @@ public class UWBPositioning : MonoBehaviour
     private bool hasGoal = false;
 
     public event Action<bool> OnConnectionStatusChanged;
+    public bool ApplyTransforms { get; private set; } = true;
+
+    public void SetApplyTransforms(bool apply)
+    {
+        ApplyTransforms = apply;
+    }
+
     bool connected;
 
     private void Awake()
@@ -182,6 +189,11 @@ public class UWBPositioning : MonoBehaviour
 
         lastAccepted = clamped;
         hasLastAccepted = true;
+
+        if (!ApplyTransforms)
+        {
+            return;
+        }
 
         if (smoothMove)
         {
