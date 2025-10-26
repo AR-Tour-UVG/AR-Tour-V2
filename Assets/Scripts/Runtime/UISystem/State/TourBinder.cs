@@ -87,18 +87,18 @@ public sealed class TourBinder : MonoBehaviour
         if (movementAgent == null)
         {
             movementAgent = FindFirstObjectByType<MovementAgent>(FindObjectsInactive.Include);
-            Debug.Log("[UWBPositioning] Found MovementAgent");
+            Debug.Log("[TourBinder] Found MovementAgent");
         }
 
         if (movementAgent)
         {
             uwb = movementAgent.GetComponent<UWBPositioning>();
-            Debug.Log("[UWBPositioning] Found UWBPositioning component");
+            Debug.Log("[TourBinder] Found UWBPositioning component");
         }
         if (uwb == null)
         {
             uwb = FindFirstObjectByType<UWBPositioning>(FindObjectsInactive.Include);
-            Debug.Log("[UWBPositioning] Found UWBPositioning in scene");
+            Debug.Log("[TourBinder] Found UWBPositioning in scene");
         }
         if (uwb)
         {
@@ -158,7 +158,7 @@ public sealed class TourBinder : MonoBehaviour
         if (u)
         {
             u.enabled = true;
-            Debug.Log("[UWBPositioning] Enabled UWBPositioning component.");
+            Debug.Log("[TourBinder] Enabled UWBPositioning component.");
             u.SetApplyTransforms(false);
             u.StartTracking();
         }

@@ -110,6 +110,14 @@ public class UWBPositioning : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+#if UNITY_IOS && !UNITY_EDITOR
+        if (pollRoutine == null)
+            StartTracking();
+#endif
+    }
+
     public void StartTracking()
     {
         if (pollRoutine != null)

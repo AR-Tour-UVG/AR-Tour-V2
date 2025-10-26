@@ -62,9 +62,10 @@ public class MovementAgent : MonoBehaviour
         if (uwbMover)
         {
             if (on)
-                uwbMover.StartTracking();
-            else
-                uwbMover.StopTracking();
+                uwbMover.SetApplyTransforms(on);
+            Debug.Log(
+                $"[MovementAgent] UWB Positioning {(on ? "APPLY ON" : "APPLY OFF")} (iOS device)"
+            );
         }
 #else
         SafeEnable(uwbMover, false);
