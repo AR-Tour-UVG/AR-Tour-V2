@@ -23,7 +23,6 @@ public static class OnboardingGate
         PlayerPrefs.Save();
     }
 
-    // Dev helpers
     public static void Reset()
     {
         PlayerPrefs.DeleteKey(SeenKey);

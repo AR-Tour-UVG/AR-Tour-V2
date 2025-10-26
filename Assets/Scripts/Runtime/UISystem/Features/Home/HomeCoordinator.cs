@@ -31,12 +31,9 @@ public sealed class HomeCoordinator : ICoordinator<HomeView>
     void OnExpress()
     {
         Debug.Log("[HomeCoordinator] Express Tour Selected");
-        // Get the tour runner and select the express tour
         var tourRunner = TourRunner.Instance;
         tourRunner.SelectTour(tourRunner.ExpressTour);
-        // Start the tour
         tourRunner.BeginTour();
-        // Mount the tour Base HUD as the active screen
         router.ShowScreen(ScreenState.TourHUD);
     }
 
@@ -45,9 +42,7 @@ public sealed class HomeCoordinator : ICoordinator<HomeView>
         Debug.Log("Complete Tour Selected");
         var tourRunner = TourRunner.Instance;
         tourRunner.SelectTour(tourRunner.CompleteTour);
-        // Start the tour
         tourRunner.BeginTour();
-        // Mount the tour Base HUD as the active screen
         router.ShowScreen(ScreenState.TourHUD);
     }
 

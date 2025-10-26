@@ -36,12 +36,12 @@ public sealed class ActionPopupCoordinator
             return;
         v.Show(atlas.ActionReadyOnFloorData, OnClick);
         if (!string.IsNullOrEmpty(descriptionOverride))
-            v.OverrideDescription(descriptionOverride); // add this helper on the view
+            v.OverrideDescription(descriptionOverride);
         void OnClick()
         {
             router.HideOverlay(OverlayType.ActionPopup);
             if (vm.Phase == TourUIPhase.FloorTransition)
-                TourRunner.Instance?.ContinueToNextFloor(); // when you add gating
+                TourRunner.Instance?.ContinueToNextFloor();
             else
                 binder.RequestUserReady();
         }

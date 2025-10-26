@@ -1,14 +1,9 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-// Enable creating from Unity menu
 [CreateAssetMenu(fileName = "NewAtlas", menuName = "AR GUI/Atlas", order = 1)]
-/// <summary>
-/// ScriptableObject holding references to UI VisualTreeAssets (UXML).
-/// </summary>
 public sealed class UIAtlas : ScriptableObject
 {
-    // References to UXML assets for different UI components
     [Header("UI Screens")]
     [Tooltip("UXML file for the Home/Main Menu screen")]
     [SerializeField]
@@ -84,8 +79,6 @@ public sealed class UIAtlas : ScriptableObject
 
     [SerializeField]
     private Sprite hudStartIcon;
-
-    // Public properties to access private fields
 
     public VisualTreeAsset HomeUXML => Home;
     public VisualTreeAsset MinigamesUXML => Minigames;

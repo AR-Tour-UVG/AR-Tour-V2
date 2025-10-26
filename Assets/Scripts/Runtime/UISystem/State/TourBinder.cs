@@ -12,9 +12,8 @@ public sealed class TourBinder : MonoBehaviour
     private TourViewModel vm;
     private FloorManager fm;
 
-    // Connection Flags
-    private bool waitingForFloorStart; // after a floor loads and before UserReady
-    private bool waitingForFloorContinue; // after a floor unload and before user continues
+    private bool waitingForFloorStart;
+    private bool waitingForFloorContinue;
     private TourUIPhase lastPhaseBeforeDisconnect = TourUIPhase.Navigating;
 
     public bool WaitingForFloorStart => waitingForFloorStart;
@@ -35,7 +34,6 @@ public sealed class TourBinder : MonoBehaviour
             vm.SetProgress(tourRunner.Progress);
         }
 
-        // Initial FM hookup if already present (editor play-in-scene)
         HookToActiveFloorManager();
     }
 
@@ -44,13 +42,11 @@ public sealed class TourBinder : MonoBehaviour
         if (pathProvider)
             return;
 
-        // Prefer PathProvider on the same GO as MovementAgent
         if (!movementAgent)
             movementAgent = FindFirstObjectByType<MovementAgent>(FindObjectsInactive.Include);
         if (movementAgent)
             pathProvider = movementAgent.GetComponent<PathProvider>();
 
-        // Fallback by tag
         if (!pathProvider)
         {
             var player = GameObject.FindWithTag("Player");
@@ -104,16 +100,13 @@ public sealed class TourBinder : MonoBehaviour
     {
         SwapFM(floorMgr);
 
-        // Resolve per floor MovementAgent
         movementAgent = FindFirstObjectByType<MovementAgent>(FindObjectsInactive.Include);
         vm.SetPaused(movementAgent ? !movementAgent.IsEnabled : true);
 
-        // Bind to PathProvider for distance updates
         BindPathProvider();
 
-        // Notify VM
         vm.SetCurrentFloor(floor);
-        waitingForFloorStart = true; // gate set
+        waitingForFloorStart = true;
         waitingForFloorContinue = false;
         vm.SetPhase(TourUIPhase.WaitingForConnection);
         vm.SetProgress(tourRunner.Progress);
@@ -123,11 +116,10 @@ public sealed class TourBinder : MonoBehaviour
     private void OnFloorUnloaded(FloorDefinition floor)
     {
         UnbindPathProvider();
-        movementAgent = null; // movement goes away with the scene
-        vm.SetPaused(true); // UI reflects that we’re paused between floors
-        vm.NotifyFloorEnded(floor);
+        movementAgent = null;
+        vm.SetPaused(true);
         waitingForFloorStart = false;
-        waitingForFloorContinue = true; // gate set during elevator time
+        waitingForFloorContinue = true;
         vm.SetPhase(TourUIPhase.FloorTransition);
     }
 
@@ -155,7 +147,6 @@ public sealed class TourBinder : MonoBehaviour
         if (tourRunner != null)
         {
             vm.NotifyEnteredArea(def, tourRunner.VisitedAcrossTour, tourRunner.TotalAcrossTour);
-            // Play audio via AudioDirector
             if (def != null && def.AudioClips != null && def.AudioClips.Count > 0)
                 AudioDirector.Instance.PlaySequence(def.AudioClips, 0.1f);
         }
@@ -171,7 +162,6 @@ public sealed class TourBinder : MonoBehaviour
         vm.SetPhase(TourUIPhase.Navigating);
     }
 
-    // Call from your UWB positioning bridge
     public void SetConnection(bool connected)
     {
         vm.SetConnected(connected);
@@ -180,16 +170,14 @@ public sealed class TourBinder : MonoBehaviour
         {
             lastPhaseBeforeDisconnect = vm.Phase;
             if (waitingForFloorStart || waitingForFloorContinue)
-                vm.SetPhase(TourUIPhase.WaitingForConnection); // expected during elevator
+                vm.SetPhase(TourUIPhase.WaitingForConnection);
             else
-                vm.SetPhase(TourUIPhase.ConnectionLost); // mid-tour loss
+                vm.SetPhase(TourUIPhase.ConnectionLost);
             return;
         }
 
-        // connected == true
         if (waitingForFloorContinue)
         {
-            // Still in elevator gate → show Ready once.
             vm.SetPhase(TourUIPhase.ReadyPrompt);
             return;
         }
@@ -198,27 +186,23 @@ public sealed class TourBinder : MonoBehaviour
         {
             if (!vm.HasBegunTour)
             {
-                // First floor only: ask to Start.
                 vm.SetPhase(TourUIPhase.ReadyPrompt);
             }
             else
             {
-                // Subsequent floors: auto start the floor on connect.
                 waitingForFloorStart = false;
                 vm.SetPhase(TourUIPhase.Navigating);
-                RequestUserReady(); // enable movement + confirm first area
+                RequestUserReady();
             }
             return;
         }
 
-        // Mid-tour reconnection: resume previous phase.
         vm.SetPhase(lastPhaseBeforeDisconnect);
     }
 
 #if UNITY_EDITOR
     void Update()
     {
-        // If a floor scene loads later in editor, rehook
         if (fm == null)
             HookToActiveFloorManager();
     }
@@ -231,7 +215,6 @@ public sealed class TourBinder : MonoBehaviour
             OnFloorLoaded(found.Floor, found);
     }
 
-    // Optional getters for coordinators
     public FloorManager ActiveFloorManager => fm;
     public MovementAgent Movement => movementAgent;
 
@@ -242,10 +225,9 @@ public sealed class TourBinder : MonoBehaviour
             Debug.LogWarning("[TourBinder] RequestUserReady called with no FloorManager.");
             return;
         }
-        waitingForFloorStart = false; // gate clear
-        fm.UserReady(); // enables movement and confirms first area per your FM
-        vm.SetPaused(false); // reflect movement state in the VM
-        // Phase will advance via FM events (GuidingToNext/AreaConfirmed) and SetConnection()
+        waitingForFloorStart = false;
+        fm.UserReady();
+        vm.SetPaused(false);
     }
 
     public void RequestNext()
@@ -255,6 +237,6 @@ public sealed class TourBinder : MonoBehaviour
             Debug.LogWarning("[TourBinder] RequestNext called with no FloorManager.");
             return;
         }
-        fm.Next(); // FM will emit GuidingToNext → VM.SetPhase(Navigating) in OnGuidingToNext
+        fm.Next();
     }
 }

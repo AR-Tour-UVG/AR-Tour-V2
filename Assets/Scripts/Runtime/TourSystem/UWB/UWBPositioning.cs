@@ -1,11 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-/// <summary>
-/// Moves a target object based on UWBLocator positions, with filtering and NavMesh clamping.
-/// </summary>
-/// <remarks>Attach to the player object or an empty GameObject.</remarks>
 [RequireComponent(typeof(Rigidbody))]
 public class UWBPositioning : MonoBehaviour
 {
@@ -59,21 +56,19 @@ public class UWBPositioning : MonoBehaviour
     [SerializeField]
     private int lostConnectionThreshold = 5;
 
-    private Coroutine pollRoutine; // null when not polling
-    private Vector3 lastAccepted; // last accepted position
-    private bool hasLastAccepted = false; // whether we have a valid last accepted position
+    private Coroutine pollRoutine;
+    private Vector3 lastAccepted;
+    private bool hasLastAccepted = false;
 
-    // null handling
-    private int consecutiveNulls = 0; // how many nulls in a row
-    private bool lossDeclared = false; // whether loss has been logged
+    private int consecutiveNulls = 0;
+    private bool lossDeclared = false;
 
-    // smoothing
-    private Vector3 currentGoal; // current target position when smoothing
-    private bool hasGoal = false; // whether we have a current goal
+    private Vector3 currentGoal;
+    private bool hasGoal = false;
 
-    /// <summary>
-    /// Set target to self if not assigned.
-    /// </summary>
+    public event Action<bool> OnConnectionStatusChanged;
+    bool connected;
+
     private void Awake()
     {
 #if UNITY_IOS && !UNITY_EDITOR
@@ -91,9 +86,6 @@ public class UWBPositioning : MonoBehaviour
 #endif
     }
 
-    /// <summary>
-    /// If smoothing, move towards goal each frame.
-    /// </summary>
     private void Update()
     {
         if (smoothMove && hasGoal)
@@ -111,9 +103,6 @@ public class UWBPositioning : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Start polling UWBLocator for positions.
-    /// </summary>
     public void StartTracking()
     {
         if (pollRoutine != null)
@@ -121,9 +110,6 @@ public class UWBPositioning : MonoBehaviour
         pollRoutine = StartCoroutine(PollLoop());
     }
 
-    /// <summary>
-    /// Stop polling UWBLocator for positions.
-    /// </summary>
     public void StopTracking()
     {
         if (pollRoutine == null)
@@ -132,9 +118,6 @@ public class UWBPositioning : MonoBehaviour
         pollRoutine = null;
     }
 
-    /// <summary>
-    /// Toggle tracking state.
-    /// </summary>
     public void ToggleTracking()
     {
         if (pollRoutine == null)
@@ -143,9 +126,6 @@ public class UWBPositioning : MonoBehaviour
             StopTracking();
     }
 
-    /// <summary>
-    /// Coroutine for polling UWBLocator positions.
-    /// </summary>
     private IEnumerator PollLoop()
     {
         var wait = new WaitForSeconds(pollIntervalSeconds <= 0f ? 0.5f : pollIntervalSeconds);
@@ -156,19 +136,19 @@ public class UWBPositioning : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Attempt to get a new position from UWBLocator and apply filtering and clamping.
-    /// </summary>
     private void TryStep()
     {
         if (!UWBLocator.TryGetPosition(out var uwbWorld))
         {
-            // Let UWBLocator log per-null warnings.
             HandlePossibleLoss();
             return;
         }
+        if (!connected)
+        {
+            connected = true;
+            OnConnectionStatusChanged?.Invoke(true);
+        }
 
-        // Recovered from a null streak
         if (consecutiveNulls > 0)
         {
             if (lossDeclared)
@@ -176,8 +156,6 @@ public class UWBPositioning : MonoBehaviour
             consecutiveNulls = 0;
             lossDeclared = false;
         }
-
-        // Filters
         if (hasLastAccepted)
         {
             float delta = Vector3.Distance(uwbWorld, lastAccepted);
@@ -195,7 +173,6 @@ public class UWBPositioning : MonoBehaviour
             }
         }
 
-        // Clamp to nearest NavMesh (any area)
         Vector3 clamped = ClampToNavmesh(
             uwbWorld,
             navmeshSampleRadius,
@@ -218,25 +195,22 @@ public class UWBPositioning : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Handle a possible loss of UWB signal.
-    /// </summary>
     private void HandlePossibleLoss()
     {
         consecutiveNulls++;
 
-        // Only declare loss once per streak, after threshold
         if (!lossDeclared && consecutiveNulls >= Mathf.Max(1, lostConnectionThreshold))
         {
-            Debug.LogWarning("[UWBPositioning] UWB connection lost. Waiting to reconnect…");
             lossDeclared = true;
+            if (connected)
+            {
+                connected = false;
+                OnConnectionStatusChanged?.Invoke(false);
+            }
+            Debug.LogWarning("[UWBPositioning] UWB connection lost. Waiting to reconnect…");
         }
     }
 
-    /// <summary>
-    /// Attempt to clamp a position to the NavMesh within a max radius.
-    /// If no NavMesh is found, returns the original position.
-    /// </summary>
     private static Vector3 ClampToNavmesh(
         Vector3 desired,
         float startRadius,

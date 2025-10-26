@@ -39,16 +39,13 @@ public class FloorDefinition : ScriptableObject
             string path = AssetDatabase.GetAssetPath(sceneAsset);
             if (scenePath != path)
             {
-                // Update the stored scene path
                 scenePath = path;
-                // Mark the ScriptableObject as dirty to ensure the change is saved
                 EditorUtility.SetDirty(this);
             }
         }
     }
 #endif
 
-    // Read-only accessors
     public string FloorName => floorName;
     public IReadOnlyList<AreaDefinition> OrderedAreas => orderedAreas;
     public TextAsset AnchorMapJson => anchorMapJson;
@@ -56,7 +53,6 @@ public class FloorDefinition : ScriptableObject
 
     public string TransitionText => transitionText;
 
-    // Helpers
     public int IndexOf(AreaDefinition area) => orderedAreas?.IndexOf(area) ?? -1;
 
     public AreaDefinition GetNextAfter(AreaDefinition current)

@@ -1,4 +1,3 @@
-// Check if the build target is iOS
 #if UNITY_IOS
 using UnityEditor;
 using UnityEditor.Callbacks;
@@ -7,25 +6,18 @@ using System.IO;
 
 public static class PostBuildProcessor
 {
-    /// <summary>
-    /// Post-process build steps for iOS.
-    /// </summary>
-    /// <param name="target">The build target.</param>
-    /// <param name="path">The path to the built player.</param>
+
     [PostProcessBuild]
     public static void OnPostProcessBuild(BuildTarget target, string path)
     {
-        // Check if the build target is iOS
         if (target != BuildTarget.iOS)
-            return; // Not an iOS build
+            return;
 
-        // Step 1: Info.plist usage strings
-        string plistPath = Path.Combine(path, "Info.plist"); // Path to the Info.plist file
-        var plist = new PlistDocument(); // Create a new PlistDocument
-        plist.ReadFromFile(plistPath); // Read the Info.plist file
-        var root = plist.root; // Get the root dictionary
+        string plistPath = Path.Combine(path, "Info.plist"); 
+        var plist = new PlistDocument(); 
+        plist.ReadFromFile(plistPath); 
+        var root = plist.root; 
 
-        // Add/update the usage descriptions your plugin needs:
         root.SetString(
             "NSNearbyInteractionUsageDescription",
             "Used to perform precise ranging with nearby devices/beacons."
@@ -43,7 +35,6 @@ public static class PostBuildProcessor
             "Camera is used by ARKit for spatial understanding."
         );
 
-        // Write changes to Info.plist
         File.WriteAllText(plistPath, plist.WriteToString());
     }
 }

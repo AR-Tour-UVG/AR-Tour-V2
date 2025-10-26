@@ -21,9 +21,7 @@ public sealed class NoticePopupView : IOverlayView
         title = Root.Q<Label>("MessageTitle");
         message = Root.Q<Label>("Message");
 
-        // Disable raycast blocking for the notice popup
         UIPickingUtils.ConfigureTreePickingMode(Root, PickingMode.Ignore);
-        // Re-enable picking for the popup container
         UIPickingUtils.ConfigureTreePickingMode(container, PickingMode.Position);
 
         Hide();

@@ -51,7 +51,6 @@ public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
         if (v == null)
             return;
 
-        // Title
         var title = vm.Phase switch
         {
             TourUIPhase.WaitingForConnection => "Conectando…",
@@ -84,7 +83,6 @@ public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
                 icon = vm.CurrentAreaDef ? vm.CurrentAreaDef.AreaIcon : null; // per-area if set
                 break;
             case TourUIPhase.ReadyPrompt:
-                // Only show a non-default icon if we havent begun the tour
                 if (!vm.HasBegunTour)
                     icon = startIcon;
                 break;
@@ -92,14 +90,11 @@ public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
 
         v.SetTitleIcon(icon);
 
-        // Directions card
         var showDir = vm.Phase == TourUIPhase.Navigating && !string.IsNullOrEmpty(vm.NextArea);
         v.SetDirections(showDir ? $"Dirígete a: {vm.NextArea}" : "", showDir);
 
-        // Footer when navigating only
         v.ShowFooter(vm.Phase == TourUIPhase.Navigating);
 
-        // Metrics
         v.SetProgress(vm.ProgressNormalized);
         v.SetDistance(vm.DistanceMeters);
     }

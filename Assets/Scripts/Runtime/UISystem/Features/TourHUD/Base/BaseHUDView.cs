@@ -32,10 +32,8 @@ public sealed class BaseHUDView : IScreenView
         distanceValue = Root.Q<Label>("DistanceValue");
         titleIcon = Root.Q<VisualElement>("TitleIcon");
 
-        // Disable raycast blocking for the HUD
         UIPickingUtils.ConfigureTreePickingMode(Root, PickingMode.Ignore);
 
-        // enable menu button picking
         UIPickingUtils.SetPickable(menuBtn);
 
         menuBtn?.RegisterCallback<ClickEvent>(_ => OnMenu?.Invoke());

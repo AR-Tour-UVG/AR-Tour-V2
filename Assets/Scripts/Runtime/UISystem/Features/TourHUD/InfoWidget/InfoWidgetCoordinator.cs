@@ -17,7 +17,6 @@ public sealed class InfoWidgetCoordinator
     {
         if (showing)
         {
-            // Reset if already showing
             Hide();
             return;
         }
@@ -36,8 +35,8 @@ public sealed class InfoWidgetCoordinator
             w.OnContinue -= Continue;
             showing = false;
             router.HideOverlay(OverlayType.InfoModal);
-            AudioDirector.Instance.Stop(0.2f); // fade out any audio associated with the widget
-            binder.RequestNext(); // advances to next area
+            AudioDirector.Instance.Stop(0.2f);
+            binder.RequestNext();
         }
     }
 

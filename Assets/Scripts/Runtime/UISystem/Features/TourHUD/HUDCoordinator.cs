@@ -9,7 +9,6 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
 
     private bool sawConnectionThisFloor;
 
-    // children
     private BaseHUDCoordinator baseHud;
     private InfoWidgetCoordinator info;
     private ActionPopupCoordinator action;
@@ -37,18 +36,15 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
         v = view;
         baseHud.Attach(view);
 
-        // react to VM signals
         vm.Changed += ApplyPhase;
         vm.EnteredArea += OnEnteredArea;
-        vm.GuidingTo += _ =>
-        { /* header/directions handled by BaseHUDCoordinator */
-        };
+        vm.GuidingTo += _ => { };
         vm.FloorBegan += _ => sawConnectionThisFloor = false;
         vm.ConnectionLost += OnConnLost;
         vm.ConnectionRestored += OnConnRestored;
         vm.TourCompletedEvent += OnTourCompleted;
         vm.GuidingTo += OnGuidingTo;
-        ApplyPhase(); // initial
+        ApplyPhase();
     }
 
     public void Detach()
@@ -95,13 +91,12 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
                 }
                 else if (binder.WaitingForFloorContinue)
                 {
-                    // Elevator/transition popup with floor text
                     var desc = vm.CurrentFloor ? vm.CurrentFloor.TransitionText : null;
-                    action.ShowReadyOnFloor(desc); // add overload to accept description override
+                    action.ShowReadyOnFloor(desc);
                 }
                 else
                 {
-                    action.ShowReadyOnFloor(); // generic "ready on floor"
+                    action.ShowReadyOnFloor();
                 }
                 break;
 
@@ -112,10 +107,8 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
                 break;
 
             case TourUIPhase.InAreaInfo:
-                // Audio managed by InfoWidgetCoordinator
                 notice.Hide();
                 action.Hide();
-                // ensure the widget is visible after restore
                 if (vm.CurrentAreaDef != null && vm.CurrentAreaDef.ShowInfo)
                     info.Show(vm.CurrentAreaDef);
                 break;
@@ -145,7 +138,6 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
         }
         else
         {
-            // immediately continue to navigating
             binder.RequestNext();
         }
     }
@@ -162,8 +154,6 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
     {
         sawConnectionThisFloor = true;
 
-        // If we were in a lost connection state, just restore to Navigating
-        // or reapply info if it was showing before.
         if (vm.Phase == TourUIPhase.ConnectionLost)
         {
             if (vm.CurrentAreaDef != null && vm.CurrentAreaDef.ShowInfo)
@@ -185,6 +175,5 @@ public sealed class HUDCoordinator : ICoordinator<BaseHUDView>
 
     public void OpenSettings() => settings.Show();
 
-    private void OnTourCompleted() { /* router back to home is handled elsewhere if desired */
-    }
+    private void OnTourCompleted() { }
 }

@@ -7,7 +7,7 @@ public sealed class AudioAtlas : ScriptableObject
     public AudioClip floorReady;
     public AudioClip connecting;
     public AudioClip connectionLost;
-    public AudioClip navigating; // short cue, not a loop
+    public AudioClip navigating;
     public AudioClip settingsPreview;
     public AudioClip tourComplete;
 }

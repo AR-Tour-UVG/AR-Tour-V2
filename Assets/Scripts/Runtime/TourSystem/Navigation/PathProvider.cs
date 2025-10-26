@@ -80,7 +80,7 @@ public class PathProvider : MonoBehaviour
         if (TryComputePath(p, t, out var path))
         {
             CurrentPath = path;
-            CurrentDistance = ComputePathDistance(CurrentPath); // meters if 1u = 1m
+            CurrentDistance = ComputePathDistance(CurrentPath);
             OnPathUpdated?.Invoke(CurrentPath);
         }
         else

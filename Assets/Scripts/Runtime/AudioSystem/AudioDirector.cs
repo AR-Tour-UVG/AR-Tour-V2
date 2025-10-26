@@ -38,10 +38,8 @@ public sealed class AudioDirector : MonoBehaviour
         Debug.Log("[AudioDirector] Ready");
     }
 
-    // -------- infra helpers --------
     void EnsureAudioInfrastructure()
     {
-        // 1) Listener: ensure at least one enabled in scene
         var listener = FindFirstObjectByType<AudioListener>();
         if (!listener)
         {
@@ -53,7 +51,6 @@ public sealed class AudioDirector : MonoBehaviour
             listener.enabled = true;
         }
 
-        // 2) Source: find or create on this GO
         src = GetComponent<AudioSource>();
         if (!src)
         {
@@ -68,12 +65,12 @@ public sealed class AudioDirector : MonoBehaviour
     {
         s.playOnAwake = false;
         s.loop = false;
-        s.spatialBlend = 0f; // 2D
-        s.dopplerLevel = 0f; // no pitch warble
+        s.spatialBlend = 0f;
+        s.dopplerLevel = 0f;
         s.rolloffMode = AudioRolloffMode.Linear;
         s.minDistance = 1f;
         s.maxDistance = 10f;
-        s.volume = 1f; // overall loudness comes from AudioListener.volume
+        s.volume = 1f;
         s.bypassListenerEffects = false;
         s.bypassEffects = false;
         s.bypassReverbZones = true;
@@ -84,7 +81,6 @@ public sealed class AudioDirector : MonoBehaviour
         AudioListener.volume = AppPrefs.LoadVolume() / 100f;
     }
 
-    // -------- Public API (unchanged) --------
     public void Play(AudioClip clip, float fadeIn = -1f, float fadeOutPrev = -1f)
     {
         if (!clip)
@@ -121,7 +117,6 @@ public sealed class AudioDirector : MonoBehaviour
         routine = StartCoroutine(CoFadeOut(src, fadeOut));
     }
 
-    // -------- Internals (your existing code) --------
     void StartOrSwap(IReadOnlyList<AudioClip> clips, float fadeIn, float fadeOutPrev)
     {
         if (routine != null)

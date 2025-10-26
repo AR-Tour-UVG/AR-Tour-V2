@@ -43,7 +43,6 @@ public class PathRenderer : MonoBehaviour
             return;
         }
 
-        // Copy and pin to a stable height (player/provider Y)
         float baseY = provider.transform.position.y + yOffset;
         var pts = new Vector3[corners.Length];
         for (int i = 0; i < corners.Length; i++)

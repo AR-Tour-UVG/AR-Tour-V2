@@ -5,13 +5,12 @@ using UnityEngine.AI;
 public class FloorValidator : MonoBehaviour
 {
     [SerializeField]
-    private FloorDefinition floor; // assign the same asset used by FloorManager
+    private FloorDefinition floor;
 
     private void Start()
     {
         bool ok = true;
 
-        // Player
         var player = GameObject.FindGameObjectWithTag("Player");
         if (!player)
         {
@@ -32,7 +31,6 @@ public class FloorValidator : MonoBehaviour
             }
         }
 
-        // AreaRegistry
         var reg = FindFirstObjectByType<AreaRegistry>(FindObjectsInactive.Include);
         if (!reg)
         {
@@ -77,7 +75,6 @@ public class FloorValidator : MonoBehaviour
             }
         }
 
-        // NavMesh presence
         var tri = NavMesh.CalculateTriangulation();
         if (tri.vertices == null || tri.vertices.Length == 0)
         {

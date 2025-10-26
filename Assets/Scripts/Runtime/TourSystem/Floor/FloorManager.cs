@@ -2,15 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Per-floor orchestrator. Enables the floor's areas, debounces entry,
-/// pauses/resumes pathing, and signals completion. User-paced flow:
-/// - Waits for UserReady()
-/// - Confirms first area immediately (simulate being inside)
-/// - On "Next", sets target to next area and unpauses pathing
-/// - On entering an area (debounced), pauses pathing and shows content (TODO)
-/// - Disables visited areas to avoid retriggers
-/// </summary>
 [DisallowMultipleComponent]
 [DefaultExecutionOrder(400)]
 public class FloorManager : MonoBehaviour
@@ -31,27 +22,23 @@ public class FloorManager : MonoBehaviour
     [SerializeField]
     private float enterConfirmTime = 0.75f;
 
-    // State
     private readonly HashSet<AreaDefinition> _visited = new();
     private readonly HashSet<AreaInstance> _inside = new();
-    private readonly List<GameObject> _sequence = new(); // ordered area GOs for this floor
-    private int _currentIndex = -1; // index of last confirmed area
-    private AreaInstance _candidate; // area we're debouncing
-    private float _candidateStart; // time we started debouncing
-    private bool _started; // after UserReady()
+    private readonly List<GameObject> _sequence = new();
+    private int _currentIndex = -1;
+    private AreaInstance _candidate;
+    private float _candidateStart;
+    private bool _started;
 
     public System.Action<FloorManager> FloorCompleted;
 
-    // Events
-    public event System.Action<AreaDefinition> AreaConfirmed; // fired when an area is confirmed
-    public event System.Action<AreaDefinition> GuidingToNext; // fired when Next() selects a target
+    public event System.Action<AreaDefinition> AreaConfirmed;
+    public event System.Action<AreaDefinition> GuidingToNext;
 
-    // Optional helpers (read-only)
-    public int CurrentIndex => _currentIndex; // -1 before first confirm
+    public int CurrentIndex => _currentIndex;
     public bool Started => _started;
     public FloorDefinition Floor => floor;
 
-    // Global tour progress
     public int GlobalVisited { get; set; }
     public int GlobalTotal { get; set; }
 
@@ -63,7 +50,6 @@ public class FloorManager : MonoBehaviour
             enabled = false;
             return;
         }
-        // Here the Area registry call?
         registry = registry
             ? registry
             : FindFirstObjectByType<AreaRegistry>(FindObjectsInactive.Include);
@@ -80,7 +66,6 @@ public class FloorManager : MonoBehaviour
             enabled = false;
             return;
         }
-        // Ensure all AreaInstances are indexed (after scene load)
         registry.Refresh();
 
         BuildSequence();
@@ -110,13 +95,11 @@ public class FloorManager : MonoBehaviour
             UserReady();
         }
 #endif
-        // Debounce confirmation only after tour started
         if (!_started)
             return;
 
         if (_candidate != null)
         {
-            // Still inside candidate?
             if (_inside.Contains(_candidate))
             {
                 if (Time.time - _candidateStart >= enterConfirmTime)
@@ -127,25 +110,19 @@ public class FloorManager : MonoBehaviour
             }
             else
             {
-                // Left before confirm → drop candidate
                 _candidate = null;
             }
         }
     }
 
-    // ---------- Public control ----------
-
-    /// <summary>Called by UI/TourRunner when the user is ready to start this floor.</summary>
     public void UserReady()
     {
         if (_started)
             return;
         _started = true;
 
-        // Enable tracking/movement
         movementAgent.Enable(true);
 
-        // Assume we start inside the first area; confirm it immediately.
         var first = GetAreaInstanceAt(0);
         if (first != null)
         {
@@ -158,7 +135,6 @@ public class FloorManager : MonoBehaviour
         }
     }
 
-    /// <summary>Advance to the next area (user-paced).</summary>
     public void Next()
     {
         if (!_started)
@@ -168,7 +144,6 @@ public class FloorManager : MonoBehaviour
 
         if (nextIdx >= _sequence.Count)
         {
-            // End of floor
             CompleteFloor();
             return;
         }
@@ -189,12 +164,9 @@ public class FloorManager : MonoBehaviour
         var nextPOI = nextGO.GetComponent<AreaInstance>();
         GuidingToNext?.Invoke(nextPOI ? nextPOI.Definition : null);
 
-        // Set navigation target and unpause pathing to show directions
         pathProvider.SetTarget(nextGO);
         pathProvider.Paused = false;
     }
-
-    // ---------- Internal ----------
 
     private void BuildSequence()
     {
@@ -257,14 +229,12 @@ public class FloorManager : MonoBehaviour
         if (!ai || !ai.Definition)
             return;
         if (_visited.Contains(ai.Definition))
-            return; // already visited and disabled
+            return;
 
         _inside.Add(ai);
 
-        // Start/refresh debounce for this candidate
         _candidate = ai;
         _candidateStart = Time.time;
-        // Path pauses once we confirm; no change here to keep guidance until confirmation.
     }
 
     private void HandleExited(AreaInstance ai)
@@ -273,7 +243,6 @@ public class FloorManager : MonoBehaviour
             return;
         _inside.Remove(ai);
 
-        // If the current candidate was exited before confirm, drop it
         if (_candidate == ai)
             _candidate = null;
     }
@@ -284,31 +253,21 @@ public class FloorManager : MonoBehaviour
         if (def == null)
             return;
 
-        // Mark and index
         _visited.Add(def);
         _currentIndex = floor.IndexOf(def);
 
-        // Pause pathing and clear line while content plays
         pathProvider.Paused = true;
         pathProvider.ClearTarget();
 
-        // Disable the area GO to avoid lingering re-triggers
         ai.gameObject.SetActive(false);
 
-        // Fire event
         AreaConfirmed?.Invoke(def);
 
-        // Content handling
         Debug.Log($"[FloorManager] ENTERED area '{def.AreaName}'. TODO: show text and play audio.");
-        // TODO: ContentPlayer.Play(def)
-
-        // If this was the last area, wait for user to choose Next (which will finish),
-        // or they can press a UI "Finish floor" that calls CompleteFloor().
     }
 
     private void CompleteFloor()
     {
-        // Stop movement and pathing
         movementAgent.Enable(false);
         pathProvider.Paused = true;
         pathProvider.ClearTarget();

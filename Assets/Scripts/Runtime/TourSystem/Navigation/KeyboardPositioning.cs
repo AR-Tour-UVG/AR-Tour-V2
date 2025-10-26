@@ -1,12 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Simple WASD/Arrow key movement for Editor testing.
-/// Uses the new Input System package.
-/// Moves the target transform directly.
-/// </summary>
-/// <remarks>Attach to the player object or an empty GameObject.</remarks>
 [RequireComponent(typeof(Rigidbody))]
 public class KeyboardPositioning : MonoBehaviour
 {
@@ -18,11 +12,8 @@ public class KeyboardPositioning : MonoBehaviour
     [Header("Target")]
     [Tooltip("The player object to move")]
     [SerializeField]
-    private Transform target; // defaults to this.transform
+    private Transform target;
 
-    /// <summary>
-    /// Set target to self if not assigned.
-    /// </summary>
     private void Awake()
     {
 #if UNITY_EDITOR
@@ -40,13 +31,10 @@ public class KeyboardPositioning : MonoBehaviour
 #endif
     }
 
-    /// <summary>
-    /// Check for key presses and move the target accordingly.
-    /// </summary>
     private void Update()
     {
         if (Keyboard.current == null)
-            return; // editor window not focused
+            return;
 
         int h = 0;
         int v = 0;

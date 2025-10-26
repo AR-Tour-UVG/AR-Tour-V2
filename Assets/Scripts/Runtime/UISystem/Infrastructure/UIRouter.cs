@@ -4,27 +4,21 @@ using UnityEngine.UIElements;
 
 public sealed class UIRouter
 {
-    // Layers
     private readonly VisualElement baseLayer;
     private readonly VisualElement modalLayer;
     private readonly VisualElement popupLayer;
     private readonly VisualElement menuLayer;
     private readonly VisualElement settingsLayer;
 
-    // Factory to create views
     private readonly IViewFactory factory;
 
-    // Current states
     public ScreenState CurrentScreen { get; private set; }
     public IScreenView CurrentScreenView { get; private set; }
 
-    // Notify when the screen changes to coordinators
     public event System.Action<IScreenView> ScreenChanged;
 
-    // Track active overlays
     private readonly Dictionary<OverlayType, IOverlayView> overlays = new();
 
-    // per-layer counts to toggle layer visibility
     private int modalCount,
         popupCount,
         menuCount,
@@ -49,13 +43,10 @@ public sealed class UIRouter
 
     public void ShowScreen(ScreenState s)
     {
-        // Unmount and Unbind previous
         CurrentScreenView?.Unbind();
 
-        // Clear base layer
         baseLayer.Clear();
 
-        // Create view
         var view = factory.CreateScreen(s);
         if (view == null || view.Root == null)
         {
@@ -63,20 +54,15 @@ public sealed class UIRouter
             return;
         }
 
-        // Mount and bind new
         baseLayer.Add(view.Root);
         view.Bind(GetDoc(baseLayer));
-        // Update state
         CurrentScreen = s;
         CurrentScreenView = view;
-        // Notify coordinators
         ScreenChanged?.Invoke(view);
     }
 
-    // -------- Overlays --------
     public IOverlayView ShowOverlay(OverlayType t)
     {
-        // already visible → return
         if (overlays.TryGetValue(t, out var existing))
             return existing;
 
@@ -94,7 +80,6 @@ public sealed class UIRouter
             return null;
         }
 
-        // ensure layer visible
         layer.style.display = DisplayStyle.Flex;
         IncrementLayerCount(t);
 
@@ -183,8 +168,6 @@ public sealed class UIRouter
 
     private static UIDocument GetDoc(VisualElement any)
     {
-        // In practice we pass the UIDocument into the factory
-        // this is a fallback
         return Object.FindFirstObjectByType<UIDocument>();
     }
 }

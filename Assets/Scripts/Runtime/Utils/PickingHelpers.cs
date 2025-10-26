@@ -2,7 +2,6 @@ using UnityEngine.UIElements;
 
 public static class UIPickingUtils
 {
-    // Make the whole subtree pass-through
     public static void ConfigureTreePickingMode(VisualElement root, PickingMode mode)
     {
         if (root == null)

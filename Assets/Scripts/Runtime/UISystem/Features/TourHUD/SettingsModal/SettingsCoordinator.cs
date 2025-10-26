@@ -16,16 +16,13 @@ public sealed class SettingsCoordinator
         if (router.ShowOverlay(OverlayType.Settings) is not SettingsView v)
             return;
 
-        // load persisted or defaults
         int volume = Mathf.Clamp(AppPrefs.LoadVolume(), 0, 100);
-        int fontPx = NormalizeFontPx(AppPrefs.LoadFontPx()); // 80/100/120
+        int fontPx = NormalizeFontPx(AppPrefs.LoadFontPx());
 
-        // push into UI
         v.SetSlider(volume);
         v.SetSelectedFontPx(fontPx);
         v.SetVolumeIcon(LevelFor(volume));
 
-        // apply to systems once on open
         ApplyVolume(volume);
         ApplyFontPx(fontPx);
 
@@ -55,8 +52,8 @@ public sealed class SettingsCoordinator
         {
             px = NormalizeFontPx(px);
             AppPrefs.SaveFontPx(px);
-            v.SetSelectedFontPx(px); // visuals only
-            ApplyFontPx(px); // effect
+            v.SetSelectedFontPx(px);
+            ApplyFontPx(px);
         }
 
         void Unhook()
@@ -75,21 +72,20 @@ public sealed class SettingsCoordinator
 
     static VolumeLevel LevelFor(int v)
     {
-        int d = Mathf.RoundToInt(v); // 0..100
+        int d = Mathf.RoundToInt(v);
         if (d == 0)
-            return VolumeLevel.Mute; // 0
+            return VolumeLevel.Mute;
         if (d <= 35)
-            return VolumeLevel.Low; // 1..35
+            return VolumeLevel.Low;
         if (d <= 70)
-            return VolumeLevel.Med; // 36..70
-        return VolumeLevel.High; // 71..100
+            return VolumeLevel.Med;
+        return VolumeLevel.High;
     }
 
     static int NormalizeFontPx(int px) => (px == 80 || px == 120) ? px : 100;
 
     static void ApplyVolume(int v)
     {
-        // example mapping
         AppPrefs.SaveVolume(v);
         AudioDirector.ApplyVolumeFromPrefs();
     }

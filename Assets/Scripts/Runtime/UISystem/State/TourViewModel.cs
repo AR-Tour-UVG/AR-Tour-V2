@@ -3,32 +3,30 @@ using UnityEngine;
 
 public enum TourUIPhase
 {
-    WaitingForConnection, // scene loaded, not connected
-    ConnectionLost, // lost connection during tour
-    ReadyPrompt, // show Start/Ready action popup
-    Navigating, // HUD directions/footer visible
-    InAreaInfo, // InfoWidget showing
-    FloorTransition, // between floors (elevators)
+    WaitingForConnection,
+    ConnectionLost,
+    ReadyPrompt,
+    Navigating,
+    InAreaInfo,
+    FloorTransition,
     TourComplete,
 }
 
 public sealed class TourViewModel
 {
-    // ---- State (read-only to views) ----
     public string CurrentArea { get; private set; } = "";
     public string NextArea { get; private set; } = "";
-    public float ProgressNormalized { get; private set; } = 0f; // 0..1
+    public float ProgressNormalized { get; private set; } = 0f;
     public float DistanceMeters { get; private set; } = 0f;
     public bool Connected { get; private set; } = false;
     public bool Paused { get; private set; } = true;
-    public bool HasBegunTour { get; private set; } = false; // Start popup only once
+    public bool HasBegunTour { get; private set; } = false;
     public TourUIPhase Phase { get; private set; } = TourUIPhase.WaitingForConnection;
 
     public AreaDefinition CurrentAreaDef { get; private set; }
     public AreaDefinition NextAreaDef { get; private set; }
     public FloorDefinition CurrentFloor { get; private set; }
 
-    // ---- Signals ----
     public event Action Changed;
     public event Action<AreaDefinition> EnteredArea;
     public event Action<AreaDefinition> GuidingTo;
@@ -38,7 +36,6 @@ public sealed class TourViewModel
     public event Action ConnectionLost;
     public event Action ConnectionRestored;
 
-    // ---- Mutators (binder/coordinators call) ----
     public void SetPhase(TourUIPhase p)
     {
         if (Phase == p)

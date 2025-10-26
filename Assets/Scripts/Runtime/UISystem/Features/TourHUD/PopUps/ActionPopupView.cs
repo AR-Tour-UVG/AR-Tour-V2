@@ -27,9 +27,7 @@ public sealed class ActionPopupView : IOverlayView
         button = Root.Q<VisualElement>("ActionButton");
         buttonText = Root.Q<Label>("ButtonText");
 
-        // Disable raycast blocking for the action popup
         UIPickingUtils.ConfigureTreePickingMode(Root, PickingMode.Ignore);
-        // Re-enable raycast blocking for the popup elements
         UIPickingUtils.ConfigureTreePickingMode(container, PickingMode.Position);
 
         button?.RegisterCallback<ClickEvent>(_ => click?.Invoke());

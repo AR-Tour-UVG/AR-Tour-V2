@@ -7,12 +7,10 @@ public sealed class TourRunner : MonoBehaviour
 {
     public static TourRunner Instance { get; private set; }
 
-    // Signals for the tour binder
     public event System.Action<FloorDefinition, FloorManager> FloorLoaded;
     public event System.Action<FloorDefinition> FloorUnloaded;
     public event System.Action TourCompleted;
 
-    // Expose current tour progress
     public int VisitedAcrossTour => visitedAcrossTour;
     public int TotalAcrossTour => totalAcrossTour;
     public float Progress =>
@@ -21,7 +19,7 @@ public sealed class TourRunner : MonoBehaviour
     private int floorIndex = -1;
     private FloorManager activeFM;
     private string loadedScenePath;
-    private Scene baseScene; // Reference to the initial scene (main menu)
+    private Scene baseScene;
     private Camera fallbackCamera;
     private int visitedAcrossTour;
     private int totalAcrossTour;
@@ -51,11 +49,9 @@ public sealed class TourRunner : MonoBehaviour
         Debug.Log($"[TourRunner] Awake. Base scene: {baseScene.name}");
     }
 
-    // Called by UI (Ruta Express / Completa button)
     public void SelectTour(TourDefinition tour)
     {
         currentTour = tour;
-        // Initialize counters
         floorIndex = 0;
         visitedAcrossTour = 0;
         totalAcrossTour = (tour != null) ? tour.TotalAreasCount() : 0;
@@ -63,7 +59,6 @@ public sealed class TourRunner : MonoBehaviour
         Debug.Log($"[TourRunner] Selected tour: {name} | Total areas: {totalAcrossTour}");
     }
 
-    // Called by UI right after SelectTour. Loads FIRST floor immediately.
     public void BeginTour()
     {
         if (
@@ -93,7 +88,6 @@ public sealed class TourRunner : MonoBehaviour
             yield break;
         }
 
-        // Set anchor map for the current floor
         if (floor.TryGetAnchorMapText(out var json))
         {
             UWBLocator.SetAnchorMap(json);
@@ -106,7 +100,6 @@ public sealed class TourRunner : MonoBehaviour
             );
         }
 
-        // Load scene additively
         var op = SceneManager.LoadSceneAsync(floor.ScenePath, LoadSceneMode.Additive);
         yield return op;
 
@@ -119,12 +112,10 @@ public sealed class TourRunner : MonoBehaviour
 
         SceneManager.SetActiveScene(scene);
 
-        // Handle cameras
         AdoptSceneCameraOrKeepFallback(scene);
 
         loadedScenePath = floor.ScenePath;
 
-        // Find FM and inject this floor
         activeFM = FindFirstObjectByType<FloorManager>(FindObjectsInactive.Include);
         if (!activeFM)
         {
@@ -137,7 +128,6 @@ public sealed class TourRunner : MonoBehaviour
         activeFM.GlobalVisited = visitedAcrossTour;
         activeFM.GlobalTotal = totalAcrossTour;
 
-        // Notify listeners that floor is ready
         FloorLoaded?.Invoke(currentTour.OrderedFloors[idx], activeFM);
 
         Debug.Log(
@@ -181,13 +171,12 @@ public sealed class TourRunner : MonoBehaviour
             activeFM = null;
         }
 
-        // Return to base scene
         if (baseScene.IsValid() && baseScene.isLoaded)
             SceneManager.SetActiveScene(baseScene);
 
-        yield return null; // let Unity settle scene references
+        yield return null;
 
-        EnsureFallbackCamera(); // re-enable a camera if none active
+        EnsureFallbackCamera();
 
         floorIndex++;
         if (currentTour == null || floorIndex >= currentTour.OrderedFloors.Count)
@@ -197,14 +186,12 @@ public sealed class TourRunner : MonoBehaviour
             yield break;
         }
 
-        // Pause until user confirms continuation
         waitingForUserToContinue = true;
         Debug.Log("[TourRunner] Waiting for user to continue to next floor.");
     }
 
     private void EnsureFallbackCamera()
     {
-        // If any enabled camera exists, do nothing
         foreach (var cam in Camera.allCameras)
             if (cam && cam.enabled)
                 return;
@@ -214,7 +201,7 @@ public sealed class TourRunner : MonoBehaviour
             var go = new GameObject("FallbackClearCamera");
             fallbackCamera = go.AddComponent<Camera>();
             fallbackCamera.clearFlags = CameraClearFlags.Skybox;
-            fallbackCamera.cullingMask = ~0; // Everything
+            fallbackCamera.cullingMask = ~0;
             fallbackCamera.depth = -100;
         }
         fallbackCamera.enabled = true;
@@ -248,7 +235,7 @@ public sealed class TourRunner : MonoBehaviour
         }
         else
         {
-            EnsureFallbackCamera(); // fallback clears screen; change if you want it to render geometry
+            EnsureFallbackCamera();
             Debug.LogWarning(
                 "[TourRunner] No enabled camera found in floor scene. Using fallback camera."
             );

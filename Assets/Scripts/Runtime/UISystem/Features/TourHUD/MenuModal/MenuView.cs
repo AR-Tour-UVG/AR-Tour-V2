@@ -11,7 +11,6 @@ public sealed class MenuView : IOverlayView
     public event Action OnSettings;
     public event Action OnReturnHome;
 
-    // cached
     VisualElement container,
         closeBtn,
         restart,
@@ -26,16 +25,14 @@ public sealed class MenuView : IOverlayView
 
     public void Bind(UIDocument doc)
     {
-        container = Root.Q<VisualElement>("Menu") ?? Root; // menu container
+        container = Root.Q<VisualElement>("Menu") ?? Root;
         closeBtn = Root.Q<VisualElement>("CloseButton");
         restart = Root.Q<VisualElement>("Restart");
         help = Root.Q<VisualElement>("Help");
         settings = Root.Q<VisualElement>("Settings");
         returnBtn = Root.Q<VisualElement>("Return");
 
-        // Disable raycast blocking for the menu modal
         UIPickingUtils.ConfigureTreePickingMode(Root, PickingMode.Ignore);
-        // Re-enable raycast blocking for the container
         UIPickingUtils.ConfigureTreePickingMode(container, PickingMode.Position);
 
         closeBtn?.RegisterCallback<ClickEvent>(_ => OnClose?.Invoke());
@@ -44,7 +41,7 @@ public sealed class MenuView : IOverlayView
         settings?.RegisterCallback<ClickEvent>(_ => OnSettings?.Invoke());
         returnBtn?.RegisterCallback<ClickEvent>(_ => OnReturnHome?.Invoke());
 
-        Hide(); // start hidden
+        Hide();
     }
 
     public void Unbind()

@@ -5,7 +5,7 @@ public sealed class AppLifetime : MonoBehaviour
     void Awake()
     {
         if (transform.parent != null)
-            transform.SetParent(null); // become root
+            transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
     }
 }
