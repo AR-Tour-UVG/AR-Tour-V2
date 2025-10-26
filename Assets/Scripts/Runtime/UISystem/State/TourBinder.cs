@@ -60,12 +60,12 @@ public sealed class TourBinder : MonoBehaviour
         {
             pathProvider.OnPathUpdated += OnPathUpdated;
             Debug.Log(
-                $"[Binder] Subscribed to PathProvider #{pathProvider.GetInstanceID()} on {pathProvider.gameObject.name}"
+                $"[TourBinder] Subscribed to PathProvider #{pathProvider.GetInstanceID()} on {pathProvider.gameObject.name}"
             );
         }
         else
         {
-            Debug.LogWarning("[Binder] No PathProvider found after floor load.");
+            Debug.LogWarning("[TourBinder] No PathProvider found after floor load.");
         }
     }
 
@@ -74,7 +74,7 @@ public sealed class TourBinder : MonoBehaviour
         if (pathProvider)
         {
             pathProvider.OnPathUpdated -= OnPathUpdated;
-            Debug.Log("[Binder] Unsubscribed from PathProvider");
+            Debug.Log("[TourBinder] Unsubscribed from PathProvider");
             pathProvider = null;
         }
     }
@@ -87,19 +87,23 @@ public sealed class TourBinder : MonoBehaviour
         if (movementAgent == null)
         {
             movementAgent = FindFirstObjectByType<MovementAgent>(FindObjectsInactive.Include);
+            Debug.Log("[UWBPositioning] Found MovementAgent");
         }
 
         if (movementAgent)
         {
             uwb = movementAgent.GetComponent<UWBPositioning>();
+            Debug.Log("[UWBPositioning] Found UWBPositioning component");
         }
         if (uwb == null)
         {
             uwb = FindFirstObjectByType<UWBPositioning>(FindObjectsInactive.Include);
+            Debug.Log("[UWBPositioning] Found UWBPositioning in scene");
         }
         if (uwb)
         {
             uwb.OnConnectionStatusChanged += HandleUWBConnectionChanged;
+            Debug.Log("[TourBinder] Subscribed to UWBPositioning");
         }
     }
 
@@ -113,9 +117,11 @@ public sealed class TourBinder : MonoBehaviour
 
     private void HandleUWBConnectionChanged(bool connected)
     {
+        Debug.Log($"[TourBinder] UWB connection changed: {connected}");
         SetConnection(connected);
         if (connected && waitingForFloorStart)
         {
+            Debug.Log("[TourBinder] UWB reconnected, prompting user to start tour.");
             vm.SetPhase(TourUIPhase.ReadyPrompt);
         }
     }
@@ -142,7 +148,6 @@ public sealed class TourBinder : MonoBehaviour
     private void OnFloorLoaded(FloorDefinition floor, FloorManager floorMgr)
     {
         SwapFM(floorMgr);
-
         movementAgent = FindFirstObjectByType<MovementAgent>(FindObjectsInactive.Include);
         vm.SetPaused(movementAgent ? !movementAgent.IsEnabled : true);
 
@@ -153,8 +158,13 @@ public sealed class TourBinder : MonoBehaviour
         if (u)
         {
             u.enabled = true;
+            Debug.Log("[UWBPositioning] Enabled UWBPositioning component.");
             u.SetApplyTransforms(false);
             u.StartTracking();
+        }
+        else
+        {
+            Debug.LogWarning("[TourBinder] No UWBPositioning component found on MovementAgent.");
         }
 #endif
 
@@ -226,6 +236,9 @@ public sealed class TourBinder : MonoBehaviour
 
     public void SetConnection(bool connected)
     {
+        Debug.Log(
+            $"[TourBinder] SetConnection({connected}), waitingForFloorStart={waitingForFloorStart}, waitingForFloorContinue={waitingForFloorContinue}, lastPhase={lastPhaseBeforeDisconnect}"
+        );
         vm.SetConnected(connected);
 
         if (!connected)

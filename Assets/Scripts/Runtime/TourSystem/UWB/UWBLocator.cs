@@ -57,7 +57,7 @@ public static class UWBLocator
         IntPtr coordsPtr = getCoords();
         if (coordsPtr == IntPtr.Zero)
         {
-            Debug.LogWarning("[UWBLocator] getCoords() returned null pointer.");
+            Debug.LogWarning("[UWBLocator] Received null pointer for coordinates from UWB plugin.");
             return false;
         }
 
@@ -75,6 +75,7 @@ public static class UWBLocator
             }
 
             Coordinate uwbPosition = JsonUtility.FromJson<Coordinate>(json);
+            Debug.Log($"[UWBLocator] Parsed UWB Position - x: {uwbPosition.x}, y: {uwbPosition.y}");
             position = new Vector3(uwbPosition.x, 0f, uwbPosition.y);
             return true;
         }

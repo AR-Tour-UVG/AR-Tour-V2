@@ -74,7 +74,7 @@ public class UWBPositioning : MonoBehaviour
         ApplyTransforms = apply;
     }
 
-    bool connected;
+    bool connected = false;
 
     private void Awake()
     {
@@ -114,6 +114,7 @@ public class UWBPositioning : MonoBehaviour
     {
         if (pollRoutine != null)
             return;
+        Debug.Log("[UWBPositioning] Starting UWB tracking.");
         pollRoutine = StartCoroutine(PollLoop());
     }
 
@@ -121,20 +122,14 @@ public class UWBPositioning : MonoBehaviour
     {
         if (pollRoutine == null)
             return;
+        Debug.Log("[UWBPositioning] Stopping UWB tracking.");
         StopCoroutine(pollRoutine);
         pollRoutine = null;
     }
 
-    public void ToggleTracking()
-    {
-        if (pollRoutine == null)
-            StartTracking();
-        else
-            StopTracking();
-    }
-
     private IEnumerator PollLoop()
     {
+        Debug.Log("[UWBPositioning] Starting PollLoop.");
         var wait = new WaitForSeconds(pollIntervalSeconds <= 0f ? 0.5f : pollIntervalSeconds);
         while (true)
         {
@@ -147,11 +142,13 @@ public class UWBPositioning : MonoBehaviour
     {
         if (!UWBLocator.TryGetPosition(out var uwbWorld))
         {
+            Debug.LogWarning("[UWBPositioning] Failed to get UWB position.");
             HandlePossibleLoss();
             return;
         }
         if (!connected)
         {
+            Debug.Log("[UWBPositioning] UWB connected.");
             connected = true;
             OnConnectionStatusChanged?.Invoke(true);
         }
@@ -165,6 +162,7 @@ public class UWBPositioning : MonoBehaviour
         }
         if (hasLastAccepted)
         {
+            Debug.Log("[UWBPositioning] Using last accepted position.");
             float delta = Vector3.Distance(uwbWorld, lastAccepted);
             if (delta < noiseThresholdMeters)
                 return;
