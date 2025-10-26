@@ -201,3 +201,29 @@
     margin-bottom: 1%;
     margin-left: 0%;
 }
+
+#Viewport > #SafeArea > #Footer {
+    opacity: 0;
+    translate: 0 100%;
+    transition-property: translate, opacity;
+    transition-duration: 250ms, 250ms;
+    transition-timing-function: ease-in-out, ease-in-out;
+}
+
+#Viewport > #SafeArea > #Footer.is-open {
+    opacity: 1;
+    translate: 0 0%;
+}
+
+#Viewport > #SafeArea > #Header > #DirectionsCard {
+    opacity: 0;
+    scale: 0.5 0.5;
+    transition-property: scale, opacity;
+    transition-duration: 250ms, 250ms;
+    transition-timing-function: ease-in-out, ease-in-out;
+}
+
+#Viewport > #SafeArea > #Header > #DirectionsCard.is-open {
+    opacity: 1;
+    scale: 1 1;
+}
