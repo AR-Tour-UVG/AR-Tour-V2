@@ -26,22 +26,38 @@ public sealed class InfoWidgetCoordinator
         if (w == null)
             return;
 
-        w.Show(area);
+        showing = true;
+        w.Hidden -= OnHidden;
+        w.Hidden += OnHidden;
 
         w.OnContinue += Continue;
+
+        w.Show(area);
 
         void Continue()
         {
             w.OnContinue -= Continue;
-            showing = false;
-            router.HideOverlay(OverlayType.InfoModal);
-            AudioDirector.Instance.Stop(0.2f);
-            binder.RequestNext();
+            Hide();
         }
     }
 
     public void Hide()
     {
+        var w = router.GetOverlay<InfoWidgetView>(OverlayType.InfoModal);
+        if (w == null)
+        {
+            showing = false;
+            return;
+        }
+        w.Hide();
+    }
+
+    void OnHidden()
+    {
+        var w = router.GetOverlay<InfoWidgetView>(OverlayType.InfoModal);
+        if (w != null)
+            w.Hidden -= OnHidden;
+
         showing = false;
         router.HideOverlay(OverlayType.InfoModal);
     }

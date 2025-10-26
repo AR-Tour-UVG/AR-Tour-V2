@@ -115,3 +115,16 @@
     min-height: 25px;
     border-radius: 12px;
 }
+
+#InfoWidget {
+    opacity: 0;
+    translate: 0 100%;
+    transition-property: translate, opacity;
+    transition-duration: 500ms, 500ms;
+    transition-timing-function: ease-in-out, ease-in-out;
+}
+
+#InfoWidget.is-open {
+    opacity: 1;
+    translate: 0 0px;
+}
