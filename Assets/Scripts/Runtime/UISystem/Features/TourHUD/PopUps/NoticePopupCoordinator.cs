@@ -1,3 +1,5 @@
+using UnityEngine.UIElements;
+
 public sealed class NoticePopupCoordinator
 {
     private readonly UIRouter router;
@@ -9,44 +11,55 @@ public sealed class NoticePopupCoordinator
         atlas = a;
     }
 
-    public void ShowConnecting()
+    public void ShowConnecting() => ShowWithData(atlas.NoticeConnectingData);
+
+    public void ShowLostConnection() => ShowWithData(atlas.NoticeLostConnectionData);
+
+    public void ShowTourComplete() => ShowWithData(atlas.NoticeTourCompleteData);
+
+    public void Hide()
+    {
+        var v = router.GetOverlay<NoticePopupView>(OverlayType.NoticePopup);
+        if (v == null)
+            return;
+        v.Hide();
+    }
+
+    void ShowWithData(NoticeData data)
+    {
+        var action = router.GetOverlay<ActionPopupView>(OverlayType.ActionPopup);
+        if (action != null && action.Root.style.display != DisplayStyle.None)
+        {
+            void AfterActionHidden()
+            {
+                action.Hidden -= AfterActionHidden;
+                ActuallyShow(data);
+            }
+            action.Hidden -= AfterActionHidden;
+            action.Hidden += AfterActionHidden;
+            action.Hide();
+            return;
+        }
+
+        ActuallyShow(data);
+    }
+
+    void ActuallyShow(NoticeData data)
     {
         var v = router.ShowOverlay(OverlayType.NoticePopup) as NoticePopupView;
         if (v == null)
             return;
-        v.Show(atlas.NoticeConnectingData);
-        if (atlas.NoticeConnectingData != null && atlas.NoticeConnectingData.NoticeAudioClip)
-        {
-            AudioDirector.Instance.Play(atlas.NoticeConnectingData.NoticeAudioClip);
-        }
-    }
 
-    public void ShowLostConnection()
-    {
-        var v = router.ShowOverlay(OverlayType.NoticePopup) as NoticePopupView;
-        if (v == null)
-            return;
-        v.Show(atlas.NoticeLostConnectionData);
-        if (
-            atlas.NoticeLostConnectionData != null
-            && atlas.NoticeLostConnectionData.NoticeAudioClip
-        )
+        void OnHidden()
         {
-            AudioDirector.Instance.Play(atlas.NoticeLostConnectionData.NoticeAudioClip);
+            v.Hidden -= OnHidden;
+            router.HideOverlay(OverlayType.NoticePopup);
         }
-    }
+        v.Hidden -= OnHidden;
+        v.Hidden += OnHidden;
 
-    public void ShowTourComplete()
-    {
-        var v = router.ShowOverlay(OverlayType.NoticePopup) as NoticePopupView;
-        if (v == null)
-            return;
-        v.Show(atlas.NoticeTourCompleteData);
-        if (atlas.NoticeTourCompleteData != null && atlas.NoticeTourCompleteData.NoticeAudioClip)
-        {
-            AudioDirector.Instance.Play(atlas.NoticeTourCompleteData.NoticeAudioClip);
-        }
+        v.Show(data);
+        if (data != null && data.NoticeAudioClip)
+            AudioDirector.Instance.Play(data.NoticeAudioClip);
     }
-
-    public void Hide() => router.HideOverlay(OverlayType.NoticePopup);
 }

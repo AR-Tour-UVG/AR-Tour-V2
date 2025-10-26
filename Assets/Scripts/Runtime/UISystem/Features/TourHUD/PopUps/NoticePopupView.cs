@@ -1,13 +1,16 @@
+using System;
 using UnityEngine.UIElements;
 
 public sealed class NoticePopupView : IOverlayView
 {
     public VisualElement Root { get; }
+    public event Action Hidden;
 
-    VisualElement roundImage,
-        container;
+    VisualElement container,
+        roundImage;
     Label title,
         message;
+    bool isOpen;
 
     public NoticePopupView(VisualElement root)
     {
@@ -16,18 +19,25 @@ public sealed class NoticePopupView : IOverlayView
 
     public void Bind(UIDocument doc)
     {
-        container = Root.Q<VisualElement>("PopUP") ?? Root.Q<VisualElement>("PopUp");
-        roundImage = Root.Q<VisualElement>("RoundImage") ?? Root.Q<VisualElement>("RoundedImage");
+        container = Root.Q<VisualElement>("PopUp");
+        roundImage = Root.Q<VisualElement>("RoundImage");
         title = Root.Q<Label>("MessageTitle");
         message = Root.Q<Label>("Message");
 
         UIPickingUtils.ConfigureTreePickingMode(Root, PickingMode.Ignore);
         UIPickingUtils.ConfigureTreePickingMode(container, PickingMode.Position);
 
-        Hide();
+        container.RegisterCallback<TransitionEndEvent>(OnTransitionEnd);
+
+        container.RemoveFromClassList("is-open");
+        Root.style.display = DisplayStyle.None;
+        isOpen = false;
     }
 
-    public void Unbind() { }
+    public void Unbind()
+    {
+        container?.UnregisterCallback<TransitionEndEvent>(OnTransitionEnd);
+    }
 
     public void Show(NoticeData data)
     {
@@ -38,8 +48,60 @@ public sealed class NoticePopupView : IOverlayView
         if (roundImage != null)
             roundImage.style.backgroundImage =
                 data && data.NoticeJack ? new StyleBackground(data.NoticeJack) : StyleKeyword.Null;
+
+        if (isOpen)
+            return;
+
         Root.style.display = DisplayStyle.Flex;
+        container.RemoveFromClassList("is-open");
+
+        void AfterLayout(GeometryChangedEvent _)
+        {
+            container.UnregisterCallback<GeometryChangedEvent>(AfterLayout);
+            container
+                .schedule.Execute(() =>
+                {
+                    container.AddToClassList("is-open");
+                    isOpen = true;
+                })
+                .StartingIn(0);
+        }
+        container.RegisterCallback<GeometryChangedEvent>(AfterLayout);
     }
 
-    public void Hide() => Root.style.display = DisplayStyle.None;
+    public void Hide()
+    {
+        if (!isOpen && Root.style.display == DisplayStyle.None)
+        {
+            Hidden?.Invoke();
+            return;
+        }
+        container.RemoveFromClassList("is-open");
+        isOpen = false;
+    }
+
+    void OnTransitionEnd(TransitionEndEvent e)
+    {
+        if (e.target != container)
+            return;
+
+        bool relevant = false;
+        foreach (var n in e.stylePropertyNames)
+        {
+            var prop = n.ToString();
+            if (prop == "scale" || prop == "opacity")
+            {
+                relevant = true;
+                break;
+            }
+        }
+        if (!relevant)
+            return;
+
+        if (!isOpen)
+        {
+            Root.style.display = DisplayStyle.None;
+            Hidden?.Invoke();
+        }
+    }
 }

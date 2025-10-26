@@ -86,3 +86,16 @@
     height: 12%;
     justify-content: center;
 }
+
+#PopUp {
+    scale: 0.5 0.5;
+    opacity: 0;
+    transition-property: scale, opacity;
+    transition-duration: 250ms, 250ms;
+    transition-timing-function: ease-in-out, ease-in-out;
+}
+
+#PopUp.is-open {
+    scale: 1 1;
+    opacity: 1;
+}

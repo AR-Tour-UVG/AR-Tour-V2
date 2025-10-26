@@ -15,7 +15,7 @@
     -unity-background-image-tint-color: rgba(255, 255, 255, 0.98);
 }
 
-.rounded-image {
+.round-image {
     background-image: url("project://database/Assets/Visuals/Icons/Dragon/dragon-color-0.5x.png?fileID=21300000&guid=fef0754821ec7374c97c6ed3baa60dda&type=3#dragon-color-0.5x");
     -unity-background-scale-mode: scale-to-fit;
     width: 350px;
@@ -64,4 +64,17 @@
     padding-left: 2%;
     height: 25%;
     overflow: hidden;
+}
+
+#PopUp {
+    scale: 0.5 0.5;
+    opacity: 0;
+    transition-property: opacity, scale;
+    transition-duration: 250ms, 250ms;
+    transition-timing-function: ease-in-out, ease-in-out;
+}
+
+#PopUp.is-open {
+    scale: 1 1;
+    opacity: 1;
 }

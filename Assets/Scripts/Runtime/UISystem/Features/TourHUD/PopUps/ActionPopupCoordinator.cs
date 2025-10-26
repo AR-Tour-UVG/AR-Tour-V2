@@ -1,3 +1,6 @@
+using System;
+using UnityEngine.UIElements;
+
 public sealed class ActionPopupCoordinator
 {
     private readonly UIRouter router;
@@ -13,41 +16,78 @@ public sealed class ActionPopupCoordinator
         vm = model;
     }
 
-    public void ShowStart()
-    {
-        var v = router.ShowOverlay(OverlayType.ActionPopup) as ActionPopupView;
-        if (v == null)
-            return;
-        v.Show(atlas.ActionStartData, OnClick);
-        void OnClick()
-        {
-            router.HideOverlay(OverlayType.ActionPopup);
-            vm.MarkTourBegan();
-            binder.RequestUserReady();
-        }
-        if (atlas.ActionStartData != null && atlas.ActionStartData.ActionAudioClip)
-            AudioDirector.Instance.Play(atlas.ActionStartData.ActionAudioClip, 0.05f, 0.1f);
-    }
+    public void ShowStart() => ShowWith(atlas.ActionStartData, OnStartClick);
 
     public void ShowReadyOnFloor(string descriptionOverride = null)
     {
-        var v = router.ShowOverlay(OverlayType.ActionPopup) as ActionPopupView;
-        if (v == null)
-            return;
-        v.Show(atlas.ActionReadyOnFloorData, OnClick);
-        if (!string.IsNullOrEmpty(descriptionOverride))
-            v.OverrideDescription(descriptionOverride);
-        void OnClick()
+        ShowWith(atlas.ActionReadyOnFloorData, OnReadyClick, descriptionOverride);
+
+        void OnReadyClick(ActionPopupView v)
         {
-            router.HideOverlay(OverlayType.ActionPopup);
+            v.Hide();
             if (vm.Phase == TourUIPhase.FloorTransition)
                 TourRunner.Instance?.ContinueToNextFloor();
             else
                 binder.RequestUserReady();
         }
-        if (atlas.ActionReadyOnFloorData != null && atlas.ActionReadyOnFloorData.ActionAudioClip)
-            AudioDirector.Instance.Play(atlas.ActionReadyOnFloorData.ActionAudioClip, 0.05f, 0.1f);
     }
 
-    public void Hide() => router.HideOverlay(OverlayType.ActionPopup);
+    public void Hide()
+    {
+        var v = router.GetOverlay<ActionPopupView>(OverlayType.ActionPopup);
+        if (v == null)
+            return;
+        v.Hide(); // removal happens on Hidden
+    }
+
+    // Helpers
+
+    void ShowWith(ActionData data, Action<ActionPopupView> onClick, string descOverride = null)
+    {
+        // If Notice popup is up, hide it first and chain
+        var notice = router.GetOverlay<NoticePopupView>(OverlayType.NoticePopup);
+        if (notice != null && notice.Root.style.display != DisplayStyle.None)
+        {
+            void AfterNoticeHidden()
+            {
+                notice.Hidden -= AfterNoticeHidden;
+                ActuallyShow(data, onClick, descOverride);
+            }
+            notice.Hidden -= AfterNoticeHidden;
+            notice.Hidden += AfterNoticeHidden;
+            notice.Hide();
+            return;
+        }
+
+        ActuallyShow(data, onClick, descOverride);
+    }
+
+    void ActuallyShow(ActionData data, Action<ActionPopupView> onClick, string descOverride)
+    {
+        var v = router.ShowOverlay(OverlayType.ActionPopup) as ActionPopupView;
+        if (v == null)
+            return;
+
+        void OnHidden()
+        {
+            v.Hidden -= OnHidden;
+            router.HideOverlay(OverlayType.ActionPopup);
+        }
+        v.Hidden -= OnHidden;
+        v.Hidden += OnHidden;
+
+        v.Show(data, () => onClick(v));
+        if (!string.IsNullOrEmpty(descOverride))
+            v.OverrideDescription(descOverride);
+
+        if (data && data.ActionAudioClip)
+            AudioDirector.Instance.Play(data.ActionAudioClip, 0.05f, 0.1f);
+    }
+
+    void OnStartClick(ActionPopupView v)
+    {
+        v.Hide();
+        vm.MarkTourBegan();
+        binder.RequestUserReady();
+    }
 }
