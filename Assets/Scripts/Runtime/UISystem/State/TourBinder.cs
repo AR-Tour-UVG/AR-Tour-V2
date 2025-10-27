@@ -153,7 +153,7 @@ public sealed class TourBinder : MonoBehaviour
 
         BindPathProvider();
         BindUWB();
-#if UNITY_IOS
+#if UNITY_IOS && !UNITY_EDITOR
         var u = movementAgent ? movementAgent.GetComponent<UWBPositioning>() : null;
         if (u)
         {
@@ -179,7 +179,7 @@ public sealed class TourBinder : MonoBehaviour
     {
         UnbindPathProvider();
         UnbindUWB();
-# if UNITY_IOS
+#if UNITY_IOS && !UNITY_EDITOR
         var u = movementAgent ? movementAgent.GetComponent<UWBPositioning>() : null;
         if (u)
         {
@@ -274,7 +274,7 @@ public sealed class TourBinder : MonoBehaviour
         vm.SetPhase(lastPhaseBeforeDisconnect);
     }
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !UNITY_IOS
     void Update()
     {
         if (fm == null)

@@ -15,7 +15,7 @@ public static class UWBLocator
     private static bool isInitialized = false;
     private static string currentAnchorMap;
 
-#if UNITY_IOS
+#if UNITY_IOS && !UNITY_EDITOR
 
     [DllImport("__Internal")]
     private static extern IntPtr getCoords();
@@ -28,9 +28,17 @@ public static class UWBLocator
 
     [DllImport("__Internal")]
     private static extern void start();
-#else
+#elif UNITY_EDITOR && !UNITY_IOS
     private static bool hasWarned = false;
 
+    private static IntPtr getCoords() => IntPtr.Zero;
+
+    private static void freeCString(IntPtr ptr) { }
+
+    private static void setAnchorMap(string jsonUtf8) { }
+
+    private static void start() { }
+#else
     private static IntPtr getCoords() => IntPtr.Zero;
 
     private static void freeCString(IntPtr ptr) { }
@@ -53,7 +61,8 @@ public static class UWBLocator
             hasWarned = true;
         }
         return false;
-#else
+
+#elif UNITY_IOS && !UNITY_EDITOR
         IntPtr coordsPtr = getCoords();
         if (coordsPtr == IntPtr.Zero)
         {
@@ -89,6 +98,11 @@ public static class UWBLocator
             Debug.Log($"[UWBLocator] Freeing allocated string for coordinates.");
             freeCString(coordsPtr);
         }
+#else
+        Debug.LogWarning(
+            "[UWBLocator] Real time positioning is supported only on iOS device builds."
+        );
+        return false;
 #endif
     }
 
@@ -105,7 +119,7 @@ public static class UWBLocator
             return;
         }
 
-#if UNITY_IOS
+#if UNITY_IOS && !UNITY_EDITOR
         try
         {
             setAnchorMap(anchorMap);
