@@ -127,10 +127,7 @@ public class FloorManager : MonoBehaviour
 
             var firstGO = _sequence[0];
             var firstPOI = firstGO.GetComponent<AreaInstance>();
-            GuidingToNext?.Invoke(firstPOI ? firstPOI.Definition : null);
-
-            pathProvider.SetTarget(firstGO);
-            pathProvider.Paused = false;
+            ConfirmArea(firstPOI);
 
             Debug.Log("[FloorManager] UserReady → guiding to first area.");
         }
