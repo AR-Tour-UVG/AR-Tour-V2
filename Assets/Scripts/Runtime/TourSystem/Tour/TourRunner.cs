@@ -256,6 +256,10 @@ public sealed class TourRunner : MonoBehaviour
         {
             Debug.Log($"[TourRunner] Stopping tour. Unloading active scene: {loadedScenePath}");
             SceneManager.UnloadSceneAsync(loadedScenePath);
+            var prevFloor = currentTour?.OrderedFloors[floorIndex];
+            if (prevFloor)
+                FloorUnloaded?.Invoke(prevFloor);
+            SceneManager.UnloadSceneAsync(loadedScenePath);
             loadedScenePath = null;
             activeFM = null;
         }

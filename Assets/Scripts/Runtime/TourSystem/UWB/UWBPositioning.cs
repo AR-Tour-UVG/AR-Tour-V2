@@ -214,6 +214,7 @@ public class UWBPositioning : MonoBehaviour
             {
                 connected = false;
                 OnConnectionStatusChanged?.Invoke(false);
+                StopTracking();
             }
             Debug.LogWarning("[UWBPositioning] UWB connection lost. Waiting to reconnect…");
         }
@@ -241,5 +242,15 @@ public class UWBPositioning : MonoBehaviour
             "[UWBPositioning] No NavMesh found within max radius. Using raw coordinate."
         );
         return desired;
+    }
+
+    private void OnDisable()
+    {
+        StopTracking();
+    }
+
+    private void OnDestroy()
+    {
+        StopTracking();
     }
 }

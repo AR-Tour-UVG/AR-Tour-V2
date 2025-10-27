@@ -111,6 +111,7 @@ public sealed class TourBinder : MonoBehaviour
     {
         if (uwb == null)
             return;
+        uwb.StopTracking();
         uwb.OnConnectionStatusChanged -= HandleUWBConnectionChanged;
         uwb = null;
     }
@@ -179,7 +180,9 @@ public sealed class TourBinder : MonoBehaviour
     {
         UnbindPathProvider();
         UnbindUWB();
+
 #if UNITY_IOS && !UNITY_EDITOR
+
         var u = movementAgent ? movementAgent.GetComponent<UWBPositioning>() : null;
         if (u)
         {
