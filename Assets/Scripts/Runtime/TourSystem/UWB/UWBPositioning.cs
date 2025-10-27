@@ -9,20 +9,20 @@ public class UWBPositioning : MonoBehaviour
     [Header("Polling")]
     [Tooltip("How often to poll UWBLocator for a new position.")]
     [SerializeField]
-    private float pollIntervalSeconds = 0.5f;
+    private float pollIntervalSeconds = 0.1f;
 
-    [Header("Filtering")]
-    [Tooltip("Minimum movement distance to consider a new position valid.")]
-    [SerializeField]
-    private float noiseThresholdMeters = 0.10f;
+    // [Header("Filtering")]
+    // [Tooltip("Minimum movement distance to consider a new position valid.")]
+    // [SerializeField]
+    // private float noiseThresholdMeters = 0.10f;
 
-    [Tooltip("Maximum speed (m/s) to consider a new position valid.")]
-    [SerializeField]
-    private float maxSpeedMetersPerSecond = 3.0f;
+    // [Tooltip("Maximum speed (m/s) to consider a new position valid.")]
+    // [SerializeField]
+    // private float maxSpeedMetersPerSecond = 3.0f;
 
-    [Tooltip("Tolerance factor for jump filtering (e.g. 1.25 = 25% extra).")]
-    [SerializeField]
-    private float jumpToleranceFactor = 1.25f;
+    // [Tooltip("Tolerance factor for jump filtering (e.g. 1.25 = 25% extra).")]
+    // [SerializeField]
+    // private float jumpToleranceFactor = 1.25f;
 
     [Header("NavMesh Clamp")]
     [Tooltip("Radius to sample the NavMesh for valid positions.")]
@@ -57,8 +57,9 @@ public class UWBPositioning : MonoBehaviour
     private int lostConnectionThreshold = 5;
 
     private Coroutine pollRoutine;
-    private Vector3 lastAccepted;
-    private bool hasLastAccepted = false;
+
+    // private Vector3 lastAccepted;
+    // private bool hasLastAccepted = false;
 
     private int consecutiveNulls = 0;
     private bool lossDeclared = false;
@@ -162,23 +163,23 @@ public class UWBPositioning : MonoBehaviour
             consecutiveNulls = 0;
             lossDeclared = false;
         }
-        if (hasLastAccepted)
-        {
-            Debug.Log("[UWBPositioning] Using last accepted position.");
-            float delta = Vector3.Distance(uwbWorld, lastAccepted);
-            if (delta < noiseThresholdMeters)
-                return;
+        // if (hasLastAccepted)
+        // {
+        //     Debug.Log("[UWBPositioning] Using last accepted position.");
+        //     float delta = Vector3.Distance(uwbWorld, lastAccepted);
+        //     if (delta < noiseThresholdMeters)
+        //         return;
 
-            float dt = Mathf.Max(0.01f, pollIntervalSeconds);
-            float maxStep = maxSpeedMetersPerSecond * dt * jumpToleranceFactor;
-            if (delta > maxStep)
-            {
-                Debug.LogWarning(
-                    $"[UWBPositioning] Rejected jump {delta:F2}m (> {maxStep:F2}m in {dt:F2}s)."
-                );
-                return;
-            }
-        }
+        //     float dt = Mathf.Max(0.01f, pollIntervalSeconds);
+        //     float maxStep = maxSpeedMetersPerSecond * dt * jumpToleranceFactor;
+        //     if (delta > maxStep)
+        //     {
+        //         Debug.LogWarning(
+        //             $"[UWBPositioning] Rejected jump {delta:F2}m (> {maxStep:F2}m in {dt:F2}s)."
+        //         );
+        //         return;
+        //     }
+        // }
 
         Vector3 clamped = ClampToNavmesh(
             uwbWorld,
@@ -187,8 +188,8 @@ public class UWBPositioning : MonoBehaviour
             navmeshRadiusGrowth
         );
 
-        lastAccepted = clamped;
-        hasLastAccepted = true;
+        // lastAccepted = clamped;
+        // hasLastAccepted = true;
 
         if (smoothMove)
         {
