@@ -13,11 +13,6 @@ public class FloorManager : MonoBehaviour
     private PathProvider pathProvider;
     private MovementAgent movementAgent;
 
-    [Header("Options")]
-    [Tooltip("Disable areas not listed in this floor's OrderedAreas.")]
-    [SerializeField]
-    private bool disableNonFloorAreas = true;
-
     [Tooltip("Seconds the player must remain inside an area to confirm entry.")]
     [SerializeField]
     private float enterConfirmTime = 0.75f;
@@ -70,7 +65,10 @@ public class FloorManager : MonoBehaviour
 
         BuildSequence();
         WireAreaEvents(true);
-        ApplyAreaVisibility();
+
+        foreach (var go in registry.AllObjects)
+            if (go)
+                go.SetActive(false);
 
         movementAgent.Enable(false);
         pathProvider.Paused = true;
@@ -123,15 +121,22 @@ public class FloorManager : MonoBehaviour
 
         movementAgent.Enable(true);
 
-        var first = GetAreaInstanceAt(0);
-        if (first != null)
+        if (_sequence.Count > 0)
         {
-            ConfirmArea(first);
-            Debug.Log("[FloorManager] UserReady → movement ON, confirming first area.");
+            ActivateAreaIndex(0);
+
+            var firstGO = _sequence[0];
+            var firstPOI = firstGO.GetComponent<AreaInstance>();
+            GuidingToNext?.Invoke(firstPOI ? firstPOI.Definition : null);
+
+            pathProvider.SetTarget(firstGO);
+            pathProvider.Paused = false;
+
+            Debug.Log("[FloorManager] UserReady → guiding to first area.");
         }
         else
         {
-            Debug.LogWarning("[FloorManager] No first area found to confirm.", this);
+            Debug.LogWarning("[FloorManager] No first area found.", this);
         }
     }
 
@@ -148,13 +153,9 @@ public class FloorManager : MonoBehaviour
             return;
         }
 
-        var nextGO = _sequence[nextIdx];
+        ActivateAreaIndex(nextIdx);
 
-        Debug.Log(
-            nextIdx < _sequence.Count
-                ? $"[FloorManager] Next → guiding to index {nextIdx} ({nextGO.name})."
-                : "[FloorManager] Next → no more areas, completing floor."
-        );
+        var nextGO = _sequence[nextIdx];
 
         if (!nextGO)
         {
@@ -166,6 +167,12 @@ public class FloorManager : MonoBehaviour
 
         pathProvider.SetTarget(nextGO);
         pathProvider.Paused = false;
+
+        Debug.Log(
+            nextIdx < _sequence.Count
+                ? $"[FloorManager] Next → guiding to index {nextIdx} ({nextGO.name})."
+                : "[FloorManager] Next → no more areas, completing floor."
+        );
     }
 
     private void BuildSequence()
@@ -175,28 +182,6 @@ public class FloorManager : MonoBehaviour
             _sequence.Add(go);
         if (_sequence.Count == 0)
             Debug.LogWarning("[FloorManager] Floor has zero resolved areas in this scene.", this);
-    }
-
-    private void ApplyAreaVisibility()
-    {
-        if (!disableNonFloorAreas)
-        {
-            Debug.Log("[FloorManager] Not disabling non-floor areas (option off).", this);
-            return;
-        }
-
-        var allowed = new HashSet<GameObject>(_sequence);
-        foreach (var go in registry.AllObjects)
-        {
-            if (!go)
-                continue;
-            Debug.Log($"[FloorManager] Setting area '{go.name}' active={allowed.Contains(go)}");
-            go.SetActive(allowed.Contains(go));
-        }
-        Debug.Log(
-            $"[FloorManager] Completed area visibility pass. Enabled {_sequence.Count} areas, disabled {registry.AllObjects.Count - _sequence.Count} non-floor areas.",
-            this
-        );
     }
 
     private void WireAreaEvents(bool on)
@@ -232,7 +217,6 @@ public class FloorManager : MonoBehaviour
             return;
 
         _inside.Add(ai);
-
         _candidate = ai;
         _candidateStart = Time.time;
     }
@@ -263,7 +247,11 @@ public class FloorManager : MonoBehaviour
 
         AreaConfirmed?.Invoke(def);
 
-        Debug.Log($"[FloorManager] ENTERED area '{def.AreaName}'. TODO: show text and play audio.");
+        int nextIdx = _currentIndex + 1;
+        if (nextIdx < _sequence.Count)
+            ActivateAreaIndex(nextIdx);
+
+        Debug.Log($"[FloorManager] ENTERED area '{def.AreaName}'.");
     }
 
     private void CompleteFloor()
@@ -282,5 +270,16 @@ public class FloorManager : MonoBehaviour
             return null;
         var go = _sequence[index];
         return go ? go.GetComponent<AreaInstance>() : null;
+    }
+
+    private void ActivateAreaIndex(int idx)
+    {
+        foreach (var go in registry.AllObjects)
+            if (go)
+                go.SetActive(false);
+
+        var ai = GetAreaInstanceAt(idx);
+        if (ai && ai.gameObject)
+            ai.gameObject.SetActive(true);
     }
 }

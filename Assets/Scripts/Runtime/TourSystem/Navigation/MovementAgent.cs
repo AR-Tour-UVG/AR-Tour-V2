@@ -45,15 +45,18 @@ public class MovementAgent : MonoBehaviour
 #if UNITY_IOS && !UNITY_EDITOR
         if (uwbMover != null)
             uwbMover.StopTracking();
-#else
+#elif UNITY_EDITOR && !UNITY_IOS
         if (editorMover != null)
             editorMover.enabled = false;
+#else
+        SafeEnable(uwbMover, false);
+        SafeEnable(editorMover, false);
 #endif
     }
 
     public void Enable(bool on)
     {
-#if UNITY_EDITOR && !UNITY_IOS
+#if UNITY_EDITOR
         SafeEnable(editorMover, on);
         Debug.Log("[MovementAgent] Keyboard Control ON (Editor)");
 #elif UNITY_IOS && !UNITY_EDITOR
