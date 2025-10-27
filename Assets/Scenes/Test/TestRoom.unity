@@ -575,7 +575,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: -100
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -746,7 +746,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floor: {fileID: 11400000, guid: 23c8365e2e0d402479adc4319379ad43, type: 2}
-  disableNonFloorAreas: 1
   enterConfirmTime: 0.75
 --- !u!114 &1997014200
 MonoBehaviour:

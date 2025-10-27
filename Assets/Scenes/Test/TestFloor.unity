@@ -193,7 +193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floor: {fileID: 11400000, guid: f703a4e5c4dc4e84b83a3b5238670fd9, type: 2}
-  disableNonFloorAreas: 1
   enterConfirmTime: 0.75
 --- !u!1 &767239173
 GameObject:
@@ -249,7 +248,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -100
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
