@@ -9,8 +9,8 @@ public sealed class UIRouter
     private readonly VisualElement popupLayer;
     private readonly VisualElement menuLayer;
     private readonly VisualElement settingsLayer;
-
     private readonly IViewFactory factory;
+    private readonly UIDocument doc;
 
     public ScreenState CurrentScreen { get; private set; }
     public IScreenView CurrentScreenView { get; private set; }
@@ -30,7 +30,8 @@ public sealed class UIRouter
         VisualElement popupLayer,
         VisualElement menuLayer,
         VisualElement settingsLayer,
-        IViewFactory factory
+        IViewFactory factory,
+        UIDocument doc
     )
     {
         this.baseLayer = baseLayer;
@@ -39,12 +40,12 @@ public sealed class UIRouter
         this.menuLayer = menuLayer;
         this.settingsLayer = settingsLayer;
         this.factory = factory;
+        this.doc = doc;
     }
 
     public void ShowScreen(ScreenState s)
     {
         CurrentScreenView?.Unbind();
-
         baseLayer.Clear();
 
         var view = factory.CreateScreen(s);
@@ -55,7 +56,7 @@ public sealed class UIRouter
         }
 
         baseLayer.Add(view.Root);
-        view.Bind(GetDoc(baseLayer));
+        view.Bind(doc);
         CurrentScreen = s;
         CurrentScreenView = view;
         ScreenChanged?.Invoke(view);
@@ -84,7 +85,7 @@ public sealed class UIRouter
         IncrementLayerCount(t);
 
         layer.Add(v.Root);
-        v.Bind(GetDoc(layer));
+        v.Bind(doc);
         overlays[t] = v;
         return v;
     }
@@ -164,10 +165,5 @@ public sealed class UIRouter
                     menuLayer.style.display = DisplayStyle.None;
                 break;
         }
-    }
-
-    private static UIDocument GetDoc(VisualElement any)
-    {
-        return Object.FindFirstObjectByType<UIDocument>();
     }
 }

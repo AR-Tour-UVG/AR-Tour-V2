@@ -12,6 +12,11 @@ public sealed class HomeView : IScreenView
     private VisualElement completeBtn;
     private VisualElement minigamesBtn;
 
+    private EventCallback<ClickEvent> onExpressCb;
+    private EventCallback<ClickEvent> onCompleteCb;
+    private EventCallback<ClickEvent> onMinigamesCb;
+    private bool bound;
+
     public HomeView(VisualElement root)
     {
         Root = root;
@@ -19,19 +24,37 @@ public sealed class HomeView : IScreenView
 
     public void Bind(UIDocument doc)
     {
+        if (bound)
+            return; // prevent double bind
+
         expressBtn = Root.Q<VisualElement>("ExpressBtn");
         completeBtn = Root.Q<VisualElement>("CompleteBtn");
         minigamesBtn = Root.Q<VisualElement>("MinigamesBtn");
 
-        expressBtn?.RegisterCallback<ClickEvent>(_ => OnExpress?.Invoke());
-        completeBtn?.RegisterCallback<ClickEvent>(_ => OnComplete?.Invoke());
-        minigamesBtn?.RegisterCallback<ClickEvent>(_ => OnMinigames?.Invoke());
+        onExpressCb = _ => OnExpress?.Invoke();
+        onCompleteCb = _ => OnComplete?.Invoke();
+        onMinigamesCb = _ => OnMinigames?.Invoke();
+
+        expressBtn?.RegisterCallback(onExpressCb);
+        completeBtn?.RegisterCallback(onCompleteCb);
+        minigamesBtn?.RegisterCallback(onMinigamesCb);
+
+        bound = true;
     }
 
     public void Unbind()
     {
-        expressBtn?.UnregisterCallback<ClickEvent>(_ => OnExpress?.Invoke());
-        completeBtn?.UnregisterCallback<ClickEvent>(_ => OnComplete?.Invoke());
-        minigamesBtn?.UnregisterCallback<ClickEvent>(_ => OnMinigames?.Invoke());
+        if (!bound)
+            return;
+
+        expressBtn?.UnregisterCallback(onExpressCb);
+        completeBtn?.UnregisterCallback(onCompleteCb);
+        minigamesBtn?.UnregisterCallback(onMinigamesCb);
+
+        onExpressCb = null;
+        onCompleteCb = null;
+        onMinigamesCb = null;
+        expressBtn = completeBtn = minigamesBtn = null;
+        bound = false;
     }
 }

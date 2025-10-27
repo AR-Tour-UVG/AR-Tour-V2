@@ -38,13 +38,28 @@ public sealed class UIBootstrap : MonoBehaviour
             return;
         }
 
+        foreach (
+            var d in FindObjectsByType<UIDocument>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None
+            )
+        )
+            if (d != uiDocument)
+                d.enabled = false;
+
         var root = uiDocument.rootVisualElement;
         root.style.display = DisplayStyle.Flex; // Ensure root is visible
         AppRoot = root.Q<VisualElement>("AppRoot");
-        AppRoot.style.display = DisplayStyle.Flex; // Ensure AppRoot is visible
         if (AppRoot != null)
         {
             AppRoot.style.fontSize = AppPrefs.LoadFontPx();
+            AppRoot.style.display = DisplayStyle.Flex; // Ensure AppRoot is visible
+        }
+        else
+        {
+            Debug.LogError("[UIBootstrap] Missing AppRoot in BaseLayout UXML.");
+            enabled = false;
+            return;
         }
 
         AudioListener.volume = AppPrefs.LoadVolume() / 100f;
@@ -83,12 +98,37 @@ public sealed class UIBootstrap : MonoBehaviour
         ApplyGlobalFontPx(AppPrefs.LoadFontPx());
 
         var factory = new ViewFactory(uiDocument, uiAtlas);
-        Router = new UIRouter(baseLayer, modalLayer, popupLayer, menuLayer, settingsLayer, factory);
+        Router = new UIRouter(
+            baseLayer,
+            modalLayer,
+            popupLayer,
+            menuLayer,
+            settingsLayer,
+            factory,
+            uiDocument
+        );
+    }
+
+    void Start()
+    {
         var showOnboarding =
             uiAtlas.OnboardingSet
             && OnboardingGate.ShouldShow(uiAtlas.OnboardingSet.ShowEveryNDays);
         Router.ShowScreen(showOnboarding ? ScreenState.Onboarding : ScreenState.Home);
     }
+
+#if UNITY_IOS && !UNITY_EDITOR
+    void OnEnable()
+    {
+        // iOS: force a clean layout/repaint once
+        uiDocument
+            .rootVisualElement.schedule.Execute(() =>
+            {
+                uiDocument.rootVisualElement.MarkDirtyRepaint();
+            })
+            .StartingIn(0);
+    }
+#endif
 
     public void ApplyGlobalFontPx(int px)
     {
