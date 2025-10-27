@@ -6,7 +6,7 @@
 	<dict>
 		<key>.DS_Store</key>
 		<data>
-		xwckdGzGEW/zSX9FkwXAHBkq/s4=
+		D33Kpwl4LD7kTQ/foxNxShLuW1Y=
 		</data>
 		<key>Frameworks/EstimoteUWB.framework/EstimoteUWB</key>
 		<data>
@@ -30,15 +30,15 @@
 		</data>
 		<key>Modules/.DS_Store</key>
 		<data>
-		Qh38hUK6dbbyUAxD8woFb3lbM1w=
+		TDUf0eo7FohxWnTSbQIMDgPHh+E=
 		</data>
 		<key>Modules/UWBplugin.swiftmodule/.DS_Store</key>
 		<data>
-		vdnG79PP+GF3Rqd/0U+wDjmiKoY=
+		eqLWQTx2zr7BLUAwCecmcc/Kjdo=
 		</data>
 		<key>Modules/UWBplugin.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		5quTcg9kRXxvYLIIEZTY1ukUah0=
+		Km8iAoTqOCudLE5/rQ4LZtEx5ms=
 		</data>
 		<key>Modules/UWBplugin.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Modules/UWBplugin.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		qQZCFWrfqFMzZ+32FsjKkBsrszU=
+		iFL/X4HJJVFbNG03TXEYa4pV3/E=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -111,7 +111,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Q7PXzGm8/iD+O9PGXYg0lCpHqwHK+5oyBMFZ01xvDgI=
+			T0DvJBZxI1bJFTZCSBeyDjjkGTHQ5c43WTLv8T3XvGg=
 			</data>
 		</dict>
 		<key>Modules/UWBplugin.swiftmodule/arm64-apple-ios.abi.json</key>
@@ -146,7 +146,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uTr6Hkt56UDtfoCYc8C2vt6BWUjT5iHfDpTj8CRrcyw=
+			QzU7cf7IPnOHMxZEV8tgBUfToc9cUQ/QgBDsx4ydaH4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
