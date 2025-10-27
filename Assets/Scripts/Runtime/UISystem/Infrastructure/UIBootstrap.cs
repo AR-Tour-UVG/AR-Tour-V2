@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(UIDocument))]
@@ -117,9 +118,10 @@ public sealed class UIBootstrap : MonoBehaviour
         Router.ShowScreen(showOnboarding ? ScreenState.Onboarding : ScreenState.Home);
     }
 
-#if UNITY_IOS && !UNITY_EDITOR
     void OnEnable()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+#if UNITY_IOS && !UNITY_EDITOR
         // iOS: force a clean layout/repaint once
         uiDocument
             .rootVisualElement.schedule.Execute(() =>
@@ -127,8 +129,25 @@ public sealed class UIBootstrap : MonoBehaviour
                 uiDocument.rootVisualElement.MarkDirtyRepaint();
             })
             .StartingIn(0);
-    }
 #endif
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene s, LoadSceneMode mode)
+    {
+        // first frame after additive load: force a layout + repaint
+        uiDocument
+            .rootVisualElement.schedule.Execute(() =>
+            {
+                uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
+                uiDocument.rootVisualElement.MarkDirtyRepaint();
+            })
+            .StartingIn(0);
+    }
 
     public void ApplyGlobalFontPx(int px)
     {

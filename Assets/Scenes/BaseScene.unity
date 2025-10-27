@@ -426,11 +426,11 @@ MonoBehaviour:
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: 902c2fd81d57f2443a85a6c1cf32dad3, type: 2}
+  m_PanelSettings: {fileID: 11400000, guid: 2d42451756f235e40bcefb5a12139871, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: d5d1e8d4ba293604496890060d769394, type: 3}
   m_SortingOrder: 0
-  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceSizeMode: 0
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
 --- !u!114 &995628175
