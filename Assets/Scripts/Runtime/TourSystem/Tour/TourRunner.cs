@@ -110,7 +110,7 @@ public sealed class TourRunner : MonoBehaviour
             yield break;
         }
 
-        SceneManager.SetActiveScene(scene);
+        //SceneManager.SetActiveScene(scene);
 
         AdoptSceneCameraOrKeepFallback(scene);
 
@@ -171,8 +171,8 @@ public sealed class TourRunner : MonoBehaviour
             activeFM = null;
         }
 
-        if (baseScene.IsValid() && baseScene.isLoaded)
-            SceneManager.SetActiveScene(baseScene);
+        // if (baseScene.IsValid() && baseScene.isLoaded)
+        //     SceneManager.SetActiveScene(baseScene);
 
         yield return null;
 
