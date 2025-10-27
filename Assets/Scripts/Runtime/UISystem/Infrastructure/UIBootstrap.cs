@@ -39,7 +39,9 @@ public sealed class UIBootstrap : MonoBehaviour
         }
 
         var root = uiDocument.rootVisualElement;
+        root.style.display = DisplayStyle.Flex; // Ensure root is visible
         AppRoot = root.Q<VisualElement>("AppRoot");
+        AppRoot.style.display = DisplayStyle.Flex; // Ensure AppRoot is visible
         if (AppRoot != null)
         {
             AppRoot.style.fontSize = AppPrefs.LoadFontPx();
@@ -66,6 +68,7 @@ public sealed class UIBootstrap : MonoBehaviour
             return;
         }
 
+        baseLayer.style.display = DisplayStyle.Flex;
         modalLayer.style.display = DisplayStyle.None;
         popupLayer.style.display = DisplayStyle.None;
         menuLayer.style.display = DisplayStyle.None;
