@@ -353,6 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expressTour: {fileID: 11400000, guid: aad51bde44460454086b6b3ab4a29b3b, type: 2}
   completeTour: {fileID: 11400000, guid: aad51bde44460454086b6b3ab4a29b3b, type: 2}
+  arrowSceneDef: {fileID: 11400000, guid: bc127b70e182d5347a67af709c30d24f, type: 2}
 --- !u!114 &975345987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,9 +431,13 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: d5d1e8d4ba293604496890060d769394, type: 3}
   m_SortingOrder: 1000
+  m_Position: 0
   m_WorldSpaceSizeMode: 0
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
 --- !u!114 &995628175
 MonoBehaviour:
   m_ObjectHideFlags: 0
