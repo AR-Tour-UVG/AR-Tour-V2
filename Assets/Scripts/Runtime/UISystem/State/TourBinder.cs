@@ -192,6 +192,14 @@ public sealed class TourBinder : MonoBehaviour
 #endif
         movementAgent = null;
         vm.SetPaused(true);
+        if (tourRunner != null && tourRunner.IsStopping)
+        {
+            Debug.Log("[TourBinder] Tour is stopping, not prompting for continue.");
+            waitingForFloorStart = false;
+            waitingForFloorContinue = false;
+            return;
+        }
+
         waitingForFloorStart = false;
         waitingForFloorContinue = true;
         vm.SetPhase(TourUIPhase.FloorTransition);

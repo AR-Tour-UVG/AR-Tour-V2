@@ -46,6 +46,9 @@ public sealed class NoticePopupCoordinator
 
     void ActuallyShow(NoticeData data)
     {
+        if (router.CurrentScreen != ScreenState.TourHUD)
+            return;
+
         var v = router.ShowOverlay(OverlayType.NoticePopup) as NoticePopupView;
         if (v == null)
             return;

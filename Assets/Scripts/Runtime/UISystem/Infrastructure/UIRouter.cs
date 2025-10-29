@@ -45,6 +45,8 @@ public sealed class UIRouter
 
     public void ShowScreen(ScreenState s)
     {
+        HideAllOverlays();
+
         CurrentScreenView?.Unbind();
         baseLayer.Clear();
 
@@ -88,6 +90,24 @@ public sealed class UIRouter
         v.Bind(doc);
         overlays[t] = v;
         return v;
+    }
+
+    public void HideAllOverlays()
+    {
+        var keys = new List<OverlayType>(overlays.Keys);
+        foreach (var key in keys)
+        {
+            HideOverlay(key);
+        }
+        // Ensure all layers are hidden
+        modalLayer.style.display = DisplayStyle.None;
+        popupLayer.style.display = DisplayStyle.None;
+        menuLayer.style.display = DisplayStyle.None;
+        settingsLayer.style.display = DisplayStyle.None;
+        modalCount = 0;
+        popupCount = 0;
+        menuCount = 0;
+        settingsCount = 0;
     }
 
     public void HideOverlay(OverlayType t)

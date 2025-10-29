@@ -24,6 +24,9 @@ public sealed class TourRunner : MonoBehaviour
     private int visitedAcrossTour;
     private int totalAcrossTour;
 
+    private bool isStopping;
+    public bool IsStopping => isStopping;
+
     [SerializeField]
     private TourDefinition expressTour;
     public TourDefinition ExpressTour => expressTour;
@@ -252,14 +255,24 @@ public sealed class TourRunner : MonoBehaviour
 
     public void StopTour(bool returnToHome)
     {
+        isStopping = true;
+        waitingForUserToContinue = false;
+
+        // proactively unhook before unload to stop late events
+        if (activeFM)
+        {
+            activeFM.FloorCompleted -= OnFloorCompleted;
+            activeFM.AreaConfirmed -= OnAreaConfirmed;
+        }
+
         if (!string.IsNullOrEmpty(loadedScenePath))
         {
-            Debug.Log($"[TourRunner] Stopping tour. Unloading active scene: {loadedScenePath}");
-            SceneManager.UnloadSceneAsync(loadedScenePath);
             var prevFloor = currentTour?.OrderedFloors[floorIndex];
             if (prevFloor)
                 FloorUnloaded?.Invoke(prevFloor);
-            SceneManager.UnloadSceneAsync(loadedScenePath);
+
+            Debug.Log($"[TourRunner] Stopping tour. Unloading active scene: {loadedScenePath}");
+            SceneManager.UnloadSceneAsync(loadedScenePath); // once
             loadedScenePath = null;
             activeFM = null;
         }
@@ -269,9 +282,9 @@ public sealed class TourRunner : MonoBehaviour
         visitedAcrossTour = 0;
         totalAcrossTour = 0;
 
+        isStopping = false;
+
         if (returnToHome)
-        {
             Debug.Log("[TourRunner] Tour stopped. Returning to home state.");
-        }
     }
 }

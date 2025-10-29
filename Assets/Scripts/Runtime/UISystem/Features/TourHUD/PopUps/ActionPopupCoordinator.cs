@@ -64,6 +64,9 @@ public sealed class ActionPopupCoordinator
 
     void ActuallyShow(ActionData data, Action<ActionPopupView> onClick, string descOverride)
     {
+        if (router.CurrentScreen != ScreenState.TourHUD)
+            return;
+
         var v = router.ShowOverlay(OverlayType.ActionPopup) as ActionPopupView;
         if (v == null)
             return;

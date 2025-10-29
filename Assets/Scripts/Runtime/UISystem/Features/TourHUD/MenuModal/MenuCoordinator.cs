@@ -31,11 +31,14 @@ public sealed class MenuCoordinator
         void ReturnHome()
         {
             Close();
+            router.HideAllOverlays();
+            router.ShowScreen(ScreenState.Home);
+            AudioDirector.Instance.Stop(0.12f);
+
             var tr = TourRunner.Instance;
             if (tr == null)
                 return;
             tr.StopTour(true);
-            router.ShowScreen(ScreenState.Home);
         }
 
         void Restart()
