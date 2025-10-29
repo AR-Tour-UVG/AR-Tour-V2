@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 [DisallowMultipleComponent]
 public sealed class TourRunner : MonoBehaviour
 {
-    [SerializeField]
-    public Scene arrowScene;
     public static TourRunner Instance { get; private set; }
 
     public event System.Action<FloorDefinition, FloorManager> FloorLoaded;
@@ -36,6 +34,9 @@ public sealed class TourRunner : MonoBehaviour
     [SerializeField]
     private TourDefinition completeTour;
     public TourDefinition CompleteTour => completeTour;
+
+    [SerializeField]
+    private ArrowSceneDefinition arrowSceneDef;
 
     private bool waitingForUserToContinue;
     public bool WaitingForUserToContinue => waitingForUserToContinue;
@@ -75,10 +76,18 @@ public sealed class TourRunner : MonoBehaviour
             Debug.LogError("[TourRunner] No tour/floors.");
             return;
         }
-        if (!SceneManager.GetSceneByPath(arrowScene.path).IsValid())
+        if (arrowSceneDef != null && !string.IsNullOrEmpty(arrowSceneDef.ScenePath))
         {
-            Debug.Log("[TourRunner] Loading AR Arrow scene additively...");
-            SceneManager.LoadSceneAsync("ARArrowScene", LoadSceneMode.Additive);
+            var sc = SceneManager.GetSceneByPath(arrowSceneDef.ScenePath);
+            if (!sc.IsValid() || !sc.isLoaded)
+            {
+                Debug.Log("[TourRunner] Loading AR Arrow scene additively...");
+                SceneManager.LoadSceneAsync(arrowSceneDef.ScenePath, LoadSceneMode.Additive);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[TourRunner] ArrowSceneDefinition not assigned or empty path.");
         }
 
         StartCoroutine(LoadFloorAt(floorIndex));
