@@ -7,22 +7,22 @@ using UnityEngine.AI;
 public class UWBPositioning : MonoBehaviour
 {
     [Header("Polling")]
-    [Tooltip("How often to poll UWBLocator for a new position.")]
+    [Tooltip("How often poll for a new position (0 = every frame. >0 = seconds).")]
     [SerializeField]
-    private float pollIntervalSeconds = 0.1f;
+    private float pollIntervalSeconds = 0.0f;
 
-    // [Header("Filtering")]
-    // [Tooltip("Minimum movement distance to consider a new position valid.")]
-    // [SerializeField]
-    // private float noiseThresholdMeters = 0.10f;
+    [Header("Filtering")]
+    [Tooltip("Minimum movement to consider a new position valid (meters).")]
+    [SerializeField]
+    private float noiseThresholdMeters = 0.01f;
 
-    // [Tooltip("Maximum speed (m/s) to consider a new position valid.")]
-    // [SerializeField]
-    // private float maxSpeedMetersPerSecond = 3.0f;
+    [Tooltip("Maximum plausible speed (m/s).")]
+    [SerializeField]
+    private float maxSpeedMetersPerSecond = 2.0f;
 
-    // [Tooltip("Tolerance factor for jump filtering (e.g. 1.25 = 25% extra).")]
-    // [SerializeField]
-    // private float jumpToleranceFactor = 1.25f;
+    [Tooltip("Tolerance factor for jump filtering (e.g. 1.25 = 25% extra).")]
+    [SerializeField]
+    private float jumpToleranceFactor = 1.35f;
 
     [Header("NavMesh Clamp")]
     [Tooltip("Radius to sample the NavMesh for valid positions.")]
@@ -40,7 +40,7 @@ public class UWBPositioning : MonoBehaviour
     [Header("Movement")]
     [Tooltip("Whether to smoothly move towards the target position.")]
     [SerializeField]
-    private bool smoothMove = false;
+    private bool smoothMove = true;
 
     [Tooltip("Speed of smoothing (higher = snappier).")]
     [SerializeField]
@@ -57,19 +57,15 @@ public class UWBPositioning : MonoBehaviour
     private int lostConnectionThreshold = 5;
 
     private Coroutine pollRoutine;
-
-    // private Vector3 lastAccepted;
-    // private bool hasLastAccepted = false;
-
+    private Vector3 lastAccepted;
+    private bool hasLastAccepted = false;
     private int consecutiveNulls = 0;
     private bool lossDeclared = false;
-
     private Vector3 currentGoal;
     private bool hasGoal = false;
-
     public event Action<bool> OnConnectionStatusChanged;
-
     bool connected = false;
+    private float _lastTs;
 
     private void Awake()
     {
@@ -118,6 +114,7 @@ public class UWBPositioning : MonoBehaviour
         if (pollRoutine != null)
             return;
         Debug.Log("[UWBPositioning] Starting UWB tracking.");
+        _lastTs = Time.realtimeSinceStartup;
         pollRoutine = StartCoroutine(PollLoop());
     }
 
@@ -133,11 +130,22 @@ public class UWBPositioning : MonoBehaviour
     private IEnumerator PollLoop()
     {
         Debug.Log("[UWBPositioning] Starting PollLoop.");
-        var wait = new WaitForSeconds(pollIntervalSeconds <= 0f ? 0.5f : pollIntervalSeconds);
-        while (true)
+        if (pollIntervalSeconds <= 0f)
         {
-            TryStep();
-            yield return wait;
+            while (true)
+            {
+                TryStep();
+                yield return null;
+            }
+        }
+        else
+        {
+            var wait = new WaitForSeconds(pollIntervalSeconds);
+            while (true)
+            {
+                TryStep();
+                yield return wait;
+            }
         }
     }
 
@@ -158,28 +166,9 @@ public class UWBPositioning : MonoBehaviour
 
         if (consecutiveNulls > 0)
         {
-            if (lossDeclared)
-                Debug.Log("[UWBPositioning] UWB reconnected.");
             consecutiveNulls = 0;
             lossDeclared = false;
         }
-        // if (hasLastAccepted)
-        // {
-        //     Debug.Log("[UWBPositioning] Using last accepted position.");
-        //     float delta = Vector3.Distance(uwbWorld, lastAccepted);
-        //     if (delta < noiseThresholdMeters)
-        //         return;
-
-        //     float dt = Mathf.Max(0.01f, pollIntervalSeconds);
-        //     float maxStep = maxSpeedMetersPerSecond * dt * jumpToleranceFactor;
-        //     if (delta > maxStep)
-        //     {
-        //         Debug.LogWarning(
-        //             $"[UWBPositioning] Rejected jump {delta:F2}m (> {maxStep:F2}m in {dt:F2}s)."
-        //         );
-        //         return;
-        //     }
-        // }
 
         Vector3 clamped = ClampToNavmesh(
             uwbWorld,
@@ -188,8 +177,30 @@ public class UWBPositioning : MonoBehaviour
             navmeshRadiusGrowth
         );
 
-        // lastAccepted = clamped;
-        // hasLastAccepted = true;
+        float now = Time.realtimeSinceStartup;
+        float dt = Mathf.Max(0.005f, now - _lastTs);
+        _lastTs = now;
+
+        if (hasLastAccepted)
+        {
+            float delta = Vector3.Distance(clamped, lastAccepted);
+
+            if (delta < noiseThresholdMeters)
+                return;
+
+            float maxStep = maxSpeedMetersPerSecond * dt * jumpToleranceFactor;
+
+            if (delta > maxStep)
+            {
+                Debug.LogWarning(
+                    $"[UWBPositioning] Rejected jump {delta:F2}m (> {maxStep:F2}m in {dt:F2}s)."
+                );
+                return;
+            }
+        }
+
+        lastAccepted = clamped;
+        hasLastAccepted = true;
 
         if (smoothMove)
         {
