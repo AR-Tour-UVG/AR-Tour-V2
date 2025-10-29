@@ -10,7 +10,7 @@ public class BundleIdPreprocessor : IPreprocessBuildWithReport
     public void OnPreprocessBuild(BuildReport report)
     {
 #if UNITY_IOS
-        const string bundleId = "uwb.uvg.edu.gt.gus";
+        const string bundleId = "tour.diego.testapp";
         PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.iOS, bundleId);
         UnityEngine.Debug.Log($"[BundleIdPreprocessor] iOS bundle id set to: {bundleId}");
 #endif
