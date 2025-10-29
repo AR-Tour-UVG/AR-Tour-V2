@@ -4,8 +4,11 @@ using UnityEngine.AI;
 public class ArrowNavigator : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private PathProvider pathProvider;   // Assign in Inspector
-    [SerializeField] private Transform arrowModel;        // Assign your arrow mesh
+    [SerializeField]
+    private PathProvider pathProvider; // Assign in Inspector
+
+    [SerializeField]
+    private Transform arrowModel; // Assign your arrow mesh
 
     private NavMeshPath currentPath;
 
@@ -28,9 +31,10 @@ public class ArrowNavigator : MonoBehaviour
 
     private void Update()
     {
-        if (currentPath == null || currentPath.corners.Length < 2) return;
+        if (currentPath == null || currentPath.corners.Length < 2)
+            return;
 
-        Vector3 playerPos = currentPath.corners[0];  // "this" should be the player/phone
+        Vector3 playerPos = currentPath.corners[0]; // "this" should be the player/phone
         Vector3 nextCorner = currentPath.corners[1]; // corner[0] is current pos
 
         Vector3 dir = nextCorner - playerPos;
