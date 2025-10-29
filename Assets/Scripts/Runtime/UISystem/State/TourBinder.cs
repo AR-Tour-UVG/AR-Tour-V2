@@ -197,6 +197,7 @@ public sealed class TourBinder : MonoBehaviour
             Debug.Log("[TourBinder] Tour is stopping, not prompting for continue.");
             waitingForFloorStart = false;
             waitingForFloorContinue = false;
+            vm.ResetAll();
             return;
         }
 
