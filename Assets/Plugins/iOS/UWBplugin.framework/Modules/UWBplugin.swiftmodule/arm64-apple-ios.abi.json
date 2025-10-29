@@ -490,15 +490,15 @@
       "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Models\/ViewModel.swift",
       "kind": "IntegerLiteral",
       "offset": 257,
-      "length": 1,
-      "value": "6"
+      "length": 3,
+      "value": "100"
     },
     {
       "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Models\/ViewModel.swift",
       "kind": "FloatLiteral",
-      "offset": 286,
-      "length": 4,
-      "value": "10.0"
+      "offset": 315,
+      "length": 3,
+      "value": "3.0"
     },
     {
       "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
