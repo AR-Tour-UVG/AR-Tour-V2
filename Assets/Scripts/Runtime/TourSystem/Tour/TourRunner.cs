@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 [DisallowMultipleComponent]
 public sealed class TourRunner : MonoBehaviour
 {
+    [SerializeField]
+    public Scene arrowScene;
     public static TourRunner Instance { get; private set; }
 
     public event System.Action<FloorDefinition, FloorManager> FloorLoaded;
@@ -72,6 +74,11 @@ public sealed class TourRunner : MonoBehaviour
         {
             Debug.LogError("[TourRunner] No tour/floors.");
             return;
+        }
+        if (!SceneManager.GetSceneByPath(arrowScene.path).IsValid())
+        {
+            Debug.Log("[TourRunner] Loading AR Arrow scene additively...");
+            SceneManager.LoadSceneAsync("ARArrowScene", LoadSceneMode.Additive);
         }
 
         StartCoroutine(LoadFloorAt(floorIndex));
