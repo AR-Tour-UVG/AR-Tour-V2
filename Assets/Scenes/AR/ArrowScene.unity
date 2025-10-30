@@ -437,11 +437,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8dd10ba7e8264779a4cb2cabb3da5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowModel: {fileID: 543450653346437213}
-  arCamera: {fileID: 610688276}
+  arrow3D: {fileID: 543450653346437213}
   arrowDistance: 4
   northOffset: 209
-  turnSmoothing: 12
+  pathfindingObject: {fileID: 0}
+  arCamera: {fileID: 610688276}
 --- !u!1 &1379174671
 GameObject:
   m_ObjectHideFlags: 0

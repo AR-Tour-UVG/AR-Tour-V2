@@ -20,7 +20,8 @@ public sealed class TourRunner : MonoBehaviour
     private FloorManager activeFM;
     private string loadedScenePath;
     private Scene baseScene;
-    private Camera fallbackCamera;
+
+    // private Camera fallbackCamera;
     private int visitedAcrossTour;
     private int totalAcrossTour;
 

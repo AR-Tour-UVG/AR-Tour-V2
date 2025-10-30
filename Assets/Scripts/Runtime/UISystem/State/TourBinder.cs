@@ -24,10 +24,6 @@ public sealed class TourBinder : MonoBehaviour
     {
         vm = model;
 
-        // Mirror view model canges into signals
-        vm.Changed += VmOnChanged;
-        VmOnChanged();
-
         if (!tourRunner)
             tourRunner = FindFirstObjectByType<TourRunner>(FindObjectsInactive.Include);
 
@@ -40,13 +36,6 @@ public sealed class TourBinder : MonoBehaviour
         }
 
         HookToActiveFloorManager();
-    }
-
-    private void VmOnChanged()
-    {
-        TourSignals.SetPhase(vm.Phase);
-        TourSignals.SetPaused(vm.Paused);
-        TourSignals.SetConnected(vm.Connected);
     }
 
     private void BindPathProvider()
@@ -70,7 +59,6 @@ public sealed class TourBinder : MonoBehaviour
         if (pathProvider)
         {
             pathProvider.OnPathUpdated += OnPathUpdated;
-            TourSignals.SetPathProvider(pathProvider);
             Debug.Log(
                 $"[TourBinder] Subscribed to PathProvider #{pathProvider.GetInstanceID()} on {pathProvider.gameObject.name}"
             );
@@ -86,7 +74,6 @@ public sealed class TourBinder : MonoBehaviour
         if (pathProvider)
         {
             pathProvider.OnPathUpdated -= OnPathUpdated;
-            TourSignals.SetPathProvider(null);
             Debug.Log("[TourBinder] Unsubscribed from PathProvider");
             pathProvider = null;
         }
@@ -154,8 +141,6 @@ public sealed class TourBinder : MonoBehaviour
             tourRunner.FloorUnloaded -= OnFloorUnloaded;
             tourRunner.TourCompleted -= vm.NotifyTourCompleted;
         }
-        if (vm != null)
-            vm.Changed -= VmOnChanged;
 
         UnhookFM();
         if (pathProvider)
