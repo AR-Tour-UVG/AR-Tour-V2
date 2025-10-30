@@ -438,6 +438,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowModel: {fileID: 543450653346437213}
+  arCamera: {fileID: 610688276}
+  arrowDistance: 4
+  northOffset: 209
+  turnSmoothing: 12
 --- !u!1 &1379174671
 GameObject:
   m_ObjectHideFlags: 0
