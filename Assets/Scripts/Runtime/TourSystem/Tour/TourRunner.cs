@@ -21,7 +21,6 @@ public sealed class TourRunner : MonoBehaviour
     private string loadedScenePath;
     private Scene baseScene;
 
-    // private Camera fallbackCamera;
     private int visitedAcrossTour;
     private int totalAcrossTour;
 
@@ -110,7 +109,14 @@ public sealed class TourRunner : MonoBehaviour
 
         if (floor.TryGetAnchorMapText(out var json))
         {
+#if UNITY_IOS && !UNITY_EDITOR
+            if (UWBLocator.IsInitialized)
+            {
+                UWBLocator.Stop();
+            }
             UWBLocator.SetAnchorMap(json);
+            UWBLocator.Start();
+#endif
             Debug.Log($"[TourRunner] Anchor map applied for floor '{floor.FloorName}'.");
         }
         else
@@ -129,9 +135,6 @@ public sealed class TourRunner : MonoBehaviour
             Debug.LogError("[TourRunner] Scene failed to load.");
             yield break;
         }
-
-        //SceneManager.SetActiveScene(scene);
-        // AdoptSceneCameraOrKeepFallback(scene);
 
         loadedScenePath = floor.ScenePath;
 
@@ -173,6 +176,12 @@ public sealed class TourRunner : MonoBehaviour
 
     private IEnumerator UnloadAndAdvance()
     {
+#if UNITY_IOS && !UNITY_EDITOR
+        if (UWBLocator.IsInitialized)
+        {
+            UWBLocator.Stop();
+        }
+#endif
         if (!string.IsNullOrEmpty(loadedScenePath))
         {
             Debug.Log($"[TourRunner] Unloading scene: {loadedScenePath}");
@@ -190,12 +199,7 @@ public sealed class TourRunner : MonoBehaviour
             activeFM = null;
         }
 
-        // if (baseScene.IsValid() && baseScene.isLoaded)
-        //     SceneManager.SetActiveScene(baseScene);
-
         yield return null;
-
-        //EnsureFallbackCamera();
 
         floorIndex++;
         if (currentTour == null || floorIndex >= currentTour.OrderedFloors.Count)
@@ -208,58 +212,6 @@ public sealed class TourRunner : MonoBehaviour
         waitingForUserToContinue = true;
         Debug.Log("[TourRunner] Waiting for user to continue to next floor.");
     }
-
-    // private void EnsureFallbackCamera()
-    // {
-    //     foreach (var cam in Camera.allCameras)
-    //         if (cam && cam.enabled)
-    //             return;
-
-    //     if (fallbackCamera == null)
-    //     {
-    //         var go = new GameObject("FallbackClearCamera");
-    //         fallbackCamera = go.AddComponent<Camera>();
-    //         fallbackCamera.clearFlags = CameraClearFlags.Skybox;
-    //         fallbackCamera.cullingMask = ~0;
-    //         fallbackCamera.depth = -100;
-    //     }
-    //     fallbackCamera.enabled = true;
-    // }
-
-    // private void DisableFallbackCamera()
-    // {
-    //     if (fallbackCamera)
-    //         fallbackCamera.enabled = false;
-    // }
-
-    // private void AdoptSceneCameraOrKeepFallback(Scene scene)
-    // {
-    //     Camera sceneCam = null;
-    //     var cams = FindObjectsByType<Camera>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-    //     foreach (var c in cams)
-    //     {
-    //         if (!c || !c.enabled)
-    //             continue;
-    //         if (c.gameObject.scene == scene)
-    //         {
-    //             sceneCam = c;
-    //             break;
-    //         }
-    //     }
-
-    //     if (sceneCam != null)
-    //     {
-    //         DisableFallbackCamera();
-    //         Debug.Log($"[TourRunner] Using scene camera: {sceneCam.name}");
-    //     }
-    //     else
-    //     {
-    //         EnsureFallbackCamera();
-    //         Debug.LogWarning(
-    //             "[TourRunner] No enabled camera found in floor scene. Using fallback camera."
-    //         );
-    //     }
-    // }
 
     public void ContinueToNextFloor()
     {
@@ -280,6 +232,13 @@ public sealed class TourRunner : MonoBehaviour
             activeFM.FloorCompleted -= OnFloorCompleted;
             activeFM.AreaConfirmed -= OnAreaConfirmed;
         }
+
+#if UNITY_IOS && !UNITY_EDITOR
+        if (UWBLocator.IsInitialized)
+        {
+            UWBLocator.Stop();
+        }
+#endif
 
         if (!string.IsNullOrEmpty(loadedScenePath))
         {

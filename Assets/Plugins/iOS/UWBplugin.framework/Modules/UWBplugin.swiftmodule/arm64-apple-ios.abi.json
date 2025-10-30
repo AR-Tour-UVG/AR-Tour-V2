@@ -318,6 +318,13 @@
         ]
       },
       {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "UWBplugin"
+      },
+      {
         "kind": "Function",
         "name": "setAnchorMap",
         "printedName": "setAnchorMap(_:)",
@@ -374,6 +381,27 @@
         "declKind": "Func",
         "usr": "c:(cm)start",
         "mangledName": "$s9UWBplugin5startyyF",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "AccessControl",
+          "CDecl"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "stop",
+        "printedName": "stop()",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "c:(cm)stop",
+        "mangledName": "$s9UWBplugin4stopyyF",
         "moduleName": "UWBplugin",
         "declAttributes": [
           "AccessControl",
@@ -453,6 +481,27 @@
           "CDecl"
         ],
         "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "triggerUIRefresh",
+        "printedName": "triggerUIRefresh()",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "c:(cm)triggerUIRefresh",
+        "mangledName": "$s9UWBplugin16triggerUIRefreshyyF",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "AccessControl",
+          "CDecl"
+        ],
+        "funcSelfKind": "NonMutating"
       }
     ],
     "json_format_version": 8
@@ -490,13 +539,13 @@
       "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Models\/ViewModel.swift",
       "kind": "IntegerLiteral",
       "offset": 257,
-      "length": 1,
-      "value": "6"
+      "length": 3,
+      "value": "100"
     },
     {
       "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Models\/ViewModel.swift",
       "kind": "FloatLiteral",
-      "offset": 286,
+      "offset": 315,
       "length": 4,
       "value": "10.0"
     },

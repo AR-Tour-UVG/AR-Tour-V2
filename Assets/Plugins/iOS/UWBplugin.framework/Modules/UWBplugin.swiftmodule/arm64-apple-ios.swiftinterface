@@ -6,6 +6,7 @@ import CoreMotion
 import EstimoteUWB
 import Foundation
 import Swift
+import UIKit
 @_exported import UWBplugin
 import _Concurrency
 import _StringProcessing
@@ -18,7 +19,11 @@ public func gaussJordan(A: [Swift.Double], n: Swift.Int, b: [Swift.Double], nrhs
 public func setAnchorMap(_ str: Swift.UnsafePointer<Swift.CChar>?)
 @_cdecl("start")
 public func start()
+@_cdecl("stop")
+public func stop()
 @_cdecl("getCoords")
 public func getCoords() -> Swift.UnsafeMutablePointer<Swift.CChar>
 @_cdecl("freeCString")
 public func freeCString(_ ptr: Swift.UnsafeMutablePointer<Swift.CChar>?)
+@_cdecl("triggerUIRefresh")
+public func triggerUIRefresh()

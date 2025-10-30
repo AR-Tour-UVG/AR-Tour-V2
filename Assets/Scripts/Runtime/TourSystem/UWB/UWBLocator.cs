@@ -28,6 +28,9 @@ public static class UWBLocator
 
     [DllImport("__Internal")]
     private static extern void start();
+
+    [DllImport("__Internal")]
+    private static extern void stop();
 #elif UNITY_EDITOR && !UNITY_IOS
     private static bool hasWarned = false;
 
@@ -38,6 +41,8 @@ public static class UWBLocator
     private static void setAnchorMap(string jsonUtf8) { }
 
     private static void start() { }
+
+    private static void stop() { }
 #else
     private static IntPtr getCoords() => IntPtr.Zero;
 
@@ -46,6 +51,8 @@ public static class UWBLocator
     private static void setAnchorMap(string jsonUtf8) { }
 
     private static void start() { }
+
+    private static void stop() { }
 #endif
 
     public static bool TryGetPosition(out Vector3 position)
@@ -83,7 +90,7 @@ public static class UWBLocator
                 return false;
             }
 
-            Coordinate uwbPosition = JsonUtility.FromJson<Coordinate>(json);
+            var uwbPosition = JsonUtility.FromJson<Coordinate>(json);
             Debug.Log($"[UWBLocator] Parsed UWB Position - x: {uwbPosition.x}, y: {uwbPosition.y}");
             position = new Vector3(uwbPosition.x, 0f, uwbPosition.y);
             return true;
@@ -113,7 +120,7 @@ public static class UWBLocator
             Debug.LogWarning("[UWBLocator] SetAnchorMap: Anchor map is null or empty.");
             return;
         }
-        if (currentAnchorMap == anchorMap && isInitialized)
+        if (currentAnchorMap == anchorMap)
         {
             Debug.Log("[UWBLocator] SetAnchorMap: same Anchor map, no change.");
             return;
@@ -125,17 +132,6 @@ public static class UWBLocator
             setAnchorMap(anchorMap);
             currentAnchorMap = anchorMap;
             Debug.Log($"[UWBLocator] SetAnchorMap: Anchor map set to {anchorMap}.");
-
-            if (!isInitialized)
-            {
-                start();
-                isInitialized = true;
-                Debug.Log("[UWBLocator] Native Plugin started.");
-            }
-            else
-            {
-                Debug.Log("[UWBLocator] Native Plugin already started.");
-            }
         }
         catch (Exception ex)
         {
@@ -144,6 +140,40 @@ public static class UWBLocator
 #else
         currentAnchorMap = anchorMap;
         Debug.Log("[UWBLocator] Not supported on this platform.");
+#endif
+    }
+
+    public static void Start()
+    {
+#if UNITY_IOS && !UNITY_EDITOR
+        try
+        {
+            start();
+            Debug.Log("[UWBLocator] Native Plugin started.");
+            isInitialized = true;
+        }
+        catch (Exception ex)
+        {
+            isInitialized = false;
+            Debug.LogError($"[UWBLocator] Start failed: {ex.Message}");
+        }
+#endif
+    }
+
+    public static void Stop()
+    {
+#if UNITY_IOS && !UNITY_EDITOR
+        try
+        {
+            stop();
+            Debug.Log("[UWBLocator] Native Plugin stopped.");
+            isInitialized = false;
+            currentAnchorMap = null;
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"[UWBLocator] Stop failed: {ex.Message}");
+        }
 #endif
     }
 }
