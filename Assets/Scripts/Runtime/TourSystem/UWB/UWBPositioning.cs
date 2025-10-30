@@ -42,21 +42,13 @@ public class UWBPositioning : MonoBehaviour
     [Tooltip("How many consecutive nulls before declaring connection lost.")]
     [SerializeField]
     private int lostConnectionThreshold = 50;
-
-    [SerializeField]
-    [Tooltip("Consecutive identical readings to treat as stale/loss. 0 = disable.")]
-    private int staleReadingThreshold = 240;
-
     private Coroutine pollRoutine;
     private Vector3 currentGoal;
     private bool hasGoal = false;
     public event Action<bool> OnConnectionStatusChanged;
     bool connected = false;
     private int consecutiveNulls = 0;
-    private int consecutiveStale = 0;
     private bool lossDeclared = false;
-    private Vector2 lastRaw; // x=uwbWorld.x, y=uwbWorld.z
-    private bool hasLastRaw = false;
 
     private void Awake()
     {
@@ -148,19 +140,8 @@ public class UWBPositioning : MonoBehaviour
             return;
         }
 
-        // Check for stale reading
-        bool isStale = hasLastRaw && (uwbWorld.x == lastRaw.x) && (uwbWorld.z == lastRaw.y);
-        if (isStale)
-        {
-            RegisterStaleFailure(); // handles counting + loss check
-            return;
-        }
-
         // Fresh reading
         consecutiveNulls = 0;
-        consecutiveStale = 0;
-        hasLastRaw = true;
-        lastRaw = new Vector2(uwbWorld.x, uwbWorld.z);
 
         if (!connected || lossDeclared)
         {
@@ -196,26 +177,12 @@ public class UWBPositioning : MonoBehaviour
         CheckForLoss("null");
     }
 
-    private void RegisterStaleFailure()
-    {
-        if (staleReadingThreshold <= 0)
-            return;
-        consecutiveStale++;
-        // trace every few counts so you can see progress
-        if ((consecutiveStale % 5) == 0)
-            Debug.Log($"[UWBPositioning] stale={consecutiveStale}/{staleReadingThreshold}");
-
-        // null counter should not accumulate across stales
-        CheckForLoss("stale");
-    }
-
     private void CheckForLoss(string reason)
     {
         // Count-based triggers
         bool hitNulls = consecutiveNulls >= Mathf.Max(1, lostConnectionThreshold);
-        bool hitStale = staleReadingThreshold > 0 && consecutiveStale >= staleReadingThreshold;
 
-        if (!lossDeclared && (hitNulls || hitStale))
+        if (!lossDeclared && hitNulls)
         {
             lossDeclared = true;
             if (connected)
