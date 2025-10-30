@@ -61,10 +61,6 @@ public sealed class TourRunner : MonoBehaviour
         }
         Instance = this;
         baseScene = SceneManager.GetActiveScene();
-#if UNITY_EDITOR && !UNITY_IOS
-        Debug.Log("[TourRunner] Running in Editor mode. AR features disabled.");
-        useAR = false;
-#endif
         Debug.Log($"[TourRunner] Awake. Base scene: {baseScene.name}");
     }
 
@@ -89,6 +85,10 @@ public sealed class TourRunner : MonoBehaviour
             Debug.LogError("[TourRunner] No tour/floors.");
             return;
         }
+#if UNITY_EDITOR
+        Debug.Log("[TourRunner] Running in Editor mode. AR features disabled.");
+        useAR = false;
+#endif
         if (useAR)
         {
             if (arrowSceneDef != null && !string.IsNullOrEmpty(arrowSceneDef.ScenePath))
