@@ -11,7 +11,7 @@ PlayerSettings:
   defaultScreenOrientation: 0
   targetDevice: 2
   useOnDemandResources: 0
-  accelerometerFrequency: 60
+  accelerometerFrequency: 100
   companyName: UVG
   productName: ARTour
   defaultCursor: {fileID: 0}
@@ -610,7 +610,8 @@ PlayerSettings:
   cameraUsageDescription: "Esta app necesita acceso a la c\xE1mara para mostrar contenido
     de realidad aumentada.Esta app necesita acceso a la c\xE1mara para mostrar contenido
     de realidad aumentada."
-  locationUsageDescription: 
+  locationUsageDescription: "Esta app necesita acceso a la ubicaci\xF3n para realizar
+    el Tour."
   microphoneUsageDescription: 
   bluetoothUsageDescription: 
   macOSTargetOSVersion: 11.0

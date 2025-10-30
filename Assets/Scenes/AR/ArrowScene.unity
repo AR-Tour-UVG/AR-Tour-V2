@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 610688279}
   - component: {fileID: 610688278}
   - component: {fileID: 610688277}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -149,13 +149,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610688275}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07844282, y: -0, z: -0, w: 0.9969186}
-  m_LocalPosition: {x: 0, y: 3.17, z: -0.15}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1379174672}
-  m_LocalEulerAnglesHint: {x: 8.998, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &610688277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +381,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -403,7 +403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 814733378}
   - component: {fileID: 814733379}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ARNavigationController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1379174672}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Camera Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,14 +466,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379174671}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18324742, y: -0, z: -0, w: 0.98306686}
-  m_LocalPosition: {x: 0, y: 3.5, z: 0}
+  m_LocalRotation: {x: 0.23089886, y: 0, z: 0, w: 0.97297776}
+  m_LocalPosition: {x: 0, y: 6, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 610688276}
   m_Father: {fileID: 1949699494}
-  m_LocalEulerAnglesHint: {x: 21.118, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 26.7, y: 0, z: 0}
 --- !u!1 &1785054222
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 1785054225}
   - component: {fileID: 1785054224}
   - component: {fileID: 1785054223}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AR Session
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1949699494}
   - component: {fileID: 1949699493}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: XR Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 8776096138577688584}
   - component: {fileID: 2501286151186537500}
   - component: {fileID: 3437311722246277267}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ Transform:
   m_GameObject: {fileID: 919132149408023271}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.17, y: 1.91, z: 6.81}
+  m_LocalPosition: {x: 0, y: 2, z: 6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -628,7 +628,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450653346437213}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ArrowModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,13 +785,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4742638598831321257}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -0.11482988, y: -0.11398101, z: 0.086633205}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 99.99998, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450653346437213}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 270, y: 90, z: 0}
 --- !u!1 &4742638598831321257
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,7 +803,7 @@ GameObject:
   - component: {fileID: 3618108381268493765}
   - component: {fileID: 8795515092792714922}
   - component: {fileID: 1660936104702386816}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

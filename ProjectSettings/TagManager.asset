@@ -8,10 +8,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Environment
+  - AR Content
   - Water
   - UI
-  - Preferred Path
+  - Floor Logic
   - 
   - 
   - 
