@@ -43,13 +43,24 @@ public class UWBPositioning : MonoBehaviour
     [SerializeField]
     private int lostConnectionThreshold = 5;
 
+    [SerializeField]
+    [Tooltip("Consecutive identical readings to treat as stale/loss. 0 = disable.")]
+    private int staleReadingThreshold = 10;
+
+    [SerializeField]
+    [Tooltip("Optional timeout in seconds without a fresh reading. 0 = disable.")]
+    private float lossTimeoutSeconds = 0f;
     private Coroutine pollRoutine;
-    private int consecutiveNulls = 0;
-    private bool lossDeclared = false;
     private Vector3 currentGoal;
     private bool hasGoal = false;
     public event Action<bool> OnConnectionStatusChanged;
     bool connected = false;
+    private int consecutiveNulls = 0;
+    private int consecutiveStale = 0;
+    private bool lossDeclared = false;
+    private Vector3 lastUwbReading;
+    private bool hasLastReading = false;
+    private float lastFreshTime = 0f;
 
     private void Awake()
     {
@@ -137,20 +148,30 @@ public class UWBPositioning : MonoBehaviour
         if (!UWBLocator.TryGetPosition(out var uwbWorld))
         {
             Debug.LogWarning("[UWBPositioning] Failed to get UWB position.");
-            HandlePossibleLoss();
+            RegisterNullFailure();
             return;
         }
-        if (!connected)
+        // Check for stale readings
+        if (hasLastReading && uwbWorld == lastUwbReading)
         {
-            Debug.Log("[UWBPositioning] UWB connected.");
-            connected = true;
-            OnConnectionStatusChanged?.Invoke(true);
+            consecutiveStale++;
+            Debug.LogWarning("[UWBPositioning] Stale UWB reading detected.");
+            RegisterStaleFailure();
+            return;
         }
 
-        if (consecutiveNulls > 0)
+        // Fresh reading
+        consecutiveNulls = 0;
+        consecutiveStale = 0;
+        lastUwbReading = uwbWorld;
+        hasLastReading = true;
+        lastFreshTime = Time.time;
+
+        if (!connected || lossDeclared)
         {
-            consecutiveNulls = 0;
-            lossDeclared = false;
+            connected = true;
+            OnConnectionStatusChanged?.Invoke(true);
+            Debug.Log("[UWBPositioning] UWB connected.");
         }
 
         Vector3 clamped = ClampToNavmesh(
@@ -159,6 +180,7 @@ public class UWBPositioning : MonoBehaviour
             navmeshMaxSampleRadius,
             navmeshRadiusGrowth
         );
+
         if (smoothMove)
         {
             currentGoal = clamped;
@@ -171,20 +193,47 @@ public class UWBPositioning : MonoBehaviour
         }
     }
 
-    private void HandlePossibleLoss()
+    private void RegisterNullFailure()
     {
         consecutiveNulls++;
+        // stale counter should not accumulate across nulls
+        consecutiveStale = 0;
+        CheckForLoss("null");
+    }
 
-        if (!lossDeclared && consecutiveNulls >= Mathf.Max(1, lostConnectionThreshold))
+    private void RegisterStaleFailure()
+    {
+        if (staleReadingThreshold <= 0)
+            return;
+        consecutiveStale++;
+        // null counter should not accumulate across stales
+        consecutiveNulls = 0;
+        CheckForLoss("stale");
+    }
+
+    private void CheckForLoss(string reason)
+    {
+        // Count-based triggers
+        bool hitNulls = consecutiveNulls >= Mathf.Max(1, lostConnectionThreshold);
+        bool hitStale = staleReadingThreshold > 0 && consecutiveStale >= staleReadingThreshold;
+
+        // Time-based trigger
+        bool hitTimeout = false;
+        if (lossTimeoutSeconds > 0f && lastFreshTime > 0f)
+            hitTimeout = (Time.time - lastFreshTime) >= lossTimeoutSeconds;
+
+        if (!lossDeclared && (hitNulls || hitStale || hitTimeout))
         {
             lossDeclared = true;
             if (connected)
             {
                 connected = false;
                 OnConnectionStatusChanged?.Invoke(false);
-                StopTracking();
             }
-            Debug.LogWarning("[UWBPositioning] UWB connection lost. Waiting to reconnect…");
+            Debug.LogWarning(
+                $"[UWBPositioning] UWB connection lost ({reason}{(hitTimeout ? ", timeout" : "")}). Monitoring for recovery."
+            );
+            // Do NOT StopTracking(); keep polling to detect recovery
         }
     }
 
