@@ -130,8 +130,7 @@ public sealed class TourRunner : MonoBehaviour
         }
 
         //SceneManager.SetActiveScene(scene);
-
-        AdoptSceneCameraOrKeepFallback(scene);
+        // AdoptSceneCameraOrKeepFallback(scene);
 
         loadedScenePath = floor.ScenePath;
 
@@ -195,7 +194,7 @@ public sealed class TourRunner : MonoBehaviour
 
         yield return null;
 
-        EnsureFallbackCamera();
+        //EnsureFallbackCamera();
 
         floorIndex++;
         if (currentTour == null || floorIndex >= currentTour.OrderedFloors.Count)
@@ -209,57 +208,57 @@ public sealed class TourRunner : MonoBehaviour
         Debug.Log("[TourRunner] Waiting for user to continue to next floor.");
     }
 
-    private void EnsureFallbackCamera()
-    {
-        foreach (var cam in Camera.allCameras)
-            if (cam && cam.enabled)
-                return;
+    // private void EnsureFallbackCamera()
+    // {
+    //     foreach (var cam in Camera.allCameras)
+    //         if (cam && cam.enabled)
+    //             return;
 
-        if (fallbackCamera == null)
-        {
-            var go = new GameObject("FallbackClearCamera");
-            fallbackCamera = go.AddComponent<Camera>();
-            fallbackCamera.clearFlags = CameraClearFlags.Skybox;
-            fallbackCamera.cullingMask = ~0;
-            fallbackCamera.depth = -100;
-        }
-        fallbackCamera.enabled = true;
-    }
+    //     if (fallbackCamera == null)
+    //     {
+    //         var go = new GameObject("FallbackClearCamera");
+    //         fallbackCamera = go.AddComponent<Camera>();
+    //         fallbackCamera.clearFlags = CameraClearFlags.Skybox;
+    //         fallbackCamera.cullingMask = ~0;
+    //         fallbackCamera.depth = -100;
+    //     }
+    //     fallbackCamera.enabled = true;
+    // }
 
-    private void DisableFallbackCamera()
-    {
-        if (fallbackCamera)
-            fallbackCamera.enabled = false;
-    }
+    // private void DisableFallbackCamera()
+    // {
+    //     if (fallbackCamera)
+    //         fallbackCamera.enabled = false;
+    // }
 
-    private void AdoptSceneCameraOrKeepFallback(Scene scene)
-    {
-        Camera sceneCam = null;
-        var cams = FindObjectsByType<Camera>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-        foreach (var c in cams)
-        {
-            if (!c || !c.enabled)
-                continue;
-            if (c.gameObject.scene == scene)
-            {
-                sceneCam = c;
-                break;
-            }
-        }
+    // private void AdoptSceneCameraOrKeepFallback(Scene scene)
+    // {
+    //     Camera sceneCam = null;
+    //     var cams = FindObjectsByType<Camera>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+    //     foreach (var c in cams)
+    //     {
+    //         if (!c || !c.enabled)
+    //             continue;
+    //         if (c.gameObject.scene == scene)
+    //         {
+    //             sceneCam = c;
+    //             break;
+    //         }
+    //     }
 
-        if (sceneCam != null)
-        {
-            DisableFallbackCamera();
-            Debug.Log($"[TourRunner] Using scene camera: {sceneCam.name}");
-        }
-        else
-        {
-            EnsureFallbackCamera();
-            Debug.LogWarning(
-                "[TourRunner] No enabled camera found in floor scene. Using fallback camera."
-            );
-        }
-    }
+    //     if (sceneCam != null)
+    //     {
+    //         DisableFallbackCamera();
+    //         Debug.Log($"[TourRunner] Using scene camera: {sceneCam.name}");
+    //     }
+    //     else
+    //     {
+    //         EnsureFallbackCamera();
+    //         Debug.LogWarning(
+    //             "[TourRunner] No enabled camera found in floor scene. Using fallback camera."
+    //         );
+    //     }
+    // }
 
     public void ContinueToNextFloor()
     {
