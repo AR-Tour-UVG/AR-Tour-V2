@@ -354,6 +354,8 @@ MonoBehaviour:
   expressTour: {fileID: 11400000, guid: aad51bde44460454086b6b3ab4a29b3b, type: 2}
   completeTour: {fileID: 11400000, guid: aad51bde44460454086b6b3ab4a29b3b, type: 2}
   arrowSceneDef: {fileID: 11400000, guid: bc127b70e182d5347a67af709c30d24f, type: 2}
+  useAR: 1
+  disableFloorCamerasInAR: 1
 --- !u!114 &975345987
 MonoBehaviour:
   m_ObjectHideFlags: 0

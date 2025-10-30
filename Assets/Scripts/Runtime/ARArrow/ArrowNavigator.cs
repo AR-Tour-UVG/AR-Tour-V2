@@ -8,7 +8,7 @@ public class ArrowNavigator : MonoBehaviour
     public Transform arrow3D;
     public float arrowDistance = 2f;
 
-    [Range(0f, 360f)]
+    [Header("Compass")]
     public float northOffset = 0f;
 
     [Header("Pathfinding")]
