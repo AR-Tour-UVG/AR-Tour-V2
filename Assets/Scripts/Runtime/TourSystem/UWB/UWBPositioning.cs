@@ -41,15 +41,12 @@ public class UWBPositioning : MonoBehaviour
     [Header("Signal Loss")]
     [Tooltip("How many consecutive nulls before declaring connection lost.")]
     [SerializeField]
-    private int lostConnectionThreshold = 5;
+    private int lostConnectionThreshold = 10;
 
     [SerializeField]
     [Tooltip("Consecutive identical readings to treat as stale/loss. 0 = disable.")]
-    private int staleReadingThreshold = 10;
+    private int staleReadingThreshold = 30;
 
-    [SerializeField]
-    [Tooltip("Optional timeout in seconds without a fresh reading. 0 = disable.")]
-    private float lossTimeoutSeconds = 0f;
     private Coroutine pollRoutine;
     private Vector3 currentGoal;
     private bool hasGoal = false;
@@ -58,9 +55,8 @@ public class UWBPositioning : MonoBehaviour
     private int consecutiveNulls = 0;
     private int consecutiveStale = 0;
     private bool lossDeclared = false;
-    private Vector3 lastUwbReading;
-    private bool hasLastReading = false;
-    private float lastFreshTime = 0f;
+    private Vector2 lastRaw; // x=uwbWorld.x, y=uwbWorld.z
+    private bool hasLastRaw = false;
 
     private void Awake()
     {
@@ -151,25 +147,25 @@ public class UWBPositioning : MonoBehaviour
             RegisterNullFailure();
             return;
         }
-        // Check for stale readings
-        if (hasLastReading && uwbWorld == lastUwbReading)
+
+        // Check for stale reading
+        bool isStale = hasLastRaw && (uwbWorld.x == lastRaw.x) && (uwbWorld.z == lastRaw.y);
+        if (isStale)
         {
-            consecutiveStale++;
-            Debug.LogWarning("[UWBPositioning] Stale UWB reading detected.");
-            RegisterStaleFailure();
+            RegisterStaleFailure(); // handles counting + loss check
             return;
         }
 
         // Fresh reading
         consecutiveNulls = 0;
         consecutiveStale = 0;
-        lastUwbReading = uwbWorld;
-        hasLastReading = true;
-        lastFreshTime = Time.time;
+        hasLastRaw = true;
+        lastRaw = new Vector2(uwbWorld.x, uwbWorld.z);
 
         if (!connected || lossDeclared)
         {
             connected = true;
+            lossDeclared = false;
             OnConnectionStatusChanged?.Invoke(true);
             Debug.Log("[UWBPositioning] UWB connected.");
         }
@@ -197,7 +193,6 @@ public class UWBPositioning : MonoBehaviour
     {
         consecutiveNulls++;
         // stale counter should not accumulate across nulls
-        consecutiveStale = 0;
         CheckForLoss("null");
     }
 
@@ -206,8 +201,11 @@ public class UWBPositioning : MonoBehaviour
         if (staleReadingThreshold <= 0)
             return;
         consecutiveStale++;
+        // trace every few counts so you can see progress
+        if ((consecutiveStale % 5) == 0)
+            Debug.Log($"[UWBPositioning] stale={consecutiveStale}/{staleReadingThreshold}");
+
         // null counter should not accumulate across stales
-        consecutiveNulls = 0;
         CheckForLoss("stale");
     }
 
@@ -217,12 +215,7 @@ public class UWBPositioning : MonoBehaviour
         bool hitNulls = consecutiveNulls >= Mathf.Max(1, lostConnectionThreshold);
         bool hitStale = staleReadingThreshold > 0 && consecutiveStale >= staleReadingThreshold;
 
-        // Time-based trigger
-        bool hitTimeout = false;
-        if (lossTimeoutSeconds > 0f && lastFreshTime > 0f)
-            hitTimeout = (Time.time - lastFreshTime) >= lossTimeoutSeconds;
-
-        if (!lossDeclared && (hitNulls || hitStale || hitTimeout))
+        if (!lossDeclared && (hitNulls || hitStale))
         {
             lossDeclared = true;
             if (connected)
@@ -231,9 +224,8 @@ public class UWBPositioning : MonoBehaviour
                 OnConnectionStatusChanged?.Invoke(false);
             }
             Debug.LogWarning(
-                $"[UWBPositioning] UWB connection lost ({reason}{(hitTimeout ? ", timeout" : "")}). Monitoring for recovery."
+                $"[UWBPositioning] UWB connection lost ({reason}). Monitoring for recovery."
             );
-            // Do NOT StopTracking(); keep polling to detect recovery
         }
     }
 
