@@ -38,6 +38,15 @@ public sealed class TourRunner : MonoBehaviour
     [SerializeField]
     private ArrowSceneDefinition arrowSceneDef;
 
+    [SerializeField]
+    [Tooltip("If true, use AR mode for the tour.")]
+    private bool useAR = false;
+
+    [SerializeField, Tooltip("Disable floor scene cameras when AR is on.")]
+    private bool disableFloorCamerasInAR = true;
+
+    private bool arOverlayLoaded = false;
+
     private bool waitingForUserToContinue;
     public bool WaitingForUserToContinue => waitingForUserToContinue;
 
@@ -52,6 +61,10 @@ public sealed class TourRunner : MonoBehaviour
         }
         Instance = this;
         baseScene = SceneManager.GetActiveScene();
+#if UNITY_EDITOR && !UNITY_IOS
+        Debug.Log("[TourRunner] Running in Editor mode. AR features disabled.");
+        useAR = false;
+#endif
         Debug.Log($"[TourRunner] Awake. Base scene: {baseScene.name}");
     }
 
@@ -76,18 +89,22 @@ public sealed class TourRunner : MonoBehaviour
             Debug.LogError("[TourRunner] No tour/floors.");
             return;
         }
-        if (arrowSceneDef != null && !string.IsNullOrEmpty(arrowSceneDef.ScenePath))
+        if (useAR)
         {
-            var sc = SceneManager.GetSceneByPath(arrowSceneDef.ScenePath);
-            if (!sc.IsValid() || !sc.isLoaded)
+            if (arrowSceneDef != null && !string.IsNullOrEmpty(arrowSceneDef.ScenePath))
             {
-                Debug.Log("[TourRunner] Loading AR Arrow scene additively...");
-                SceneManager.LoadSceneAsync(arrowSceneDef.ScenePath, LoadSceneMode.Additive);
+                var sc = SceneManager.GetSceneByPath(arrowSceneDef.ScenePath);
+                if (!sc.IsValid() || !sc.isLoaded)
+                {
+                    Debug.Log("[TourRunner] Loading AR Arrow scene additively...");
+                    SceneManager.LoadSceneAsync(arrowSceneDef.ScenePath, LoadSceneMode.Additive);
+                    arOverlayLoaded = true;
+                }
             }
-        }
-        else
-        {
-            Debug.LogWarning("[TourRunner] ArrowSceneDefinition not assigned or empty path.");
+            else
+            {
+                Debug.LogWarning("[TourRunner] ArrowSceneDefinition not assigned or empty path.");
+            }
         }
 
         StartCoroutine(LoadFloorAt(floorIndex));
@@ -137,6 +154,7 @@ public sealed class TourRunner : MonoBehaviour
         }
 
         loadedScenePath = floor.ScenePath;
+        ApplyCameraPolicy(scene);
 
         activeFM = FindFirstObjectByType<FloorManager>(FindObjectsInactive.Include);
         if (!activeFM)
@@ -252,6 +270,18 @@ public sealed class TourRunner : MonoBehaviour
             activeFM = null;
         }
 
+        if (
+            arOverlayLoaded
+            && arrowSceneDef != null
+            && !string.IsNullOrEmpty(arrowSceneDef.ScenePath)
+        )
+        {
+            var sc = SceneManager.GetSceneByPath(arrowSceneDef.ScenePath);
+            if (sc.IsValid() && sc.isLoaded)
+                SceneManager.UnloadSceneAsync(arrowSceneDef.ScenePath);
+            arOverlayLoaded = false;
+        }
+
         currentTour = null;
         floorIndex = -1;
         visitedAcrossTour = 0;
@@ -261,5 +291,66 @@ public sealed class TourRunner : MonoBehaviour
 
         if (returnToHome)
             Debug.Log("[TourRunner] Tour stopped. Returning to home state.");
+    }
+
+    private void ApplyCameraPolicy(Scene floorScene)
+    {
+        // When AR is off, just ensure floor cameras are enabled.
+        if (!useAR)
+        {
+            EnableCamerasInScene(floorScene, enable: true);
+            EnsureSingleAudioListener();
+            return;
+        }
+
+        // AR is on: disable floor cameras if configured
+        if (disableFloorCamerasInAR)
+            EnableCamerasInScene(floorScene, enable: false);
+
+        // Ensure only one AudioListener remains globally
+        EnsureSingleAudioListener();
+    }
+
+    private void EnableCamerasInScene(Scene scene, bool enable)
+    {
+        foreach (var root in scene.GetRootGameObjects())
+        {
+            foreach (var cam in root.GetComponentsInChildren<Camera>(true))
+                cam.enabled = enable;
+        }
+    }
+
+    private void EnsureSingleAudioListener()
+    {
+        // Collect listeners in base scene
+        AudioListener baseSceneListener = null;
+        foreach (var root in baseScene.GetRootGameObjects())
+        {
+            baseSceneListener = root.GetComponentInChildren<AudioListener>(true);
+            if (baseSceneListener)
+                break;
+        }
+
+        if (baseSceneListener == null)
+        {
+            Debug.LogWarning("[TourRunner] No AudioListener found in base scene.");
+            return;
+        }
+
+        // Disable all listeners not in base scene
+        var all = FindObjectsByType<AudioListener>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
+        foreach (var al in all)
+        {
+            if (al == baseSceneListener)
+                continue;
+            if (al.enabled)
+            {
+                al.enabled = false;
+                Debug.Log($"[TourRunner] Disabled extra AudioListener on {al.gameObject.name}");
+            }
+        }
     }
 }

@@ -129,7 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 610688276}
   - component: {fileID: 610688282}
-  - component: {fileID: 610688281}
   - component: {fileID: 610688280}
   - component: {fileID: 610688279}
   - component: {fileID: 610688278}
@@ -334,14 +333,6 @@ MonoBehaviour:
   m_LightEstimation: 0
   m_FacingDirection: 1
   m_RenderMode: 0
---- !u!81 &610688281
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610688275}
-  m_Enabled: 1
 --- !u!20 &610688282
 Camera:
   m_ObjectHideFlags: 0
@@ -731,7 +722,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
