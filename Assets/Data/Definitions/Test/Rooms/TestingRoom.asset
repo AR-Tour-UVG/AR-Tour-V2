@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30f6579f9a2b70342a873f837ad59380, type: 3}
-  m_Name: BedroomTest
+  m_Name: TestingRoom
   m_EditorClassIdentifier: 
-  floorName: Diegos Bedroom
+  floorName: Diegos LivingRoom
   transitionText: 
   orderedAreas:
   - {fileID: 11400000, guid: d4f3424a105eb334192fda456b9e859b, type: 2}
   - {fileID: 11400000, guid: 49ff6145f4d109f4f95cf341a9763345, type: 2}
   - {fileID: 11400000, guid: ae33a3a8e049bfe43b4430490615ffa0, type: 2}
   anchorMapJson: {fileID: 4900000, guid: 9233e1b4a80f60942b8c0fc624fb4547, type: 3}
-  scenePath: Assets/Scenes/Test/BedroomTest.unity
+  scenePath: Assets/Scenes/Test/TestingRoom.unity
   sceneAsset: {fileID: 102900000, guid: 3bfc98553b53d9a4299583f2ab8f4092, type: 3}
