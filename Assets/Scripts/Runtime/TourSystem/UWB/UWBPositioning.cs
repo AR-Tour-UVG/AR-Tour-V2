@@ -9,7 +9,7 @@ public class UWBPositioning : MonoBehaviour
     [Header("Polling")]
     [Tooltip("How often poll for a new position (0 = every frame. >0 = seconds).")]
     [SerializeField]
-    private float pollIntervalSeconds = 0.0f;
+    private float pollIntervalSeconds = 0.25f;
 
     [Header("NavMesh Clamp")]
     [Tooltip("Radius to sample the NavMesh for valid positions.")]
@@ -41,11 +41,11 @@ public class UWBPositioning : MonoBehaviour
     [Header("Signal Loss")]
     [Tooltip("How many consecutive nulls before declaring connection lost.")]
     [SerializeField]
-    private int lostConnectionThreshold = 10;
+    private int lostConnectionThreshold = 50;
 
     [SerializeField]
     [Tooltip("Consecutive identical readings to treat as stale/loss. 0 = disable.")]
-    private int staleReadingThreshold = 30;
+    private int staleReadingThreshold = 240;
 
     private Coroutine pollRoutine;
     private Vector3 currentGoal;
