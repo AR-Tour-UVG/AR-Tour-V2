@@ -26,10 +26,6 @@ public sealed class UIBootstrap : MonoBehaviour
 
     private void Awake()
     {
-#if UNITY_IOS && !UNITY_EDITOR
-        // Refresh app UI on iOS launch
-        ChapuzerUI.RefreshUI();
-#endif
         if (AppPrefs.IsFirstRun())
         {
             AppPrefs.SaveVolume(50);
