@@ -9,7 +9,6 @@ public class ArrowNavigator : MonoBehaviour
     public float arrowDistance = 2f;
 
     [Header("Compass")]
-    [Tooltip("Place the current facing direction in real world.")]
     public float currentFacing = 0f;
 
     [Header("Pathfinding")]
@@ -23,7 +22,6 @@ public class ArrowNavigator : MonoBehaviour
     private ARSession arSession;
     private ARCameraManager cameraManager;
     private TourRunner tourRunner;
-    private float northOffset;
 
     // === NEW: public binder API ===
     public void SetPathProvider(PathProvider provider)
@@ -207,35 +205,73 @@ public class ArrowNavigator : MonoBehaviour
 
     void Update()
     {
-        if (!arrow3D || !arCamera || !arrow3D.gameObject.activeSelf)
+        if (!arrow3D || !arCamera)
             return;
 
-        // Keep it in front of the camera
+        // 1. Siempre mantener la flecha enfrente de la cámara
         arrow3D.position = arCamera.position + arCamera.forward * arrowDistance;
 
-        // Base orientation: camera pitch+yaw, roll removed
-        Quaternion camNoRoll = Quaternion.LookRotation(arCamera.forward, Vector3.up);
-
-        // Compass correction (pure yaw)
-        northOffset = 360f - currentFacing;
-        float compassHeading = (Input.compass.trueHeading + northOffset) % 360f;
-        Quaternion compassYaw = Quaternion.AngleAxis(-compassHeading, Vector3.up);
-
-        // Path direction (pure yaw toward next corner)
-        Quaternion pathYaw = Quaternion.identity;
-        if (currentPath != null && currentPath.corners != null && currentPath.corners.Length >= 2)
+        // 2. Si no hay path válido, ocultar / no rotar
+        if (currentPath == null || currentPath.corners == null || currentPath.corners.Length < 2)
         {
-            Vector3 playerPos = currentPath.corners[0];
-            Vector3 nextCorner = currentPath.corners[1];
-            Vector3 flat = new Vector3(nextCorner.x - playerPos.x, 0f, nextCorner.z - playerPos.z);
-            if (flat.sqrMagnitude > 0.01f)
-            {
-                float ang = Mathf.Atan2(flat.x, flat.z) * Mathf.Rad2Deg;
-                pathYaw = Quaternion.AngleAxis(ang, Vector3.up);
-            }
+            if (arrow3D.gameObject.activeSelf)
+                arrow3D.gameObject.SetActive(false);
+            return;
+        }
+        else
+        {
+            if (!arrow3D.gameObject.activeSelf)
+                arrow3D.gameObject.SetActive(true);
         }
 
-        // Final rotation
-        arrow3D.rotation = camNoRoll * compassYaw * pathYaw;
+        // 3. Obtener el punto "playerPos" y el "nextCorner" del path
+        Vector3 playerPos = currentPath.corners[0];
+        Vector3 nextCorner = currentPath.corners[1];
+
+        // 4. Vector hacia el siguiente corner, pero aplanado (sin Y)
+        Vector3 flatDir = new Vector3(
+            nextCorner.x - playerPos.x,
+            0f,
+            nextCorner.z - playerPos.z
+        );
+
+        // Si el vector es casi cero, no intentemos girar
+        if (flatDir.sqrMagnitude < 0.0001f)
+            return;
+
+        // 5. Yaw absoluto en mundo hacia el siguiente corner
+        //    atan2(x,z) (ojo, no z,x) para obtener ángulo en grados relativos al +Z
+        float worldYawDeg = Mathf.Atan2(flatDir.x, flatDir.z) * Mathf.Rad2Deg;
+
+        // 6. CORRECCIÓN DE NORTE / BRÚJULA
+        // Tu offset actual: northOffset = 360 - currentFacing;
+        // luego: compassHeading = trueHeading + northOffset;
+        // Esto básicamente te alinea mundo Unity vs mundo real.
+        // Ese ángulo es la diferencia entre "norte real del usuario" y "forward +Z de la escena".
+        //
+        // Entonces restamos ese heading para que la flecha apunte a donde tiene que ir,
+        // pero expresado en el frame de referencia del usuario.
+        float compassHeading = (Input.compass.trueHeading + (360f - currentFacing)) % 360f;
+
+        // 7. Queremos una rotación PLANA (solo yaw) que le diga al usuario
+        // "gira X grados desde donde estás mirando ahora".
+        //
+        // El usuario está mirando en algún yaw actual. Sacamos el yaw actual de la cámara.
+        Vector3 camFwdFlat = new Vector3(arCamera.forward.x, 0f, arCamera.forward.z);
+        if (camFwdFlat.sqrMagnitude < 0.0001f)
+            camFwdFlat = arCamera.transform.rotation * Vector3.forward; // fallback
+        camFwdFlat.Normalize();
+
+        float camYawDeg = Mathf.Atan2(camFwdFlat.x, camFwdFlat.z) * Mathf.Rad2Deg;
+
+        // 8. Diferencia entre hacia dónde DEBE IR (worldYawDeg) y hacia dónde ESTÁ MIRANDO el usuario (camYawDeg)
+        float relativeYawDeg = Mathf.DeltaAngle(camYawDeg, worldYawDeg);
+
+        // 9. Creamos una rotación PLANA solo con ese yaw relativo.
+        // OJO: aquí la flecha rota en su propio mundo, pero sin pitch/roll.
+        Quaternion flatRot = Quaternion.Euler(0f, camYawDeg + relativeYawDeg, 0f);
+
+        arrow3D.rotation = flatRot;
     }
+
 }

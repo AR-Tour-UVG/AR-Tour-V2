@@ -354,7 +354,7 @@ MonoBehaviour:
   expressTour: {fileID: 11400000, guid: 871852696dfb67c4f8df33d2cb2ef04d, type: 2}
   completeTour: {fileID: 11400000, guid: aad51bde44460454086b6b3ab4a29b3b, type: 2}
   arrowSceneDef: {fileID: 11400000, guid: bc127b70e182d5347a67af709c30d24f, type: 2}
-  useAR: 0
+  useAR: 1
   disableFloorCamerasInAR: 1
 --- !u!114 &975345987
 MonoBehaviour:
@@ -417,7 +417,7 @@ MonoBehaviour:
   uiDocument: {fileID: 995628174}
   uiAtlas: {fileID: 11400000, guid: dd719685f9948254589690b00244cb10, type: 2}
   audioAtlas: {fileID: 11400000, guid: 9a7d07e24c083af429867d0082b549c6, type: 2}
-  forceOnboardingAlways: 1
+  forceOnboardingAlways: 0
 --- !u!114 &995628174
 MonoBehaviour:
   m_ObjectHideFlags: 0
