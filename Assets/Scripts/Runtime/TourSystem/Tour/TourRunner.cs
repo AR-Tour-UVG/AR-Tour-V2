@@ -127,10 +127,6 @@ public sealed class TourRunner : MonoBehaviour
         if (floor.TryGetAnchorMapText(out var json))
         {
 #if UNITY_IOS && !UNITY_EDITOR
-            if (UWBLocator.IsInitialized)
-            {
-                UWBLocator.Stop();
-            }
             UWBLocator.SetAnchorMap(json);
             UWBLocator.Start();
 #endif
@@ -194,12 +190,6 @@ public sealed class TourRunner : MonoBehaviour
 
     private IEnumerator UnloadAndAdvance()
     {
-#if UNITY_IOS && !UNITY_EDITOR
-        if (UWBLocator.IsInitialized)
-        {
-            UWBLocator.Stop();
-        }
-#endif
         if (!string.IsNullOrEmpty(loadedScenePath))
         {
             Debug.Log($"[TourRunner] Unloading scene: {loadedScenePath}");
@@ -250,13 +240,6 @@ public sealed class TourRunner : MonoBehaviour
             activeFM.FloorCompleted -= OnFloorCompleted;
             activeFM.AreaConfirmed -= OnAreaConfirmed;
         }
-
-#if UNITY_IOS && !UNITY_EDITOR
-        if (UWBLocator.IsInitialized)
-        {
-            UWBLocator.Stop();
-        }
-#endif
 
         if (!string.IsNullOrEmpty(loadedScenePath))
         {

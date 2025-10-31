@@ -28,9 +28,6 @@ public static class UWBLocator
 
     [DllImport("__Internal")]
     private static extern void start();
-
-    [DllImport("__Internal")]
-    private static extern void stop();
 #elif UNITY_EDITOR && !UNITY_IOS
     private static bool hasWarned = false;
 
@@ -41,8 +38,6 @@ public static class UWBLocator
     private static void setAnchorMap(string jsonUtf8) { }
 
     private static void start() { }
-
-    private static void stop() { }
 #else
     private static IntPtr getCoords() => IntPtr.Zero;
 
@@ -51,8 +46,6 @@ public static class UWBLocator
     private static void setAnchorMap(string jsonUtf8) { }
 
     private static void start() { }
-
-    private static void stop() { }
 #endif
 
     public static bool TryGetPosition(out Vector3 position)
@@ -156,23 +149,6 @@ public static class UWBLocator
         {
             isInitialized = false;
             Debug.LogError($"[UWBLocator] Start failed: {ex.Message}");
-        }
-#endif
-    }
-
-    public static void Stop()
-    {
-#if UNITY_IOS && !UNITY_EDITOR
-        try
-        {
-            stop();
-            Debug.Log("[UWBLocator] Native Plugin stopped.");
-            isInitialized = false;
-            currentAnchorMap = null;
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError($"[UWBLocator] Stop failed: {ex.Message}");
         }
 #endif
     }

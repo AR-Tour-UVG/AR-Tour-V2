@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f40e496ff7c3449b87e554681889f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expressTour: {fileID: 11400000, guid: aad51bde44460454086b6b3ab4a29b3b, type: 2}
+  expressTour: {fileID: 11400000, guid: 871852696dfb67c4f8df33d2cb2ef04d, type: 2}
   completeTour: {fileID: 11400000, guid: aad51bde44460454086b6b3ab4a29b3b, type: 2}
   arrowSceneDef: {fileID: 11400000, guid: bc127b70e182d5347a67af709c30d24f, type: 2}
   useAR: 1
