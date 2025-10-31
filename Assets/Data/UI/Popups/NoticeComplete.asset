@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: NoticeComplete
   m_EditorClassIdentifier: 
   noticeTitle: Tour completado
-  noticeMessage: "\xA1Excelente trabajo! Has terminado el recorrido. Gracias por
-    explorar con nosotros."
+  noticeMessage: "\xA1Excelente trabajo! Has terminado el recorrido."
   noticeJack: {fileID: 21300000, guid: a7d0e83b9d4fc0c4791f8da8c74021f8, type: 3}
   noticeAudioClip: {fileID: 8300000, guid: 93cad8a20a6f590438c7f966f277c500, type: 3}

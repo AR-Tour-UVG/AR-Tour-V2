@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: NoticeConnecting
   m_EditorClassIdentifier: 
   noticeTitle: Conectando...
-  noticeMessage: Espera un momento mientras sincronizamos tu dispositivo con el entorno.
+  noticeMessage: Espera un momento mientras sincronizamos tu dispositivo.
   noticeJack: {fileID: 21300000, guid: 18d820d417bd56946a1c2fe76441c08e, type: 3}
   noticeAudioClip: {fileID: 8300000, guid: e86be840aa31dd24b801c43232327c22, type: 3}
