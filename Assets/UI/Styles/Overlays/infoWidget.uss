@@ -57,7 +57,7 @@
     -unity-text-align: upper-center;
     text-overflow: ellipsis;
     color: rgb(242, 242, 242);
-    font-size: 60%;
+    font-size: 75%;
     white-space: normal;
     padding-top: 2%;
     padding-right: 2%;
@@ -126,5 +126,5 @@
 
 #InfoWidget.is-open {
     opacity: 1;
-    translate: 0 0px;
+    translate: 0 0;
 }

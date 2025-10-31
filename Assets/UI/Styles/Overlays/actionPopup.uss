@@ -56,7 +56,7 @@
     color: rgb(242, 242, 242);
     -unity-text-align: middle-center;
     text-overflow: ellipsis;
-    font-size: 50%;
+    font-size: 60%;
     width: 100%;
     height: 30%;
     padding-top: 2%;
@@ -70,7 +70,7 @@
     width: 100%;
     height: 100%;
     -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Bold-SDF.asset?fileID=11400000&guid=95ce5fb5eb91d2647b6aa52c09e3bc8c&type=2#Outfit-Bold-SDF");
-    font-size: 50%;
+    font-size: 60%;
     color: rgb(242, 242, 242);
     -unity-text-align: middle-center;
     text-overflow: ellipsis;

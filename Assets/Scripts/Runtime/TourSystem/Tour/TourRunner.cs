@@ -45,7 +45,7 @@ public sealed class TourRunner : MonoBehaviour
     [SerializeField, Tooltip("Disable floor scene cameras when AR is on.")]
     private bool disableFloorCamerasInAR = true;
 
-    private bool arOverlayLoaded = false;
+    // private bool arOverlayLoaded = false;
 
     private bool waitingForUserToContinue;
     public bool WaitingForUserToContinue => waitingForUserToContinue;
@@ -98,7 +98,7 @@ public sealed class TourRunner : MonoBehaviour
                 {
                     Debug.Log("[TourRunner] Loading AR Arrow scene additively...");
                     SceneManager.LoadSceneAsync(arrowSceneDef.ScenePath, LoadSceneMode.Additive);
-                    arOverlayLoaded = true;
+                    // arOverlayLoaded = true;
                 }
             }
             else
@@ -253,17 +253,17 @@ public sealed class TourRunner : MonoBehaviour
             activeFM = null;
         }
 
-        if (
-            arOverlayLoaded
-            && arrowSceneDef != null
-            && !string.IsNullOrEmpty(arrowSceneDef.ScenePath)
-        )
-        {
-            var sc = SceneManager.GetSceneByPath(arrowSceneDef.ScenePath);
-            if (sc.IsValid() && sc.isLoaded)
-                SceneManager.UnloadSceneAsync(arrowSceneDef.ScenePath);
-            arOverlayLoaded = false;
-        }
+        // if (
+        //     arOverlayLoaded
+        //     && arrowSceneDef != null
+        //     && !string.IsNullOrEmpty(arrowSceneDef.ScenePath)
+        // )
+        // {
+        //     var sc = SceneManager.GetSceneByPath(arrowSceneDef.ScenePath);
+        //     if (sc.IsValid() && sc.isLoaded)
+        //         SceneManager.UnloadSceneAsync(arrowSceneDef.ScenePath);
+        //     arOverlayLoaded = false;
+        // }
 
         currentTour = null;
         floorIndex = -1;

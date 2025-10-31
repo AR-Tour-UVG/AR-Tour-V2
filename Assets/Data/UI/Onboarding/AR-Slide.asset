@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Realidad Aumentada
   description: "Usa la flecha en pantalla para avanzar por el camino. Mant\xE9n el
-    tel\xE9fono apuntando al frente y observa los datos que aparecer\xE1n en la parte
-    superior e inferior mientras exploras."
+    tel\xE9fono apuntando al frente y observa los datos que aparecer\xE1n en la pantalla."
   art: {fileID: 21300000, guid: ed0fe7fc1dab344418da40858a76c9dc, type: 3}
   narration: {fileID: 8300000, guid: ea7dd13892cf2d546998ac7ee983ad5e, type: 3}

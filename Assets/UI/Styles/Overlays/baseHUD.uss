@@ -85,7 +85,7 @@
     overflow: hidden;
     flex-grow: 0;
     margin-right: 4%;
-    font-size: 55%;
+    font-size: 60%;
     width: 78%;
     -unity-font-style: normal;
 }
@@ -111,7 +111,7 @@
     white-space: normal;
     text-overflow: ellipsis;
     -unity-text-align: middle-center;
-    font-size: 45%;
+    font-size: 55%;
     flex-grow: 0;
     margin-right: 3%;
     margin-left: 3%;
@@ -161,12 +161,12 @@
     color: rgb(0, 165, 0);
     -unity-text-align: middle-left;
     text-overflow: ellipsis;
-    font-size: 45%;
+    font-size: 55%;
 }
 
 .metric-value {
     -unity-font-definition: url("project://database/Assets/Fonts/FontAssets/Outfit-Regular-SDF.asset?fileID=11400000&guid=5ca79f15c435d9c468768628c1e23902&type=2#Outfit-Regular-SDF");
-    font-size: 45%;
+    font-size: 60%;
     color: rgb(0, 165, 0);
     -unity-text-align: middle-center;
     flex-grow: 1;

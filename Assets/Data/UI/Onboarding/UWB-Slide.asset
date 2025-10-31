@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b330657b45d3e4da73e124c139afc3, type: 3}
   m_Name: UWB-Slide
   m_EditorClassIdentifier: 
-  title: Sincroniza tu entorno con UWB
+  title: "Sincron\xEDzate con UWB"
   description: "Concede los permisos solicitados y mu\xE9vete un poco para que los
     sensores calibren correctamente tu dispositivo antes de iniciar."
   art: {fileID: 21300000, guid: e67adc7569aacb546af835186eaa2c0b, type: 3}
