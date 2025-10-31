@@ -9,7 +9,8 @@ public class ArrowNavigator : MonoBehaviour
     public float arrowDistance = 2f;
 
     [Header("Compass")]
-    public float northOffset = 0f;
+    [Tooltip("Place the current facing direction in real world.")]
+    public float currentFacing = 0f;
 
     [Header("Pathfinding")]
     [SerializeField]
@@ -22,6 +23,7 @@ public class ArrowNavigator : MonoBehaviour
     private ARSession arSession;
     private ARCameraManager cameraManager;
     private TourRunner tourRunner;
+    private float northOffset;
 
     // === NEW: public binder API ===
     public void SetPathProvider(PathProvider provider)
@@ -205,35 +207,35 @@ public class ArrowNavigator : MonoBehaviour
 
     void Update()
     {
-        if (!arrow3D || !arCamera)
+        if (!arrow3D || !arCamera || !arrow3D.gameObject.activeSelf)
             return;
 
-        if (!arrow3D.gameObject.activeSelf)
-            return;
-
-        // Place arrow in front of camera
+        // Keep it in front of the camera
         arrow3D.position = arCamera.position + arCamera.forward * arrowDistance;
 
-        // Step 1: camera yaw
-        var cameraEuler = arCamera.rotation.eulerAngles;
-        arrow3D.rotation = Quaternion.Euler(0, cameraEuler.y, 0);
+        // Base orientation: camera pitch+yaw, roll removed
+        Quaternion camNoRoll = Quaternion.LookRotation(arCamera.forward, Vector3.up);
 
-        // Step 2: compass correction
-        var compassHeading = (Input.compass.trueHeading + northOffset) % 360f;
-        arrow3D.rotation = arrow3D.rotation * Quaternion.Euler(0, -compassHeading, 0);
+        // Compass correction (pure yaw)
+        northOffset = 360f - currentFacing;
+        float compassHeading = (Input.compass.trueHeading + northOffset) % 360f;
+        Quaternion compassYaw = Quaternion.AngleAxis(-compassHeading, Vector3.up);
 
-        // Step 3: path direction
+        // Path direction (pure yaw toward next corner)
+        Quaternion pathYaw = Quaternion.identity;
         if (currentPath != null && currentPath.corners != null && currentPath.corners.Length >= 2)
         {
-            var playerPos = currentPath.corners[0];
-            var nextCorner = currentPath.corners[1];
-            var dir = nextCorner - playerPos;
-            var flat = new Vector3(dir.x, 0, dir.z);
+            Vector3 playerPos = currentPath.corners[0];
+            Vector3 nextCorner = currentPath.corners[1];
+            Vector3 flat = new Vector3(nextCorner.x - playerPos.x, 0f, nextCorner.z - playerPos.z);
             if (flat.sqrMagnitude > 0.01f)
             {
-                var ang = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
-                arrow3D.rotation = arrow3D.rotation * Quaternion.Euler(0, ang, 0);
+                float ang = Mathf.Atan2(flat.x, flat.z) * Mathf.Rad2Deg;
+                pathYaw = Quaternion.AngleAxis(ang, Vector3.up);
             }
         }
+
+        // Final rotation
+        arrow3D.rotation = camNoRoll * compassYaw * pathYaw;
     }
 }

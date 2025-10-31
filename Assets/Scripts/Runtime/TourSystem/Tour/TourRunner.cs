@@ -307,12 +307,7 @@ public sealed class TourRunner : MonoBehaviour
     {
         // Collect listeners in base scene
         AudioListener baseSceneListener = null;
-        foreach (var root in baseScene.GetRootGameObjects())
-        {
-            baseSceneListener = root.GetComponentInChildren<AudioListener>(true);
-            if (baseSceneListener)
-                break;
-        }
+        baseSceneListener = FindFirstObjectByType<AudioListener>(FindObjectsInactive.Include);
 
         if (baseSceneListener == null)
         {
