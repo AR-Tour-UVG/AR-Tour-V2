@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc94965f662c4547930a25bc07944fc, type: 3}
   m_Name: NoticeLost
   m_EditorClassIdentifier: 
-  noticeTitle: Conexion perdida
-  noticeMessage: se perdio conexion
+  noticeTitle: "Conexi\xF3n perdida"
+  noticeMessage: "Se interrumpi\xF3 la se\xF1al. Revisa tu red e intenta reconectarte
+    para continuar."
   noticeJack: {fileID: 21300000, guid: 561a7e28f0a17224288cd9637b421a66, type: 3}
-  noticeAudioClip: {fileID: 8300000, guid: 7a0718b722ba1cd4a8e05956b0c3a25a, type: 3}
+  noticeAudioClip: {fileID: 8300000, guid: 7d63dfb68cea4db4fa8a6f5518750bd3, type: 3}
