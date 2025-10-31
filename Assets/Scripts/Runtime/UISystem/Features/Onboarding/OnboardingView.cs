@@ -26,7 +26,11 @@ public sealed class OnboardingView : IScreenView
         btn = Root.Q<VisualElement>("Button");
         btnText = Root.Q<Label>("Text");
 
-        btn?.RegisterCallback<ClickEvent>(_ => OnNext?.Invoke());
+        btn?.RegisterCallback<ClickEvent>(_ =>
+        {
+            AudioDirector.Instance.Stop();
+            OnNext?.Invoke();
+        });
     }
 
     public void Unbind()
@@ -46,5 +50,7 @@ public sealed class OnboardingView : IScreenView
             art.style.backgroundImage = new StyleBackground(s.Art);
         else
             art.style.backgroundImage = StyleKeyword.Null;
+        if (s != null && s.Narration != null)
+            AudioDirector.Instance.Play(s.Narration);
     }
 }

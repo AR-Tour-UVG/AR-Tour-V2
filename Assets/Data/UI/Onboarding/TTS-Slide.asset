@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b330657b45d3e4da73e124c139afc3, type: 3}
   m_Name: TTS-Slide
   m_EditorClassIdentifier: 
-  title: El titulo de Jack aca
-  description: La desc de jack aca
+  title: "Gu\xEDate con Jack"
+  description: "Escucha la voz de Jack para orientarte durante el recorrido. \xC9l
+    te acompa\xF1ar\xE1 paso a paso y podr\xE1s ajustar su volumen cuando lo necesites."
   art: {fileID: 21300000, guid: d0cd2d8c19496594ab29c4513a7951d2, type: 3}
+  narration: {fileID: 8300000, guid: 6ed2071ee4b1ba6438012c373cc4c936, type: 3}

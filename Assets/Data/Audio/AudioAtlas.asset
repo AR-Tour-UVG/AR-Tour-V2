@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e409db754959c6b499d05b628de07074, type: 3}
   m_Name: AudioAtlas
   m_EditorClassIdentifier: 
-  tourStart: {fileID: 8300000, guid: d81658ebba38a224897b7b5ce95287f6, type: 3}
-  floorReady: {fileID: 8300000, guid: fb5c942d961b19d4b8e929780f9ba889, type: 3}
-  connecting: {fileID: 8300000, guid: 3a8fc2356943b7546bd09e0f6bad1e6f, type: 3}
-  connectionLost: {fileID: 8300000, guid: 7a0718b722ba1cd4a8e05956b0c3a25a, type: 3}
-  navigating: {fileID: 8300000, guid: 409f44c0758bbda4dbcba8c69039fa18, type: 3}
+  tourStart: {fileID: 8300000, guid: ef4afab53e54b144fa500bdeec33c4ce, type: 3}
+  floorReady: {fileID: 8300000, guid: 0774706bc6fc23746a763d3f45c6cf10, type: 3}
+  connecting: {fileID: 8300000, guid: e86be840aa31dd24b801c43232327c22, type: 3}
+  connectionLost: {fileID: 8300000, guid: 7d63dfb68cea4db4fa8a6f5518750bd3, type: 3}
+  navigating: {fileID: 8300000, guid: 68e649c04a7cf534c96ec3358912e177, type: 3}
   settingsPreview: {fileID: 8300000, guid: 23207a9ed7a7e6f4aa47b1e6db6c7a38, type: 3}
-  tourComplete: {fileID: 8300000, guid: e46afe27c77c50a499deacc480cf2b98, type: 3}
+  tourComplete: {fileID: 8300000, guid: 93cad8a20a6f590438c7f966f277c500, type: 3}

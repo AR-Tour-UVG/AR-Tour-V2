@@ -417,6 +417,7 @@ MonoBehaviour:
   uiDocument: {fileID: 995628174}
   uiAtlas: {fileID: 11400000, guid: dd719685f9948254589690b00244cb10, type: 2}
   audioAtlas: {fileID: 11400000, guid: 9a7d07e24c083af429867d0082b549c6, type: 2}
+  forceOnboardingAlways: 1
 --- !u!114 &995628174
 MonoBehaviour:
   m_ObjectHideFlags: 0

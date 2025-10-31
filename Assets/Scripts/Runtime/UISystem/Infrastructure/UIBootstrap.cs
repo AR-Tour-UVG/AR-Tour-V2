@@ -16,6 +16,10 @@ public sealed class UIBootstrap : MonoBehaviour
     [Tooltip("Audio Atlas for UI sounds")]
     public AudioAtlas audioAtlas;
 
+    [Header("Runtime settings")]
+    [SerializeField]
+    private bool forceOnboardingAlways = false;
+
     public UIRouter Router { get; private set; }
 
     public VisualElement AppRoot { get; private set; }
@@ -116,9 +120,15 @@ public sealed class UIBootstrap : MonoBehaviour
 
     void Start()
     {
+        if (forceOnboardingAlways)
+        {
+            OnboardingGate.SetForceAlways(true);
+        }
+
         var showOnboarding =
             uiAtlas.OnboardingSet
             && OnboardingGate.ShouldShow(uiAtlas.OnboardingSet.ShowEveryNDays);
+
         Router.ShowScreen(showOnboarding ? ScreenState.Onboarding : ScreenState.Home);
     }
 

@@ -6,15 +6,18 @@ public class OnboardingSlide : ScriptableObject
     [SerializeField]
     private string title;
 
-    [SerializeField]
+    [SerializeField, TextArea(2, 5)]
     private string description;
 
     [SerializeField]
     private Sprite art;
-    private string buttonText;
 
+    [SerializeField]
+    private AudioClip narration;
+    private string buttonText;
     public string Title => title;
     public string Description => description;
     public Sprite Art => art;
     public string ButtonText => buttonText;
+    public AudioClip Narration => narration;
 }

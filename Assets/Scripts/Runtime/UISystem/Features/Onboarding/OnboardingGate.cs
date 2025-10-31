@@ -4,9 +4,13 @@ using UnityEngine;
 public static class OnboardingGate
 {
     private const string SeenKey = "onboarding_seen_utcbin";
+    private const string ForceKey = "onboarding_force_always";
 
     public static bool ShouldShow(int days)
     {
+        if (GetForceAlways())
+            return true;
+
         if (days <= 0)
             return !PlayerPrefs.HasKey(SeenKey);
 
@@ -23,10 +27,21 @@ public static class OnboardingGate
         PlayerPrefs.Save();
     }
 
+    public static void SetForceAlways(bool enabled)
+    {
+        PlayerPrefs.SetInt(ForceKey, enabled ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
     public static void Reset()
     {
         PlayerPrefs.DeleteKey(SeenKey);
         PlayerPrefs.Save();
+    }
+
+    public static bool GetForceAlways()
+    {
+        return PlayerPrefs.GetInt(ForceKey, 0) == 1;
     }
 
     public static string DebugInfo()
