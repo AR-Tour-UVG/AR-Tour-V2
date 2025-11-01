@@ -18,6 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d4f3424a105eb334192fda456b9e859b, type: 2}
   - {fileID: 11400000, guid: 49ff6145f4d109f4f95cf341a9763345, type: 2}
   - {fileID: 11400000, guid: ae33a3a8e049bfe43b4430490615ffa0, type: 2}
-  anchorMapJson: {fileID: 4900000, guid: 64746f1696bc09147ae79270929e1038, type: 3}
+  anchorMapJson: {fileID: 4900000, guid: c761d77b1aac94a5dbc12d9c2b342ff8, type: 3}
   scenePath: Assets/Scenes/Test/TestRoom.unity
   sceneAsset: {fileID: 102900000, guid: f5f7e01c13b93a843a1e4ec391ec2ff6, type: 3}

@@ -6,7 +6,7 @@
 	<dict>
 		<key>.DS_Store</key>
 		<data>
-		S/1G+rgJl/+CjYIyvp2CEiM+mnE=
+		cX/7lcLgTn1l1Z5FJvqxBXjMJck=
 		</data>
 		<key>Frameworks/EstimoteUWB.framework/EstimoteUWB</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/.DS_Store</key>
 		<data>
-		GNJVgL+DwhXcV4kJQoo51z0C8gc=
+		ulhfzGQ1ejwU2PRM3ZrOIYHC0iE=
 		</data>
 		<key>Modules/UWBplugin.swiftmodule/.DS_Store</key>
 		<data>
@@ -38,11 +38,11 @@
 		</data>
 		<key>Modules/UWBplugin.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		MfueA2starXJOPuFOajnF1SF3Sc=
+		1xwBUEPm3+aFF/yM2bCMTrXPr7U=
 		</data>
 		<key>Modules/UWBplugin.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		Ygf4n1IJzt5OOvwpJo+x0wYThLs=
+		9zt0rPLCFb9loXeLnzsP2qKhi/Q=
 		</data>
 		<key>Modules/UWBplugin.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Modules/UWBplugin.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		IRfOJ2aP2Ejn03e++RmiIEyJXB8=
+		cJU8Obdcbfzkk04r+qmELvcaUOA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -111,14 +111,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			lQB8Jx1FrVZAtk/rVEVQZ3u/ewWlGagTFE8C9JjtdKo=
+			x2NfoUK/8g8ffzEyNmiSYZk4mF7mGildvm5Wdz0r6LE=
 			</data>
 		</dict>
 		<key>Modules/UWBplugin.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AE8Pt1s08HJw/HWg7sO63mzwy+gkPRg/+z6Ebs6DU+U=
+			f/uioNHOslCmm7CF+AqYKFhUiWSQW6jWKYyVrdTENgQ=
 			</data>
 		</dict>
 		<key>Modules/UWBplugin.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
@@ -146,7 +146,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fKdXnKJ5ikH9k1/SeSKpYctDU9Bp/ElVOK2c43gtHcQ=
+			Aqeuuuv+ZbOanm0ZULqyBj2AEL+4U+y9vjOQhcvghEw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tourName: Test Tour
   orderedFloors:
-  - {fileID: 11400000, guid: eb1b2a2d2fce6624287dc77532ee8738, type: 2}
+  - {fileID: 11400000, guid: ec54184896925fa4da160ab4af2d26ff, type: 2}

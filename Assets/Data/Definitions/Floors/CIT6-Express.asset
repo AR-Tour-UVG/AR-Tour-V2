@@ -19,6 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca0add59e41513746b6ff85cb924d1b6, type: 2}
   - {fileID: 11400000, guid: 2bd0148a3e8ede04a92725c597dc96a3, type: 2}
   - {fileID: 11400000, guid: cda27da3ed47f9e4b919799528525038, type: 2}
-  anchorMapJson: {fileID: 4900000, guid: 33854bcf20b1af740942df70f2fce365, type: 3}
+  anchorMapJson: {fileID: 4900000, guid: d2e4d5cb9662e4fcea0cec76b48302b2, type: 3}
   scenePath: Assets/Scenes/CIT/CIT6.unity
   sceneAsset: {fileID: 102900000, guid: 72cce0e7f2a0a2444b3afb340c563159, type: 3}
