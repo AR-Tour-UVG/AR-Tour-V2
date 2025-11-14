@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// ScriptableObject that holds references to UI assets and data.
+/// </summary>
 [CreateAssetMenu(fileName = "NewAtlas", menuName = "AR GUI/Atlas", order = 1)]
 public sealed class UIAtlas : ScriptableObject
 {
@@ -80,6 +83,7 @@ public sealed class UIAtlas : ScriptableObject
     [SerializeField]
     private Sprite hudStartIcon;
 
+    // Public properties to access the serialized fields
     public VisualTreeAsset HomeUXML => Home;
     public VisualTreeAsset MinigamesUXML => Minigames;
     public VisualTreeAsset OnboardingUXML => Onboarding;

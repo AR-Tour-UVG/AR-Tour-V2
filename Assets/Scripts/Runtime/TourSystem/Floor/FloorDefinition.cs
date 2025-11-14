@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Definition of a floor in the tour system.
+/// </summary>
 [CreateAssetMenu(fileName = "NewFloorDefinition", menuName = "AR Tour/Floor Definition")]
 public class FloorDefinition : ScriptableObject
 {
@@ -32,6 +35,9 @@ public class FloorDefinition : ScriptableObject
     [SerializeField]
     private SceneAsset sceneAsset;
 
+    /// <summary>
+    /// Validates the scene asset and updates the scene path accordingly.
+    /// </summary>
     private void OnValidate()
     {
         if (sceneAsset != null)
@@ -55,6 +61,11 @@ public class FloorDefinition : ScriptableObject
 
     public int IndexOf(AreaDefinition area) => orderedAreas?.IndexOf(area) ?? -1;
 
+    /// <summary>
+    /// Gets the area that comes after the given one in the ordered list.
+    /// </summary>
+    /// <param name="current">The current area.</param>
+    /// <returns>The next area in the list, or null if there is none.</returns>
     public AreaDefinition GetNextAfter(AreaDefinition current)
     {
         var i = IndexOf(current);
@@ -64,6 +75,11 @@ public class FloorDefinition : ScriptableObject
         return next < orderedAreas.Count ? orderedAreas[next] : null;
     }
 
+    /// <summary>
+    /// Tries to parse the anchor map JSON into an object of type T.
+    /// </summary>
+    /// <param name="map">The output parsed map object.</param>
+    /// <returns>True if parsing was successful; otherwise, false.</returns>
     public bool TryGetAnchorMap<T>(out T map)
     {
         map = default;
@@ -80,6 +96,11 @@ public class FloorDefinition : ScriptableObject
         }
     }
 
+    /// <summary>
+    /// Tries to get the raw JSON text of the anchor map.
+    /// </summary>
+    /// <param name="json">The output JSON text.</param>
+    /// <returns>True if the JSON text is available and not empty; otherwise, false.</returns>
     public bool TryGetAnchorMapText(out string json)
     {
         json = anchorMapJson != null ? anchorMapJson.text : null;

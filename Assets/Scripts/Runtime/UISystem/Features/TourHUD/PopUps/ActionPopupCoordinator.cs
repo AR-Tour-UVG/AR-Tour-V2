@@ -1,6 +1,9 @@
 using System;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// Coordinator for action popups during the tour
+/// </summary>
 public sealed class ActionPopupCoordinator
 {
     private readonly UIRouter router;
@@ -8,6 +11,13 @@ public sealed class ActionPopupCoordinator
     private readonly TourBinder binder;
     private readonly TourViewModel vm;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ActionPopupCoordinator"/> class.
+    /// </summary>
+    /// <param name="r">The UI router.</param>
+    /// <param name="a">The UI atlas.</param>
+    /// <param name="b">The tour binder.</param>
+    /// <param name="model">The tour view model.</param>
     public ActionPopupCoordinator(UIRouter r, UIAtlas a, TourBinder b, TourViewModel model)
     {
         router = r;
@@ -16,8 +26,15 @@ public sealed class ActionPopupCoordinator
         vm = model;
     }
 
+    /// <summary>
+    /// Shows the start action popup.
+    /// </summary>
     public void ShowStart() => ShowWith(atlas.ActionStartData, OnStartClick);
 
+    /// <summary>
+    /// Shows the ready on floor action popup.
+    /// </summary>
+    /// <param name="descriptionOverride">Optional description override.</param>
     public void ShowReadyOnFloor(string descriptionOverride = null)
     {
         ShowWith(atlas.ActionReadyOnFloorData, OnReadyClick, descriptionOverride);
@@ -32,6 +49,9 @@ public sealed class ActionPopupCoordinator
         }
     }
 
+    /// <summary>
+    /// Hides the action popup.
+    /// </summary>
     public void Hide()
     {
         var v = router.GetOverlay<ActionPopupView>(OverlayType.ActionPopup);
@@ -42,6 +62,12 @@ public sealed class ActionPopupCoordinator
 
     // Helpers
 
+    /// <summary>
+    /// Shows the action popup with the specified data and click handler.
+    /// </summary>
+    /// <param name="data">The action data.</param>
+    /// <param name="onClick">The click handler.</param>
+    /// <param name="descOverride">Optional description override.</param>
     void ShowWith(ActionData data, Action<ActionPopupView> onClick, string descOverride = null)
     {
         // If Notice popup is up, hide it first and chain
@@ -62,6 +88,12 @@ public sealed class ActionPopupCoordinator
         ActuallyShow(data, onClick, descOverride);
     }
 
+    /// <summary>
+    /// Actually shows the action popup with the specified data and click handler.
+    /// </summary>
+    /// <param name="data">The action data.</param>
+    /// <param name="onClick">The click handler.</param>
+    /// <param name="descOverride">Optional description override.</param>
     void ActuallyShow(ActionData data, Action<ActionPopupView> onClick, string descOverride)
     {
         if (router.CurrentScreen != ScreenState.TourHUD)
@@ -87,6 +119,10 @@ public sealed class ActionPopupCoordinator
             AudioDirector.Instance.Play(data.ActionAudioClip, 0.05f, 0.1f);
     }
 
+    /// <summary>
+    /// Handles the start click event.
+    /// </summary>
+    /// <param name="v">The action popup view.</param>
     void OnStartClick(ActionPopupView v)
     {
         v.Hide();

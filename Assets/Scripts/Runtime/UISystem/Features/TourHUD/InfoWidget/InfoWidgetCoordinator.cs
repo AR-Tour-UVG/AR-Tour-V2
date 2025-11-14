@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Coordinator for the info widget during the tour
+/// </summary>
 public sealed class InfoWidgetCoordinator
 {
     private readonly UIRouter router;
@@ -7,12 +10,22 @@ public sealed class InfoWidgetCoordinator
 
     private bool showing;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="InfoWidgetCoordinator"/> class.
+    /// </summary>
+    /// <param name="r">The UI router.</param>
+    /// <param name="model">The tour view model.</param>
+    /// <param name="b">The tour binder.</param>
     public InfoWidgetCoordinator(UIRouter r, TourViewModel model, TourBinder b)
     {
         router = r;
         binder = b;
     }
 
+    /// <summary>
+    /// Shows the info widget for the specified area.
+    /// </summary>
+    /// <param name="area">The area definition to display information for.</param>
     public void Show(AreaDefinition area)
     {
         if (showing)
@@ -44,6 +57,9 @@ public sealed class InfoWidgetCoordinator
         w.Show(area);
     }
 
+    /// <summary>
+    /// Hides the info widget.
+    /// </summary>
     public void Hide()
     {
         var w = router.GetOverlay<InfoWidgetView>(OverlayType.InfoModal);
@@ -55,6 +71,9 @@ public sealed class InfoWidgetCoordinator
         w.Hide();
     }
 
+    /// <summary>
+    /// Handles the hidden event of the info widget.
+    /// </summary>
     private void OnHidden()
     {
         var w = router.GetOverlay<InfoWidgetView>(OverlayType.InfoModal);

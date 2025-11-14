@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AR/ArrowScene.unity
     guid: c9310f813832a4cba979e22af41792bf
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/CIT/CIT6.unity
     guid: 72cce0e7f2a0a2444b3afb340c563159
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Test/TestingRoom.unity
     guid: 3bfc98553b53d9a4299583f2ab8f4092
   - enabled: 1

@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// Bootstrapper for the UI system
+/// </summary>
 [RequireComponent(typeof(UIDocument))]
 public sealed class UIBootstrap : MonoBehaviour
 {
@@ -20,10 +23,19 @@ public sealed class UIBootstrap : MonoBehaviour
     [SerializeField]
     private bool forceOnboardingAlways = false;
 
+    /// <summary>
+    /// Gets the UI router.
+    /// </summary>
     public UIRouter Router { get; private set; }
 
+    /// <summary>
+    /// Gets the application root visual element.
+    /// </summary>
     public VisualElement AppRoot { get; private set; }
 
+    /// <summary>
+    /// Initializes the UI Bootstrapper.
+    /// </summary>
     private void Awake()
     {
         if (AppPrefs.IsFirstRun())
@@ -114,6 +126,9 @@ public sealed class UIBootstrap : MonoBehaviour
         );
     }
 
+    /// <summary>
+    /// Shows the initial screen based on onboarding settings.
+    /// </summary>
     void Start()
     {
         if (forceOnboardingAlways)
@@ -128,6 +143,9 @@ public sealed class UIBootstrap : MonoBehaviour
         Router.ShowScreen(showOnboarding ? ScreenState.Onboarding : ScreenState.Home);
     }
 
+    /// <summary>
+    /// Registers to the scene loaded event to force a layout/repaint.
+    /// </summary>
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -142,11 +160,17 @@ public sealed class UIBootstrap : MonoBehaviour
 #endif
     }
 
+    /// <summary>
+    /// Unregisters the scene loaded event.
+    /// </summary>
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    /// <summary>
+    /// Registers to the scene loaded event to force a layout/repaint.
+    /// </summary>
     private void OnSceneLoaded(Scene s, LoadSceneMode mode)
     {
         // first frame after additive load: force a layout + repaint
@@ -159,6 +183,10 @@ public sealed class UIBootstrap : MonoBehaviour
             .StartingIn(0);
     }
 
+    /// <summary>
+    /// Applies the global font size in pixels.
+    /// </summary>
+    /// <param name="px">The font size in pixels.</param>
     public void ApplyGlobalFontPx(int px)
     {
         var root = uiDocument.rootVisualElement;

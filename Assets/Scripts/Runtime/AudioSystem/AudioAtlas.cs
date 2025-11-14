@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Audio atlas containing clips for various system events.
+/// </summary>
 [CreateAssetMenu(fileName = "NewAudioAtlas", menuName = "AR Audio/Audio Atlas")]
 public sealed class AudioAtlas : ScriptableObject
 {

@@ -229,11 +229,7 @@ public class ArrowNavigator : MonoBehaviour
         Vector3 nextCorner = currentPath.corners[1];
 
         // 4. Vector hacia el siguiente corner, pero aplanado (sin Y)
-        Vector3 flatDir = new Vector3(
-            nextCorner.x - playerPos.x,
-            0f,
-            nextCorner.z - playerPos.z
-        );
+        Vector3 flatDir = new Vector3(nextCorner.x - playerPos.x, 0f, nextCorner.z - playerPos.z);
 
         // Si el vector es casi cero, no intentemos girar
         if (flatDir.sqrMagnitude < 0.0001f)
@@ -273,5 +269,4 @@ public class ArrowNavigator : MonoBehaviour
 
         arrow3D.rotation = flatRot;
     }
-
 }

@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Coordinator for the base HUD during the tour
+/// </summary>
 public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
 {
     private readonly UIRouter router;
@@ -13,6 +16,13 @@ public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
 
     private BaseHUDView v;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BaseHUDCoordinator"/> class.
+    /// </summary>
+    /// <param name="r">The UI router.</param>
+    /// <param name="model">The tour view model.</param>
+    /// <param name="uiAtlas">The UI atlas containing HUD icons.</param>
+    /// <param name="audioAtlas">The audio atlas for sound effects.</param>
     public BaseHUDCoordinator(
         UIRouter r,
         TourViewModel model,
@@ -30,6 +40,10 @@ public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
         menu = new MenuCoordinator(r, uiAtlas, audioAtlas);
     }
 
+    /// <summary>
+    /// Attaches the base HUD view to the coordinator.
+    /// </summary>
+    /// <param name="view">The base HUD view to attach.</param>
     public void Attach(BaseHUDView view)
     {
         v = view;
@@ -38,6 +52,9 @@ public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
         Apply();
     }
 
+    /// <summary>
+    /// Detaches the base HUD view from the coordinator.
+    /// </summary>
     public void Detach()
     {
         if (v != null)
@@ -46,6 +63,9 @@ public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
         v = null;
     }
 
+    /// <summary>
+    /// Applies the current state of the view model to the base HUD view.
+    /// </summary>
     private void Apply()
     {
         if (v == null)
@@ -99,5 +119,8 @@ public sealed class BaseHUDCoordinator : ICoordinator<BaseHUDView>
         v.SetDistance(vm.DistanceMeters);
     }
 
+    /// <summary>
+    /// Shows the menu.
+    /// </summary>
     private void ShowMenu() => menu.Show();
 }

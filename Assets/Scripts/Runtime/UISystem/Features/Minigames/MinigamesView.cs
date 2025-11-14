@@ -1,6 +1,9 @@
 using System;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// View for the Minigames screen in the UI system.
+/// </summary>
 public sealed class MinigamesView : IScreenView
 {
     public VisualElement Root { get; }
@@ -14,11 +17,19 @@ public sealed class MinigamesView : IScreenView
         flappy,
         exit;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MinigamesView"/> class.
+    /// </summary>
+    /// <param name="root">The root visual element of the minigames view.</param>
     public MinigamesView(VisualElement root)
     {
         Root = root;
     }
 
+    /// <summary>
+    /// Binds the view to the given UIDocument.
+    /// </summary>
+    /// <param name="doc">The UIDocument to bind to.</param>
     public void Bind(UIDocument doc)
     {
         breakout = Root.Q<VisualElement>("Breakout");

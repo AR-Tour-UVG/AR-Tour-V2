@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Data for an onboarding slide in the UI system.
+/// </summary>
 [CreateAssetMenu(fileName = "NewOnboardingSlide", menuName = "AR GUI/Onboarding Slide")]
 public class OnboardingSlide : ScriptableObject
 {

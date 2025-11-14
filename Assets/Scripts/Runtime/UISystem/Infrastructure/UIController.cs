@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controller for managing UI screens and their coordinators
+/// </summary>
 [RequireComponent(typeof(UIBootstrap))]
 public sealed class UIController : MonoBehaviour
 {
@@ -10,6 +13,9 @@ public sealed class UIController : MonoBehaviour
     private IScreenView currentView;
     private object currentCoord;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="UIController"/> class.
+    /// </summary>
     void Awake()
     {
         if (!bootstrap)
@@ -28,6 +34,9 @@ public sealed class UIController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Maps screens to their coordinators and initializes the first screen.
+    /// </summary>
     private void Start()
     {
         var vm = new TourViewModel();
@@ -66,6 +75,9 @@ public sealed class UIController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cleans up event subscriptions on destroy.
+    /// </summary>
     void OnDestroy()
     {
         if (bootstrap && bootstrap.Router != null)
@@ -75,6 +87,10 @@ public sealed class UIController : MonoBehaviour
         Detach();
     }
 
+    /// <summary>
+    /// Handles screen changes by detaching the current coordinator and attaching the new one.
+    /// </summary>
+    /// <param name="view">The new screen view.</param>
     private void OnScreenChanged(IScreenView view)
     {
         Detach();
@@ -89,6 +105,9 @@ public sealed class UIController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Detaches the current coordinator from its view.
+    /// </summary>
     private void Detach()
     {
         if (currentCoord == null)

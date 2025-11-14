@@ -1,12 +1,18 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// Validates that the floor scene is correctly set up at runtime.
+/// </summary>
 [DefaultExecutionOrder(300)]
 public class FloorValidator : MonoBehaviour
 {
     [SerializeField]
     private FloorDefinition floor;
 
+    /// <summary>
+    /// Performs validation checks on start.
+    /// </summary>
     private void Start()
     {
         bool ok = true;

@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Data for a notice pop-up in the UI system.
+/// </summary>
 [CreateAssetMenu(fileName = "NewNoticeData", menuName = "AR GUI/Notice Pop Up Data")]
 public class NoticeData : ScriptableObject
 {

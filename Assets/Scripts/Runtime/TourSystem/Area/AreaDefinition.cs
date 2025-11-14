@@ -1,6 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Defines metadata and presentation content for a specific AR Tour area,
+/// including text, audio, images, and UI configuration.
+/// </summary>
+/// <remarks>
+/// Creates an editor menu for ease data asset creation
+/// </remarks>
 [CreateAssetMenu(fileName = "NewAreaDefinition", menuName = "AR Tour/Area Definition")]
 public class AreaDefinition : ScriptableObject
 {
@@ -31,6 +38,7 @@ public class AreaDefinition : ScriptableObject
     [SerializeField]
     private bool showInfo = true;
 
+    // Pulbic references to get the stored values
     public string AreaName => areaName;
 
     public string AreaText => areaText;

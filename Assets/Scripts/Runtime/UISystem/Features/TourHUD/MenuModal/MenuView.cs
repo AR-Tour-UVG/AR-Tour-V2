@@ -1,6 +1,9 @@
 using System;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// View for the menu modal during the tour
+/// </summary>
 public sealed class MenuView : IOverlayView
 {
     public VisualElement Root { get; }
@@ -26,11 +29,19 @@ public sealed class MenuView : IOverlayView
         cbSettings,
         cbReturn;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MenuView"/> class.
+    /// </summary>
+    /// <param name="root">The root visual element.</param>
     public MenuView(VisualElement root)
     {
         Root = root;
     }
 
+    /// <summary>
+    /// Binds the view to the given UIDocument.
+    /// </summary>
+    /// <param name="doc">The UIDocument to bind to.</param>
     public void Bind(UIDocument doc)
     {
         container = Root.Q<VisualElement>("Menu") ?? Root;
@@ -62,6 +73,9 @@ public sealed class MenuView : IOverlayView
         isOpen = false;
     }
 
+    /// <summary>
+    /// Unbinds the view from the UIDocument.
+    /// </summary>
     public void Unbind()
     {
         closeBtn?.UnregisterCallback(cbClose);
@@ -72,6 +86,9 @@ public sealed class MenuView : IOverlayView
         container?.UnregisterCallback<TransitionEndEvent>(OnTransitionEnd);
     }
 
+    /// <summary>
+    /// Shows the menu modal.
+    /// </summary>
     public void Show()
     {
         if (isOpen)
@@ -94,6 +111,9 @@ public sealed class MenuView : IOverlayView
         container.RegisterCallback<GeometryChangedEvent>(AfterLayout);
     }
 
+    /// <summary>
+    /// Hides the menu modal.
+    /// </summary>
     public void Hide()
     {
         if (!isOpen && Root.style.display == DisplayStyle.None)
@@ -105,6 +125,10 @@ public sealed class MenuView : IOverlayView
         isOpen = false;
     }
 
+    /// <summary>
+    /// Handles the transition end event for the menu modal.
+    /// </summary>
+    /// <param name="e">The transition end event.</param>
     void OnTransitionEnd(TransitionEndEvent e)
     {
         if (e.target != container)

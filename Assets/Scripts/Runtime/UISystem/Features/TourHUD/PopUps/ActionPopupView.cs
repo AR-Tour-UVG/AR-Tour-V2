@@ -1,6 +1,9 @@
 using System;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// View for action popups during the tour
+/// </summary>
 public sealed class ActionPopupView : IOverlayView
 {
     public VisualElement Root { get; }
@@ -17,11 +20,19 @@ public sealed class ActionPopupView : IOverlayView
 
     EventCallback<ClickEvent> btnCb;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ActionPopupView"/> class.
+    /// </summary>
+    /// <param name="root">The root visual element.</param>
     public ActionPopupView(VisualElement root)
     {
         Root = root;
     }
 
+    /// <summary>
+    /// Binds the view to the given UIDocument.
+    /// </summary>
+    /// <param name="doc">The UIDocument to bind to.</param>
     public void Bind(UIDocument doc)
     {
         container = Root.Q<VisualElement>("PopUP") ?? Root.Q<VisualElement>("PopUp");
@@ -44,6 +55,9 @@ public sealed class ActionPopupView : IOverlayView
         isOpen = false;
     }
 
+    /// <summary>
+    /// Unbinds the view from the UIDocument.
+    /// </summary>
     public void Unbind()
     {
         if (button != null && btnCb != null)
@@ -52,6 +66,11 @@ public sealed class ActionPopupView : IOverlayView
         click = null;
     }
 
+    /// <summary>
+    /// Shows the action popup with the specified data and click handler.
+    /// </summary>
+    /// <param name="data">The action data.</param>
+    /// <param name="onClick">The click handler.</param>
     public void Show(ActionData data, Action onClick)
     {
         click = onClick;
@@ -86,12 +105,19 @@ public sealed class ActionPopupView : IOverlayView
         container.RegisterCallback<GeometryChangedEvent>(AfterLayout);
     }
 
+    /// <summary>
+    /// Overrides the description text of the action popup.
+    /// </summary>
+    /// <param name="text">The new description text.</param>
     public void OverrideDescription(string text)
     {
         if (description != null)
             description.text = text ?? "";
     }
 
+    /// <summary>
+    /// Hides the action popup.
+    /// </summary>
     public void Hide()
     {
         if (!isOpen && Root.style.display == DisplayStyle.None)
@@ -103,6 +129,10 @@ public sealed class ActionPopupView : IOverlayView
         isOpen = false;
     }
 
+    /// <summary>
+    /// Handles the transition end event.
+    /// </summary>
+    /// <param name="e">The transition end event.</param>
     void OnTransitionEnd(TransitionEndEvent e)
     {
         if (e.target != container)

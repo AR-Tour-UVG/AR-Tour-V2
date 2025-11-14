@@ -1,6 +1,9 @@
 using System;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// View for the info widget during the tour
+/// </summary>
 public sealed class InfoWidgetView : IOverlayView
 {
     public VisualElement Root { get; }
@@ -11,13 +14,25 @@ public sealed class InfoWidgetView : IOverlayView
         continueBtn;
     Label description;
     bool isOpen;
+
+    /// <summary>
+    /// Click event callback for the continue button.
+    /// </summary>
     EventCallback<ClickEvent> continueClick;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="InfoWidgetView"/> class.
+    /// </summary>
+    /// <param name="root">The root visual element of the info widget view.</param>
     public InfoWidgetView(VisualElement root)
     {
         Root = root;
     }
 
+    /// <summary>
+    /// Binds the view to the given UIDocument.
+    /// </summary>
+    /// <param name="doc">The UIDocument to bind to.</param>
     public void Bind(UIDocument doc)
     {
         widget = Root.Q<VisualElement>("InfoWidget");
@@ -39,6 +54,9 @@ public sealed class InfoWidgetView : IOverlayView
         isOpen = false;
     }
 
+    /// <summary>
+    /// Unbinds the view from the current UIDocument.
+    /// </summary>
     public void Unbind()
     {
         if (continueBtn != null && continueClick != null)
@@ -46,6 +64,10 @@ public sealed class InfoWidgetView : IOverlayView
         widget?.UnregisterCallback<TransitionEndEvent>(OnAnyTransitionEnd);
     }
 
+    /// <summary>
+    /// Shows the info widget for the specified area.
+    /// </summary>
+    /// <param name="area">The area definition to display information for.</param>
     public void Show(AreaDefinition area)
     {
         if (isOpen)
@@ -70,6 +92,9 @@ public sealed class InfoWidgetView : IOverlayView
             .StartingIn(1);
     }
 
+    /// <summary>
+    /// Hides the info widget.
+    /// </summary>
     public void Hide()
     {
         if (!isOpen && Root.style.display == DisplayStyle.None)
@@ -81,6 +106,10 @@ public sealed class InfoWidgetView : IOverlayView
         isOpen = false;
     }
 
+    /// <summary>
+    /// Handles the transition end event for any transition on the widget.
+    /// </summary>
+    /// <param name="e">The transition end event data.</param>
     void OnAnyTransitionEnd(TransitionEndEvent e)
     {
         if (e.target != widget)

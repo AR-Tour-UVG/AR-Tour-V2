@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// View for the settings modal during the tour
+/// </summary>
 public sealed class SettingsView : IOverlayView
 {
     public VisualElement Root { get; }
@@ -22,8 +25,16 @@ public sealed class SettingsView : IOverlayView
     IVisualElementScheduledItem previewSched;
     bool isOpen;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SettingsView"/> class.
+    /// </summary>
+    /// <param name="root">The root visual element.</param>
     public SettingsView(VisualElement root) => Root = root;
 
+    /// <summary>
+    /// Binds the view to the specified UIDocument.
+    /// </summary>
+    /// <param name="doc">The UIDocument to bind to.</param>
     public void Bind(UIDocument doc)
     {
         baseDoc = doc;
@@ -76,11 +87,17 @@ public sealed class SettingsView : IOverlayView
         Show();
     }
 
+    /// <summary>
+    /// Unbinds the view from the UIDocument.
+    /// </summary>
     public void Unbind()
     {
         container?.UnregisterCallback<TransitionEndEvent>(OnTransitionEnd);
     }
 
+    /// <summary>
+    /// Shows the settings modal.
+    /// </summary>
     public void Show()
     {
         if (isOpen)
@@ -102,6 +119,9 @@ public sealed class SettingsView : IOverlayView
         container.RegisterCallback<GeometryChangedEvent>(AfterLayout);
     }
 
+    /// <summary>
+    /// Hides the settings modal.
+    /// </summary>
     public void Hide()
     {
         if (!isOpen && Root.style.display == DisplayStyle.None)
@@ -113,6 +133,10 @@ public sealed class SettingsView : IOverlayView
         isOpen = false;
     }
 
+    /// <summary>
+    /// Handles the transition end event.
+    /// </summary>
+    /// <param name="e">The transition end event.</param>
     void OnTransitionEnd(TransitionEndEvent e)
     {
         if (e.target != container)
@@ -137,6 +161,9 @@ public sealed class SettingsView : IOverlayView
         }
     }
 
+    /// <summary>
+    /// Applies styles to the slider components.
+    /// </summary>
     public void ApplySliderStyles()
     {
         var tracker = slider.Q<VisualElement>("unity-tracker");
@@ -161,11 +188,19 @@ public sealed class SettingsView : IOverlayView
         }
     }
 
+    /// <summary>
+    /// Sets the slider value without triggering change events.
+    /// </summary>
+    /// <param name="v">The slider value.</param>
     public void SetSlider(int v)
     {
         slider.SetValueWithoutNotify(v);
     }
 
+    /// <summary>
+    /// Sets the selected font size in pixels.
+    /// </summary>
+    /// <param name="px">The font size in pixels.</param>
     public void SetSelectedFontPx(int px)
     {
         ToggleSel(smallOpt, px == 80);
@@ -173,6 +208,11 @@ public sealed class SettingsView : IOverlayView
         ToggleSel(largeOpt, px == 120);
     }
 
+    /// <summary>
+    /// Toggles the "selected" class on a visual element.
+    /// </summary>
+    /// <param name="ve">The visual element.</param>
+    /// <param name="on">Whether to add or remove the "selected" class.</param>
     void ToggleSel(VisualElement ve, bool on)
     {
         if (ve == null)
@@ -180,6 +220,10 @@ public sealed class SettingsView : IOverlayView
         ve.EnableInClassList("selected", on);
     }
 
+    /// <summary>
+    /// Sets the volume icon based on the volume level.
+    /// </summary>
+    /// <param name="level">The volume level.</param>
     public void SetVolumeIcon(VolumeLevel level)
     {
         if (volumeIcon == null)

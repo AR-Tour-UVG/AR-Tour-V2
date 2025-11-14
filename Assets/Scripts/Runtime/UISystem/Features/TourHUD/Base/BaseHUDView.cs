@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// View for the base HUD during the tour
+/// </summary>
 public sealed class BaseHUDView : IScreenView
 {
     public VisualElement Root { get; }
@@ -19,11 +22,19 @@ public sealed class BaseHUDView : IScreenView
     bool footerOpen,
         dirOpen;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BaseHUDView"/> class.
+    /// </summary>
+    /// <param name="root">The root visual element of the base HUD view.</param>
     public BaseHUDView(VisualElement root)
     {
         Root = root;
     }
 
+    /// <summary>
+    /// Binds the view to the given UIDocument.
+    /// </summary>
+    /// <param name="doc">The UIDocument to bind to.</param>
     public void Bind(UIDocument doc)
     {
         directionsCard = Root.Q<VisualElement>("DirectionsCard");
@@ -53,6 +64,9 @@ public sealed class BaseHUDView : IScreenView
         footerOpen = dirOpen = false;
     }
 
+    /// <summary>
+    /// Unbinds the view from the current UIDocument.
+    /// </summary>
     public void Unbind()
     {
         menuBtn?.UnregisterCallback<ClickEvent>(_ => OnMenu?.Invoke());
@@ -60,6 +74,11 @@ public sealed class BaseHUDView : IScreenView
         directionsCard?.UnregisterCallback<TransitionEndEvent>(OnDirTransitionEnd);
     }
 
+    /// <summary>
+    /// Sets the title text and optional icon in the base HUD view.
+    /// </summary>
+    /// <param name="text">The title text to display.</param>
+    /// <param name="icon">The optional icon to display alongside the title.</param>
     public void SetTitle(string text, Sprite icon = null)
     {
         if (titleLabel != null)
@@ -68,6 +87,11 @@ public sealed class BaseHUDView : IScreenView
             titleIcon.style.backgroundImage = icon ? new StyleBackground(icon) : StyleKeyword.Null;
     }
 
+    /// <summary>
+    /// Sets the directions text and visibility in the base HUD view.
+    /// </summary>
+    /// <param name="text">The directions text to display.</param>
+    /// <param name="visible">Whether the directions should be visible.</param>
     public void SetDirections(string text, bool visible)
     {
         if (directionsLabel != null)
@@ -105,6 +129,10 @@ public sealed class BaseHUDView : IScreenView
         }
     }
 
+    /// <summary>
+    /// Sets the progress value in the base HUD view.
+    /// </summary>
+    /// <param name="normalized01">The progress value normalized between 0 and 1.</param>
     public void SetProgress(float normalized01)
     {
         if (progressValue == null)
@@ -113,12 +141,20 @@ public sealed class BaseHUDView : IScreenView
         progressValue.text = $"{pct:0}%";
     }
 
+    /// <summary>
+    /// Sets the distance value in the base HUD view.
+    /// </summary>
+    /// <param name="meters">The distance value in meters.</param>
     public void SetDistance(float meters)
     {
         if (distanceValue != null)
             distanceValue.text = $"{meters:0.00}m";
     }
 
+    /// <summary>
+    /// Shows or hides the footer in the base HUD view.
+    /// </summary>
+    /// <param name="on">Whether to show (true) or hide (false) the footer.</param>
     public void ShowFooter(bool on)
     {
         if (footer == null)
@@ -153,6 +189,10 @@ public sealed class BaseHUDView : IScreenView
         }
     }
 
+    /// <summary>
+    /// Sets the title icon in the base HUD view.
+    /// </summary>
+    /// <param name="s">The sprite to use as the title icon.</param>
     public void SetTitleIcon(Sprite s)
     {
         if (titleIcon == null)
@@ -160,6 +200,10 @@ public sealed class BaseHUDView : IScreenView
         titleIcon.style.backgroundImage = s != null ? new StyleBackground(s) : StyleKeyword.Null;
     }
 
+    /// <summary>
+    /// Handles the transition end event for the footer.
+    /// </summary>
+    /// <param name="e">The transition end event.</param>
     void OnFooterTransitionEnd(TransitionEndEvent e)
     {
         if (e.target != footer)
@@ -180,6 +224,10 @@ public sealed class BaseHUDView : IScreenView
             footer.style.display = DisplayStyle.None;
     }
 
+    /// <summary>
+    /// Handles the transition end event for the directions card.
+    /// </summary>
+    /// <param name="e">The transition end event.</param>
     void OnDirTransitionEnd(TransitionEndEvent e)
     {
         if (e.target != directionsCard)

@@ -1,3 +1,6 @@
+/// <summary>
+/// Interface for coordinators managing screen views.
+/// </summary>
 public interface ICoordinator<T>
     where T : IScreenView
 {

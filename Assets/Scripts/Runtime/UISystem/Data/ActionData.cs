@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Data for an action pop-up in the UI system.
+/// </summary>
 [CreateAssetMenu(fileName = "NewActionData", menuName = "AR GUI/Action Pop Up Data")]
 public class ActionData : ScriptableObject
 {
@@ -18,6 +21,7 @@ public class ActionData : ScriptableObject
     [SerializeField]
     private AudioClip actionAudioClip;
 
+    // Public getters
     public string ActionTitle => actionTitle;
     public string ActionDescription => actionDescription;
     public Sprite ActionJack => actionJack;
